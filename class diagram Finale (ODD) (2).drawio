@@ -1,0 +1,174 @@
+<mxfile host="app.diagrams.net" modified="2023-07-18T19:33:05.284Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36" etag="pz140igdmD-426eUAmBZ" version="21.6.2" type="google">
+  <diagram id="C5RBs43oDa-KdzZeNtuy" name="Page-1">
+    <mxGraphModel grid="0" page="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="WIyWlLk6GJQsqaUBKTNV-1" parent="WIyWlLk6GJQsqaUBKTNV-0" />
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-0" value="    SchedaAllenamento" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="270" y="360" width="360" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-1" value="- dataInizio: Date&#xa;- tipo: String&#xa;- dataCompletamento: Date&#xa;- listaEsercizi: List&lt;EsercizioAllenamento&gt;&#xa;- idScheda: int&#xa;- utente: Utente&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-0">
+          <mxGeometry y="26" width="360" height="84" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-2" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-0">
+          <mxGeometry y="110" width="360" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-91" value="+ getDataInizio (): Date&lt;br&gt;+getTipo(): String&lt;br&gt;+ getDataCompletamento(): Date&lt;br&gt;+ getListaEsercizi(): List&amp;lt;EsercizioAllenamento&amp;gt;&lt;br&gt;+ getIdScheda(): int&lt;br&gt;+ getUtente(): Utente&lt;br&gt;+ setDataInizio(data: Date)&lt;br&gt;+ setTipo(tipo: String)&lt;br&gt;+ setDataCompletamento (data: Date)&amp;nbsp;&lt;br&gt;+ setListaEsercizi (listaEsercizi: List&amp;lt;EsercizioAllenamento&amp;gt;)&lt;br&gt;+ setIdScheda (id: int)&lt;br&gt;+ setUtente (utente: Utente)&lt;br&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-0">
+          <mxGeometry y="120" width="360" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-44" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;endArrow=none;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CPY6sWiSpXGoVrUkWXPz-9">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="641" y="-10" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-9" value="Istruttore" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="601" y="30" width="410" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-10" value="- matricolaIstruttore: String&#xa;- specializzazione: String&#xa;- listaSchedeCreate: List&lt;SchedaAllenamento&gt;&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-9">
+          <mxGeometry y="26" width="410" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-11" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-9">
+          <mxGeometry y="80" width="410" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-51" value="+ getMatricolaIstruttore(): String&lt;br&gt;+ getSpecializzazione(): String&lt;br&gt;+ getListaSchedeCreate(): List&amp;lt;SchedaAllenamento&amp;gt;&lt;br&gt;+ setMatricolaIstrutture(matricola: String)&lt;br&gt;+ setSpecializzazione(specializzazione: String)&lt;br&gt;+ setListaSchede(listaSchede: List&amp;lt;SchedaAllenamento&amp;gt;)&lt;br&gt;+ visualizzaUtenti (): List&amp;lt;Utente&amp;gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-9">
+          <mxGeometry y="90" width="410" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-43" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;startArrow=none;startFill=0;endArrow=none;endFill=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CPY6sWiSpXGoVrUkWXPz-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="640" y="-10" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="1350" y="-10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-12" value="Amministratore" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="1240" y="30" width="220" height="114" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-13" value="- codice: int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-12">
+          <mxGeometry y="26" width="220" height="14" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-14" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-12">
+          <mxGeometry y="40" width="220" height="12" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-64" value="+ setCodice (codice: int)&lt;br&gt;+ getCodice (): int&lt;br&gt;+ visualizzaUtenti(): List&amp;lt;Utente&amp;gt;&lt;br&gt;+ visualizzaIstruttori(): List&amp;lt;Istruttore&amp;gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-12">
+          <mxGeometry y="52" width="220" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;endArrow=none;endFill=0;startArrow=block;startFill=0;startSize=18;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CPY6sWiSpXGoVrUkWXPz-16" target="CPY6sWiSpXGoVrUkWXPz-101">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-16" value="Esercizio" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-95" y="740" width="310" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-17" value="- nomeEsercizio: String&#xa;- descrizione: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-16">
+          <mxGeometry y="26" width="310" height="34" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-18" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-16">
+          <mxGeometry y="60" width="310" height="10" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-105" value="+ getNomeEsercizio(): String&lt;br&gt;+setNomeEsercizio(nome: String)&lt;br&gt;+ getDescrizione(): String&lt;br&gt;+ setDescrizione(descrizione: String)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-16">
+          <mxGeometry y="70" width="310" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-19" value="" style="endArrow=diamondThin;endFill=1;endSize=24;html=1;rounded=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry width="160" relative="1" as="geometry">
+            <mxPoint x="140" y="552" as="sourcePoint" />
+            <mxPoint x="270" y="440" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="200" y="549" />
+              <mxPoint x="200" y="490" />
+              <mxPoint x="200" y="440" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-22" value="RichiestaModificaScheda" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-260" y="40" width="230" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-23" value="- messaggio: String&#xa;- idRichiesta: String&#xa;- esito: boolean&#xa;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-22">
+          <mxGeometry y="26" width="230" height="44" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-24" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-22">
+          <mxGeometry y="70" width="230" height="18" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-109" value="+ getMessaggio(): String&lt;br&gt;+ setMessaggio(messaggio: String)&lt;br&gt;+ getIdRichiesta(): String&lt;br&gt;+ setIdRichiesta(id: String)&lt;br&gt;+ isEsito(): boolean&lt;br&gt;+ setEsito (esito: boolean)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-22">
+          <mxGeometry y="88" width="230" height="92" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-28" value="EsercizioAllenamento" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-20" y="500" width="160" height="110" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-29" value="- volume: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-28">
+          <mxGeometry y="26" width="160" height="24" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-30" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-28">
+          <mxGeometry y="50" width="160" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-101" value="+ getVolume(): String&lt;br&gt;+ setVolume(volume: String)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-28">
+          <mxGeometry y="70" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-33" value="Profilo" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="536" y="-300" width="314" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-34" value="- nome: String&lt;br&gt;- cognome: String&lt;br&gt;- password: String" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-33">
+          <mxGeometry y="26" width="314" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-35" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-33">
+          <mxGeometry y="80" width="314" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-36" value="+ loggedUserLevel(): String&lt;br&gt;+ getNome(): String&lt;br&gt;+ getCognome(): String&lt;br&gt;+ setNome(nome: String)&lt;br&gt;+ setCognome(cognome: String)&lt;br&gt;+ getPassword(): String&lt;br&gt;+ setPassword(password: String)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-33">
+          <mxGeometry y="88" width="314" height="122" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-50" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.483;entryY=1.017;entryDx=0;entryDy=0;entryPerimeter=0;endArrow=block;endFill=0;endSize=20;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CPY6sWiSpXGoVrUkWXPz-46" target="CPY6sWiSpXGoVrUkWXPz-36">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="396" y="-10" />
+              <mxPoint x="688" y="-10" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-46" value="Utente" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="130" y="30" width="460" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-47" value="- codiceFiscale: String&lt;br&gt;- scheda: SchedaAllenamento&lt;br&gt;- listaRichiesteModifica: List&amp;lt;RichiestaModificaScheda&amp;gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-46">
+          <mxGeometry y="26" width="460" height="54" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-48" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;strokeColor=inherit;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-46">
+          <mxGeometry y="80" width="460" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-49" value="+ getCodiceFiscale(): String&lt;br&gt;+ getScheda(): SchedaAllenamento&lt;br&gt;+ setScheda(scheda: SchedaAllenamento)&lt;br&gt;+ setCodiceFiscale(codiceFiscale: String)&lt;br&gt;+ getListaRichiesteModifica(): List&amp;lt;RichiesteModificaScheda&amp;gt;&lt;br&gt;+ setListaRichiesteModifica(listaRichieste: List&amp;lt;RichiesteModificaScheda&amp;gt;)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="CPY6sWiSpXGoVrUkWXPz-46">
+          <mxGeometry y="88" width="460" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-83" value="" style="endArrow=none;html=1;rounded=0;entryX=0.509;entryY=0.996;entryDx=0;entryDy=0;entryPerimeter=0;exitX=0.5;exitY=0;exitDx=0;exitDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CPY6sWiSpXGoVrUkWXPz-0" target="CPY6sWiSpXGoVrUkWXPz-49">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="300" y="350" as="sourcePoint" />
+            <mxPoint x="350" y="300" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="384" y="300" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-84" value="Seguire" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="390" y="270" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-106" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CPY6sWiSpXGoVrUkWXPz-47" target="CPY6sWiSpXGoVrUkWXPz-23">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-107" value="Effettuare" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="40" y="50" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-108" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-30" y="60" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-110" value="MODIFICHE EFFETTUATE&lt;br&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;1) Aggiunta metodi a tutte le classi;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;2) Caratteristiche comuni tra le classi &quot;Utente&quot;, &quot;Istruttore e &quot;Amministratore&quot; diventano la super-classe &quot;Profilo&quot; e le tre classi citate in precedenza diventano sue sotto-classi;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;3) Relazione tra Utente e RichiestaModificaScheda diventa UniDirezionale, da Utente a RichiestaModificaScheda. E&#39; stato perciò eliminato il campo utente in RichiestaModificaScheda ed è stato aggiunto in Utente il campo ListaRichiesteModificaScheda, che è una lista contenente tutte le richieste di modifica scheda effettuate dall&#39;utente;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;4) Relazione tra EsercizioAllenamento ed Esercizio diventa una relazione di ereditarietà. E&#39; stato quindi rimosso il campo Esercizio da EsercizioAllenamento, poiché adesso EsercizioAllenamento è una sottoclasse di Esercizio;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;5) Rimozione campo &quot;scheda&quot; di tipo SchedaAllenamento da EsercizioAllenamento, poiché SchedaAllenamento è una composizione di EsercizioAllenamento e da EsercizioAllenamento non è necessario effettuare alcuna operazione verso SchedaAllenamento;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;6) Relazione &quot;Effettuare&quot; tra Istruttore e SchedaAllenamento diventa UniDirezionale, da Istruttore a SchedaAllenamento. E&#39; stato aggiunto in Istruttore il campo ListaSchedeCreate, che è una lista contenente tutte le schede create dall&#39;utente.&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="-95" y="910" width="1145" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-111" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="WIyWlLk6GJQsqaUBKTNV-1" source="CPY6sWiSpXGoVrUkWXPz-51" target="CPY6sWiSpXGoVrUkWXPz-91">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-112" value="Effettuare" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="815" y="430" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="CPY6sWiSpXGoVrUkWXPz-113" value="*" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="WIyWlLk6GJQsqaUBKTNV-1">
+          <mxGeometry x="650" y="510" width="20" height="20" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
