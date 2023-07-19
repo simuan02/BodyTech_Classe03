@@ -31,7 +31,9 @@ create table schedaAllenamento(
     dataCompletamento datetime not null,
     tipo char(30) not null,
     utente char(16) not null,
-    foreign key(utente) references utente(codiceFiscale)
+	istruttore char(10) not null,
+    foreign key(utente) references utente(codiceFiscale),
+	foreign key(istruttore) references istruttore(matricolaIstruttore)
 );
 
 create table esercizio(
