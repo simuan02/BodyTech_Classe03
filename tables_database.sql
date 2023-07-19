@@ -7,7 +7,9 @@ create table utente(
 	codiceFiscale char(16) primary key,
     nome varchar(40) not null,
     cognome varchar(40) not null,
-	pass varchar(32) not null
+	pass varchar(32) not null,
+	scheda int(32),
+	foreign key (scheda) references (schedaAllenamento.idScheda)
 );
 
 create table istruttore(
