@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="ConnectionPool">
+    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="ConnectionPool aggiunto">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -15,8 +15,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Tag Library Descriptor" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -73,6 +73,26 @@
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\.github" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="bodyTech.model.Main" />
+      <module name="ProgettoBodyTech" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="bodyTech.model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -86,7 +106,8 @@
       <workItem from="1689754850726" duration="40000" />
       <workItem from="1689754895054" duration="143000" />
       <workItem from="1689755060625" duration="26000" />
-      <workItem from="1689755097999" duration="667000" />
+      <workItem from="1689755097999" duration="1161000" />
+      <workItem from="1689757209699" duration="240000" />
     </task>
     <task id="LOCAL-00001" summary="Struttura Progetto BodyTech">
       <created>1689752709768</created>
@@ -109,7 +130,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689755171673</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ConnectionPool aggiunto">
+      <created>1689756810922</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1689756810922</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -141,6 +169,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Struttura Progetto BodyTech" />
     <MESSAGE value="ConnectionPool" />
-    <option name="LAST_COMMIT_MESSAGE" value="ConnectionPool" />
+    <MESSAGE value="ConnectionPool aggiunto" />
+    <option name="LAST_COMMIT_MESSAGE" value="ConnectionPool aggiunto" />
   </component>
 </project>
