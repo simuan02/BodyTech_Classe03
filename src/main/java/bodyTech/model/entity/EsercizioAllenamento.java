@@ -1,6 +1,6 @@
 package bodyTech.model.entity;
 
-public class EsercizioAllenamento {
+public class EsercizioAllenamento extends Esercizio{
 
     public String getVolume() {
         return volume;
