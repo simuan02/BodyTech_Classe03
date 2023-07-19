@@ -3,7 +3,7 @@ package bodyTech.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Istruttore {
+public class Istruttore extends Profilo{
 
     public String getMatricolaIstruttore() {
         return matricolaIstruttore;

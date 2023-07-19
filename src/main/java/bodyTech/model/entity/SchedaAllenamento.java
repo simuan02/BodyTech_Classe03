@@ -1,6 +1,7 @@
 package bodyTech.model.entity;
 
 import java.util.Date;
+import java.util.List;
 
 public class SchedaAllenamento {
 
@@ -44,9 +45,27 @@ public class SchedaAllenamento {
         this.utente = utente;
     }
 
+    public Istruttore getIstruttore(){
+        return istruttore;
+    }
+
+    public void setIstruttore(Istruttore istruttore){
+        this.istruttore = istruttore;
+    }
+
+    public List<EsercizioAllenamento> getListaEsercizi() {
+        return listaEsercizi;
+    }
+
+    public void setListaEsercizi(List<EsercizioAllenamento> listaEsercizi) {
+        this.listaEsercizi = listaEsercizi;
+    }
+
     private int idScheda;
     private Date dataInizio;
     private Date dataCompletamento;
     private String tipo;
     private Utente utente;
+    private Istruttore istruttore;
+    private List<EsercizioAllenamento> listaEsercizi;
 }
