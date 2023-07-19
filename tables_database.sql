@@ -19,14 +19,14 @@ create table istruttore(
 );
 
 create table amministratore(
-	codice int(32) primary key,
+	codice int primary key,
 	nome varchar(40) not null,
     cognome varchar(40) not null,
 	pass varchar(32) not null
 );
 
 create table schedaAllenamento(
-	idScheda int(32) primary key auto_increment,
+	idScheda int primary key auto_increment,
     dataInizio datetime not null,
     dataCompletamento datetime not null,
     tipo char(30) not null,
@@ -40,7 +40,7 @@ create table esercizio(
 );
 
 create table esercizioAllenamento(
-	schedaAllenamento int(32) not null auto_increment,
+	schedaAllenamento int not null auto_increment,
     esercizio varchar(30) not null,
     volume char(30) not null,
     foreign key(schedaAllenamento) references schedaAllenamento(idScheda),
@@ -49,7 +49,7 @@ create table esercizioAllenamento(
 );
 
 create table richiestaModificaScheda(
-	idRichiesta int(32) primary key auto_increment,
+	idRichiesta int primary key auto_increment,
     messaggio varchar(254) not null,
     utente char(16) not null,
     esito bool not null,
