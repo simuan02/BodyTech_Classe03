@@ -1,4 +1,25 @@
 package bodyTech.model.entity;
 
-public class Utente {
+import java.util.List;
+
+public class Utente extends Profilo{
+
+    public String getCodiceFiscale() {
+        return codiceFiscale;
+    }
+
+    public void setCodiceFiscale(String codiceFiscale) {
+        this.codiceFiscale = codiceFiscale;
+    }
+
+    public List<RichiestaModificaScheda> getListeRichiesteModifica() {
+        return listeRichiesteModifica;
+    }
+
+    public void setListeRichiesteModifica(List<RichiestaModificaScheda> listeRichiesteModifica) {
+        this.listeRichiesteModifica = listeRichiesteModifica;
+    }
+
+    private String codiceFiscale;
+    private List<RichiestaModificaScheda> listeRichiesteModifica;
 }
