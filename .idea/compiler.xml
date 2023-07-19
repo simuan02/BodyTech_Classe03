@@ -10,12 +10,12 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="ProgettoBodyTech" target="17" />
+      <module name="ProgettoBodyTech" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ProgettoBodyTech" options="--add-modules java.sql" />
+      <module name="ProgettoBodyTech" options="" />
     </option>
   </component>
 </project>

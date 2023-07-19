@@ -1,0 +1,30 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="ProgettoBodyTech:war exploded">
+    <output-path>$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <exploded>true</exploded>
+        <module>ProgettoBodyTech</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="ProgettoBodyTech" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:8.0.18" />
+          <element id="library" level="project" name="Maven: com.google.protobuf:protobuf-java:3.6.1" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-jdbc:10.0.17" />
+          <element id="library" level="project" name="Maven: org.apache.tomcat:tomcat-juli:10.0.17" />
+          <element id="library" level="project" name="Maven: com.google.code.gson:gson:2.9.0" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="ProgettoBodyTech/web/Web" />
+    </root>
+  </artifact>
+</component>
