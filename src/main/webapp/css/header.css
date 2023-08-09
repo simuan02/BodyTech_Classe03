@@ -25,3 +25,22 @@ html {
     width: 100px;
     height: 100px;
 }
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.nav-item {
+    margin-left: 100rem;
+}
+
+.nav-link {
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: black;
+    font-family: 'Poppins', "Rage Italic";
+}

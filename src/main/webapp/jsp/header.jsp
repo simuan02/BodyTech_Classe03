@@ -22,11 +22,9 @@
     <h1 id="titolo">BODYTECH</h1>
 
     <ul class="nav_menu">
-      <c:choose>
+      <!--<c:choose>
         <c:when test="${profilo == null}">
-          <li class="nav-item">
-            <a href="${pageContext.request.contextPath}/LogServlet" class="nav-link">Login</a>
-          </li>
+
         </c:when>
         <c:otherwise>
           <li class="nav-item">
@@ -34,7 +32,11 @@
           </li>
         </c:otherwise>
 
-      </c:choose>
+      </c:choose>-->
+
+      <li class="nav-item">
+        <a href="${pageContext.request.contextPath}/LogServlet" class="nav-link">Login</a>
+      </li>
     </ul>
 
   </header>
