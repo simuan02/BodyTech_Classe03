@@ -1,8 +1,10 @@
 <html>
 <head>
-    <title>Titolo 1</title>
+    <title>BodyTech - HomePage</title>
 </head>
-<body>
-Hello World!
-</body>
+    <body>
+        <%@include file="jsp/header.jsp"%>
+
+
+    </body>
 </html>

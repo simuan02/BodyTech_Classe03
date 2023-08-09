@@ -10,29 +10,73 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="Modifica Codice Entità Istruttore e SchedaAllenamento">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/IndexServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/header.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/logo.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/menu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ProgettoBodyTech_war.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/ProgettoBodyTech_war_exploded.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_code_gson_gson_2_9_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_6_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_servlet_jakarta_servlet_api_5_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__mysql_mysql_connector_java_8_0_18.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_jdbc_10_0_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_tomcat_juli_10_0_17.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_2.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_8_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Amministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Amministratore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Istruttore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Istruttore.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/SchedaAllenamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/SchedaAllenamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProgettoBodyTech.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Amministratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Amministratore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Esercizio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Esercizio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/EsercizioAllenamento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/EsercizioAllenamento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Istruttore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Istruttore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/SchedaAllenamento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/SchedaAllenamento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Amministratore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Amministratore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Esercizio.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Esercizio.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/EsercizioAllenamento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/EsercizioAllenamento.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Istruttore.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Istruttore.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/SchedaAllenamento.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/SchedaAllenamento.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Tag Library Descriptor" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Jsp File" />
+        <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -70,29 +114,34 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="2SmWZW7onP50DEDuUMZ1x9NBiRP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jacop/IdeaProjects/BodyTech3/src/main/webapp/images&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\src\main\webapp" />
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\src\main" />
@@ -100,7 +149,7 @@
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\.github" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.0.17">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.43">
     <configuration name="Prova" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bodyTech.model.entity.Prova" />
       <module name="ProgettoBodyTech" />
@@ -114,8 +163,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.0.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.17" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.43" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.43" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ProgettoBodyTech_war_exploded/index.jsp" />
+      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ProgettoBodyTech:war exploded">
@@ -204,7 +254,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Prova" />
-      <item itemvalue="Tomcat Server.Tomcat 10.0.17" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.43" />
     </list>
     <recent_temporary>
       <list>
@@ -238,6 +288,9 @@
       <workItem from="1689781063476" duration="270000" />
       <workItem from="1689781859791" duration="731000" />
       <workItem from="1689782928271" duration="3812000" />
+      <workItem from="1691591032676" duration="1461000" />
+      <workItem from="1691592505614" duration="283000" />
+      <workItem from="1691592818871" duration="1879000" />
     </task>
     <task id="LOCAL-00001" summary="Struttura Progetto BodyTech">
       <created>1689752709768</created>
