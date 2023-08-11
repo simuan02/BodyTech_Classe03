@@ -34,9 +34,12 @@ a {
     text-decoration: none;
 }
 
-.nav-item {
-    margin-left: 100rem;
+.nav_menu {
+    margin-left: 50%;
 }
+/*.nav-item {
+    margin-left: 90%;
+}*/
 
 .nav-link {
     font-size: 1.6rem;

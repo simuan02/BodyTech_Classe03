@@ -35,7 +35,7 @@
       </c:choose>-->
 
       <li class="nav-item">
-        <a href="${pageContext.request.contextPath}/LogServlet" class="nav-link">Login</a>
+        <a href="http://localhost:8080/ProgettoBodyTech_war_exploded/LogServlet" class="nav-link">Login</a>
       </li>
     </ul>
 
