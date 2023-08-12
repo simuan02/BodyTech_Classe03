@@ -1,5 +1,8 @@
 package bodyTech.model.entity;
 
+/**
+ * Contiene i dati relativi ad un esercizio.
+ */
 public class Esercizio {
 
     public String getNomeEsercizio() {

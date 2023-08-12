@@ -6,6 +6,9 @@ import bodyTech.model.dao.UtenteDAO;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Contiene i dati relativi ad un amministratore del sistema.
+ */
 public class Amministratore extends Profilo{
 
     public int getCodice() {

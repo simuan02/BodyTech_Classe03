@@ -2,6 +2,9 @@ package bodyTech.model.entity;
 
 import java.util.List;
 
+/**
+ * Contiene i dati relativi ad un utente registrato, cliente della palestra.
+ */
 public class Utente extends Profilo{
 
     public String getCodiceFiscale() {

@@ -1,6 +1,9 @@
 package bodyTech.model.entity;
 
 
+/**
+ * Contiene i dati relativi ad una richiesta fatta da un utente per la modifica della propria scheda.
+ */
 public class RichiestaModificaScheda {
 
     public int getIdRichiesta() {
