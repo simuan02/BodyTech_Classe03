@@ -8,7 +8,7 @@
     <script type="application/javascript" src="./scripts/validation.js"></script>
 </head>
 <body>
-    <%@include file="header.jsp"%>
+    <%@include file="jsp/header.jsp"%>
 
     <div class="container-login">
         <div class="box">

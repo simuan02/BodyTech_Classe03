@@ -1,5 +1,6 @@
 package bodyTech;
 
+import bodyTech.model.entity.Profilo;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -15,26 +16,10 @@ import java.io.IOException;
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        /*List<Prodotto> listaProdotti = ProdottoDAO.doRetrieveAll();
-
-        List<Prodotto> prodottiMigliori = new ArrayList<>();
-        List<String> immaginiProdotti;
-        for (Prodotto p : listaProdotti){
-            if (p.getId() < 10){
-                immaginiProdotti = ImmaginiProdottiDAO.doRetrieveByIdProduct(p.getId());
-                p.setImmagini(immaginiProdotti);
-                prodottiMigliori.add(p);
-
-            }
-        }*/
-
-        //request.setAttribute("venduti", prodottiMigliori);
         HttpSession session = request.getSession();
-        if (session.isNew()){
-            session.setAttribute("isLogged", false);
-        }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/jsp/index.jsp");
+        Profilo p = null;
+        session.setAttribute("Profilo", p);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
         dispatcher.forward(request, response);
     }
 

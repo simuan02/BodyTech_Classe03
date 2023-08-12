@@ -7,21 +7,25 @@
 }
 
 .home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-top: 10%;
+    margin-top: 2%;
 }
 
 .home h1 {
-    margin-top: 10%;
     color: #F7C70F;
-    font-size: 3rem;
+    font-size: 18pt;
+    margin: 3% 2% 0 2%;
 }
 
 .home p {
-    margin-top: 5%;
-    font-size: 2.5rem;
-    margin-bottom: 20%;
+    font-size: 15pt;
+    text-align: justify;
+    margin: 0 2%;
 }
+
+#img_home {
+    display: block;
+    width: 70%;
+    margin: 2% auto;
+    alignment: center;
+}
+
