@@ -1,9 +1,4 @@
-html {
-    font-size: 62.5%;
-}
-
 body {
-    font-size: 1.6rem;
     background-color: white;
 }
 
@@ -26,13 +21,13 @@ body {
 
 #title {
     margin-top: 30px;
-    font-size: 1.5em;
+    font-size: 14pt;
     color: #272559;
     text-align: center;
 }
 
 #emailId, #passwordId {
-    font-size: 1.7rem;
+    font-size: 15pt;
     padding: 8px;
     width: 90%;
     background-color: white;
@@ -49,11 +44,11 @@ body {
     margin-top: 20px;
     text-decoration: none;
     color: #272559;
-    font-size: 1.7rem;
+    font-size: 15pt;
 }
 
 #registrati a {
-    font-size: 2rem;
+    font-size: 18pt;
     text-decoration: none;
     color: #F28E13;
 }
@@ -66,7 +61,7 @@ body {
 
 .box input[type = "submit"]{
     width: 50%;
-    font-size: 2rem;
+    font-size: 18pt;
     padding: 6px;
     background-color: #F28E13;
     border-radius: 10px;

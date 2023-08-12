@@ -1,10 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 09/08/2023
-  Time: 16:32
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Profilo" %>
+<%@ page import="jakarta.servlet.http.HttpSession" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,29 +8,29 @@
 </head>
 <body>
   <header class="header">
-    <!--<div class="hamburger">
-      <img src="./images/menu.png">
-    </div>-->
     <div class="logo_div">
-      <img src="images/logo.jpg">
+      <a href="index.jsp">
+        <img src="images/logoBodytech.png">
+      </a>
     </div>
     <h1 id="titolo">BODYTECH</h1>
 
     <ul class="nav_menu">
-      <!--<c:choose>
-        <c:when test="${profilo == null}">
-
-        </c:when>
-        <c:otherwise>
-          <li class="nav-item">
-            <a href="${pageContext.request.contextPath}/LogServlet" class="nav-link">Nome Account</a>
-          </li>
-        </c:otherwise>
-
-      </c:choose>-->
 
       <li class="nav-item">
-        <a href="http://localhost:8080/ProgettoBodyTech_war_exploded/LogServlet" class="nav-link">Login</a>
+      <%
+        Profilo p = (Profilo)session.getAttribute("Profilo");
+        if (p == null) {
+          %>
+          <a class="nav-link" href="login.jsp">LOGIN</a>
+        <%
+        }
+          else {
+        %>
+            <a href="profiloPage.jsp" class="nav-link"><%=p.getNome()%> <%=p.getCognome()%></a>
+      <%
+        }
+      %>
       </li>
     </ul>
 
