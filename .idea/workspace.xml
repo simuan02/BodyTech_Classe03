@@ -9,21 +9,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="Completamento Entità ed Aggiunta dei metodi principali nei DAO">
+    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="Modifica 2 Header e IndexServlet">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/IndexServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/IndexServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/login/LoginService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Tag Library Descriptor" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="HTML File" />
+        <option value="Jsp File" />
+        <option value="CSS File" />
+        <option value="Class" />
+        <option value="Servlet" />
       </list>
     </option>
   </component>
@@ -61,29 +72,38 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="useMavenConfig" value="true" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
   <component name="ProjectId" id="2SmWZW7onP50DEDuUMZ1x9NBiRP" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="DefaultHtmlFileTemplate" value="HTML File" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/Users/jacop/IdeaProjects/BodyTech3/src/main/webapp",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "fileTemplates",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp" />
+      <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\jsp" />
+      <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\css" />
+      <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\images" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\src\main\webapp" />
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\src\main" />
@@ -91,7 +111,7 @@
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\.github" />
     </key>
   </component>
-  <component name="RunManager" selected="Tomcat Server.Tomcat 10.0.17">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 9.0.43">
     <configuration name="Prova" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="bodyTech.model.entity.Prova" />
       <module name="ProgettoBodyTech" />
@@ -105,8 +125,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.0.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.17" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
-      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ProgettoBodyTech_war_exploded/index.jsp" />
+    <configuration name="Tomcat 9.0.43" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.43" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+      <option name="OPEN_IN_BROWSER_URL" value="http://localhost:8080/ProgettoBodyTech_war_exploded/IndexServlet" />
+      <option name="BROWSER_ID" value="a7bb68e0-33c0-4d6f-a81a-aac1fdb870c8" />
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ProgettoBodyTech:war exploded">
@@ -195,7 +216,7 @@
     </configuration>
     <list>
       <item itemvalue="Application.Prova" />
-      <item itemvalue="Tomcat Server.Tomcat 10.0.17" />
+      <item itemvalue="Tomcat Server.Tomcat 9.0.43" />
     </list>
     <recent_temporary>
       <list>
@@ -228,9 +249,10 @@
       <workItem from="1689780801566" duration="218000" />
       <workItem from="1689781063476" duration="270000" />
       <workItem from="1689781859791" duration="731000" />
-      <workItem from="1689782928271" duration="4118000" />
-      <workItem from="1690316179289" duration="47000" />
-      <workItem from="1691846025008" duration="345000" />
+      <workItem from="1689782928271" duration="3812000" />
+      <workItem from="1691591032676" duration="1461000" />
+      <workItem from="1691592505614" duration="283000" />
+      <workItem from="1691592818871" duration="6399000" />
     </task>
     <task id="LOCAL-00001" summary="Struttura Progetto BodyTech">
       <created>1689752709768</created>
@@ -288,14 +310,31 @@
       <option name="project" value="LOCAL" />
       <updated>1689782518247</updated>
     </task>
-    <task id="LOCAL-00009" summary="Completamento Entità ed Aggiunta dei metodi principali nei DAO">
-      <created>1689787011676</created>
+    <task id="LOCAL-00009" summary="Inizio Header e IndexServlet">
+      <option name="closed" value="true" />
+      <created>1691595624493</created>
       <option name="number" value="00009" />
       <option name="presentableId" value="LOCAL-00009" />
       <option name="project" value="LOCAL" />
-      <updated>1689787011676</updated>
+      <updated>1691595624493</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Modifica 1 Header e IndexServlet">
+      <option name="closed" value="true" />
+      <created>1691596059378</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1691596059378</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Modifica 2 Header e IndexServlet">
+      <option name="closed" value="true" />
+      <created>1691762913351</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691762913351</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,7 +351,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="master" />
                       </list>
                     </value>
                   </entry>
@@ -332,7 +371,9 @@
     <MESSAGE value="Struttura Packages Aggiornata" />
     <MESSAGE value="Inserimento Funzionalità UtenteDAO e codice Entità Utente, Istruttore, Amministratore e RichiestaModificaScheda" />
     <MESSAGE value="Modifica Codice Entità Istruttore e SchedaAllenamento" />
-    <MESSAGE value="Completamento Entità ed Aggiunta dei metodi principali nei DAO" />
-    <option name="LAST_COMMIT_MESSAGE" value="Completamento Entità ed Aggiunta dei metodi principali nei DAO" />
+    <MESSAGE value="Inizio Header e IndexServlet" />
+    <MESSAGE value="Modifica 1 Header e IndexServlet" />
+    <MESSAGE value="Modifica 2 Header e IndexServlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifica 2 Header e IndexServlet" />
   </component>
 </project>
