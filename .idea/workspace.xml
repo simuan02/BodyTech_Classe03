@@ -9,20 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="Modifica 1 Header e IndexServlet">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/LogServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/footer.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/index.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/immagine_homepage.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/footer.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" afterDir="false" />
+    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="Modifica 2 Header e IndexServlet">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/web.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/IndexServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/IndexServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/LoginService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/LoginService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/login/LoginService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +34,7 @@
         <option value="Jsp File" />
         <option value="CSS File" />
         <option value="Class" />
+        <option value="Servlet" />
       </list>
     </option>
   </component>
@@ -90,7 +84,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/jacop/IdeaProjects/BodyTech3/src/main/webapp/jsp",
+    "last_opened_file_path": "C:/Users/jacop/IdeaProjects/BodyTech3/src/main/webapp",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -99,11 +93,13 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "fileTemplates",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp" />
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\jsp" />
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\css" />
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\images" />
@@ -256,7 +252,7 @@
       <workItem from="1689782928271" duration="3812000" />
       <workItem from="1691591032676" duration="1461000" />
       <workItem from="1691592505614" duration="283000" />
-      <workItem from="1691592818871" duration="5348000" />
+      <workItem from="1691592818871" duration="6399000" />
     </task>
     <task id="LOCAL-00001" summary="Struttura Progetto BodyTech">
       <created>1689752709768</created>
@@ -330,7 +326,15 @@
       <option name="project" value="LOCAL" />
       <updated>1691596059378</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Modifica 2 Header e IndexServlet">
+      <option name="closed" value="true" />
+      <created>1691762913351</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1691762913351</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -369,6 +373,7 @@
     <MESSAGE value="Modifica Codice Entità Istruttore e SchedaAllenamento" />
     <MESSAGE value="Inizio Header e IndexServlet" />
     <MESSAGE value="Modifica 1 Header e IndexServlet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifica 1 Header e IndexServlet" />
+    <MESSAGE value="Modifica 2 Header e IndexServlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifica 2 Header e IndexServlet" />
   </component>
 </project>

@@ -9,8 +9,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+
 
 @WebServlet(name = "IndexServlet", urlPatterns = {"", "/IndexServlet"}, loadOnStartup = 1)
 public class IndexServlet extends HttpServlet {
