@@ -12,8 +12,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il DAO di un Utente
+ */
 public class UtenteDAO {
 
+    /**
+     * Implementa la funzionalità di creare un oggetto Utente e recuperare i suoi attributi dal DB
+     * @param rs
+     * @return Utente
+     * @throws SQLException
+     */
     public static Utente setUtente(ResultSet rs) throws SQLException {
         Utente u = new Utente();
         u.setCodiceFiscale(rs.getString(1));
@@ -25,6 +34,11 @@ public class UtenteDAO {
         return u;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Utenti presenti
+     * @return lista degli Utenti
+     * @throws SQLException
+     */
     public static List<Utente> visualizzaUtenti() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
@@ -38,6 +52,12 @@ public class UtenteDAO {
         return utenti;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB l'Utente associato a quel codice fiscale
+     * @param codiceFiscale
+     * @return Utente
+     * @throws SQLException
+     */
     public static Utente findByCodiceFiscale (String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();

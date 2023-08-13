@@ -11,8 +11,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il DAO di una Scheda di Allenamento
+ */
 public class SchedaAllenamentoDAO {
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB tutte le Schede di Allenamento associate a l'Istruttore indicato dalla stringa matricola passata
+     * @param matricola
+     * @return liste delle Schede di Allenamento
+     * @throws SQLException
+     */
     public static List<SchedaAllenamento> findAllByInstructor (String matricola) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();

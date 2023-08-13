@@ -10,7 +10,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il DAO di una Richiesta di Modifica Scheda
+ */
 public class RichiestaModificaSchedaDAO {
+
+    /**
+     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente
+     * @param codiceFiscale
+     * @return lista delle Richieste
+     * @throws SQLException
+     */
     public static List<RichiestaModificaScheda> findByUser(String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();

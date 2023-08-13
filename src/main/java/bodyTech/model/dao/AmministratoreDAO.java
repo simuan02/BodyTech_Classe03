@@ -11,8 +11,16 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il DAO di un Amministratore
+ */
 public class AmministratoreDAO{
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Amministratori presenti
+     * @return lista degli Amministratori
+     * @throws SQLException
+     */
     public static List<Amministratore> visualizzaAdmin() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
