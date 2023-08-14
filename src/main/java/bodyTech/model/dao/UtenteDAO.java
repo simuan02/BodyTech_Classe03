@@ -5,16 +5,22 @@ import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.model.entity.Utente;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il DAO di un Utente
+ */
 public class UtenteDAO {
 
-    public static Utente setUtente(ResultSet rs) throws SQLException {
+    /**
+     * Implementa la funzionalità di creare un oggetto Utente e recuperare i suoi attributi dal DB
+     * @param rs
+     * @return Utente
+     * @throws SQLException
+     */
+    private static Utente setUtente(ResultSet rs) throws SQLException {
         Utente u = new Utente();
         u.setCodiceFiscale(rs.getString(1));
         u.setNome(rs.getString(2));
@@ -25,6 +31,11 @@ public class UtenteDAO {
         return u;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Utenti presenti
+     * @return lista degli Utenti
+     * @throws SQLException
+     */
     public static List<Utente> visualizzaUtenti() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
@@ -38,6 +49,12 @@ public class UtenteDAO {
         return utenti;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB l'Utente associato a quel codice fiscale
+     * @param codiceFiscale
+     * @return Utente
+     * @throws SQLException
+     */
     public static Utente findByCodiceFiscale (String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
@@ -48,5 +65,21 @@ public class UtenteDAO {
             u = setUtente(rs);
         }
         return u;
+    }
+
+    public static boolean insertUser (Utente u) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        List<Utente> users = visualizzaUtenti();
+        for (Utente user : users){
+            if (user.getCodiceFiscale().equalsIgnoreCase(u.getCodiceFiscale()))
+                return false;
+        }
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Utente values (?,?,?,?)");
+        pstmt.setString(1, u.getCodiceFiscale());
+        pstmt.setString(2, u.getNome());
+        pstmt.setString(3, u.getCognome());
+        pstmt.setString(4, u.getPassword());
+        pstmt.executeUpdate();
+        return true;
     }
 }

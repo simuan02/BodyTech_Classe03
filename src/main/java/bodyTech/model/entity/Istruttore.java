@@ -3,6 +3,9 @@ package bodyTech.model.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Contiene i dati relativi ad un istruttore della palestra.
+ */
 public class Istruttore extends Profilo{
 
     public String getMatricolaIstruttore() {

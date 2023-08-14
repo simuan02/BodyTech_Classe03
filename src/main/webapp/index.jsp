@@ -6,8 +6,34 @@
     <link rel="icon" href="images/logo.jpg" sizes="any">
 </head>
     <body>
+
+            <%
+                Object o = request.getAttribute("Registrazione");
+                if (o != null){
+                    boolean b = (boolean) o;
+                    if (b){
+            %>
+                        <script>alert("Registrazione avvenuta con successo")</script>
+            <%
+                    ;}
+                    else {
+            %>
+                        <script>alert("Errore al momento della registrazione")</script>
+            <%
+                        ;}
+                }
+                Object o2 = request.getAttribute("CodiceGiaPresente");
+                if (o2 != null)
+                {
+            %>
+                    <script>alert("Codice Fiscale gia' registrato alla piattaforma")</script>
+            <%
+                };
+            %>
+
         <%@include file="jsp/header.jsp"%>
-        
+
+
         <div class="home">
             <img src="images/immagine_homepage.jpg" id="img_home">
 
@@ -19,6 +45,8 @@
             
         </div>
 
-        <%@include file="jsp/footer.jsp"%>
+
+
+
     </body>
 </html>

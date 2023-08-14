@@ -11,8 +11,17 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Questa classe rappresenta il DAO di un Istruttore
+ */
 public class IstruttoreDAO {
 
+    /**
+     * Implementa la funzionalità di creare un oggetto Istruttore e recuperare i suoi attributi dal DB
+     * @param rs
+     * @return Istruttore
+     * @throws SQLException
+     */
     public static Istruttore createIstruttore(ResultSet rs) throws SQLException {
         Istruttore istr = new Istruttore();
         istr.setMatricolaIstruttore(rs.getString(1));
@@ -24,6 +33,11 @@ public class IstruttoreDAO {
         return istr;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Istruttori presenti
+     * @return lista degli Istruttori
+     * @throws SQLException
+     */
     public static List<Istruttore> visualizzaIstruttori() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
@@ -36,6 +50,13 @@ public class IstruttoreDAO {
         }
         return istruttori;
     }
+
+    /**
+     * Implementa la funzionalità di recuperare dal DB l'Istruttore associato a quella matricola
+     * @param matricola
+     * @return Istruttore
+     * @throws SQLException
+     */
     public static Istruttore findByMatricola(String matricola) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();

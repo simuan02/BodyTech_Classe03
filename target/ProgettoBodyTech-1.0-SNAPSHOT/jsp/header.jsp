@@ -5,6 +5,10 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/header.css"/>
+<<<<<<< HEAD
+=======
+  <link rel="icon" href="images/logo.jpg" sizes="any">
+>>>>>>> origin/main
 </head>
 <body>
   <header class="header">

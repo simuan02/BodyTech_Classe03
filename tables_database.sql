@@ -1,20 +1,20 @@
-drop database if exists BodyTech;
-create database BodyTech;
-use BodyTech;
+drop database if exists BodyTechDB;
+create database BodyTechDB;
+use BodyTechDB;
 
 
 create table utente(
 	codiceFiscale char(16) primary key,
     nome varchar(40) not null,
     cognome varchar(40) not null,
-	pass varchar(32) not null
+	pass varchar(64) not null
 );
 
 create table istruttore(
 	matricolaIstruttore char(10) primary key,
     nome varchar(40) not null,
     cognome varchar(40) not null,
-	pass varchar(32) not null,
+	pass varchar(64) not null,
     specializzazione char(30)
 );
 
@@ -22,7 +22,7 @@ create table amministratore(
 	codice int primary key,
 	nome varchar(40) not null,
     cognome varchar(40) not null,
-	pass varchar(32) not null
+	pass varchar(64) not null
 );
 
 create table schedaAllenamento(

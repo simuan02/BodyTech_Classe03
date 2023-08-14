@@ -9,24 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="Modifica homepage e Servlet di inizializzazione">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/logoBodytech.png" afterDir="false" />
+    <list default="true" id="6f905c98-8003-457d-b9ee-e92a617d9e1a" name="Changes" comment="Aggiunta Metodi di Business relativi al Login e alla Registrazione degli Utenti.&#10;Aggiunta JSP relativa alla Registrazione Utenti.&#10;Aggiunta metodo &quot;insertUser(Utente)&quot; in UtenteDAO.&#10;Modifica Commenti relativi a classi DAO.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/IndexServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/IndexServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/LogServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/LogServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/userRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userRegistration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Profilo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Profilo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/userRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/userRegistration.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Profilo.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Profilo.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,10 +36,10 @@
         <option value="Tag Library Descriptor" />
         <option value="Interface" />
         <option value="HTML File" />
-        <option value="Jsp File" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Servlet" />
+        <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -97,7 +91,12 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/images" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -140,6 +139,7 @@
       </deployment>
       <server-settings>
         <option name="BASE_DIRECTORY_NAME" value="790084ec-6755-42bc-ba4b-758f690c7f5a" />
+        <option name="JNDI_PORT" value="1098" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
@@ -255,6 +255,12 @@
       <workItem from="1691591032676" duration="1461000" />
       <workItem from="1691592505614" duration="283000" />
       <workItem from="1691592818871" duration="6399000" />
+      <workItem from="1691996709732" duration="11000" />
+      <workItem from="1691996825366" duration="5546000" />
+      <workItem from="1692003263847" duration="5676000" />
+      <workItem from="1692009034597" duration="46000" />
+      <workItem from="1692009095005" duration="783000" />
+      <workItem from="1692009913979" duration="983000" />
     </task>
     <task id="LOCAL-00001" summary="Struttura Progetto BodyTech">
       <created>1689752709768</created>
@@ -336,7 +342,28 @@
       <option name="project" value="LOCAL" />
       <updated>1691762913351</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Aggiunta Metodi di Business relativi al Login e alla Registrazione degli Utenti.&#10;Aggiunta JSP relativa alla Registrazione Utenti.&#10;Aggiunta metodo &quot;insertUser(Utente)&quot; in UtenteDAO.&#10;Modifica Commenti relativi a classi DAO.">
+      <created>1692007115647</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1692007115647</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Aggiunta Metodi di Business relativi al Login e alla Registrazione degli Utenti.&#10;Aggiunta JSP relativa alla Registrazione Utenti.&#10;Aggiunta metodo &quot;insertUser(Utente)&quot; in UtenteDAO.&#10;Modifica Commenti relativi a classi DAO.">
+      <created>1692007161299</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1692007161299</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Aggiunta Metodi di Business relativi al Login e alla Registrazione degli Utenti.&#10;Aggiunta JSP relativa alla Registrazione Utenti.&#10;Aggiunta metodo &quot;insertUser(Utente)&quot; in UtenteDAO.&#10;Modifica Commenti relativi a classi DAO.">
+      <created>1692007193170</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1692007193170</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -377,6 +404,7 @@
     <MESSAGE value="Modifica 1 Header e IndexServlet" />
     <MESSAGE value="Modifica 2 Header e IndexServlet" />
     <MESSAGE value="Modifica homepage e Servlet di inizializzazione" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifica homepage e Servlet di inizializzazione" />
+    <MESSAGE value="Aggiunta Metodi di Business relativi al Login e alla Registrazione degli Utenti.&#10;Aggiunta JSP relativa alla Registrazione Utenti.&#10;Aggiunta metodo &quot;insertUser(Utente)&quot; in UtenteDAO.&#10;Modifica Commenti relativi a classi DAO." />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Metodi di Business relativi al Login e alla Registrazione degli Utenti.&#10;Aggiunta JSP relativa alla Registrazione Utenti.&#10;Aggiunta metodo &quot;insertUser(Utente)&quot; in UtenteDAO.&#10;Modifica Commenti relativi a classi DAO." />
   </component>
 </project>

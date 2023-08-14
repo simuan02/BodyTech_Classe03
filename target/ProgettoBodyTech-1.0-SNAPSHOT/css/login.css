@@ -26,7 +26,7 @@ body {
     text-align: center;
 }
 
-#emailId, #passwordId {
+#Nome, #Cognome, #Identifier, #passwordId {
     font-size: 15pt;
     padding: 8px;
     width: 90%;
@@ -77,5 +77,3 @@ body {
     border: 2px solid #272559;
     transition: 0.5s;
 }
-
-
