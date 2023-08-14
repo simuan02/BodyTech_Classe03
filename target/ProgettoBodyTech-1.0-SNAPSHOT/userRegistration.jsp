@@ -15,9 +15,9 @@
      <input type="text" id="Nome" name="Nome" placeholder="Nome" required><br>
       <input type="text" id="Cognome" name="Cognome" placeholder="Cognome" required><br>
       <input type="text" id="Identifier" name="Identifier" placeholder="Codice Fiscale" required><br>
-      <input type="password" id="passwordId" name="password" placeholder="Password" required><br>
+      <input type="password" id="passwordId" name="password" maxlength="32" placeholder="Password" onchange="validatePassword()" required><br>
       <p id="registrati"><a href="login.jsp">Sei già registrato? Accedi ora!</a></p>
-      <input type="submit" value="Login">
+      <input type="submit" value="Registrati">
     </form>
   </div>
 

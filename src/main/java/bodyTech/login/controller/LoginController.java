@@ -2,6 +2,9 @@ package bodyTech.login.controller;
 
 import bodyTech.login.service.LoginService;
 import bodyTech.login.service.LoginServiceImpl;
+import bodyTech.model.dao.AmministratoreDAO;
+import bodyTech.model.dao.IstruttoreDAO;
+import bodyTech.model.dao.UtenteDAO;
 import bodyTech.model.entity.Amministratore;
 import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.Profilo;
@@ -45,7 +48,6 @@ public class LoginController extends HttpServlet {
             Amministratore a = new Amministratore();
             a.setPassword(password);
             a.setCodice(codice);
-            System.out.println(a.getCodice());
             try {
                 dispatcherPath = chooseDispatcherPath(request, services.login(a), a);
             } catch (SQLException e) {
@@ -56,7 +58,6 @@ public class LoginController extends HttpServlet {
                 Utente u = new Utente();
                 u.setPassword(password);
                 u.setCodiceFiscale(identifier);
-                System.out.println(u.getCodiceFiscale());
                 try {
                     dispatcherPath = chooseDispatcherPath(request, services.login(u), u);
                 } catch (SQLException ex) {
@@ -73,18 +74,48 @@ public class LoginController extends HttpServlet {
                     ex.printStackTrace();
                 }
             }
-            else
+            else {
+            try {
                 dispatcherPath = chooseDispatcherPath(request, false, null);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher(dispatcherPath);
         dispatcher.forward(request, response);
     }
 
-    private String chooseDispatcherPath(HttpServletRequest request, boolean b, Profilo p){
+    /**
+     * Questo metodo consente di scegliere l'indirizzo URL a cui andare in base all'esito del metodo LoginService.Login.
+     * Inoltre, salva a livello di sessione il profilo che ha appena effettuato l'accesso
+     * @param request la richiesta HTTP corrente
+     * @param b questo parametro indica l'esito del metodo LoginService.login
+     * @param p questo parametro rappresenta il profilo costruito solo con le informazioni ottenute dal form
+     * @return indirizzo URL di destinazione
+     * @throws SQLException
+     */
+    private String chooseDispatcherPath(HttpServletRequest request, boolean b, Profilo p) throws SQLException {
         String dispatcherPath;
         if (b) {
             dispatcherPath = "/index.jsp";
             HttpSession session = request.getSession();
-            session.setAttribute("Profilo", p);
+            switch(p.loggedUserLevel()){
+                case "Utente":
+                    Utente tempUser = (Utente)p;
+                    Utente u = UtenteDAO.findByCodiceFiscale(tempUser.getCodiceFiscale());
+                    session.setAttribute("Profilo", u);
+                    break;
+                case "Istruttore":
+                    Istruttore tempInstructor = (Istruttore)p;
+                    Istruttore i = IstruttoreDAO.findByMatricola(tempInstructor.getMatricolaIstruttore());
+                    session.setAttribute("Profilo", i);
+                    break;
+                case "Amministratore":
+                    Amministratore tempAdmin = (Amministratore)p;
+                    Amministratore a = AmministratoreDAO.findByCodice(tempAdmin.getCodice());
+                    session.setAttribute("Profilo", a);
+                    break;
+            }
         }
         else {
             dispatcherPath = "/login.jsp";

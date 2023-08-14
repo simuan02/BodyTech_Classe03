@@ -37,10 +37,15 @@ public abstract class Profilo {
      */
     public void setPassword(String password) {
         try {
-            MessageDigest digest = MessageDigest.getInstance("SHA-1");
-            digest.reset();
-            digest.update(password.getBytes(StandardCharsets.UTF_8));
-            this.password = String.format("%040x", new BigInteger(1, digest.digest()));
+            if (password.length() == 40){
+                this.password = password;
+            }
+            else {
+                MessageDigest digest = MessageDigest.getInstance("SHA-1");
+                digest.reset();
+                digest.update(password.getBytes(StandardCharsets.UTF_8));
+                this.password = String.format("%040x", new BigInteger(1, digest.digest()));
+            }
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
