@@ -1,0 +1,81 @@
+body {
+    background-color: white;
+}
+
+.box {
+    width: 30%;
+    min-width: 300px;
+    padding: 10px 40px 40px;
+    margin: 100px auto 100px;
+    background: white;
+    text-align: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 5px 10px 0 #b2bec3;
+    transition: 0.3s;
+}
+
+.box:hover {
+    box-shadow: 0 5px 25px 0 #272559;
+}
+
+#title {
+    margin-top: 30px;
+    font-size: 14pt;
+    color: #272559;
+    text-align: center;
+}
+
+#emailId, #passwordId {
+    font-size: 15pt;
+    padding: 8px;
+    width: 90%;
+    background-color: white;
+    text-align: left;
+    margin-top: 10%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    border: 1px solid #272559;
+    color: #272559;
+    border-radius: 10px;
+}
+
+#registrati {
+    margin-top: 20px;
+    text-decoration: none;
+    color: #272559;
+    font-size: 15pt;
+}
+
+#registrati a {
+    font-size: 18pt;
+    text-decoration: none;
+    color: #F28E13;
+}
+
+#registrati a:hover {
+    transition: 0.5s;
+    color: #272559;
+    border-bottom: 3px solid #272559;
+}
+
+.box input[type = "submit"]{
+    width: 50%;
+    font-size: 18pt;
+    padding: 6px;
+    background-color: #F28E13;
+    border-radius: 10px;
+    border: 2px solid #F28E13;
+    text-align: center;
+    margin-top: 20px;
+    color: white;
+}
+
+.box input[type = "submit"]:hover{
+    cursor: pointer;
+    background-color: #272559;
+    border: 2px solid #272559;
+    transition: 0.5s;
+}
+
+
