@@ -40,7 +40,8 @@
             <h1>Supera i tuoi limiti</h1>
             <p>
                 Grazie a questo sito potrai allenarti al meglio e raggiungere finalmente i tuoi obiettivi!<br>Effettua l'accesso e
-                associati ad un istruttore e inizia a seguire un piano d'allenamento.
+                associati ad un istruttore e inizia a seguire un piano d'allenamento.<br>
+                TESTO DI PROVA. CANCELLARE QUANTO PRIMA, GRAZIE.
             </p>
             
         </div>
