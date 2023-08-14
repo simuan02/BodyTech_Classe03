@@ -15,6 +15,7 @@ public class LoginServiceImpl implements LoginService{
     @Override
     public boolean login(Profilo profilo) throws SQLException {
         Profilo profilo2 = null;
+        System.out.println(profilo.loggedUserLevel());
         switch(profilo.loggedUserLevel()){
             case "Utente": {
                 Utente u = (Utente) profilo;

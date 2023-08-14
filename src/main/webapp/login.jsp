@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>HomeGym - Login</title>
+    <title>BodyTech - Login</title>
     <link rel="icon" href="images/logo.jpg" sizes="any">
     <link rel="stylesheet" href="./css/login.css" type="text/css">
 </head>
