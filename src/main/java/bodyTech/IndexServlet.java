@@ -11,7 +11,10 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-
+/**
+ * Questa Servlet ha il compito di inizializzare un profilo nella sessione, allo scopo di utilizzarlo per
+ * verificare se è stato fatto l'accesso alla piattaforma e da chi.
+ */
 @WebServlet(name = "IndexServlet", urlPatterns = {"", "/IndexServlet"}, loadOnStartup = 1)
 public class IndexServlet extends HttpServlet {
     @Override

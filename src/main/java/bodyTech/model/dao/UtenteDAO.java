@@ -5,10 +5,7 @@ import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.model.entity.Utente;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +20,7 @@ public class UtenteDAO {
      * @return Utente
      * @throws SQLException
      */
-    public static Utente setUtente(ResultSet rs) throws SQLException {
+    private static Utente setUtente(ResultSet rs) throws SQLException {
         Utente u = new Utente();
         u.setCodiceFiscale(rs.getString(1));
         u.setNome(rs.getString(2));
@@ -68,5 +65,21 @@ public class UtenteDAO {
             u = setUtente(rs);
         }
         return u;
+    }
+
+    public static boolean insertUser (Utente u) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        List<Utente> users = visualizzaUtenti();
+        for (Utente user : users){
+            if (user.getCodiceFiscale().equalsIgnoreCase(u.getCodiceFiscale()))
+                return false;
+        }
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Utente values (?,?,?,?)");
+        pstmt.setString(1, u.getCodiceFiscale());
+        pstmt.setString(2, u.getNome());
+        pstmt.setString(3, u.getCognome());
+        pstmt.setString(4, u.getPassword());
+        pstmt.executeUpdate();
+        return true;
     }
 }
