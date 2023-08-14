@@ -7,7 +7,26 @@
 </head>
     <body>
         <%@include file="jsp/header.jsp"%>
-        
+
+        <script>
+        <%
+            Object o = request.getAttribute("Registrazione");
+            if (o != null){
+                Boolean b = (Boolean) o;
+                if (b) {
+        %>
+                    alert("Registrazione avvenuta con successo");
+        <%
+                }
+                else if (b == false){
+        %>
+                    alert("Errore al momento della registrazione");
+        <%
+                }
+            }
+        %>
+        </script>
+
         <div class="home">
             <img src="images/immagine_homepage.jpg" id="img_home">
 
