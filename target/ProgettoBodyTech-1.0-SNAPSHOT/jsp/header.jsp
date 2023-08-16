@@ -28,7 +28,7 @@
         }
           else {
         %>
-            <a href="profiloPage.jsp" class="nav-link"><%=p.getNome()%> <%=p.getCognome()%></a>
+            <a href="${pageContext.request.contextPath}/AccountServlet" class="nav-link"><%=p.getNome()%> <%=p.getCognome()%></a>
       <%
         }
       %>

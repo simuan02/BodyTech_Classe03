@@ -15,9 +15,11 @@
 </head>
 <body>
     <%
-        Object o = request.getAttribute("Prifilo");
+        Object o = session.getAttribute("Utente");
         if (o != null) {
             Utente u = (Utente) o;
+            System.out.println("UTENTE " + u.getNome());
+            request.setAttribute("utente", u);
         }
     %>
 
@@ -28,8 +30,8 @@
         <div class="card">
             <img src="images/utente.png">
             <div class="container">
-                <h4><b>${p.nome} ${p.cognome}</b></h4>
-                <p>Account: <%p.loggedUserLevel();%></p>
+                <h4><b>${utente.nome} ${utente.cognome}</b></h4>
+                <p>${utente.codiceFiscale}</p>
             </div>
         </div>
 
