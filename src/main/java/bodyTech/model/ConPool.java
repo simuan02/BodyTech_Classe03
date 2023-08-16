@@ -13,10 +13,10 @@ public class ConPool {
     public static Connection getConnection() throws SQLException {
         if (datasource == null) {
             PoolProperties p = new PoolProperties();
-            p.setUrl("jdbc:mysql://localhost:3306/bodytechdb?serverTimezone=" + TimeZone.getDefault().getID());
+            p.setUrl("jdbc:mysql://localhost:3306/bodytech?serverTimezone=" + TimeZone.getDefault().getID());
             p.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            p.setUsername("user");
-            p.setPassword("Password1");
+            p.setUsername("root");
+            p.setPassword("admin");
             p.setMaxActive(100);
             p.setInitialSize(10);
             p.setMinIdle(10);
