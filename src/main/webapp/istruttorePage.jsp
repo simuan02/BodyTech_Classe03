@@ -48,7 +48,7 @@
             </div>
         </div>
 
-        <div class="card">
+        <div class="card" onclick="openListaUtenti()">
             <img src="images/pt.png">
             <div class="container">
                 <h4><b>Istruttore</b></h4>
@@ -63,16 +63,12 @@
 
     <script>
         function openListaUtenti() {
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function() {
-                /*if (xhr.readyState == 4) {
-                    var data = xhr.responseText;
-                    alert(data);
-                }*/
-            }
+            window.open("listaUtentiPage.jsp?id=${istruttore.matricolaIstruttore}");
+            /*var xhr = new XMLHttpRequest();
+
 
             xhr.open('GET', '${pageContext.request.contextPath}/ListaUtentiServlet', true);
-            xhr.send(null);
+            xhr.send(null);*/
         }
     </script>
 </body>

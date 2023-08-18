@@ -16,24 +16,33 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "ListaUtentiServlet", urlPatterns = {"/ListaUtentiServlet"})
 public class ListaUtentiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        System.out.println("SERVLET APERTA");
         HttpSession session = request.getSession();
         Profilo p = (Profilo) session.getAttribute("Profilo");
 
         if (p.loggedUserLevel().equals("Istruttore")) {
             Istruttore istr = (Istruttore) p;
-
+            request.setAttribute("Istruttore", istr);
+            try {
+                List<Utente> listaUtenti = UtenteDAO.visualizzaUtenti();
+                System.out.println("UTENTI TROVATI");
+                request.setAttribute("listaUtenti", listaUtenti);
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
 
 
-        /*RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
-        dispatcher.forward(request, response);*/
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtentiPage.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
