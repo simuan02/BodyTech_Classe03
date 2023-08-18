@@ -28,7 +28,6 @@ public class AccountServlet extends HttpServlet {
             case "Utente":
                 Utente utente = (Utente) p;
                 session.setAttribute("Utente", utente);
-
                 address = "/utentePage.jsp";
                 break;
             case "Istruttore":
