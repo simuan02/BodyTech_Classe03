@@ -1,6 +1,7 @@
 <%@ page import="bodyTech.model.entity.Utente" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bodyTech.model.dao.UtenteDAO" %><%--
+<%@ page import="bodyTech.model.dao.UtenteDAO" %>
+<%--
   Created by IntelliJ IDEA.
   User: jacop
   Date: 18/08/2023
@@ -21,13 +22,46 @@
         System.out.println("LEN UTENTI: " + listaUtenti.size());
     %>
 
+    <script>
+        function ricerca() {
+            /*var dataList = document.getElementById('ricerca-list');
+            if (str.length == 0) {
+                // rimuove elementi <option> (suggerimenti) esistenti
+                dataList.innerHTML = '';
+                return;
+            }
+
+            var xmlHttpReq = new XMLHttpRequest();
+            xmlHttpReq.responseType = 'json';
+            xmlHttpReq.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // rimuove elementi <option> (suggerimenti) esistenti
+                    dataList.innerHTML = '';
+
+                    for ( var i in this.response) {
+                        // crea un elemento option
+                        var option = document.createElement('option');
+                        // setta il valore
+                        option.value = this.response[i];
+                        // aggiunge elemento <option> a datalist
+                        dataList.appendChild(option);
+                    }
+                }
+            }
+            xmlHttpReq.open("GET", "RicercaAjaxServlet?search=" + encodeURIComponent(str), true);
+            xmlHttpReq.send();*/
+            var text = document.getElementById("search").value; //FUNZIONA
+
+            var utente = new bodyTech.model.dao.UtenteDAO.findByCodiceFiscale(text);
+            
+        }
+    </script>
+
     <%@include file="jsp/header.jsp"%>
 
-    <div class="barra_di_ricerca">
-        <form id="search_form" action="/..." method="post">
-            <label>Ricerca <input id="search_input" size="30" name="keyword" /></label>
-            <input type="image" src="images/search.png" />
-        </form>
+    <div id="search-bar">
+        <input autocomplete="off" type="text" placeholder="Cerca prodotti..." name="search" id="search">
+        <img src="images/search.png" onclick="ricerca()">
     </div>
 
     <div class="container_utenti">
