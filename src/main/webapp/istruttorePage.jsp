@@ -34,6 +34,9 @@
             Istruttore i = (Istruttore) o;
             request.setAttribute("istruttore", i);
         }
+        else {
+            response.sendError(403, "ACCESSO NON AUTORIZZATO");
+        }
     %>
 
     <%@include file="jsp/header.jsp"%>

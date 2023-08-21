@@ -35,6 +35,9 @@
             Utente u = (Utente) o;
             request.setAttribute("utente", u);
         }
+        else {
+            response.sendError(403, "ACCESSO NON AUTORIZZATO");
+        }
     %>
 
     <%@include file="jsp/header.jsp"%>

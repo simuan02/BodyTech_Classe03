@@ -15,8 +15,8 @@ public class ConPool {
             PoolProperties p = new PoolProperties();
             p.setUrl("jdbc:mysql://localhost:3306/bodytechdb?serverTimezone=" + TimeZone.getDefault().getID());
             p.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            p.setUsername("root");
-            p.setPassword("admin");
+            p.setUsername("user");
+            p.setPassword("Password1");
             p.setMaxActive(100);
             p.setInitialSize(10);
             p.setMinIdle(10);
