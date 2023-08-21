@@ -3,11 +3,9 @@ package bodyTech.model.dao;
 import bodyTech.model.ConPool;
 import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.SchedaAllenamento;
+import bodyTech.model.entity.Utente;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -67,5 +65,21 @@ public class IstruttoreDAO {
             istr = createIstruttore(rs);
         }
         return istr;
+    }
+
+    public static void updateInstructor (Istruttore oldIstr, Istruttore newIstr) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        List<Istruttore> instructors = IstruttoreDAO.visualizzaIstruttori();
+        if (instructors.contains(oldIstr)){
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE Istruttore SET matricolaIstruttore = ?, nome = ?, cognome = ?, pass = ?, specializzazione = ?" +
+                    "WHERE matricolaIstruttore = ?");
+            pstmt.setString(1, newIstr.getMatricolaIstruttore());
+            pstmt.setString(2, newIstr.getNome());
+            pstmt.setString(3, newIstr.getCognome());
+            pstmt.setString(4, newIstr.getPassword());
+            pstmt.setString(5, newIstr.getSpecializzazione());
+            pstmt.setString(6, oldIstr.getMatricolaIstruttore());
+            pstmt.executeUpdate();
+        }
     }
 }

@@ -6,7 +6,6 @@
     <link rel="icon" href="images/logo.jpg" sizes="any">
 </head>
     <body>
-
             <%
                 Object o = request.getAttribute("Registrazione");
                 if (o != null){
@@ -41,7 +40,6 @@
             <p>
                 Grazie a questo sito potrai allenarti al meglio e raggiungere finalmente i tuoi obiettivi!<br>Effettua l'accesso e
                 associati ad un istruttore e inizia a seguire un piano d'allenamento.<br>
-                TESTO DI PROVA. CANCELLARE QUANTO PRIMA, GRAZIE.
             </p>
             
         </div>

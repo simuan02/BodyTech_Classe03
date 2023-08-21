@@ -4,10 +4,7 @@ import bodyTech.model.ConPool;
 import bodyTech.model.entity.Amministratore;
 import bodyTech.model.entity.Istruttore;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,5 +54,20 @@ public class AmministratoreDAO{
             admin.setPassword(rs.getString(4));
         }
         return admin;
+    }
+
+    public static void updateAdmin (Amministratore oldAdmin, Amministratore newAdmin) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        List<Amministratore> admins = AmministratoreDAO.visualizzaAdmin();
+        if (admins.contains(oldAdmin)){
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE Amministratore SET codice = ?, nome = ?, cognome = ?, pass = ?" +
+                    "WHERE codice = ?");
+            pstmt.setInt(1, newAdmin.getCodice());
+            pstmt.setString(2, newAdmin.getNome());
+            pstmt.setString(3, newAdmin.getCognome());
+            pstmt.setString(4, newAdmin.getPassword());
+            pstmt.setInt(5, oldAdmin.getCodice());
+            pstmt.executeUpdate();
+        }
     }
 }

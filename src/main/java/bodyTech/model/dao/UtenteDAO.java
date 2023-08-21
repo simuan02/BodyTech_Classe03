@@ -82,4 +82,19 @@ public class UtenteDAO {
         pstmt.executeUpdate();
         return true;
     }
+
+    public static void updateUser (Utente oldUser, Utente newUser) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        List<Utente> users = visualizzaUtenti();
+        if (users.contains(oldUser)){
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE Utente SET codiceFiscale = ?, nome = ?, cognome = ?, pass = ?" +
+                    "WHERE codiceFiscale = ?");
+            pstmt.setString(1, newUser.getCodiceFiscale());
+            pstmt.setString(2, newUser.getNome());
+            pstmt.setString(3, newUser.getCognome());
+            pstmt.setString(4, newUser.getPassword());
+            pstmt.setString(5, oldUser.getCodiceFiscale());
+            pstmt.executeUpdate();
+        }
+    }
 }

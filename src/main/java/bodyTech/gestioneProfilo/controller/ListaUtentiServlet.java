@@ -1,4 +1,4 @@
-package bodyTech;
+package bodyTech.gestioneProfilo.controller;
 
 import bodyTech.model.dao.SchedaAllenamentoDAO;
 import bodyTech.model.dao.UtenteDAO;
