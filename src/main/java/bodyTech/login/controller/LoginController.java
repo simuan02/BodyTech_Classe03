@@ -36,6 +36,7 @@ public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String identifier = request.getParameter("identifier");
         String password = request.getParameter("password");
+        System.out.println("LEN IDENTIFICATIVO: " + identifier.length());
         String dispatcherPath = "";
         LoginService services = new LoginServiceImpl();
         boolean adminCode = true;

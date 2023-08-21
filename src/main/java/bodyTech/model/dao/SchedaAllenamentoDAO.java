@@ -3,11 +3,9 @@ package bodyTech.model.dao;
 import bodyTech.model.ConPool;
 import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.SchedaAllenamento;
+import bodyTech.model.entity.Utente;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,5 +38,24 @@ public class SchedaAllenamentoDAO {
             schede.add(scheda);
         }
         return schede;
+    }
+
+    public static SchedaAllenamento findScehdaByUtente (String codiceFiscale) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM schedaAllenamento WHERE utente = '" + codiceFiscale + "'";
+        ResultSet rs = stmt.executeQuery(query);
+        while (rs.next()) {
+            SchedaAllenamento scheda = new SchedaAllenamento();
+            scheda.setIdScheda(rs.getInt(1));
+            scheda.setDataInizio(rs.getDate(2));
+            scheda.setDataCompletamento(rs.getDate(3));
+            scheda.setTipo(rs.getString(4));
+            scheda.setUtente(UtenteDAO.findByCodiceFiscale(codiceFiscale));
+            scheda.setIstruttore(IstruttoreDAO.findByMatricola(rs.getString(6)));
+            scheda.setListaEsercizi(EsercizioAllenamentoDAO.findBySchedaID(rs.getInt(1)));
+            return scheda;
+        }
+        return null;
     }
 }
