@@ -37,15 +37,17 @@ a {
 }
 
 .nav_menu {
-    max-width: 25%;
     margin-left: auto;
     margin-right: 2%;
+    display: grid;
+    column-gap: 10pt;
+    max-width: 35%;
+    min-width: 10%;
+    column-width: auto;
 }
 
 .nav-item {
     overflow: hidden;
-    max-width: 100%;
-    width: 100pt;
     text-align: center;
     vertical-align: middle;
     color: #F7C70F;
@@ -67,4 +69,14 @@ a {
     font-weight: 500;
     color: black;
     font-family: 'Poppins', "Rage Italic";
+}
+
+#loginItem {
+    grid-column: 1 / 1;
+    grid-row: 1 / 4;
+}
+
+#logoutItem {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
 }

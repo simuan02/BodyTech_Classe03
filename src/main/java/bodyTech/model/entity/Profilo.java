@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Objects;
 
 /**
  * Superclasse contenente i campi nome, cognome e password comuni alle sottoclassi Utente, Istruttore e Amministratore.
@@ -53,6 +54,19 @@ public abstract class Profilo {
 
     public String loggedUserLevel() {
         return this.getClass().getSimpleName();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Profilo)) return false;
+        Profilo profilo = (Profilo) o;
+        return nome.equals(profilo.nome) && cognome.equals(profilo.cognome);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nome, cognome);
     }
 
     private String nome;
