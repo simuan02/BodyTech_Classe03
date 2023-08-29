@@ -9,44 +9,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_08_2023_15_55__Changes_.xml" beforeDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EditDataServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LogoutController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/images/matitaIcon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/scripts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AccountServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/ListaUtentiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/GestioneProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/ProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Amministratore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Amministratore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Istruttore.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Istruttore.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Utente.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/userRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/userRegistration.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/utentePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/utentePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/gestioneProfilo/GestioneProfiloService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/gestioneProfilo/ProfiloService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/ConPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/ConPool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/jsp/header.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/jsp/header.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/userRegistration.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/userRegistration.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/gestioneProfilo/GestioneProfiloService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/gestioneProfilo/ProfiloService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/ConPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/ConPool.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,15 +45,24 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Servlet" />
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="simuan02" />
+        <option name="repository" value="BodyTech_Classe03" />
+      </RepoCoordinatesHolder>
+    </option>
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -85,8 +80,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/images" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\src\main\webapp\images" />
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\lib" />
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\images" />
     </key>
@@ -201,6 +204,11 @@
       <workItem from="1692206236639" duration="976000" />
       <workItem from="1692209925181" duration="3156000" />
       <workItem from="1692373685060" duration="6367000" />
+      <workItem from="1693237965670" duration="3389000" />
+      <workItem from="1693338041868" duration="1361000" />
+      <workItem from="1693339457422" duration="2893000" />
+      <workItem from="1693342430508" duration="33000" />
+      <workItem from="1693342477462" duration="3317000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -242,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1692389438704</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente">
+      <created>1692639216759</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692639216759</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -267,6 +282,7 @@
     <MESSAGE value="Continuo utentePage.jsp, AccountServlet e profiloPage.css" />
     <MESSAGE value="Aggiunta Servlet e jsp" />
     <MESSAGE value="Modifica" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifica" />
+    <MESSAGE value="Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente" />
   </component>
 </project>

@@ -53,24 +53,36 @@ public class ProfiloServiceImpl implements ProfiloService{
                     Utente newUser = (Utente)newProfile;
                     UtenteDAO.updateUser(oldUser, newUser);
                     List<Utente> users = UtenteDAO.visualizzaUtenti();
-                    if (users.contains(newUser))
-                        okUpdate = true;
+                    for (Utente u : users) {
+                        if (newUser.equals(u)) {
+                            okUpdate = true;
+                            break;
+                        }
+                    }
                     break;
                 case "Istruttore":
                     Istruttore oldInstructor = (Istruttore)oldProfile;
                     Istruttore newInstructor = (Istruttore)newProfile;
                     IstruttoreDAO.updateInstructor(oldInstructor, newInstructor);
                     List<Istruttore> instructors = IstruttoreDAO.visualizzaIstruttori();
-                    if (instructors.contains(newInstructor))
-                        okUpdate = true;
+                    for (Istruttore i : instructors) {
+                        if (newInstructor.equals(i)) {
+                            okUpdate = true;
+                            break;
+                        }
+                    }
                     break;
                 case "Amministratore":
                     Amministratore oldAdmin = (Amministratore)oldProfile;
                     Amministratore newAdmin = (Amministratore)newProfile;
                     AmministratoreDAO.updateAdmin(oldAdmin, newAdmin);
                     List<Amministratore> admins = AmministratoreDAO.visualizzaAdmin();
-                    if (admins.contains(newAdmin))
-                        okUpdate = true;
+                    for (Amministratore a : admins) {
+                        if (newAdmin.equals(a)) {
+                            okUpdate = true;
+                            break;
+                        }
+                    }
                     break;
             }
         }
