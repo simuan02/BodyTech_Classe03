@@ -74,3 +74,16 @@ function restorePage(valoreModificato, tipoValore){
         }
     }
 }
+
+
+$(document).ready(function(){
+    $("#editRequestButton").click(function () {
+        $("#editRequestButton").hide();
+        $("body").append("" +
+            "<form action='openRequest' id='requestForm'>" +
+                "<label for='richiestaModifica'>Scrivi la tua richiesta nella casella di testo sottostante</label><br>" +
+                "<textarea id='richiestaModifica' name='richiesta'>Scrivi la tua richiesta qui...</textarea><br>" +
+                "<input type='submit' value='Invia Richiesta' id='openRequestButton' class='requestButtons'>" +
+            "</form>");
+    })
+})

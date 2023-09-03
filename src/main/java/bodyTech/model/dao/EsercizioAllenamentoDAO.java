@@ -25,7 +25,7 @@ public class EsercizioAllenamentoDAO {
     public static List<EsercizioAllenamento> findBySchedaID(int schedaID) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM esercizioAllenamento WHERE idScheda = " + schedaID;
+        String query = "SELECT * FROM esercizioAllenamento WHERE schedaAllenamento = " + schedaID;
         ResultSet rs = stmt.executeQuery(query);
         List<EsercizioAllenamento> esercizi = new ArrayList<>();
         while (rs.next()){

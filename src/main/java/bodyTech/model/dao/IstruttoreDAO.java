@@ -28,6 +28,9 @@ public class IstruttoreDAO {
         istr.setPassword(rs.getString(4));
         istr.setSpecializzazione(rs.getString(5));
         istr.setListaSchedeCreate(SchedaAllenamentoDAO.findAllByInstructor(istr.getMatricolaIstruttore()));
+        for (SchedaAllenamento sa : istr.getListaSchedeCreate()){
+            sa.setIstruttore(istr);
+        }
         return istr;
     }
 
@@ -61,9 +64,8 @@ public class IstruttoreDAO {
         String query = "SELECT * FROM istruttore WHERE matricolaIstruttore = '" + matricola + "'";
         ResultSet rs = stmt.executeQuery(query);
         Istruttore istr = null;
-        while(rs.next()){
+        if (rs.next())
             istr = createIstruttore(rs);
-        }
         return istr;
     }
 

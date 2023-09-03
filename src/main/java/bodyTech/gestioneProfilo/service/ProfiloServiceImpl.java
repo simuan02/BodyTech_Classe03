@@ -2,11 +2,9 @@ package bodyTech.gestioneProfilo.service;
 
 import bodyTech.model.dao.AmministratoreDAO;
 import bodyTech.model.dao.IstruttoreDAO;
+import bodyTech.model.dao.SchedaAllenamentoDAO;
 import bodyTech.model.dao.UtenteDAO;
-import bodyTech.model.entity.Amministratore;
-import bodyTech.model.entity.Istruttore;
-import bodyTech.model.entity.Profilo;
-import bodyTech.model.entity.Utente;
+import bodyTech.model.entity.*;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -87,6 +85,13 @@ public class ProfiloServiceImpl implements ProfiloService{
             }
         }
         return okUpdate;
+    }
+
+    public SchedaAllenamento visualizzaScheda(Profilo p) throws SQLException {
+        if (!p.loggedUserLevel().equals("Utente"))
+            throw new RuntimeException("Accesso non autorizzato al metodo");
+        SchedaAllenamento sa = SchedaAllenamentoDAO.findSchedaByUtente(((Utente)p).getCodiceFiscale());
+        return sa;
     }
 
 }
