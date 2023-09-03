@@ -72,3 +72,35 @@
 .InfoProfile:hover {
     background-color: white;
 }
+
+.requestButtons {
+    margin-bottom: 2%;
+    margin-top: 2%;
+    padding: 1.5%;
+    color: black;
+    background-color: #F7C70F;
+    cursor: pointer;
+    border: 2px solid black;
+    width: 20%;
+    min-width: 80px;
+}
+
+.requestButtons:hover {
+    background-color: black;
+    color: #F7C70F;
+}
+
+#requestForm {
+    margin: 2%;
+}
+
+#requestForm textarea {
+    width: 70%;
+    height: 25%;
+}
+
+.CentralButtons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

@@ -33,19 +33,18 @@ public class SchedaAllenamentoDAO {
             scheda.setDataCompletamento(rs.getDate(3));
             scheda.setTipo(rs.getString(4));
             scheda.setUtente(UtenteDAO.findByCodiceFiscale(rs.getString(5)));
-            scheda.setIstruttore(IstruttoreDAO.findByMatricola(matricola));
             scheda.setListaEsercizi(EsercizioAllenamentoDAO.findBySchedaID(rs.getInt(1)));
             schede.add(scheda);
         }
         return schede;
     }
 
-    public static SchedaAllenamento findScehdaByUtente (String codiceFiscale) throws SQLException {
+    public static SchedaAllenamento findSchedaByUtente (String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
         String query = "SELECT * FROM schedaAllenamento WHERE utente = '" + codiceFiscale + "'";
         ResultSet rs = stmt.executeQuery(query);
-        while (rs.next()) {
+        if (rs.next()) {
             SchedaAllenamento scheda = new SchedaAllenamento();
             scheda.setIdScheda(rs.getInt(1));
             scheda.setDataInizio(rs.getDate(2));

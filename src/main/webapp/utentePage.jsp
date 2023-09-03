@@ -41,12 +41,14 @@
         </div>
 
 
-        <div class="card" onclick="openScheda()">
+        <div class="card">
+            <a href="visualizzaScheda" class="noDecoration">
             <img src="images/fitness.png">
             <div class="container">
                 <h4><b>Scheda</b></h4>
                 <p>Visualizza la tua scheda d'allenamento</p>
             </div>
+            </a>
         </div>
 
         <div class="card">
