@@ -9,6 +9,10 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 
+/**
+ * Questa servlet consente di effettuare il logout del Profilo dalla sessione corrente, richiamando il metodo logout di
+ * LoginService.
+ */
 @WebServlet(name = "LogoutController", value = "/Logout")
 public class LogoutController extends HttpServlet {
     @Override

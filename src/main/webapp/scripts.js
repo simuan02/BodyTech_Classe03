@@ -1,3 +1,11 @@
+/**
+ * Questa funzione viene invocata al verificarsi dell'evento di click di un qualsiasi elemento della classe
+ * "editIcon". Questa funzione nasconde tutti gli elementi della classe "editIcon" ed aggiunge un nuovo blocco
+ * al blocco con id "FirstName", se è stata cliccata la "editIcon" corrispondente al nome, oppure aggiunge un
+ * nuovo blocco al blocco con id "LastName", se è stata cliccata la "editIcon" corrispondente al cognome.
+ * Questo nuovo blocco, con id "ModificaDato", contiene un elemento "input" di tipo text e un "button", che,
+ * quando cliccato, invoca la funzione modificaDato(tipo di modifica).
+ */
 $(document).ready(function () {
     $(".editIcon").click(function () {
         if ($(this).attr("id") == "editFirstName") {
@@ -17,6 +25,18 @@ $(document).ready(function () {
     })
 })
 
+/**
+ * Questa funzione consente, attraverso una chiamata AJAX alla servlet "EditData", di modificare i dati dell'utente
+ * corrente. La modifica che deve essere fatta viene decisa dal parametro valoreModifica:
+ * se esso vale 0, allora verrà modificato il nome dell'Utente, passando alla Servlet il valore
+ * dell'elemento "input" con id "NewName" e la stringa datoModificato = "nome",
+ * se esso vale 1, allora verrà modificato il cognome dell'Utente, passando alla Servlet il valore
+ * dell'elemento "input" con id "NewLastName" e la stringa datoModificato = "cognome",
+ * Sia in caso di successo nell'invocazione AJAX che in caso di errore, verrà mostrato un alert, che avvertirà
+ * sull'esito della chiamata, e verrà fatta un'invocazione alla funzione restorePage(valoreModificato, tipoValore).
+ * @param valoreModifica indica il tipo di dato che dovrà essere modificato dalla servlet "EditData" e può assumere
+ * valore 0 oppure 1.
+ */
 function modificaDato(valoreModifica) {
     if (valoreModifica == 0){
         let nuovoNome = $("#NewName").val();
@@ -54,6 +74,17 @@ function modificaDato(valoreModifica) {
     }
 }
 
+/**
+ * Questa funzione consente di aggiornare la pagina del profilo, rimuovendo il blocco per la modifica dei dati e
+ * mostrando nuovamente tutte gli elementi di classe "editIcon".
+ * Inoltre, se tipoValore = "nome", allora il blocco di id "FirstName" avrà la proprietà display: flex;
+ * se tipoValore = "cognome", allora il blocco di id "LastName" avrà la proprietà display: flex.
+ * Infine, se valoreModificato è diverso da null, ossia la modifica di un qualsiasi valore ha avuto successo,
+ * aggiorna le informazioni contenute nell'elemento di id "Nome", se tipoValore = "nome";
+ * altrimenti, aggiorna le informazioni contenute nell'elemento di id "Cognome", se tipoValore = "cognome".
+ * @param valoreModificato questo parametro rappresenta il valore aggiornato
+ * @param tipoValore questo parametro rappresenta il tipo di valore aggiornato
+ */
 function restorePage(valoreModificato, tipoValore){
     $("#ModificaDato").remove();
     $(".editIcon").show();
