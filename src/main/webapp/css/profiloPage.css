@@ -103,22 +103,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 1%;
 }
 
-#ExercisesList {
+.ExercisesAndRequestsList {
     margin: 2%;
 }
 
-#ExercisesTable {
+.ExercisesAndRequestsTable {
     border: 1px solid black;
     border-collapse: collapse;
     border-spacing: 0;
     color: black;
     background-color: #F7C70F;
     text-align: center;
+    width: 95%;
 }
 
-#ListaEserciziTitle {
+.ListaEserciziAndRichiesteTitle {
     text-align: center;
     padding: 1%;
     background-color: black;
@@ -151,4 +153,13 @@
 
 .VolumeCell {
     width: 15%;
+}
+
+.MessaggioCell {
+    width: 80%;
+    min-width: 200px;
+}
+
+.EsitoCell {
+    width: 20%;
 }

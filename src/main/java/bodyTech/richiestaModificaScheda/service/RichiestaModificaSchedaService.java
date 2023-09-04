@@ -5,6 +5,7 @@ import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.Utente;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -25,7 +26,7 @@ public interface RichiestaModificaSchedaService {
      * @param p il profilo corrente
      * @return lista di richieste modifica scheda
      */
-    public List<RichiestaModificaScheda> visualizzaModifica(Profilo p);
+    public List<RichiestaModificaScheda> visualizzaModifica(Profilo p) throws SQLException;
 
     /**
      * Questa funzionalità consente agli Istruttori di valutare le richieste di modifica arrivate.
