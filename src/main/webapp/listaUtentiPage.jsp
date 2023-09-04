@@ -9,10 +9,12 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <html>
 <head>
     <title>BodyTech - Utenti</title>
-    <link rel="stylesheet" href="css/profiloPage.css">
+    <link rel="stylesheet" href="css/listaUtentiPage.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
 </head>
 <body>
@@ -22,55 +24,55 @@
         System.out.println("LEN UTENTI: " + listaUtenti.size());
     %>
 
-    <script>
-        function ricerca() {
-            /*var dataList = document.getElementById('ricerca-list');
-            if (str.length == 0) {
-                // rimuove elementi <option> (suggerimenti) esistenti
-                dataList.innerHTML = '';
-                return;
-            }
-
-            var xmlHttpReq = new XMLHttpRequest();
-            xmlHttpReq.responseType = 'json';
-            xmlHttpReq.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // rimuove elementi <option> (suggerimenti) esistenti
-                    dataList.innerHTML = '';
-
-                    for ( var i in this.response) {
-                        // crea un elemento option
-                        var option = document.createElement('option');
-                        // setta il valore
-                        option.value = this.response[i];
-                        // aggiunge elemento <option> a datalist
-                        dataList.appendChild(option);
-                    }
-                }
-            }
-            xmlHttpReq.open("GET", "RicercaAjaxServlet?search=" + encodeURIComponent(str), true);
-            xmlHttpReq.send();*/
-            var text = document.getElementById("search").value; //FUNZIONA
-
-            var utente = new bodyTech.model.dao.UtenteDAO.findByCodiceFiscale(text);
-            
-        }
-    </script>
-
     <%@include file="jsp/header.jsp"%>
 
-    <div id="search-bar">
-        <input autocomplete="off" type="text" placeholder="Cerca prodotti..." name="search" id="search">
-        <img src="images/search.png" onclick="ricerca()">
+    <div class="container_utenti">
+        <c:forEach items="${listaUtenti}" var="utente">
+            <c:choose>
+                <c:when test="${utente.matricolaIstruttore != null}">
+                    <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${utente.codiceFiscale}&id=1">
+                        <div class="utente">
+                            <h4>${utente.codiceFiscale}</h4>
+                            <h4>${utente.cognome} ${utente.nome}</h4>
+                            <p id="positive_istruttore">L'utente è associato già ad un'istruttore</p>
+                        </div>
+                    </a>
+                </c:when>
+
+                <c:otherwise>
+                    <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${utente.codiceFiscale}&id=1">
+                        <div class="utente">
+                            <h4>${utente.codiceFiscale}</h4>
+                            <h4>${utente.cognome} ${utente.nome}</h4>
+                            <p id="negative_istruttore">L'utente non è associato a nessun istruttore</p>
+                        </div>
+                    </a>
+                </c:otherwise>
+            </c:choose></a>
+            <!--<a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${codiceFiscale}&id=1"><div class="utente">
+                <h4>${utente.codiceFiscale}</h4>
+                <h4>${utente.cognome} ${utente.nome}</h4>
+                <c:choose>
+                    <c:when test="${utente.matricolaIstruttore != null}">
+                        <p id="positive_istruttore">L'utente è associato già ad un'istruttore</p>
+                    </c:when>
+                    <c:otherwise>
+                        <p id="negative_istruttore">L'utente non è associato a nessun istruttore</p>
+                    </c:otherwise>
+                </c:choose>
+            </div></a>-->
+        </c:forEach>
     </div>
 
-    <div class="container_utenti">
-        <c:foreach items="${listaUtenti}" var="utente">
-            <div class="utente">
-                <h4>${utente.cognome} ${utente.nome}</h4>
-                <h4>${utente.codiceFiscale}</h4>
-            </div>
-        </c:foreach>
-    </div>
+
+
+    <script>
+        function associati(codiceFiscale) {
+            var txt;
+            if (confirm("Vuoi associarti all'utente ${codiceFiscale}?")) {
+                //associati
+            }
+        }
+    </script>
 </body>
 </html>

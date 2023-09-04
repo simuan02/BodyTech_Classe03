@@ -23,6 +23,16 @@ public class Utente extends Profilo{
         this.listeRichiesteModifica = listeRichiesteModifica;
     }
 
-    private String codiceFiscale;
+    public String getMatricolaIstruttore() {
+        return matricolaIstruttore;
+    }
+
+    public void setMatricolaIstruttore(String matricolaIstruttore) {
+        this.matricolaIstruttore = matricolaIstruttore;
+    }
+
+    private String codiceFiscale, matricolaIstruttore;
     private List<RichiestaModificaScheda> listeRichiesteModifica;
+
+
 }

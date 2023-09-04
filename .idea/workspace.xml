@@ -10,11 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Modifica">
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/jstl-1.2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_08_2023_17_29_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_12_08_2023_17_29__Changes_.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/InformazioniUtenteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/informazioniUtente.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Utente.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Utente.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Utente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Utente.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Utente.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Utente.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,15 +34,16 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="Servlet" />
         <option value="Class" />
         <option value="Jsp File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="LogFilters">
     <option name="FILTER_ERRORS" value="false" />
@@ -53,24 +61,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/jacop/IdeaProjects/BodyTech3/src/main/webapp/lib",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jacop/IdeaProjects/BodyTech3/src/main/webapp/lib/jstl-1.2.jar&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\lib" />
@@ -187,6 +195,10 @@
       <workItem from="1692206236639" duration="976000" />
       <workItem from="1692209925181" duration="3156000" />
       <workItem from="1692373685060" duration="6367000" />
+      <workItem from="1692462521714" duration="98000" />
+      <workItem from="1693235132028" duration="405000" />
+      <workItem from="1693392739396" duration="2359000" />
+      <workItem from="1693825665179" duration="4048000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -228,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1692389438704</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Modifica">
+      <option name="closed" value="true" />
+      <created>1692462579406</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1692462579406</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
