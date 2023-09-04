@@ -67,6 +67,13 @@ public class UtenteDAO {
         return u;
     }
 
+    /**
+     * Implementa la funzionalità di inserimento di un Utente all'interno del DB
+     * @param u l'Utente da inserire nel DB
+     * @return true, se l'inserimento è andato a buon fine; false, se esiste già un Utente nel DB con lo stesso codiceFiscale
+     * di u
+     * @throws SQLException
+     */
     public static boolean insertUser (Utente u) throws SQLException {
         Connection conn = ConPool.getConnection();
         List<Utente> users = visualizzaUtenti();
@@ -83,6 +90,12 @@ public class UtenteDAO {
         return true;
     }
 
+    /**
+     * Implementa la funzionalità di aggiornamento nel DB delle informazioni di oldUser, se presente, con quelle di newUser.
+     * @param oldUser l'Utente da aggiornare
+     * @param newUser l'Utente con le informazioni aggiornate
+     * @throws SQLException
+     */
     public static void updateUser (Utente oldUser, Utente newUser) throws SQLException {
         Connection conn = ConPool.getConnection();
         List<Utente> users = visualizzaUtenti();
@@ -94,12 +107,6 @@ public class UtenteDAO {
             }
         }
         if (existingUser){
-            System.out.println(newUser.getCodiceFiscale());
-            System.out.println(newUser.getNome());
-            System.out.println(oldUser.getNome());
-            System.out.println(oldUser.getCodiceFiscale());
-            System.out.println(oldUser.getPassword());
-            System.out.println(newUser.getPassword());
             PreparedStatement pstmt = conn.prepareStatement("UPDATE Utente SET codiceFiscale = ?, nome = ?, cognome = ?, pass = ?" +
                     "WHERE codiceFiscale = ?");
             pstmt.setString(1, newUser.getCodiceFiscale());

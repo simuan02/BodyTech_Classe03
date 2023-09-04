@@ -69,10 +69,23 @@ public class IstruttoreDAO {
         return istr;
     }
 
+    /**
+     * Implementa la funzionalità di aggiornare le informazioni di un istruttore nel DB, se già esistente
+     * @param oldIstr l'istruttore corrente da aggiornare
+     * @param newIstr l'istruttore che contiene le informazioni aggiornate
+     * @throws SQLException
+     */
     public static void updateInstructor (Istruttore oldIstr, Istruttore newIstr) throws SQLException {
         Connection conn = ConPool.getConnection();
         List<Istruttore> instructors = IstruttoreDAO.visualizzaIstruttori();
-        if (instructors.contains(oldIstr)){
+        boolean existingInstructor = false;
+        for (Istruttore i : instructors){
+            if (i.getMatricolaIstruttore().equalsIgnoreCase(oldIstr.getMatricolaIstruttore())) {
+                existingInstructor = true;
+                break;
+            }
+        }
+        if (existingInstructor){
             PreparedStatement pstmt = conn.prepareStatement("UPDATE Istruttore SET matricolaIstruttore = ?, nome = ?, cognome = ?, pass = ?, specializzazione = ?" +
                     "WHERE matricolaIstruttore = ?");
             pstmt.setString(1, newIstr.getMatricolaIstruttore());

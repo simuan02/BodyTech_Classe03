@@ -31,17 +31,17 @@
     <%
         if (p.loggedUserLevel().equals("Utente")){
     %>
-        <h2 id="Identifier" class="InfoProfile">Identificativo: <%=((Utente) p).getCodiceFiscale()%></h2>
+        <h2 id="Identifier" class="InfoProfile">Codice Fiscale: <%=((Utente) p).getCodiceFiscale()%></h2>
     <%
         }
         else if (p.loggedUserLevel().equals("Istruttore")){
     %>
-        <h2 id="Identifier" class="InfoProfile">Identificativo: <%=((Istruttore) p).getMatricolaIstruttore()%></h2>
+        <h2 id="Identifier" class="InfoProfile">Matricola: <%=((Istruttore) p).getMatricolaIstruttore()%></h2>
     <%
         }
         else if (p.loggedUserLevel().equals("Amministratore")){
     %>
-            <h2 id="Identifier" class="InfoProfile">Identificativo: <%=((Amministratore) p).getCodice()%></h2>
+            <h2 id="Identifier" class="InfoProfile">Codice ID: <%=((Amministratore) p).getCodice()%></h2>
                     <%
         }
     %>

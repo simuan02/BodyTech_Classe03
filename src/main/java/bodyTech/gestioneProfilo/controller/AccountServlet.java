@@ -14,7 +14,11 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-
+/**
+ * Questa servlet consente di verificare se il profilo corrente è autorizzato ad accedere alla pagina del profilo
+ * (in caso contrario, invia una pagina di errore con codice 403).
+ * Se sì, reindirizza verso la pagina associata al tipo di Profilo corrente.
+ */
 @WebServlet(name = "AccountServlet", urlPatterns = {"/ProfilePage"})
 public class AccountServlet extends HttpServlet {
     @Override

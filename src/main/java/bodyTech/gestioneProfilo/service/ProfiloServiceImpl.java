@@ -11,31 +11,9 @@ import java.util.List;
 
 public class ProfiloServiceImpl implements ProfiloService{
     @Override
-    public boolean visualizzaProfilo(Profilo p) throws SQLException {
+    public boolean visualizzaProfilo(Profilo p) {
         if (p != null){
-            String profileLevel = p.loggedUserLevel();
-            boolean profileFound = false;
-            switch (profileLevel){
-                case "Utente":{
-                    List<Utente> users = UtenteDAO.visualizzaUtenti();
-                    if (users.contains(p))
-                        profileFound = true;
-                    break;
-                }
-                case "Istruttore":{
-                    List<Istruttore> instructors = IstruttoreDAO.visualizzaIstruttori();
-                    if (instructors.contains(p))
-                        profileFound = true;
-                    break;
-                }
-                case "Amministratore":{
-                    List<Amministratore> admins = AmministratoreDAO.visualizzaAdmin();
-                    if (admins.contains(p))
-                        profileFound = true;
-                    break;
-                }
-            }
-            return profileFound;
+            return true;
         }
         else
             throw new RuntimeException("Operazione non consentita");

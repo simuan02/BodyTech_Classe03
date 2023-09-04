@@ -15,7 +15,7 @@ import java.util.List;
 public class SchedaAllenamentoDAO {
 
     /**
-     * Implementa la funzionalità di recuperare dal DB tutte le Schede di Allenamento associate a l'Istruttore indicato dalla stringa matricola passata
+     * Implementa la funzionalità di recuperare dal DB tutte le Schede di Allenamento associate all'Istruttore indicato dalla stringa matricola passata
      * @param matricola
      * @return liste delle Schede di Allenamento
      * @throws SQLException
@@ -39,6 +39,13 @@ public class SchedaAllenamentoDAO {
         return schede;
     }
 
+    /**
+     * Implementa la funzionalità di trovare una scheda di allenamento associata ad un Utente specifico, passando
+     * come parametro il suo codice fiscale
+     * @param codiceFiscale il codice fiscale dell'Utente di cui cercare la Scheda Allenamento
+     * @return SchedaAllenamento associata all'Utente che ha come codice fiscale wuello passato come parametro
+     * @throws SQLException
+     */
     public static SchedaAllenamento findSchedaByUtente (String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
