@@ -14,9 +14,21 @@
     <%@include file="jsp/header.jsp"%>
     <%
         Object servletLanciata = request.getAttribute("ServletMostraProfiloLanciata");
-        if (servletLanciata == null) {
+        String richiestaEffettuata = (String)request.getAttribute("richiestaEffettuata");
+        if (servletLanciata == null && richiestaEffettuata == null) {
             response.sendError(403, "Operazione non consentita!");
             request.setAttribute("ServletMostraProfiloLanciata", null);
+        }
+        else if (richiestaEffettuata.equalsIgnoreCase("YES")){
+    %>
+    <script>alert("La richiesta è stata correttamente aperta");</script>
+    <%;
+        }
+        else if (richiestaEffettuata.equalsIgnoreCase("NO")){
+
+    %>
+    <script>alert("Errore nell'apertura della richiesta");</script>
+    <%;
         }
     %>
     <h1 id="profileTitle">DETTAGLI PROFILO</h1>

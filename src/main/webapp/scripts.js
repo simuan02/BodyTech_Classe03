@@ -106,12 +106,15 @@ function restorePage(valoreModificato, tipoValore){
     }
 }
 
-
+/**
+ * Questa funzione consente la visualizzazione di un form per l'apertura di una richiesta di modifica della scheda di
+ * allenamento dell'utente corrente.
+ */
 $(document).ready(function(){
     $("#editRequestButton").click(function () {
         $("#editRequestButton").hide();
         $("body").append("" +
-            "<form action='openRequest' id='requestForm'>" +
+            "<form action='openRequest' id='requestForm' method='post'>" +
                 "<label for='richiestaModifica'>Scrivi la tua richiesta nella casella di testo sottostante</label><br>" +
                 "<textarea id='richiestaModifica' name='richiesta'>Scrivi la tua richiesta qui...</textarea><br>" +
                 "<input type='submit' value='Invia Richiesta' id='openRequestButton' class='requestButtons'>" +
