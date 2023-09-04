@@ -9,28 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta interfaccia per la visualizzazione della scheda e per l'apertura di una nuova richiesta di modifica della scheda utente.&#10;Modifiche varie a SchedaAllenamentoDAO e IstruttoreDAO.&#10;Aggiunta servlet per l'accesso alle informazioni presenti nel DB relative alla scheda di allenamento dell'utente che ha effettuato l'accesso nella sessione corrente.">
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.">
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AccountServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EditDataServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EditDataServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/VisualizzaSchedaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/VisualizzaSchedaServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LogoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LogoutController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/service/LoginServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -216,7 +199,8 @@
       <workItem from="1693342430508" duration="33000" />
       <workItem from="1693342477462" duration="3767000" />
       <workItem from="1693725634092" duration="5873000" />
-      <workItem from="1693811353896" duration="4608000" />
+      <workItem from="1693811353896" duration="4848000" />
+      <workItem from="1693817274069" duration="3018000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -279,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693731486320</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.">
+      <created>1693816074153</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1693816074153</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +298,7 @@
     <MESSAGE value="Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente" />
     <MESSAGE value="Inserimento nuova Funzione di Modifica Dati per Utenti.&#10;Inserimento pagina per la visualizzazione completa dei dati per gli Utenti.&#10;Aggiunta Funzioni JS per la chiamata asincrona alla Servlet di Modifica dei Dati del Profilo." />
     <MESSAGE value="Aggiunta interfaccia per la visualizzazione della scheda e per l'apertura di una nuova richiesta di modifica della scheda utente.&#10;Modifiche varie a SchedaAllenamentoDAO e IstruttoreDAO.&#10;Aggiunta servlet per l'accesso alle informazioni presenti nel DB relative alla scheda di allenamento dell'utente che ha effettuato l'accesso nella sessione corrente." />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta interfaccia per la visualizzazione della scheda e per l'apertura di una nuova richiesta di modifica della scheda utente.&#10;Modifiche varie a SchedaAllenamentoDAO e IstruttoreDAO.&#10;Aggiunta servlet per l'accesso alle informazioni presenti nel DB relative alla scheda di allenamento dell'utente che ha effettuato l'accesso nella sessione corrente." />
+    <MESSAGE value="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO." />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO." />
   </component>
 </project>
