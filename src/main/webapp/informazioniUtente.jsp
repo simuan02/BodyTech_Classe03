@@ -16,11 +16,6 @@
 <body>
     <%@include file="jsp/header.jsp"%>
 
-    <%
-       /* Utente utente = (Utente) request.getAttribute("utente");
-        boolean isAssociato = (Boolean) request.getAttribute("isAssociato");*/
-    %>
-
     <div class="card">
         <p>Nome: ${utente.nome}</p>
         <p>Cognome: ${utente.cognome}</p>
@@ -34,9 +29,9 @@
             </c:when>
 
             <c:otherwise>
-                <div class="button">
+                <a href="${pageContext.request.contextPath}/CreazioneSchedaServlet?cf=${utente.codiceFiscale}&id=1"><div class="button">
                     Aggiungi una Scheda d'allenamento
-                </div>
+                </div></a>
             </c:otherwise>
         </c:choose>
 

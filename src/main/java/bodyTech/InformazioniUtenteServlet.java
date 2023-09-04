@@ -25,7 +25,6 @@ public class InformazioniUtenteServlet extends HttpServlet {
         String codiceFiscale = request.getParameter("cf");
         String id = (String) request.getParameter("id");
 
-
         try {
             Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
             SchedaAllenamento scheda = SchedaAllenamentoDAO.findScehdaByUtente(codiceFiscale);
