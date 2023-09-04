@@ -28,9 +28,7 @@ public class RichiestaModificaSchedaDAO {
             RichiestaModificaScheda rms = new RichiestaModificaScheda();
             rms.setIdRichiesta(rs.getInt(1));
             rms.setMessaggio(rs.getString(2));
-            Object esito = rs.getObject(3);
-            if (((String)esito).equalsIgnoreCase("NULL"))
-                rms.setEsito(rs.getBoolean(3));
+            rms.setEsito(rs.getBoolean(4));
             richieste.add(rms);
         }
         return richieste;
@@ -42,6 +40,7 @@ public class RichiestaModificaSchedaDAO {
                 "values (?, ?, ?)");
         pstmt.setString(1, richiesta.getMessaggio());
         pstmt.setString(2, codiceFiscale);
+        System.out.println(richiesta.isEsito());
         pstmt.setBoolean(3, richiesta.isEsito());
         pstmt.executeUpdate();
     }
