@@ -3,10 +3,7 @@ package bodyTech.model.dao;
 import bodyTech.model.ConPool;
 import bodyTech.model.entity.RichiestaModificaScheda;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,9 +28,21 @@ public class RichiestaModificaSchedaDAO {
             RichiestaModificaScheda rms = new RichiestaModificaScheda();
             rms.setIdRichiesta(rs.getInt(1));
             rms.setMessaggio(rs.getString(2));
-            rms.setEsito(rs.getBoolean(3));
+            Object esito = rs.getObject(3);
+            if (((String)esito).equalsIgnoreCase("NULL"))
+                rms.setEsito(rs.getBoolean(3));
             richieste.add(rms);
         }
         return richieste;
+    }
+
+    public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
+                "values (?, ?, ?)");
+        pstmt.setString(1, richiesta.getMessaggio());
+        pstmt.setString(2, codiceFiscale);
+        pstmt.setBoolean(3, richiesta.isEsito());
+        pstmt.executeUpdate();
     }
 }

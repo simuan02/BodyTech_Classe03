@@ -54,6 +54,6 @@ create table richiestaModificaScheda(
 	idRichiesta int primary key auto_increment,
     messaggio varchar(254) not null,
     utente char(16) not null,
-    esito bool not null,
+    esito bool,
     foreign key(utente) references utente(codiceFiscale)
 );

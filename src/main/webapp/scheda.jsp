@@ -62,7 +62,10 @@
         <%
             }
         %>
-        <div class="CentralButtons"><button id="editRequestButton" class="requestButtons">Apri una richiesta di modifica</button></div>
+        <div class="CentralButtons">
+            <button id="editRequestButton" class="requestButtons">Apri una richiesta di modifica</button>
+            <button id="showRequestButton" class="requestButtons">Visualizza le richieste di modifica effettuate</button>
+        </div>
 <%
     }
 %>

@@ -10,10 +10,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.">
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/controller/OpenRequestServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/RichiestaModificaSchedaService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tables_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tables_database.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/registrazione/controller/RegistrazioneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/registrazione/controller/RegistrazioneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/registrazione/controller/RegistrazioneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/registrazione/controller/RegistrazioneController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,10 +45,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Servlet" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Jsp File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -200,7 +218,7 @@
       <workItem from="1693342477462" duration="3767000" />
       <workItem from="1693725634092" duration="5873000" />
       <workItem from="1693811353896" duration="4848000" />
-      <workItem from="1693817274069" duration="3018000" />
+      <workItem from="1693817274069" duration="6680000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -270,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693816074153</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.">
+      <created>1693820398973</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1693820398973</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
