@@ -135,8 +135,8 @@ $(document).ready(function () {
                 "</tr></table>" +
                 "</div>")
             $.each(richieste, function(index, richiesta){
-                let esito;
-                if (richiesta.esito == "false")
+                let esito = richiesta.esito;
+                if (!esito)
                     esito = "Non ancora valutata o negata";
                 else
                     esito = "Concessa";
