@@ -1,5 +1,4 @@
-<%@ page import="bodyTech.model.entity.SchedaAllenamento" %>
-<%@ page import="bodyTech.model.entity.Utente" %>
+<%@ page import="bodyTech.model.entity.*" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -36,7 +35,34 @@
         <div id="AssociatedInstructor" class="InfoProfile">
             <h2 id="IstruttoreAssociato">Istruttore Associato: <%=sa.getIstruttore().getNome()%> <%=sa.getIstruttore().getCognome()%></h2>
         </div>
-<div class="CentralButtons"><button id="editRequestButton" class="requestButtons">Apri una richiesta di modifica</button></div>
+        <%
+            if (sa.getListaEsercizi().size() > 0)
+            {
+        %>
+                <div id="ExercisesList">
+                    <table id="ExercisesTable">
+                        <caption id="ListaEserciziTitle">Lista Esercizi</caption>
+                        <tr>
+                            <th class="NomeEsercizioCell CellTable">Nome Esercizio</th>
+                            <th class="DescrizioneCell CellTable">Descrizione</th>
+                            <th class="VolumeCell CellTable">Volume</th>
+                        </tr>
+                        <%
+                            for (EsercizioAllenamento es: sa.getListaEsercizi())
+                            {
+                        %>
+                        <tr>
+                            <td class="NomeEsercizioCell CellTable"><%=es.getNomeEsercizio()%></td>
+                            <td class="DescrizioneCell CellTable"><%=es.getDescrizione()%></td>
+                            <td class="VolumeCell CellTable"><%=es.getVolume()%></td>
+                        </tr>
+                            <%}%>
+                    </table>
+                </div>
+        <%
+            }
+        %>
+        <div class="CentralButtons"><button id="editRequestButton" class="requestButtons">Apri una richiesta di modifica</button></div>
 <%
     }
 %>
