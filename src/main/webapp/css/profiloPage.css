@@ -117,6 +117,7 @@
     background-color: #F7C70F;
     text-align: center;
     width: 95%;
+    margin: 0 auto;
 }
 
 .ListaEserciziAndRichiesteTitle {
@@ -141,12 +142,12 @@
 }
 
 .NomeEsercizioCell {
-    width: 35%;
+    width: 30%;
     min-width: 100px;
 }
 
 .DescrizioneCell {
-    width: 50%;
+    width: 40%;
     min-width: 175px;
 }
 
@@ -161,4 +162,89 @@
 
 .EsitoCell {
     width: 20%;
+}
+
+.SchedaAllenamento {
+    margin: 2% auto;
+    background-color: #F7C70F;
+    color: black;
+    border: 1px solid black;
+    cursor: pointer;
+    width: 90%;
+    padding: 1%;
+}
+
+.SchedaAllenamento h2 {
+    text-align: center;
+    margin-bottom: 1%;
+    border-bottom: 1px solid black;
+}
+
+.SchedaAllenamento h4 {
+    text-align: left;
+    margin-top: 1%;
+}
+
+#OtherCardInfo {
+    display: none;
+}
+
+.SchedaButtonsContainer {
+    margin: 2% auto;
+    min-width: 150px;
+}
+
+.schedaButtons {
+    margin: 0 2%;
+    font-size: 16pt;
+    font-weight: 600;
+    color: black;
+    background-color: #F7C70F;
+    cursor: pointer;
+    border: 2px solid black;
+    min-width: 70px;
+    padding: 2%;
+}
+
+.schedaButtons:hover {
+    background-color: black;
+    color: #F7C70F;
+}
+
+#FormModificaScheda {
+    background-color: #F7C70F;
+    color: black;
+    padding: 1%;
+    margin: 1% auto;
+    width: 95%;
+    font-size: 20pt;
+    font-weight: 600;
+    border: 1px solid black;
+}
+
+#SubmitFormModifica {
+    background-color: black;
+    color: #F7C70F;
+    padding: 1%;
+    cursor: pointer;
+    font-size: 18pt;
+    margin-top: 1%;
+}
+
+#TipoScheda {
+    margin-top: 1.5%;
+    font-size: 18pt;
+    padding: 0.5%;
+    width: 30%;
+}
+
+.volumeEsercizio {
+    font-size: 16pt;
+    padding: 0.5%;
+    width: 15%;
+}
+
+.deleteCell {
+    width: 15%;
+    min-width: 50px;
 }
