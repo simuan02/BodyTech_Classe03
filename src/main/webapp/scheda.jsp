@@ -39,9 +39,9 @@
             if (sa.getListaEsercizi().size() > 0)
             {
         %>
-                <div id="ExercisesList">
-                    <table id="ExercisesTable">
-                        <caption id="ListaEserciziTitle">Lista Esercizi</caption>
+                <div id="ExercisesList" class="ExercisesAndRequestsList">
+                    <table id="ExercisesTable" class="ExercisesAndRequestsTable">
+                        <caption id="ListaEserciziTitle" class="ListaEserciziAndRichiesteTitle">Lista Esercizi</caption>
                         <tr>
                             <th class="NomeEsercizioCell CellTable">Nome Esercizio</th>
                             <th class="DescrizioneCell CellTable">Descrizione</th>

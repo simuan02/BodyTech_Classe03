@@ -27,7 +27,13 @@ public class RichiestaModificaSchedaServiceImpl implements RichiestaModificaSche
     }
 
     @Override
-    public List<RichiestaModificaScheda> visualizzaModifica(Profilo p) {
+    public List<RichiestaModificaScheda> visualizzaModifica(Profilo p) throws SQLException {
+        if (p.loggedUserLevel().equals("Utente")){
+            return RichiestaModificaSchedaDAO.findByUser(((Utente)p).getCodiceFiscale());
+        }
+        else if (p.loggedUserLevel().equals("Istruttore")){
+            return null;
+        }
         return null;
     }
 

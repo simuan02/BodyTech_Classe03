@@ -112,12 +112,37 @@ function restorePage(valoreModificato, tipoValore){
  */
 $(document).ready(function(){
     $("#editRequestButton").click(function () {
-        $("#editRequestButton").hide();
+        $(".CentralButtons").hide();
         $("body").append("" +
             "<form action='openRequest' id='requestForm' method='post'>" +
                 "<label for='richiestaModifica'>Scrivi la tua richiesta nella casella di testo sottostante</label><br>" +
                 "<textarea id='richiestaModifica' name='richiesta'>Scrivi la tua richiesta qui...</textarea><br>" +
                 "<input type='submit' value='Invia Richiesta' id='openRequestButton' class='requestButtons'>" +
             "</form>");
+    })
+})
+
+$(document).ready(function () {
+    $("#showRequestButton").click(function () {
+        $("#showRequestButton").hide();
+        $.get("VisualizzaRichiesteModifica", function(richieste){
+            $("body").append("<div id='RequestsList' class='ExercisesAndRequestsList'>" +
+                "<table id='RequestsTable' class='ExercisesAndRequestsTable'>" +
+                "<caption id='ListaRichiesteTitle' class='ListaEserciziAndRichiesteTitle'>Lista Richieste</caption>" +
+                "<tr>" +
+                "<th class='MessaggioCell CellTable'>Messaggio</th>" +
+                "<th class='EsitoCell CellTable'>Esito</th>" +
+                "</tr></table>" +
+                "</div>")
+            $.each(richieste, function(index, richiesta){
+                let esito;
+                if (richiesta.esito == "false")
+                    esito = "Non ancora valutata o negata";
+                else
+                    esito = "Concessa";
+                $("#RequestsTable").append("<tr><td class='MessaggioCell CellTable'>" + richiesta.messaggio + "</td>" +
+                    "<td class='EsitoCell CellTable'>" + esito + "</td></tr>")
+            })
+        })
     })
 })

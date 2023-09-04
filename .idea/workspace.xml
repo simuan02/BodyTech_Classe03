@@ -9,29 +9,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/controller/OpenRequestServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/controller/VisualizzaRichiesteModificaUtenteServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/RichiestaModificaSchedaService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tables_database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/registrazione/controller/RegistrazioneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/registrazione/controller/RegistrazioneController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/registrazione/controller/RegistrazioneController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/registrazione/controller/RegistrazioneController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/richiestaModificaScheda/RichiestaModificaSchedaService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/richiestaModificaScheda/RichiestaModificaSchedaService.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +207,11 @@
       <workItem from="1693342477462" duration="3767000" />
       <workItem from="1693725634092" duration="5873000" />
       <workItem from="1693811353896" duration="4848000" />
-      <workItem from="1693817274069" duration="6680000" />
+      <workItem from="1693817274069" duration="7380000" />
+      <workItem from="1693824792863" duration="18000" />
+      <workItem from="1693824897597" duration="34000" />
+      <workItem from="1693824947174" duration="20000" />
+      <workItem from="1693825007539" duration="1230000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -295,7 +288,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693820398973</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito">
+      <created>1693824153558</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1693824153558</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -324,6 +324,7 @@
     <MESSAGE value="Inserimento nuova Funzione di Modifica Dati per Utenti.&#10;Inserimento pagina per la visualizzazione completa dei dati per gli Utenti.&#10;Aggiunta Funzioni JS per la chiamata asincrona alla Servlet di Modifica dei Dati del Profilo." />
     <MESSAGE value="Aggiunta interfaccia per la visualizzazione della scheda e per l'apertura di una nuova richiesta di modifica della scheda utente.&#10;Modifiche varie a SchedaAllenamentoDAO e IstruttoreDAO.&#10;Aggiunta servlet per l'accesso alle informazioni presenti nel DB relative alla scheda di allenamento dell'utente che ha effettuato l'accesso nella sessione corrente." />
     <MESSAGE value="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO." />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO." />
+    <MESSAGE value="Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito" />
   </component>
 </project>
