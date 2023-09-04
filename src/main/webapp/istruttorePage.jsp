@@ -19,7 +19,7 @@
         }
 
         .card {
-            width: 20%; margin: 2%;
+            width: 25%; margin: 2%;
         }
 
         .card img {
@@ -59,10 +59,17 @@
             </div>
         </div>
 
+            <div class="card">
+                <a href="showTrainingCards" class="noDecoration">
+                    <img src="images/fitness.png">
+                    <div class="container">
+                        <h4><b>Schede Allenamento</b></h4>
+                        <p>Visualizza le schede di allenamento.</p>
+                    </div>
+                </a>
+            </div>
+
     </div>
-
-
-
 
     <script>
         function openListaUtenti() {

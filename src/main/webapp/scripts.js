@@ -146,3 +146,12 @@ $(document).ready(function () {
         })
     })
 })
+
+$(document).ready(function(){
+    $(".SchedaAllenamento").click(function () {
+        if ($(this).find("#OtherCardInfo").css("display") == "none")
+            $(this).find("#OtherCardInfo").css("display", "block");
+        else
+            $(this).find("#OtherCardInfo").css("display", "none");
+    })
+})
