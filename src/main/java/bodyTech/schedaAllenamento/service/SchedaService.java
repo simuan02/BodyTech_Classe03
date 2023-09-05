@@ -1,7 +1,9 @@
 package bodyTech.schedaAllenamento.service;
 
+import bodyTech.model.entity.Esercizio;
 import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.SchedaAllenamento;
+import bodyTech.model.entity.Utente;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -19,4 +21,10 @@ public interface SchedaService {
     public List<SchedaAllenamento> visualizzaSchede (Profilo p) throws SQLException;
 
     public void eliminaEsercizio (int schedaID, String nomeEsercizio) throws SQLException;
+
+    public void modificaSchedaUtente (SchedaAllenamento sa, Utente u) throws SQLException;
+
+    public SchedaAllenamento rimuoviSchedaUtente (SchedaAllenamento scheda) throws SQLException;
+
+    public void aggiungiEsercizio (Esercizio es, String volume, SchedaAllenamento scheda) throws SQLException;
 }

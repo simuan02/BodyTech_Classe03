@@ -96,4 +96,23 @@ public class SchedaAllenamentoDAO {
         pstmt.setInt(2, schedaID);
         pstmt.executeUpdate();
     }
+
+    public static void updateScheda(SchedaAllenamento currentSa, SchedaAllenamento sa) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("UPDATE schedaAllenamento SET dataCompletamento = ?, tipo = ? WHERE idScheda = ?");
+        java.sql.Date nuovaDataCompletamento = new java.sql.Date(sa.getDataCompletamento().getTime());
+        pstmt.setDate(1, nuovaDataCompletamento);
+        pstmt.setString(2, sa.getTipo());
+        pstmt.setInt(3, currentSa.getIdScheda());
+        pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
+    }
+
+    public static void deleteScheda(int idScheda) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM SchedaAllenamento WHERE idScheda = ?");
+        pstmt.setInt(1, idScheda);
+        pstmt.executeUpdate();
+    }
 }
