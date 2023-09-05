@@ -1,8 +1,5 @@
 
-import bodyTech.model.dao.EsercizioDAO;
-import bodyTech.model.dao.RichiestaModificaSchedaDAO;
-import bodyTech.model.dao.SchedaAllenamentoDAO;
-import bodyTech.model.dao.UtenteDAO;
+import bodyTech.model.dao.*;
 import bodyTech.model.entity.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
@@ -13,6 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -26,7 +24,7 @@ public class CreazioneSchedaServlet extends HttpServlet {
         String codiceFiscale = request.getParameter("cf");
         String id = (String) request.getParameter("id");
         String address = "";
-        //System.out.println("CF: " + codiceFiscale + " ID: " + id);
+        HttpSession session = request.getSession();
 
         try {
             Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
@@ -35,19 +33,35 @@ public class CreazioneSchedaServlet extends HttpServlet {
                 //prendere tutti i dati;
                 String dataInizio = request.getParameter("dataInizio");
                 String dataFine = request.getParameter("dataFine");
+                String tipo = (String) request.getParameter("tipo_input");
+
+
+                Istruttore istruttore = (Istruttore) session.getAttribute("Profilo");
+                System.out.println("ISTRUTTORE: " + istruttore.getCognome());
 
                 String[] eserciziHtml = request.getParameterValues("esercizio");
 
                 if (eserciziHtml != null && eserciziHtml.length > 0) {
                     List<Esercizio> eserciziChecked = new ArrayList<>();
-                    System.out.println("Selected Items: " + Arrays.toString(eserciziHtml));
-                    /*for (int i = 0; i < eserciziHtml.length; i++) {
-                        System.out.println("Esercizio " + i + " " + eserciziHtml[i]);
+                    for (int i = 0; i < eserciziHtml.length; i++) {
                         Esercizio e = EsercizioDAO.findByName(eserciziHtml[i]);
                         eserciziChecked.add(e);
-                    }*/
+                    }
 
-                    request.setAttribute("esercizi", eserciziChecked);
+                    codiceFiscale = (String) session.getAttribute("codiceFiscale");
+
+                    SchedaAllenamento scheda = new SchedaAllenamento();
+                    scheda.setDataInizio(dataInizio);
+                    scheda.setDataCompletamento(dataFine);
+                    scheda.setTipo(tipo);
+                    scheda.setUtente(UtenteDAO.findByCodiceFiscale(codiceFiscale));
+                    scheda.setIstruttore(istruttore);
+
+                    SchedaAllenamentoDAO.insertScheda(scheda);
+
+                    session.setAttribute("listaEsercizi", eserciziChecked);
+
+                    request.setAttribute("eserciziChecked", eserciziChecked);
                     address = "/creazioneSchedaVolumi.jsp";
 
                 } else {
@@ -56,6 +70,7 @@ public class CreazioneSchedaServlet extends HttpServlet {
             }
             else if (Integer.parseInt(id) == 1) {
                 List<Esercizio> list = EsercizioDAO.findAll();
+                session.setAttribute("codiceFiscale", codiceFiscale);
                 request.setAttribute("esercizi", list);
                 address = "/creazioneScheda.jsp";
             }

@@ -26,21 +26,26 @@
         <form action="CreazioneSchedaServlet", method="post">
 
             <div class="date">
+                <p id="tipo">Tipo Scheda: </p>
+                <input type="text" id="tipo_input" name="tipo_input">
+            </div>
+
+            <div class="date">
                 <div id="data_inizio">
                     <p>Data inizio: </p>
-                    <input type="date", hidden="gg/mm/aaaa" id="dataInizio" name="dataInizio">
+                    <input type="date" id="dataInizio" name="dataInizio">
                 </div>
 
                 <div id="data_fine">
                     <p>Data fine: </p>
-                    <input type="date", hidden="gg/mm/aaaa" id="dataFine" name="dataFine">
+                    <input type="date" id="dataFine" name="dataFine">
                 </div>
             </div>
 
             <div class="esercizi">
                 <c:forEach items="${esercizi}" var="esercizio">
                     <div class="esercizio">
-                        <input type="checkbox" id="${esercizio.nomeEsercizio}" name="esercizio">
+                        <input type="checkbox" id="${esercizio.nomeEsercizio}" name="esercizio" value="${esercizio.nomeEsercizio}">
                         <label for="${esercizio.nomeEsercizio}">${esercizio.nomeEsercizio}</label>
                     </div>
                 </c:forEach>

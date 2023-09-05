@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: jacop
@@ -22,15 +23,10 @@
             <p>Nome: ${utente.nome}</p>
             <p>Codice Fiscale: ${utente.codiceFiscale}</p>
         </div>
-        <form action="CreazioneSchedaServlet", method="post">
-
-            <div class="date">
-                <p id="tipo">Tipo Scheda: </p>
-                <input type="text" id="tipo_input" name="tipo_input">
-            </div>
+        <form action="CreazioneEserciziAllenamentoServlet", method="post">
 
             <div class="esercizi">
-                <c:forEach items="${esercizi}" var="esercizio">
+                <c:forEach items="${eserciziChecked}" var="esercizio">
                     <div class="esercizio">
                         <p>${esercizio.nomeEsercizio}</p>
                         <input type="text" id="volume" name="volume">
