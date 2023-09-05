@@ -40,10 +40,9 @@ a {
     margin-left: auto;
     margin-right: 2%;
     display: grid;
-    column-gap: 10pt;
-    max-width: 35%;
+    column-gap: 3%;
+    max-width: 55%;
     min-width: 10%;
-    column-width: auto;
 }
 
 .nav-item {
@@ -54,6 +53,10 @@ a {
     background-color: black;
     cursor: pointer;
     border: 1px outset #F7C70F;
+    margin-bottom: 1%;
+    width: 100%;
+    min-width: 150px;
+    margin-right: 5%;
 }
 
 .nav-item:hover{
@@ -67,6 +70,7 @@ a {
 .nav-link {
     font-size: 20pt;
     font-weight: 500;
+    padding: 1%;
     color: black;
     font-family: 'Poppins', "Rage Italic";
 }
@@ -74,9 +78,4 @@ a {
 #loginItem {
     grid-column: 1 / 1;
     grid-row: 1 / 4;
-}
-
-#logoutItem {
-    grid-column: 2 / 2;
-    grid-row: 2 / 2;
 }

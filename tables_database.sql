@@ -27,8 +27,8 @@ create table amministratore(
 
 create table schedaAllenamento(
 	idScheda int primary key auto_increment,
-    dataInizio datetime not null,
-    dataCompletamento datetime not null,
+    dataInizio date not null,
+    dataCompletamento date not null,
     tipo char(30) not null,
     utente char(16) not null,
 	istruttore char(10) not null,

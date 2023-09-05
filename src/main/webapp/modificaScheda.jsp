@@ -27,20 +27,28 @@
     <input type="hidden" value="<%=sa.getIdScheda()%>" name="idScheda">
     <label for="TipoScheda">Tipo Scheda: </label><input type="text" value="<%=sa.getTipo()%>" id="TipoScheda" name="TipoScheda"><br>
     <label for="DataCompletamento">Data Completamento: </label>
-    <input type="date" value="<%=sa.getDataCompletamento()%>" name="DataCompletamento" id="DataCompletamento">
+    <input type="date" value="<%=sa.getDataCompletamento()%>" name="DataCompletamento" id="DataCompletamento"><br>
+    <%
+        if (sa.getListaEsercizi().size() > 0){
+    %>
     <h2 align="center">Modifica Volume Esercizi</h2>
     <input type="hidden" value="<%=sa.getListaEsercizi()%>" name="listaEsercizi">
     <%
+        int i=0;
         for (EsercizioAllenamento ea: sa.getListaEsercizi()){
     %>
     <label for="<%=ea.getNomeEsercizio()%>"><%=ea.getNomeEsercizio()%> - Volume: </label>
     <input type="text" value="<%=ea.getVolume()%>" class="VolumeEsercizio" name="<%=ea.getNomeEsercizio()%>"><br>
     <%
+            i++;
+        }
         }
     %>
     <input type="submit" value="Cambia Le Informazioni della Scheda" id="SubmitFormModifica"><br>
 </form>
-
+<%
+    if (sa.getListaEsercizi().size() > 0) {
+%>
 <div id="ExercisesList" class="ExercisesAndRequestsList">
     <table id="ExercisesTable" class="ExercisesAndRequestsTable">
         <caption id="ListaEserciziTitle" class="ListaEserciziAndRichiesteTitle">Lista Esercizi</caption>
@@ -63,7 +71,10 @@
                     Elimina questo esercizio dalla scheda</a>
             </td>
         </tr>
-        <%}%>
+        <%
+            }
+        }
+        %>
     </table>
 </div>
 

@@ -23,7 +23,7 @@
             for (SchedaAllenamento sa: listaSchede)
             {
         %>
-        <div class="SchedaAllenamento">
+        <div class="SchedaAllenamento" id="SchedaAllenamento<%=i%>">
             <h2>Scheda N°: <%=sa.getIdScheda()%></h2>
             <h4>Utente: <%=sa.getUtente().getNome()%> <%=sa.getUtente().getCognome()%> - <%=sa.getUtente().getCodiceFiscale()%><br>
                 Istruttore: <%=sa.getIstruttore().getNome()%> <%=sa.getIstruttore().getCognome()%>
@@ -66,10 +66,8 @@
                 <div class="SchedaButtonsContainer">
                     <a href="FindScheda?idScheda=<%=sa.getIdScheda()%>" class="noDecoration">
                         <button class="schedaButtons">Modifica Info Scheda</button></a>
-                    <a href="addExercises?idScheda=<%=sa.getIdScheda()%>" class="noDecoration">
-                        <button class="schedaButtons">Aggiungi Altri Esercizi alla Scheda</button></a>
-                    <a href="deleteScheda?idScheda=<%=sa.getIdScheda()%>" class="noDecoration">
-                        <button class="schedaButtons">Elimina Scheda Allenamento</button></a>
+                        <button id="addExercisesButton" class="schedaButtons" onclick="aggiungiEsercizio(<%=sa.getIdScheda()%>, <%=i%>)">Aggiungi Altri Esercizi alla Scheda</button>
+                    <button class="schedaButtons" onclick="eliminaScheda(<%=sa.getIdScheda()%>)">Elimina Scheda Allenamento</button>
                 </div>
                 <%
                     }

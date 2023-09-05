@@ -34,4 +34,19 @@ public class EsercizioDAO {
         }
         return es;
     }
+
+    public static List<Esercizio> findAll() throws SQLException {
+        Connection conn = ConPool.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM Esercizio";
+        ResultSet rs = stmt.executeQuery(query);
+        List<Esercizio> listaEsercizi = new ArrayList<>();
+        while(rs.next()){
+            Esercizio es = new Esercizio();
+            es.setNomeEsercizio(rs.getString(1));
+            es.setDescrizione(rs.getString(2));
+            listaEsercizi.add(es);
+        }
+        return listaEsercizi;
+    }
 }

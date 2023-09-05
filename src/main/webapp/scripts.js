@@ -147,11 +147,31 @@ $(document).ready(function () {
     })
 })
 
-$(document).ready(function(){
-    $(".SchedaAllenamento").click(function () {
-        if ($(this).find("#OtherCardInfo").css("display") == "none")
-            $(this).find("#OtherCardInfo").css("display", "block");
-        else
-            $(this).find("#OtherCardInfo").css("display", "none");
+
+function eliminaScheda(idScheda){
+    if (confirm("Sei sicuro di voler eliminare la scheda n. " + idScheda + "?")){
+        $.ajax({
+            url: "deleteScheda",
+            data: {
+                idScheda: idScheda
+            },
+            success: function () {
+                alert ("Scheda n. " + idScheda + "eliminata con successo");
+            },
+            error: function () {
+                alert ("Errore nell'eliminazione della scheda n. " + idScheda);
+            }
+        })
+    }
+}
+
+function aggiungiEsercizio(idScheda, numeroScheda) {
+    $(".SchedaButtonsContainer").hide();
+    $("#SchedaAllenamento" + numeroScheda).append("<br><h3>Aggiungi un nuovo esercizio</h3><form action='addExercise?idScheda="+ idScheda + "' method='post'><select id='SelezionaEsercizio' name='SelezionaEsercizio'></select>" +
+        "  <input class='volumeEsercizio' type='text' value='Volume' name='Volume'><br><input type='submit' value='Aggiungi esercizio' class='schedaButtons' id='addExerciseButton'></a>");
+    $.get("getAllExercises", function (exercisesList) {
+            $.each(exercisesList, function(index, esercizio) {
+                $("<option value=''>").text(esercizio.nomeEsercizio).appendTo($("#SelezionaEsercizio")).attr("value", esercizio.nomeEsercizio);
+            });
     })
-})
+}

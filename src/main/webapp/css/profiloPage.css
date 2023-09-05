@@ -185,10 +185,6 @@
     margin-top: 1%;
 }
 
-#OtherCardInfo {
-    display: none;
-}
-
 .SchedaButtonsContainer {
     margin: 2% auto;
     min-width: 150px;
@@ -247,4 +243,20 @@
 .deleteCell {
     width: 15%;
     min-width: 50px;
+    background-color: lightgrey;
+    font-weight: bolder;
+    border: 1px inset black;
+}
+
+#SelezionaEsercizio {
+    width: 20%;
+    min-width: 100px;
+    background-color: black;
+    color: #F7C70F;
+    padding: 0.5%;
+    font-size: 16pt;
+}
+
+#addExercisesButton {
+    margin-top: 2%;
 }
