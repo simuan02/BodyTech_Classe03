@@ -26,9 +26,16 @@ public class CreazioneEserciziAllenamentoServlet extends HttpServlet {
         HttpSession session = request.getSession();
 
         String[] volumiHtml = request.getParameterValues("volume");
+        List<Esercizio> esercizi = (List<Esercizio>) session.getAttribute("listaEsercizi");
+        List<EsercizioAllenamento> eserciziAllenamento = new ArrayList<>();
 
         for(int i = 0; i < volumiHtml.length; i++) {
-            System.out.println("Volume " + i + ": " + volumiHtml[i]);
+            System.out.println("Volume " + esercizi.get(i) + ": " + volumiHtml[i]);
+            EsercizioAllenamento ea = new EsercizioAllenamento();
+            ea.setNomeEsercizio(esercizi.get(i).getNomeEsercizio());
+            ea.setDescrizione(esercizi.get(i).getDescrizione());
+            ea.setVolume(volumiHtml[i]);
+            eserciziAllenamento.add(ea);
         }
 
 
