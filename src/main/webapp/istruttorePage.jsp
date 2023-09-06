@@ -51,16 +51,18 @@
             </div>
         </div>
 
-        <div class="card" onclick="openListaUtenti()">
-            <img src="images/pt.png">
-            <div class="container">
-                <h4><b>Istruttore</b></h4>
-                <p>Visualizza o aggiungi i tuoi utenti.</p>
-            </div>
+        <div class="card">
+            <a href="listaUtentiPage.jsp?id=${istruttore.matricolaIstruttore}">
+                <img src="images/pt.png">
+                <div class="container">
+                    <h4><b>Istruttore</b></h4>
+                    <p>Visualizza o aggiungi i tuoi utenti.</p>
+                </div>
+            </a>
         </div>
 
             <div class="card">
-                <a href="showTrainingCards" class="noDecoration">
+                <a href="showTrainingCards.jsp" class="noDecoration">
                     <img src="images/fitness.png">
                     <div class="container">
                         <h4><b>Schede Allenamento</b></h4>

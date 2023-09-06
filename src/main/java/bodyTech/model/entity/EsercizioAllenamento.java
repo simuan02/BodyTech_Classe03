@@ -13,5 +13,14 @@ public class EsercizioAllenamento extends Esercizio{
         this.volume = volume;
     }
 
+    public int getIdScheda() {
+        return idScheda;
+    }
+
+    public void setIdScheda(int idScheda) {
+        this.idScheda = idScheda;
+    }
+
     private String volume;
+    private int idScheda;
 }

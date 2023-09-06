@@ -23,9 +23,9 @@
 
         <c:choose>
             <c:when test="${scheda != null}">
-                <div class="button">
+                <a><div class="button">
                     Visualizza Scheda d'allenamento
-                </div>
+                </div></a>
             </c:when>
 
             <c:otherwise>

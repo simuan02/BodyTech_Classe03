@@ -1,6 +1,9 @@
 <%@ page import="bodyTech.model.entity.Utente" %>
 <%@ page import="java.util.List" %>
 <%@ page import="bodyTech.model.dao.UtenteDAO" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="bodyTech.model.entity.SchedaAllenamento" %>
+<%@ page import="bodyTech.model.dao.SchedaAllenamentoDAO" %>
 <%--
   Created by IntelliJ IDEA.
   User: jacop
@@ -16,63 +19,78 @@
     <title>BodyTech - Utenti</title>
     <link rel="stylesheet" href="css/listaUtentiPage.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
+
+    <style>
+        .title {
+            font-size: 15pt;
+            color: red;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <%
+        String matricola = request.getParameter("id");
         List<Utente> listaUtenti = UtenteDAO.visualizzaUtenti();
-        request.setAttribute("listaUtenti", listaUtenti);
-        System.out.println("LEN UTENTI: " + listaUtenti.size());
+        List<Utente> listaTuoiAssociati = new ArrayList<>();
+        List<Utente> listaAssociati = new ArrayList<>();
+        List<Utente> listaNonAssociati = new ArrayList<>();
+        for (Utente u : listaUtenti) {
+            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());
+            //System.out.println(scheda.getIdScheda());
+            if (scheda != null) {
+               if (scheda.getIstruttore().getMatricolaIstruttore().equals(matricola)) listaTuoiAssociati.add(u);
+               else listaAssociati.add(u);
+            } else listaNonAssociati.add(u);
+        }
+
+        request.setAttribute("listaAssociati", listaAssociati);
+        request.setAttribute("listaNonAssociati", listaNonAssociati);
     %>
 
     <%@include file="jsp/header.jsp"%>
 
+    <p class="title">I tuoi Utenti</p>
     <div class="container_utenti">
-        <c:forEach items="${listaUtenti}" var="utente">
-            <c:choose>
-                <c:when test="${utente.matricolaIstruttore != null}">
-                    <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${utente.codiceFiscale}&id=1">
-                        <div class="utente">
-                            <h4>${utente.codiceFiscale}</h4>
-                            <h4>${utente.cognome} ${utente.nome}</h4>
-                            <p id="positive_istruttore">L'utente è associato già ad un'istruttore</p>
-                        </div>
-                    </a>
-                </c:when>
 
-                <c:otherwise>
-                    <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${utente.codiceFiscale}&id=1">
-                        <div class="utente">
-                            <h4>${utente.codiceFiscale}</h4>
-                            <h4>${utente.cognome} ${utente.nome}</h4>
-                            <p id="negative_istruttore">L'utente non è associato a nessun istruttore</p>
-                        </div>
-                    </a>
-                </c:otherwise>
-            </c:choose></a>
-            <!--<a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${codiceFiscale}&id=1"><div class="utente">
-                <h4>${utente.codiceFiscale}</h4>
-                <h4>${utente.cognome} ${utente.nome}</h4>
-                <c:choose>
-                    <c:when test="${utente.matricolaIstruttore != null}">
-                        <p id="positive_istruttore">L'utente è associato già ad un'istruttore</p>
-                    </c:when>
-                    <c:otherwise>
-                        <p id="negative_istruttore">L'utente non è associato a nessun istruttore</p>
-                    </c:otherwise>
-                </c:choose>
-            </div></a>-->
+        <c:forEach items="${listaTuoiAssociati}" var="utente">
+            <div class="utente">
+                <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${utente.codiceFiscale}&id=1" class="noDecoration">
+                    <div>
+                        <h4>${utente.codiceFiscale}</h4>
+                        <h4>${utente.cognome} ${utente.nome}</h4>
+                        <p class="positive_istruttore" style="color: green">L'utente è associato a te</p>
+                    </div>
+                </a>
+            </div>
         </c:forEach>
     </div>
 
+    <p class="title">Altri Utenti</p>
 
+    <div class="container_utenti">
+        <c:forEach items="${listaAssociati}" var="utente">
+            <div class="utente">
+                <div>
+                    <h4>${utente.codiceFiscale}</h4>
+                    <h4>${utente.cognome} ${utente.nome}</h4>
+                    <p class="negative_istruttore" style="color: darkred">L'utente è associato già ad un'istruttore</p>
+                </div>
+            </div>
+        </c:forEach>
 
-    <script>
-        function associati(codiceFiscale) {
-            var txt;
-            if (confirm("Vuoi associarti all'utente ${codiceFiscale}?")) {
-                //associati
-            }
-        }
-    </script>
+        <c:forEach items="${listaNonAssociati}" var="utente">
+            <div class="utente">
+                <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${utente.codiceFiscale}&id=2" class="noDecoration">
+                    <div>
+                        <h4>${utente.codiceFiscale}</h4>
+                        <h4>${utente.cognome} ${utente.nome}</h4>
+                        <p class="negative_istruttore" style="color: darkred">L'utente non è associato a nessun istruttore</p>
+                    </div>
+                </a>
+            </div>
+        </c:forEach>
+    </div>
+
 </body>
 </html>

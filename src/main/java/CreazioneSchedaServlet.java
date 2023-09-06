@@ -31,8 +31,8 @@ public class CreazioneSchedaServlet extends HttpServlet {
             request.setAttribute("utente", utente);
             if (id == null) {
                 //prendere tutti i dati;
-                String dataInizio = request.getParameter("dataInizio");
-                String dataFine = request.getParameter("dataFine");
+                Date dataInizio = Date.valueOf(request.getParameter("dataInizio"));
+                Date dataFine = Date.valueOf(request.getParameter("dataFine"));
                 String tipo = (String) request.getParameter("tipo_input");
 
 

@@ -23,14 +23,20 @@
     color: black;
 }
 
-#positive_istruttore {
+.positive_istruttore {
     font-size: 15px;
     color: green;
     text-align: center;
 }
 
-#negative_istruttore {
+.negative_istruttore {
     font-size: 15px;
     color: darkred;
+    text-align: center;
+}
+
+.title {
+    font-size: 15pt;
+    color: red;
     text-align: center;
 }

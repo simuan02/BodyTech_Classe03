@@ -16,19 +16,19 @@ public class SchedaAllenamento {
         this.idScheda = idScheda;
     }
 
-    public String getDataInizio() {
-        return dataInizio;
+    public java.sql.Date getDataInizio() {
+        return (java.sql.Date) dataInizio;
     }
 
-    public void setDataInizio(String dataInizio) {
+    public void setDataInizio(Date dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public String getDataCompletamento() {
-        return dataCompletamento;
+    public java.sql.Date getDataCompletamento() {
+        return (java.sql.Date) dataCompletamento;
     }
 
-    public void setDataCompletamento(String dataCompletamento) {
+    public void setDataCompletamento(Date dataCompletamento) {
         this.dataCompletamento = dataCompletamento;
     }
 
@@ -65,8 +65,8 @@ public class SchedaAllenamento {
     }
 
     private int idScheda;
-    private String dataInizio;
-    private String dataCompletamento;
+    private Date dataInizio;
+    private Date dataCompletamento;
     private String tipo;
     private Utente utente;
     private Istruttore istruttore;

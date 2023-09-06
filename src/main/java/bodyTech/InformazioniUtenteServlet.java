@@ -24,10 +24,10 @@ public class InformazioniUtenteServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String codiceFiscale = request.getParameter("cf");
         String id = (String) request.getParameter("id");
-
+        String address = "";
         try {
             Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
-            SchedaAllenamento scheda = SchedaAllenamentoDAO.findScehdaByUtente(codiceFiscale);
+            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(codiceFiscale);
             List<RichiestaModificaScheda> list = RichiestaModificaSchedaDAO.findByUser(codiceFiscale);
             request.setAttribute("utente", utente);
             request.setAttribute("scheda", scheda);
@@ -38,30 +38,14 @@ public class InformazioniUtenteServlet extends HttpServlet {
                 request.setAttribute("isAssociato", false);
             }
 
+            address = "/informazioniUtente.jsp";
 
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
-        /*System.out.println("SERVLET APERTA");
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo) session.getAttribute("Profilo");
 
-        if (p.loggedUserLevel().equals("Istruttore")) {
-            Istruttore istr = (Istruttore) p;
-            request.setAttribute("Istruttore", istr);
-            try {
-                List<Utente> listaUtenti = UtenteDAO.visualizzaUtenti();
-                System.out.println("UTENTI TROVATI");
-                request.setAttribute("listaUtenti", listaUtenti);
-            } catch (SQLException e) {
-                throw new RuntimeException(e);
-            }
-        }*/
-
-
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/informazioniUtente.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);
     }
 

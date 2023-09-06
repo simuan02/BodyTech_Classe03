@@ -27,19 +27,19 @@ public class CreazioneEserciziAllenamentoServlet extends HttpServlet {
 
         String[] volumiHtml = request.getParameterValues("volume");
         List<Esercizio> esercizi = (List<Esercizio>) session.getAttribute("listaEsercizi");
-        List<EsercizioAllenamento> eserciziAllenamento = new ArrayList<>();
+        String codiceFiscale = (String) session.getAttribute("codiceFiscale");
+        try {
+            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(codiceFiscale);
 
-        for(int i = 0; i < volumiHtml.length; i++) {
-            System.out.println("Volume " + esercizi.get(i) + ": " + volumiHtml[i]);
-            EsercizioAllenamento ea = new EsercizioAllenamento();
-            ea.setNomeEsercizio(esercizi.get(i).getNomeEsercizio());
-            ea.setDescrizione(esercizi.get(i).getDescrizione());
-            ea.setVolume(volumiHtml[i]);
-            eserciziAllenamento.add(ea);
+            for(int i = 0; i < volumiHtml.length; i++) {
+                EsercizioAllenamentoDAO.insertEsercizioAllenamento(esercizi.get(i), volumiHtml[i], scheda.getIdScheda());
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
         dispatcher.forward(request, response);
     }
 
