@@ -37,21 +37,26 @@ a {
 }
 
 .nav_menu {
-    max-width: 25%;
     margin-left: auto;
     margin-right: 2%;
+    display: grid;
+    column-gap: 3%;
+    max-width: 55%;
+    min-width: 10%;
 }
 
 .nav-item {
     overflow: hidden;
-    max-width: 100%;
-    width: 100pt;
     text-align: center;
     vertical-align: middle;
     color: #F7C70F;
     background-color: black;
     cursor: pointer;
     border: 1px outset #F7C70F;
+    margin-bottom: 1%;
+    width: 100%;
+    min-width: 150px;
+    margin-right: 5%;
 }
 
 .nav-item:hover{
@@ -65,6 +70,12 @@ a {
 .nav-link {
     font-size: 20pt;
     font-weight: 500;
+    padding: 1%;
     color: black;
     font-family: 'Poppins', "Rage Italic";
+}
+
+#loginItem {
+    grid-column: 1 / 1;
+    grid-row: 1 / 4;
 }

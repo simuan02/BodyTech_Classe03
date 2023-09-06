@@ -1,12 +1,10 @@
 package bodyTech.model.dao;
 
 import bodyTech.model.ConPool;
+import bodyTech.model.entity.Esercizio;
 import bodyTech.model.entity.EsercizioAllenamento;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +23,7 @@ public class EsercizioAllenamentoDAO {
     public static List<EsercizioAllenamento> findBySchedaID(int schedaID) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM esercizioAllenamento WHERE idScheda = " + schedaID;
+        String query = "SELECT * FROM esercizioAllenamento WHERE schedaAllenamento = " + schedaID;
         ResultSet rs = stmt.executeQuery(query);
         List<EsercizioAllenamento> esercizi = new ArrayList<>();
         while (rs.next()){
@@ -36,5 +34,24 @@ public class EsercizioAllenamentoDAO {
             esercizi.add(es);
         }
         return esercizi;
+    }
+
+    public static void insertEsercizioAllenamento(Esercizio es, String volume, int idScheda) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO EsercizioAllenamento VALUES (?, ?, ?)");
+        pstmt.setInt(1, idScheda);
+        pstmt.setString(2, es.getNomeEsercizio());
+        pstmt.setString(3, volume);
+        pstmt.executeUpdate();
+    }
+
+    public static void updateEsercizio(EsercizioAllenamento ea, int idScheda) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("UPDATE EsercizioAllenamento SET volume = ? WHERE esercizio = ? and " +
+                "schedaAllenamento = ?");
+        pstmt.setString(1, ea.getVolume());
+        pstmt.setString(2, ea.getNomeEsercizio());
+        pstmt.setInt(3, idScheda);
+        pstmt.executeUpdate();
     }
 }

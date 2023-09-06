@@ -16,24 +16,30 @@
     </div>
     <h1 id="titolo">BODYTECH</h1>
 
-    <ul class="nav_menu">
-
-      <li class="nav-item">
       <%
         Profilo p = (Profilo)session.getAttribute("Profilo");
         if (p == null) {
           %>
+    <ul class="nav_menu">
+      <li class="nav-item">
           <a class="nav-link" href="login.jsp">LOGIN</a>
+      </li>
+    </ul>
         <%
         }
           else {
         %>
-            <a href="${pageContext.request.contextPath}/AccountServlet" class="nav-link"><%=p.getNome()%> <%=p.getCognome()%></a>
+    <ul class="nav_menu">
+      <li class="nav-item" id="loginItem">
+            <a href="${pageContext.request.contextPath}/ProfilePage" class="nav-link"><%=p.getNome()%> <%=p.getCognome()%></a>
+      </li>
+      <li class="nav-item" id="logoutItem">
+            <a href="${pageContext.request.contextPath}/Logout" class="nav-link">LOGOUT</a>
+      </li>
+    </ul>
       <%
         }
       %>
-      </li>
-    </ul>
 
   </header>
 </body>

@@ -32,6 +32,14 @@ public class Istruttore extends Profilo{
         this.listaSchedeCreate = listaSchedeCreate;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Amministratore)) return false;
+        Istruttore instructor = (Istruttore) o;
+        return matricolaIstruttore.equals(instructor.getMatricolaIstruttore()) && super.equals(instructor);
+    }
+
     private String matricolaIstruttore;
     private String specializzazione;
     private List<SchedaAllenamento> listaSchedeCreate = new ArrayList<>();

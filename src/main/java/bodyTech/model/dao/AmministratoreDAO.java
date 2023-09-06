@@ -3,11 +3,9 @@ package bodyTech.model.dao;
 import bodyTech.model.ConPool;
 import bodyTech.model.entity.Amministratore;
 import bodyTech.model.entity.Istruttore;
+import bodyTech.model.entity.Utente;
 
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -57,5 +55,33 @@ public class AmministratoreDAO{
             admin.setPassword(rs.getString(4));
         }
         return admin;
+    }
+
+    /**
+     * Implementa la funzionalità di aggiornamento delle informazioni nel DB di oldAdmin, se presente, con quelle di newAdmin.
+     * @param oldAdmin l'Amministratore da aggiornare
+     * @param newAdmin l'Amministratore con le informazioni aggiornate
+     * @throws SQLException
+     */
+    public static void updateAdmin (Amministratore oldAdmin, Amministratore newAdmin) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        List<Amministratore> admins = AmministratoreDAO.visualizzaAdmin();
+        boolean existingAdmin = false;
+        for (Amministratore a : admins){
+            if (a.getCodice() == oldAdmin.getCodice()) {
+                existingAdmin = true;
+                break;
+            }
+        }
+        if (existingAdmin){
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE Amministratore SET codice = ?, nome = ?, cognome = ?, pass = ?" +
+                    "WHERE codice = ?");
+            pstmt.setInt(1, newAdmin.getCodice());
+            pstmt.setString(2, newAdmin.getNome());
+            pstmt.setString(3, newAdmin.getCognome());
+            pstmt.setString(4, newAdmin.getPassword());
+            pstmt.setInt(5, oldAdmin.getCodice());
+            pstmt.executeUpdate();
+        }
     }
 }

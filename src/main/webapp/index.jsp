@@ -6,7 +6,6 @@
     <link rel="icon" href="images/logo.jpg" sizes="any">
 </head>
     <body>
-
             <%
                 Object o = request.getAttribute("Registrazione");
                 if (o != null){
@@ -40,7 +39,7 @@
             <h1>Supera i tuoi limiti</h1>
             <p>
                 Grazie a questo sito potrai allenarti al meglio e raggiungere finalmente i tuoi obiettivi!<br>Effettua l'accesso e
-                associati ad un istruttore e inizia a seguire un piano d'allenamento.
+                associati ad un istruttore e inizia a seguire un piano d'allenamento.<br>
             </p>
             
         </div>

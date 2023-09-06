@@ -27,5 +27,13 @@ public class Amministratore extends Profilo{
         return IstruttoreDAO.visualizzaIstruttori();
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Amministratore)) return false;
+        Amministratore admin = (Amministratore) o;
+        return codice == admin.codice && super.equals(admin);
+    }
+
     private int codice;
 }

@@ -3,8 +3,6 @@ package bodyTech.model.dao;
 import bodyTech.model.ConPool;
 import bodyTech.model.entity.Esercizio;
 import bodyTech.model.entity.EsercizioAllenamento;
-import bodyTech.model.entity.RichiestaModificaScheda;
-import bodyTech.model.entity.Utente;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -24,7 +22,6 @@ public class EsercizioDAO {
      * @return Esercizio
      * @throws SQLException
      */
-
     public static Esercizio findByName (String nome) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
@@ -41,21 +38,15 @@ public class EsercizioDAO {
     public static List<Esercizio> findAll() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM esercizio";
+        String query = "SELECT * FROM Esercizio";
         ResultSet rs = stmt.executeQuery(query);
-        List<Esercizio> esercizi = new ArrayList<Esercizio>();
-        while (rs.next()){
-            //Utente u1 = setUtente(rs);
-            Esercizio e1 = setEsercizio(rs);
-            esercizi.add(e1);
+        List<Esercizio> listaEsercizi = new ArrayList<>();
+        while(rs.next()){
+            Esercizio es = new Esercizio();
+            es.setNomeEsercizio(rs.getString(1));
+            es.setDescrizione(rs.getString(2));
+            listaEsercizi.add(es);
         }
-        return esercizi;
-    }
-
-    private static Esercizio setEsercizio(ResultSet rs) throws SQLException {
-        Esercizio e = new Esercizio();
-        e.setNomeEsercizio(rs.getString(1));
-        e.setDescrizione(rs.getString(2));
-        return e;
+        return listaEsercizi;
     }
 }
