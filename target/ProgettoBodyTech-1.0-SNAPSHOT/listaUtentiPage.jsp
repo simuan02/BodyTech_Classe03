@@ -44,6 +44,11 @@
             } else listaNonAssociati.add(u);
         }
 
+        for (Utente u : listaTuoiAssociati) {
+            System.out.println("TUO ASSOCIATO: " + u.getNome());
+        }
+
+        request.setAttribute("listaTuoiAssociati", listaTuoiAssociati);
         request.setAttribute("listaAssociati", listaAssociati);
         request.setAttribute("listaNonAssociati", listaNonAssociati);
     %>

@@ -117,4 +117,11 @@ public class UtenteDAO {
             pstmt.executeUpdate();
         }
     }
+
+    public static void deleteUser (String codiceFiscale) throws SQLException{
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM utente WHERE codiceFiscale = ?");
+        pstmt.setString(1, codiceFiscale);
+        pstmt.executeUpdate();
+    }
 }

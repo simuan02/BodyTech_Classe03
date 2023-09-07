@@ -12,6 +12,22 @@
     <title>BodyTech - Informazioni Utente</title>
     <link rel="stylesheet" href="css/informazioniUtente.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
+
+    <style>
+        #eliminaUtente {
+            width: 30%;
+            font-size: 13pt;
+            padding: 6px;
+            background-color: #F7C70F;
+            border-radius: 10px;
+            border: 2px solid #F7C70F;
+            text-align: center;
+            margin-top: 20px;
+            color: black;
+            margin-left: 5%;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
     <%@include file="jsp/header.jsp"%>
@@ -23,7 +39,7 @@
 
         <c:choose>
             <c:when test="${scheda != null}">
-                <a><div class="button">
+                <a href="${pageContext.request.contextPath}/VisualizzaSchedaAllenamentoServlet?cf=${utente.codiceFiscale}"><div class="button">
                     Visualizza Scheda d'allenamento
                 </div></a>
             </c:when>
@@ -51,14 +67,20 @@
 
         </div>
 
-        <div class="buttons">
+        <!--<div class="buttons">
             <div id="modificaDati">
                 Modifica i dati
             </div>
+            <a href=""><div id="eliminaUtente">
+                Elimina ${utente.cognome}
+            </div></a>>
+        </div>-->
+
+        <a href="">
             <div id="eliminaUtente">
                 Elimina ${utente.cognome}
             </div>
-        </div>
+        </a>
     </div>
 </body>
 </html>
