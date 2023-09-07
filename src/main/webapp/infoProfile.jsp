@@ -19,16 +19,18 @@
             response.sendError(403, "Operazione non consentita!");
             request.setAttribute("ServletMostraProfiloLanciata", null);
         }
-        else if (richiestaEffettuata.equalsIgnoreCase("YES")){
+        if (richiestaEffettuata != null){
+            if (richiestaEffettuata.equalsIgnoreCase("YES")){
     %>
-    <script>alert("La richiesta è stata correttamente aperta");</script>
+            <script>alert("La richiesta è stata correttamente aperta");</script>
     <%;
-        }
+            }
         else if (richiestaEffettuata.equalsIgnoreCase("NO")){
 
     %>
-    <script>alert("Errore nell'apertura della richiesta");</script>
+            <script>alert("Errore nell'apertura della richiesta");</script>
     <%;
+            }
         }
     %>
     <h1 id="profileTitle">DETTAGLI PROFILO</h1>
