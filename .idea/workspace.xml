@@ -9,28 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/AddExerciseServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/DeleteSchedaServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/EditSchedaServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/GetExercisesServlet.java" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaSchedePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaSchedePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaScheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaScheda.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scripts.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tables_database.sql" beforeDir="false" afterPath="$PROJECT_DIR$/tables_database.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +208,8 @@
       <workItem from="1693825007539" duration="2553000" />
       <workItem from="1693846681334" duration="9736000" />
       <workItem from="1693897868960" duration="7200000" />
-      <workItem from="1693929349000" duration="6348000" />
+      <workItem from="1693929349000" duration="6872000" />
+      <workItem from="1694097836274" duration="1232000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -330,7 +314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1693865307253</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form.">
+      <created>1693939329870</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1693939329870</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -362,6 +353,7 @@
     <MESSAGE value="Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito" />
     <MESSAGE value="Implementazione servizio per la visualizzazione di tutte le richieste di modifica scheda effettuate dall'utente corrente" />
     <MESSAGE value="Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento" />
+    <MESSAGE value="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form." />
+    <option name="LAST_COMMIT_MESSAGE" value="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form." />
   </component>
 </project>
