@@ -115,4 +115,27 @@ public class SchedaAllenamentoDAO {
         pstmt.setInt(1, idScheda);
         pstmt.executeUpdate();
     }
+
+    public static void insertScheda(SchedaAllenamento scheda) throws SQLException {
+        try (Connection con = ConPool.getConnection()) {
+            PreparedStatement ps = con.prepareStatement(
+                    "INSERT INTO schedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) VALUES(?,?,?,?,?)",
+                    Statement.RETURN_GENERATED_KEYS);
+            ps.setDate(1, scheda.getDataInizio());
+            ps.setDate(2, scheda.getDataCompletamento());
+            ps.setString(3, scheda.getTipo());
+            ps.setString(4, scheda.getUtente().getCodiceFiscale());
+            ps.setString(5, scheda.getIstruttore().getMatricolaIstruttore());
+            if (ps.executeUpdate() != 1) {
+                throw new RuntimeException("INSERT error.");
+            }
+
+            ResultSet rs = ps.getGeneratedKeys();
+            rs.next();
+            int id = rs.getInt(1);
+            scheda.setIdScheda(id);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }

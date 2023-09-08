@@ -9,11 +9,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Implementazione EliminaUtenteServlet">
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/informazioniUtente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +30,9 @@
       <list>
         <option value="Servlet" />
         <option value="JavaScript File" />
+        <option value="Jsp File" />
         <option value="CSS File" />
         <option value="Class" />
-        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -69,14 +71,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/images" />
-    <property name="list.type.of.created.stylesheet" value="CSS" />
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\src\main\webapp\images" />
@@ -85,7 +89,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="Tomcat 10.0.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.17" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 9.0.43" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0.43" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ProgettoBodyTech:war exploded">
@@ -208,8 +212,8 @@
       <workItem from="1693825007539" duration="2553000" />
       <workItem from="1693846681334" duration="9736000" />
       <workItem from="1693897868960" duration="7200000" />
-      <workItem from="1693929349000" duration="6872000" />
-      <workItem from="1694097836274" duration="1232000" />
+      <workItem from="1693929349000" duration="6348000" />
+      <workItem from="1694083073922" duration="4406000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -314,12 +318,13 @@
       <option name="project" value="LOCAL" />
       <updated>1693865307253</updated>
     </task>
-    <task id="LOCAL-00016" summary="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form.">
-      <created>1693939329870</created>
+    <task id="LOCAL-00016" summary="Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento">
+      <option name="closed" value="true" />
+      <created>1694022341092</created>
       <option name="number" value="00016" />
       <option name="presentableId" value="LOCAL-00016" />
       <option name="project" value="LOCAL" />
-      <updated>1693939329870</updated>
+      <updated>1694022341092</updated>
     </task>
     <option name="localTasksCounter" value="17" />
     <servers />
@@ -352,8 +357,9 @@
     <MESSAGE value="Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO." />
     <MESSAGE value="Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito" />
     <MESSAGE value="Implementazione servizio per la visualizzazione di tutte le richieste di modifica scheda effettuate dall'utente corrente" />
+    <MESSAGE value="Prova" />
     <MESSAGE value="Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento" />
-    <MESSAGE value="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form." />
-    <option name="LAST_COMMIT_MESSAGE" value="1) Interfaccia per la visualizzazione di tutte le schede di allenamento presenti nella piattaforma. Le schede &#10;verranno visualizzate tramite elenco ed, in particolare, verrà mostrato nome, cognome, codice fiscale, idScheda e &#10;istruttore associato ad essa.&#10;Cliccando su una di esse, verranno mostrate informazioni aggiuntive, ossia il tipo di scheda, data di inizio/&#10;completamento previsto ed una lista di esercizi (ad ognuno di essi è associato un pulsante per la sua eliminazione)&#10;associata ad essa.&#10;Inoltre, saranno presenti anche tre pulsanti:&#10;- Il primo per la modifica delle informazioni della scheda;&#10;- Il secondo per l'aggiunta di altri esercizi nella lista di esercizi della scheda;&#10;- Il terzo per l'eliminazione della scheda di allenamento.&#10;Queste tre operazioni saranno disponibili solo all'istruttore che ha scritto la scheda e a tutti gli amministratori.&#10;Se l'utente non possiede una scheda, allora verrà visualizzato un pulsante che consente di creare una nuova scheda, &#10;vuota, associata all'utente;&#10; &#10;2) Interfaccia che consente la modifica delle informazioni della scheda tramite form;&#10;3) Interfaccia che consente l'aggiunta di un nuovo esercizio, tramite form." />
+    <MESSAGE value="Implementazione EliminaUtenteServlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implementazione EliminaUtenteServlet" />
   </component>
 </project>
