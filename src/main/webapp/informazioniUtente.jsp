@@ -58,6 +58,9 @@
             <c:choose>
                 <c:when test="${richieste.size() > 0}">
                     <!-- FOREACH -->
+                    <c:forEach items="${richieste}" var="richiesta">
+                        <p>${richiesta.messaggio}</p>
+                    </c:forEach>
                 </c:when>
 
                 <c:otherwise>

@@ -58,6 +58,9 @@
             <c:choose>
                 <c:when test="${richieste.size() > 0}">
                     <!-- FOREACH -->
+                    <c:forEach items="${richieste}" var="richiesta">
+                        <p>${richiesta.messaggio}</p>
+                    </c:forEach>
                 </c:when>
 
                 <c:otherwise>
@@ -76,7 +79,7 @@
             </div></a>>
         </div>-->
 
-        <a href="">
+        <a href="${pageContext.request.contextPath}/EliminaUtenteServlet?cf=${utente.codiceFiscale}">
             <div id="eliminaUtente">
                 Elimina ${utente.cognome}
             </div>
