@@ -14,17 +14,42 @@ import java.util.List;
 public interface SchedaService {
 
     /**
-     * Questo metodo consente ad un istruttore di recuperare la lista di tutte le schede di allenamento salvate nel DB
+     * Questa funzionalità consente agli Istruttori di visualizza una lista di Schede di Allenamento
      * @param p il profilo che invoca questo metodo
      * @return
      */
     public List<SchedaAllenamento> visualizzaSchede (Profilo p) throws SQLException;
 
+    /**
+     * Questa funzionalità consente di eliminare un esercizio alla Scheda di Allenamento
+     * @param schedaID identificativo della scheda di allenamento da cui eliminare l'esercizio
+     * @param nomeEsercizio il nome dell'esercizio da eliminare
+     * @throws SQLException
+     */
     public void eliminaEsercizio (int schedaID, String nomeEsercizio) throws SQLException;
 
+    /**
+     * Questa funzionalità consente di modificare una SchedaAllenamento già esistente, associata ad un Utente.
+     * @param sa scheda di allenamento con le informazioni modificate, da aggiornare nel DB
+     * @param u l'Utente a cui è associata da scheda da modificare
+     * @throws SQLException
+     */
     public void modificaSchedaUtente (SchedaAllenamento sa, Utente u) throws SQLException;
 
+    /**
+     * Questa funzionalità consente agli Istruttori di eliminare una Scheda di Allenamento
+     * @param scheda la scheda di allenamento da eliminare
+     * @return la scheda eliminata
+     * @throws SQLException
+     */
     public SchedaAllenamento rimuoviSchedaUtente (SchedaAllenamento scheda) throws SQLException;
 
+    /**
+     * Questa funzionalità consente di aggiungere un esercizio alla Scheda di Allenamento
+     * @param es l'esercizio da aggiungere alla scheda di allenamento
+     * @param volume il volume associato all'esercizio da aggiungere
+     * @param scheda la scheda di allenamento a cui aggiungere l'esercizio
+     * @throws SQLException
+     */
     public void aggiungiEsercizio (Esercizio es, String volume, SchedaAllenamento scheda) throws SQLException;
 }

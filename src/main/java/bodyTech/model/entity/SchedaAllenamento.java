@@ -16,16 +16,16 @@ public class SchedaAllenamento {
         this.idScheda = idScheda;
     }
 
-    public java.sql.Date getDataInizio() {
-        return (java.sql.Date) dataInizio;
+    public Date getDataInizio() {
+        return dataInizio;
     }
 
     public void setDataInizio(Date dataInizio) {
         this.dataInizio = dataInizio;
     }
 
-    public java.sql.Date getDataCompletamento() {
-        return (java.sql.Date) dataCompletamento;
+    public Date getDataCompletamento() {
+        return dataCompletamento;
     }
 
     public void setDataCompletamento(Date dataCompletamento) {

@@ -9,24 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Implementazione EliminaUtenteServlet">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/ModificaUtente.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/amministratorePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/CreazioneSchedaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneSchedaServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/CreazioneEserciziAllenamentoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneEserciziAllenamentoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/EliminaUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaUtenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/InformazioniUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/InformazioniUtenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/VisualizzaSchedaAllenamentoServlet.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" afterDir="false" />
-    </list>
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Implementazione EliminaUtenteServlet" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -232,7 +215,7 @@
       <workItem from="1693897868960" duration="7200000" />
       <workItem from="1693929349000" duration="6348000" />
       <workItem from="1694083073922" duration="4406000" />
-      <workItem from="1694180159493" duration="2992000" />
+      <workItem from="1694180159493" duration="3056000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -345,7 +328,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694022341092</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Implementazione EliminaUtenteServlet">
+      <created>1694199489328</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1694199489328</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

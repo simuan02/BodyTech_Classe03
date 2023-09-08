@@ -54,11 +54,4 @@ public class EsercizioAllenamentoDAO {
         pstmt.setInt(3, idScheda);
         pstmt.executeUpdate();
     }
-
-    public static void deleteEsercizi (int idScheda) throws SQLException {
-        Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM esercizioAllenamento WHERE schedaAllenamento = ?");
-        pstmt.setInt(1, idScheda);
-        pstmt.executeUpdate();
-    }
 }
