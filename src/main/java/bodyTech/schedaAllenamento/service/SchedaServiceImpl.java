@@ -20,7 +20,7 @@ public class SchedaServiceImpl implements SchedaService{
 
     @Override
     public void eliminaEsercizio(int schedaID, String nomeEsercizio) throws SQLException {
-        SchedaAllenamentoDAO.deleteExercise(schedaID, nomeEsercizio);
+        EsercizioAllenamentoDAO.deleteExercise(schedaID, nomeEsercizio);
     }
 
     @Override

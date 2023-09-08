@@ -89,14 +89,6 @@ public class SchedaAllenamentoDAO {
         return null;
     }
 
-    public static void deleteExercise(int schedaID, String nomeEsercizio) throws SQLException {
-        Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM EsercizioAllenamento WHERE esercizio = ? and schedaAllenamento = ?");
-        pstmt.setString(1, nomeEsercizio);
-        pstmt.setInt(2, schedaID);
-        pstmt.executeUpdate();
-    }
-
     public static void updateScheda(SchedaAllenamento currentSa, SchedaAllenamento sa) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("UPDATE schedaAllenamento SET dataCompletamento = ?, tipo = ? WHERE idScheda = ?");
@@ -110,6 +102,7 @@ public class SchedaAllenamentoDAO {
     }
 
     public static void deleteScheda(int idScheda) throws SQLException {
+        EsercizioAllenamentoDAO.deleteAllSchedaExercises(idScheda);
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM SchedaAllenamento WHERE idScheda = ?");
         pstmt.setInt(1, idScheda);

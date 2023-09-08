@@ -9,17 +9,26 @@
 <%@include file="jsp/header.jsp"%>
 <h1 id="profileTitle">DETTAGLI UTENTE DA MODIFICARE</h1>
 
-<form action="ModificaUtente" method="post">
-<div id="FirstName" class="InfoProfile">
-    <label for="NomeUtente" id="Nome">Nome: </label>
-        <input type="text" class="volumeEsercizio" value="<%=p.getNome()%>" name="NomeUtente" id="NomeUtente">
-</div>
-<div id="LastName" class="InfoProfile">
-    <label for="CognomeUtente" id="Cognome">Cognome: </label>
-        <input type="text" class="volumeEsercizio" value="<%=p.getCognome()%>" name="CognomeUtente" id="CognomeUtente">
-</div>
+<%
+    Utente u = (Utente)request.getAttribute("Utente");
+%>
 
-<h2 id="Identifier" class="InfoProfile">Codice Fiscale: <%=p.getCodiceFiscale()%></h2>
+<form action="ModificaUtente" method="post">
+    <div id="FirstName" class="InfoProfile">
+        <label for="NomeUtente" id="Nome">Nome: </label>
+            <input type="text" class="volumeEsercizio" value="<%=u.getNome()%>" name="NomeUtente" id="NomeUtente">
+    </div>
+    <div id="LastName" class="InfoProfile">
+        <label for="CognomeUtente" id="Cognome">Cognome: </label>
+            <input type="text" class="volumeEsercizio" value="<%=u.getCognome()%>" name="CognomeUtente" id="CognomeUtente">
+    </div>
+
+    <div id="CF" class="InfoProfile">
+        <label for="CodiceFiscaleUtente" id="CodiceFiscale">Codice Fiscale: </label>
+        <input type="text" class="volumeEsercizio" value="<%=u.getCodiceFiscale()%>" name="CodiceFiscaleUtente"
+               id="CodiceFiscaleUtente">
+    </div><br>
+    <input type="submit" class="CentralButtons" value="Invia le modifiche">
 </div>
 </form>
 </body>

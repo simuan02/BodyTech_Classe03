@@ -64,7 +64,7 @@
         </div>
 
             <div class="card">
-                <a href="showTrainingCards.jsp" class="noDecoration">
+                <a href="showTrainingCards" class="noDecoration">
                     <img src="images/fitness.png">
                     <div class="container">
                         <h4><b>Schede Allenamento</b></h4>

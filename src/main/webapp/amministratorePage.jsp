@@ -25,8 +25,9 @@
 <body>
     <%
         Object o = session.getAttribute("Amministratore");
+        Amministratore a = null;
         if (o != null) {
-            Amministratore a = (Amministratore) o;
+            a = (Amministratore) o;
             request.setAttribute("Amministratore", a);
         }
         else {
@@ -42,8 +43,8 @@
             <a href="infoProfilo" style="text-decoration: none">
                 <img src="images/utente.png">
                 <div class="container">
-                    <h4><b>${amministratore.nome} ${amministratore.cognome}</b></h4>
-                    <p>${amministratore.codice}</p>
+                    <h4><b><%=a.getNome()%> <%=a.getCognome()%></b></h4>
+                    <p><%=a.getCodice()%></p>
                 </div>
             </a>
         </div>
@@ -52,18 +53,18 @@
             <a href="listaUtenti">
                 <img src="images/pt.png">
                 <div class="container">
-                    <h4><b>Istruttore</b></h4>
-                    <p>Visualizza o aggiungi i tuoi utenti.</p>
+                    <h4><b>Gestione Utenti</b></h4>
+                    <p>Gestisci gli utenti iscritti alla piattaforma.</p>
                 </div>
             </a>
         </div>
 
             <div class="card">
-                <a href="showTrainingCards.jsp" class="noDecoration">
+                <a href="showTrainingCards" class="noDecoration">
                     <img src="images/fitness.png">
                     <div class="container">
-                        <h4><b>Schede Allenamento</b></h4>
-                        <p>Visualizza le schede di allenamento.</p>
+                        <h4><b>Gestione Istruttori</b></h4>
+                        <p>Gestisci gli istruttori presenti sulla piattaforma.</p>
                     </div>
                 </a>
             </div>
