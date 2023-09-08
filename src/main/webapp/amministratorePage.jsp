@@ -1,10 +1,5 @@
-<%@ page import="bodyTech.model.entity.Istruttore" %><%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 18/08/2023
-  Time: 18:40
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Istruttore" %>
+<%@ page import="bodyTech.model.entity.Amministratore" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -29,10 +24,10 @@
 </head>
 <body>
     <%
-        Object o = session.getAttribute("Istruttore");
+        Object o = session.getAttribute("Amministratore");
         if (o != null) {
-            Istruttore i = (Istruttore) o;
-            request.setAttribute("istruttore", i);
+            Amministratore a = (Amministratore) o;
+            request.setAttribute("Amministratore", a);
         }
         else {
             response.sendError(403, "ACCESSO NON AUTORIZZATO");
@@ -43,18 +38,18 @@
 
     <div class="cards_account">
 
-        <a href="infoProfilo" style="text-decoration: none">
         <div class="card">
-            <img src="images/utente.png">
-            <div class="container">
-                <h4><b>${istruttore.nome} ${istruttore.cognome}</b></h4>
-                <p>${istruttore.matricolaIstruttore}</p>
-            </div>
+            <a href="infoProfilo" style="text-decoration: none">
+                <img src="images/utente.png">
+                <div class="container">
+                    <h4><b>${amministratore.nome} ${amministratore.cognome}</b></h4>
+                    <p>${amministratore.codice}</p>
+                </div>
+            </a>
         </div>
-        </a>
 
         <div class="card">
-            <a href="listaUtentiPage.jsp?id=${istruttore.matricolaIstruttore}">
+            <a href="listaUtenti">
                 <img src="images/pt.png">
                 <div class="container">
                     <h4><b>Istruttore</b></h4>

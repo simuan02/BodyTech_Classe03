@@ -1,4 +1,4 @@
-package bodyTech;
+package bodyTech.schedaAllenamento.controller;
 
 import bodyTech.model.dao.*;
 import bodyTech.model.entity.*;
@@ -18,29 +18,28 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-@WebServlet(name = "VisualizzaSchedaAllenamentoServlet", urlPatterns = {"/VisualizzaSchedaAllenamentoServlet"})
-public class VisualizzaSchedaAllenamentoServlet extends HttpServlet {
+@WebServlet(name = "CreazioneEserciziAllenamentoServlet", urlPatterns = {"/CreazioneEserciziAllenamentoServlet"})
+public class CreazioneEserciziAllenamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String codiceFiscale = request.getParameter("cf");
+        String address = "";
+        HttpSession session = request.getSession();
 
+        String[] volumiHtml = request.getParameterValues("volume");
+        List<Esercizio> esercizi = (List<Esercizio>) session.getAttribute("listaEsercizi");
+        String codiceFiscale = (String) session.getAttribute("codiceFiscale");
         try {
-            Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
-            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(utente.getCodiceFiscale());
-            if (scheda != null) {
-                List<EsercizioAllenamento> listaEsercizi = EsercizioAllenamentoDAO.findBySchedaID(scheda.getIdScheda());
-                scheda.setListaEsercizi(listaEsercizi);
-                request.setAttribute("scheda", scheda);
-                request.setAttribute("utente", utente);
+            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(codiceFiscale);
 
-
+            for(int i = 0; i < volumiHtml.length; i++) {
+                EsercizioAllenamentoDAO.insertEsercizioAllenamento(esercizi.get(i), volumiHtml[i], scheda.getIdScheda());
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/schedaAllenamento.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
         dispatcher.forward(request, response);
     }
 

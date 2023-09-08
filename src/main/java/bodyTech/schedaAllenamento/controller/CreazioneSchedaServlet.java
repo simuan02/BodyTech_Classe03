@@ -1,3 +1,4 @@
+package bodyTech.schedaAllenamento.controller;
 
 import bodyTech.model.dao.*;
 import bodyTech.model.entity.*;
@@ -17,7 +18,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
-@WebServlet(name = "CreazioneSchedaServlet", urlPatterns = {"/CreazioneSchedaServlet"})
+@WebServlet(name = "bodyTech.schedaAllenamento.controller.CreazioneSchedaServlet", urlPatterns = {"/bodyTech.schedaAllenamento.controller.CreazioneSchedaServlet"})
 public class CreazioneSchedaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

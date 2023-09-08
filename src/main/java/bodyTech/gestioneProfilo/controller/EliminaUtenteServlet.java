@@ -1,4 +1,4 @@
-package bodyTech;
+package bodyTech.gestioneProfilo.controller;
 
 import bodyTech.model.dao.*;
 import bodyTech.model.entity.*;

@@ -4,13 +4,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bodyTech.model.entity.SchedaAllenamento" %>
 <%@ page import="bodyTech.model.dao.SchedaAllenamentoDAO" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 18/08/2023
-  Time: 21:47
-  To change this template use File | Settings | File Templates.
---%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
@@ -30,30 +24,15 @@
 </head>
 <body>
     <%
-        String matricola = request.getParameter("id");
-        List<Utente> listaUtenti = UtenteDAO.visualizzaUtenti();
-        List<Utente> listaTuoiAssociati = new ArrayList<>();
-        List<Utente> listaAssociati = new ArrayList<>();
-        List<Utente> listaNonAssociati = new ArrayList<>();
-        for (Utente u : listaUtenti) {
-            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());
-            //System.out.println(scheda.getIdScheda());
-            if (scheda != null) {
-               if (scheda.getIstruttore().getMatricolaIstruttore().equals(matricola)) listaTuoiAssociati.add(u);
-               else listaAssociati.add(u);
-            } else listaNonAssociati.add(u);
-        }
 
-        for (Utente u : listaTuoiAssociati) {
-            System.out.println("TUO ASSOCIATO: " + u.getNome());
-        }
-
-        request.setAttribute("listaTuoiAssociati", listaTuoiAssociati);
-        request.setAttribute("listaAssociati", listaAssociati);
-        request.setAttribute("listaNonAssociati", listaNonAssociati);
     %>
 
     <%@include file="jsp/header.jsp"%>
+
+    <%
+        Profilo p = session.getAttribute("Profilo");
+        if (p.loggedUserLevel().equals("Istruttore")){
+    %>
 
     <p class="title">I tuoi Utenti</p>
     <div class="container_utenti">
@@ -96,6 +75,29 @@
             </div>
         </c:forEach>
     </div>
+
+    <%
+        }
+        else if (p.loggedUserLevel().equals("Amministratore"))
+        {
+    %>
+    <p class="title">Lista Utenti</p>
+    <div class="container_utenti">
+
+        <c:forEach items="${listaUtenti}" var="utente">
+            <div class="utente">
+                <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=${utente.codiceFiscale}&id=1" class="noDecoration">
+                    <div>
+                        <h4>${utente.codiceFiscale}</h4>
+                        <h4>${utente.cognome} ${utente.nome}</h4>
+                    </div>
+                </a>
+            </div>
+        </c:forEach>
+    </div>
+    <%
+        }
+    %>
 
 </body>
 </html>

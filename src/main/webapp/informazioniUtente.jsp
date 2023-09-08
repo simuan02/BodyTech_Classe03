@@ -1,11 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="bodyTech.model.entity.Utente" %><%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 04/09/2023
-  Time: 13:38
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -70,14 +64,11 @@
 
         </div>
 
-        <!--<div class="buttons">
-            <div id="modificaDati">
+        <div class="buttons">
+            <a href="ModificaUtente"><div id="modificaDati">
                 Modifica i dati
-            </div>
-            <a href=""><div id="eliminaUtente">
-                Elimina ${utente.cognome}
-            </div></a>>
-        </div>-->
+            </div></a>
+        </div>
 
         <a href="${pageContext.request.contextPath}/EliminaUtenteServlet?cf=${utente.codiceFiscale}">
             <div id="eliminaUtente">
