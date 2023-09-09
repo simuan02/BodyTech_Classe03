@@ -115,6 +115,11 @@ public class UtenteDAO {
             pstmt.setString(4, newUser.getPassword());
             pstmt.setString(5, oldUser.getCodiceFiscale());
             pstmt.executeUpdate();
+            if (!oldUser.getCodiceFiscale().equals(newUser.getCodiceFiscale())){
+                SchedaAllenamento nuovaSchedaUtente = SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale());
+                nuovaSchedaUtente.setUtente(newUser);
+                SchedaAllenamentoDAO.updateScheda(SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale()), nuovaSchedaUtente);
+            }
         }
     }
 

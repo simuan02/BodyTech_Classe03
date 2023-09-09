@@ -11,14 +11,6 @@ import java.sql.SQLException;
 public interface ProfiloService {
 
     /**
-     * Questa funzionalità consente a Utenti, Istruttori ed Amministratori
-     * di visualizzare le informazioni relative al proprio profilo.
-     * @param p Il Profilo da verificare
-     * @return true, se il profilo passato è diverso da null. Lancia un'eccezione, altrimenti.
-     */
-    public boolean visualizzaProfilo (Profilo p);
-
-    /**
      * Questa funzionalità consente a Utenti, Istruttori ed Amministratori di modificare
      * le informazioni relative al proprio profilo.
      * @param oldProfile il profilo da aggiornare

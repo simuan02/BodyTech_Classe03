@@ -10,14 +10,6 @@ import java.sql.SQLException;
 import java.util.List;
 
 public class ProfiloServiceImpl implements ProfiloService{
-    @Override
-    public boolean visualizzaProfilo(Profilo p) {
-        if (p != null){
-            return true;
-        }
-        else
-            throw new RuntimeException("Operazione non consentita");
-    }
 
     @Override
     public boolean modificaDati(Profilo oldProfile, Profilo newProfile) throws SQLException {

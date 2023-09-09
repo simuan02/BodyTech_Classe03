@@ -60,7 +60,7 @@
         </div>
 
             <div class="card">
-                <a href="showTrainingCards" class="noDecoration">
+                <a href="listaIstruttori" class="noDecoration">
                     <img src="images/fitness.png">
                     <div class="container">
                         <h4><b>Gestione Istruttori</b></h4>
