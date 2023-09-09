@@ -11,8 +11,18 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet che consente ad un Istruttore di eliminare una scheda di allenamento.
+ */
 @WebServlet(name = "DeleteSchedaServlet", value = "/deleteScheda")
 public class DeleteSchedaServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int idScheda = Integer.parseInt(request.getParameter("idScheda"));
@@ -31,6 +41,13 @@ public class DeleteSchedaServlet extends HttpServlet {
         }
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
