@@ -9,128 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Implementazione EliminaUtenteServlet">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindUserServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jstl-1.2.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_14_08_2023_15_55_[Changes]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/ModificaUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ModificaUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/amministratorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/amministratorePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/mysql-connector-java-8.0.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/lib/tomcat-jdbc.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/META-INF/MANIFEST.MF" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/CreazioneSchedaServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/CreazioneEserciziAllenamentoServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/IndexServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/InformazioniUtenteServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/ConPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/EsercizioDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/ProfiloDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Amministratore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Esercizio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/EsercizioAllenamento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Istruttore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Profilo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/RichiestaModificaScheda.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/SchedaAllenamento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/entity/Utente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/registrazione/controller/RegistrazioneController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/registrazione/service/RegistrazioneService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/registrazione/service/RegistrazioneServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/gson-2.9.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/jakarta.activation-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/jakarta.el-api-4.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/jakarta.servlet.jsp.jstl-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/jakarta.servlet.jsp.jstl-api-2.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/jakarta.xml.bind-api-3.0.0.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/mysql-connector-java-8.0.18.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/protobuf-java-3.6.1.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/tomcat-jdbc-10.0.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/lib/tomcat-juli-10.0.17.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/creazioneScheda.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/creazioneSchedaVolumi.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/creazioneScheda.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/footer.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/header.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/index.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/informazioniUtente.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/listaUtentiPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/css/profiloPage.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/fitness.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/immagine_homepage.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/logo.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/logoBodytech.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/menu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/pt.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/search.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/images/utente.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/index.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/informazioniUtente.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/istruttorePage.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/jsp/fileProva.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/jsp/header.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/lib/jstl-1.2.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/lib/mysql-connector-java-8.0.15.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/lib/tomcat-jdbc.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/listaUtentiPage.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/login.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/userRegistration.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/utentePage.jsp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/CreazioneSchedaServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/CreazioneEserciziAllenamentoServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/IndexServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/InformazioniUtenteServlet.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/controller/LoginController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/login/service/LoginServiceImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/ConPool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/AmministratoreDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioAllenamentoDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/EsercizioDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/IstruttoreDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/ProfiloDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/SchedaAllenamentoDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/dao/UtenteDAO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Amministratore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Esercizio.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/EsercizioAllenamento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Istruttore.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Profilo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/RichiestaModificaScheda.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/SchedaAllenamento.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/model/entity/Utente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/registrazione/controller/RegistrazioneController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/registrazione/service/RegistrazioneService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bodyTech/registrazione/service/RegistrazioneServiceImpl.class" beforeDir="false" />
-    </list>
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Implementazione EliminaUtenteServlet" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -353,7 +232,7 @@
       <workItem from="1694083073922" duration="4406000" />
       <workItem from="1694180159493" duration="3056000" />
       <workItem from="1694203597549" duration="94000" />
-      <workItem from="1694203708736" duration="3711000" />
+      <workItem from="1694203708736" duration="3739000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -473,7 +352,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694199489328</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Implementazione EliminaUtenteServlet">
+      <created>1694207468504</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1694207468504</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
