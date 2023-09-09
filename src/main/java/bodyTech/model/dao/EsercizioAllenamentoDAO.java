@@ -16,7 +16,7 @@ public class EsercizioAllenamentoDAO {
     /**
      * Implementa la funzionalità di recuperare dal DB la lista degli Esercizi della scheda di allenamento che ha
      * quell'ID come parametro
-     * @param schedaID
+     * @param schedaID id della scheda da cercare
      * @return lista degli Esercizi
      * @throws SQLException
      */
@@ -36,6 +36,13 @@ public class EsercizioAllenamentoDAO {
         return esercizi;
     }
 
+    /**
+     * Implementa la funzionalità di inserire un nuovo esercizio in una scheda di allenamento nel DB.
+     * @param es l'esercizio da inserire
+     * @param volume il volume dell'esercizio da inserire
+     * @param idScheda id della scheda alla quale aggiungere l'esercizio
+     * @throws SQLException
+     */
     public static void insertEsercizioAllenamento(Esercizio es, String volume, int idScheda) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO EsercizioAllenamento VALUES (?, ?, ?)");
@@ -45,6 +52,13 @@ public class EsercizioAllenamentoDAO {
         pstmt.executeUpdate();
     }
 
+    /**
+     * Implementa la funzionalità di modificare un esercizio della scheda di allenamento sostituendolo
+     * con gli attributi dell'esercizio passato come parametro.
+     * @param ea l'esercizio i cui attributi si sostituiscono a quelli dell'esercizio già presente nella scheda
+     * @param idScheda id della scheda alla quale viene modificato l'esercizio
+     * @throws SQLException
+     */
     public static void updateEsercizio(EsercizioAllenamento ea, int idScheda) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("UPDATE EsercizioAllenamento SET volume = ? WHERE esercizio = ? and " +
@@ -55,6 +69,11 @@ public class EsercizioAllenamentoDAO {
         pstmt.executeUpdate();
     }
 
+    /**
+     * Implementa la funzionalità di eliminare gli esercizi presenti in una scheda di allenamento dal DB.
+     * @param idScheda id della scheda dalla quale vengono eliminati gli esercizi
+     * @throws SQLException
+     */
     public static void deleteEsercizi (int idScheda) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM esercizioAllenamento WHERE schedaAllenamento = ?");

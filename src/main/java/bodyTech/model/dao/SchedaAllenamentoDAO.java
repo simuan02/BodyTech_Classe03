@@ -30,6 +30,12 @@ public class SchedaAllenamentoDAO {
         return schede;
     }
 
+    /**
+     * Implementa la funzionalità di creare una scheda di allenamento che viene associata ad un utente.
+     * @param rs
+     * @return la scheda d'allenamento creata
+     * @throws SQLException
+     */
     private static SchedaAllenamento createSchedaAllenamento(ResultSet rs) throws SQLException {
         SchedaAllenamento sa = new SchedaAllenamento();
         sa.setIdScheda(rs.getInt(1));
@@ -78,6 +84,12 @@ public class SchedaAllenamentoDAO {
         return listaSchede;
     }
 
+    /**
+     * Implementa la funzionalità di cercare nel DB la scheda di allenamento che ha come attributo l'id passato come parametro
+     * @param schedaID id della scheda da cercare
+     * @return la scheda di allenamento trovata
+     * @throws SQLException
+     */
     public static SchedaAllenamento findByID(int schedaID) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
@@ -89,6 +101,13 @@ public class SchedaAllenamentoDAO {
         return null;
     }
 
+    /**
+     * Implementa la funzionalità di eliminare da una scheda di allenamento l'esercizio che ha come attributo il nome
+     * passato come parametro.
+     * @param schedaID scheda dalla quale eliminare l'esercizio
+     * @param nomeEsercizio nome dell'esercizio da eliminare
+     * @throws SQLException
+     */
     public static void deleteExercise(int schedaID, String nomeEsercizio) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM EsercizioAllenamento WHERE esercizio = ? and schedaAllenamento = ?");
@@ -97,6 +116,13 @@ public class SchedaAllenamentoDAO {
         pstmt.executeUpdate();
     }
 
+    /**
+     * Implementa la funzionalità di aggiornamento nel DB delle informazioni della scheda di allenamento currentSa
+     * con quelle di sa
+     * @param currentSa scheda da aggiornare
+     * @param sa scheda con le infromazioni aggiornate
+     * @throws SQLException
+     */
     public static void updateScheda(SchedaAllenamento currentSa, SchedaAllenamento sa) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("UPDATE schedaAllenamento SET dataCompletamento = ?, tipo = ? WHERE idScheda = ?");
@@ -109,6 +135,11 @@ public class SchedaAllenamentoDAO {
         conn.close();
     }
 
+    /**
+     * Implementa la funzionalità di eliminare dal DB la scheda di allenamento che ha come attributo l'id passato come parametro
+     * @param idScheda id della scheda da rimuovere
+     * @throws SQLException
+     */
     public static void deleteScheda(int idScheda) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM SchedaAllenamento WHERE idScheda = ?");
@@ -116,6 +147,11 @@ public class SchedaAllenamentoDAO {
         pstmt.executeUpdate();
     }
 
+    /**
+     * Implementa la funzionalità di inserire una scheda di allenamento nel DB.
+     * @param scheda scheda da inserire nel DB
+     * @throws SQLException
+     */
     public static void insertScheda(SchedaAllenamento scheda) throws SQLException {
         try (Connection con = ConPool.getConnection()) {
             PreparedStatement ps = con.prepareStatement(

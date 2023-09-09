@@ -34,6 +34,12 @@ public class RichiestaModificaSchedaDAO {
         return richieste;
     }
 
+    /**
+     * Implementa la funzionalità di aggiungere nel DB una richiesta di modifica scheda creata da un utente.
+     * @param richiesta la richiesta di modifica
+     * @param codiceFiscale dell'utente che ha creato la richiesta
+     * @throws SQLException
+     */
     public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +

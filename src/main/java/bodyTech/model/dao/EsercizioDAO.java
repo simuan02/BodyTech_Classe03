@@ -35,6 +35,11 @@ public class EsercizioDAO {
         return es;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB la lista di tutti gli esercizi presenti.
+     * @return lista degli esercizi
+     * @throws SQLException
+     */
     public static List<Esercizio> findAll() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();

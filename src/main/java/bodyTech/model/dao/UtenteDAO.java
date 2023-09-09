@@ -51,8 +51,8 @@ public class UtenteDAO {
 
     /**
      * Implementa la funzionalità di recuperare dal DB l'Utente associato a quel codice fiscale
-     * @param codiceFiscale
-     * @return Utente
+     * @param codiceFiscale dell'Utente da cercare
+     * @return Utente trovato
      * @throws SQLException
      */
     public static Utente findByCodiceFiscale (String codiceFiscale) throws SQLException {
@@ -118,6 +118,11 @@ public class UtenteDAO {
         }
     }
 
+    /**
+     * Implementa la funzionalità di eliminare un Utente dal DB.
+     * @param codiceFiscale dell'Utente da eliminare
+     * @throws SQLException
+     */
     public static void deleteUser (String codiceFiscale) throws SQLException{
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM utente WHERE codiceFiscale = ?");
