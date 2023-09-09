@@ -15,7 +15,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "EliminaUtenteServlet", urlPatterns = {"/EliminaUtenteServlet"})
+@WebServlet(name = "EliminaIstruttoreServlet", urlPatterns = {"/EliminaIstruttoreServlet"})
 public class EliminaIstruttoreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

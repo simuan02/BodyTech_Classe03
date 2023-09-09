@@ -130,7 +130,7 @@ public class IstruttoreDAO {
 
     public static void insertInstructor(Istruttore istr) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Istruttore values (?, ?, ?, ?)");
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Istruttore values (?, ?, ?, ?, ?)");
         pstmt.setString(1, istr.getMatricolaIstruttore());
         pstmt.setString(2, istr.getNome());
         pstmt.setString(3, istr.getCognome());

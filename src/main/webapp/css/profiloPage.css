@@ -273,6 +273,7 @@ a {
     padding: 1.5%;
     background-color: #F7C70F;
     color: black;
+    cursor: pointer;
 }
 
 #editButton:hover {

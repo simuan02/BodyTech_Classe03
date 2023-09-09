@@ -9,23 +9,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Modifica Interfacce JSP e inserimento di nuove funzionalità nella gestione degli Utenti da parte di Istruttore e Amministratore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaIstruttoreServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindInstructorServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/InformazioniIstruttoreServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaIstruttoreServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/ModificaIstruttore.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/informazioniIstruttore.jsp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AggiungiIstruttoreServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/AggiungiIstruttore.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/amministratorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/amministratorePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaIstruttoreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -268,7 +261,7 @@
       <workItem from="1694203597549" duration="94000" />
       <workItem from="1694203708736" duration="3739000" />
       <workItem from="1694277114458" duration="8291000" />
-      <workItem from="1694296110413" duration="2183000" />
+      <workItem from="1694296110413" duration="3742000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -409,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694285411336</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore">
+      <created>1694298412805</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1694298412805</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -476,6 +476,18 @@
     <MESSAGE value="Implementazione EliminaUtenteServlet" />
     <MESSAGE value="Commenti Javadoc servlet e service" />
     <MESSAGE value="Modifica Interfacce JSP e inserimento di nuove funzionalità nella gestione degli Utenti da parte di Istruttore e Amministratore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Modifica Interfacce JSP e inserimento di nuove funzionalità nella gestione degli Utenti da parte di Istruttore e Amministratore" />
+    <MESSAGE value="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp</url>
+          <line>57</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

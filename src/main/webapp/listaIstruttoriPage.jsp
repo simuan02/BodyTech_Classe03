@@ -6,7 +6,7 @@
 
 <html>
 <head>
-    <title>BodyTech - Utenti</title>
+    <title>BodyTech - Istruttori</title>
     <link rel="stylesheet" href="css/listaUtentiPage.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
 
@@ -21,7 +21,19 @@
 </head>
 <body>
     <%
-
+        Object o = request.getAttribute("LunghezzaMatricolaErrata");
+        if (o != null){
+    %>
+    <script>alert("Matricola inserita di lunghezza errata")</script>
+    <%
+        ;}
+        Object o2 = request.getAttribute("CodiceGiaPresente");
+        if (o2 != null)
+        {
+    %>
+    <script>alert("Matricola gia' presente nella piattaforma")</script>
+    <%
+        };
     %>
 
     <%@include file="jsp/header.jsp"%>
@@ -34,7 +46,7 @@
     <div class="container_utenti">
 
         <%
-            List<Istruttore> listaIstruttori = (List<Istruttore>) request.getAttribute("listaIstruttori");
+            List<Istruttore> listaIstruttori = (List<Istruttore>) session.getAttribute("listaIstruttori");
             for (Istruttore istr: listaIstruttori)
             { %>
                 <div class="utente">
@@ -49,6 +61,7 @@
                 }
             %>
     </div>
+    <a href="AggiungiIstruttore.jsp"><button id="AggiungiIstruttore">Aggiungi un nuovo istruttore</button></a>
 
     <%
         }
