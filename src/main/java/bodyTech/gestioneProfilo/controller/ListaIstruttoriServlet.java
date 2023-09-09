@@ -30,7 +30,7 @@ public class ListaIstruttoriServlet extends HttpServlet {
             GestioneProfiloService services = new GestioneProfiloServiceImpl();
             List<Istruttore> listaIstruttori = services.visualizzaIstruttori(p);
             if (p.loggedUserLevel().equals("Amministratore")) {
-                session.setAttribute("listaIstruttori", listaIstruttori);
+                request.setAttribute("listaIstruttori", listaIstruttori);
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttoriPage.jsp");
                 dispatcher.forward(request, response);
             }

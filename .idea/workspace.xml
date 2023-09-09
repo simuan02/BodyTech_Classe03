@@ -9,17 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore">
-      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AggiungiIstruttoreServlet.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/webapp/AggiungiIstruttore.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaIstruttoreServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp" afterDir="false" />
-    </list>
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -261,7 +251,7 @@
       <workItem from="1694203597549" duration="94000" />
       <workItem from="1694203708736" duration="3739000" />
       <workItem from="1694277114458" duration="8291000" />
-      <workItem from="1694296110413" duration="3742000" />
+      <workItem from="1694296110413" duration="4110000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -409,7 +399,21 @@
       <option name="project" value="LOCAL" />
       <updated>1694298412805</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore">
+      <created>1694300076442</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1694300076442</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore">
+      <created>1694300215189</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1694300215189</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

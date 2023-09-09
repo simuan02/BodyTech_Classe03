@@ -57,16 +57,12 @@ public class AggiungiIstruttoreServlet extends HttpServlet {
                 }
                 if (b) {
                     services.aggiungiIstruttore(p, i);
-                    List<Istruttore> istruttori = (List<Istruttore>)session.getAttribute("listaIstruttori");
-                    i.setListaSchedeCreate(SchedaAllenamentoDAO.findAllByInstructor(i.getMatricolaIstruttore()));
-                    istruttori.add(i);
-                    session.setAttribute("listaIstruttori", istruttori);
                 }
             }
             else {
                 request.setAttribute("LunghezzaMatricolaErrata", true);
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttoriPage.jsp");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
