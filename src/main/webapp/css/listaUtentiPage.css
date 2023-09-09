@@ -1,7 +1,7 @@
 .container_utenti {
-    margin-top: 50px;
-    margin-left: 50px;
-    margin-right: 50px;
+    margin-top: 10px;
+    margin-left: 20px;
+    margin-right: 20px;
     padding: 2%;
     display: flex;
     flex-direction: row;
@@ -11,6 +11,7 @@
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     padding: 2%;
+    margin: 2%;
 }
 
 .utente:hover {
@@ -39,4 +40,16 @@
     font-size: 15pt;
     color: red;
     text-align: center;
+}
+
+#AggiungiIstruttore {
+    padding: 1%;
+    margin: 2%;
+    color: #F7C70F;
+    background-color: black;
+}
+
+#AggiungiIstruttore:hover {
+    background-color: #F7C70F;
+    color: black;
 }

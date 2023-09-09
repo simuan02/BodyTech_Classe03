@@ -24,12 +24,14 @@ public class ShowProfileInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         Profilo p = (Profilo)session.getAttribute("Profilo");
-        ProfiloService services = new ProfiloServiceImpl();
         try {
-            services.visualizzaProfilo(p);
-            request.setAttribute("ServletMostraProfiloLanciata", new Object());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/infoProfile.jsp");
-            dispatcher.forward(request, response);
+            if (p!=null){
+                request.setAttribute("ServletMostraProfiloLanciata", new Object());
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/infoProfile.jsp");
+                dispatcher.forward(request, response);
+            }
+            else
+                throw new Exception();
         } catch (Exception e) {
             e.printStackTrace();
             response.sendError(403, "Operazione non consentita!");

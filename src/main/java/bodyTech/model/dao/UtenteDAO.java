@@ -115,18 +115,24 @@ public class UtenteDAO {
             pstmt.setString(4, newUser.getPassword());
             pstmt.setString(5, oldUser.getCodiceFiscale());
             pstmt.executeUpdate();
+            if (!oldUser.getCodiceFiscale().equals(newUser.getCodiceFiscale())){
+                SchedaAllenamento nuovaSchedaUtente = SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale());
+                nuovaSchedaUtente.setUtente(newUser);
+                SchedaAllenamentoDAO.updateScheda(SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale()), nuovaSchedaUtente);
+            }
         }
     }
 
     /**
      * Implementa la funzionalità di eliminare un Utente dal DB.
-     * @param codiceFiscale dell'Utente da eliminare
+     * @param u Utente da eliminare
      * @throws SQLException
      */
-    public static void deleteUser (String codiceFiscale) throws SQLException{
+    public static void deleteUser(Utente u) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM utente WHERE codiceFiscale = ?");
-        pstmt.setString(1, codiceFiscale);
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Utente WHERE codiceFiscale = ?");
+        SchedaAllenamentoDAO.deleteScheda(SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale()).getIdScheda());
+        pstmt.setString(1, u.getCodiceFiscale());
         pstmt.executeUpdate();
     }
 }
