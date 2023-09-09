@@ -46,7 +46,7 @@
     <div class="container_utenti">
 
         <%
-            List<Istruttore> listaIstruttori = (List<Istruttore>) session.getAttribute("listaIstruttori");
+            List<Istruttore> listaIstruttori = (List<Istruttore>) request.getAttribute("listaIstruttori");
             for (Istruttore istr: listaIstruttori)
             { %>
                 <div class="utente">
