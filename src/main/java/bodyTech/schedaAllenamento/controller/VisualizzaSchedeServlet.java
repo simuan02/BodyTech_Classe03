@@ -12,8 +12,19 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet che consente di recuperare una lista di tutte le schede di allenamento dal DB,
+ * settarla nella richiesta e invocare la jsp "listaSchedePage" con un forward.
+ */
 @WebServlet(name = "VisualizzaSchedeServlet", value = "/showTrainingCards")
 public class VisualizzaSchedeServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -32,6 +43,13 @@ public class VisualizzaSchedeServlet extends HttpServlet {
         }
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

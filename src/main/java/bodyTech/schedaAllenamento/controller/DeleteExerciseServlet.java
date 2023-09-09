@@ -10,8 +10,18 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet che consente ad un Istruttore o Amministratore di eliminare un esercizio da una scheda di allenamento.
+ */
 @WebServlet(name = "DeleteExerciseServlet", value = "/deleteExercise")
 public class DeleteExerciseServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -33,6 +43,13 @@ public class DeleteExerciseServlet extends HttpServlet {
             response.sendError(403, "Utente non autorizzato");
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
