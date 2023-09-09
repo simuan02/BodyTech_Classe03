@@ -127,4 +127,22 @@ public class IstruttoreDAO {
         }
         return istr;
     }
+
+    public static void insertInstructor(Istruttore istr) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Istruttore values (?, ?, ?, ?)");
+        pstmt.setString(1, istr.getMatricolaIstruttore());
+        pstmt.setString(2, istr.getNome());
+        pstmt.setString(3, istr.getCognome());
+        pstmt.setString(4, istr.getPassword());
+        pstmt.setString(5, istr.getSpecializzazione());
+        pstmt.executeUpdate();
+    }
+
+    public static void deleteInstructor(Istruttore istr) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Istruttore WHERE matricolaIstruttore = ?");
+        pstmt.setString(1, istr.getMatricolaIstruttore());
+        pstmt.executeUpdate();
+    }
 }

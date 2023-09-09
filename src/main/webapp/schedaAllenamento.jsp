@@ -1,11 +1,6 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 07/09/2023
-  Time: 12:52
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="java.util.List" %>
+<%@ page import="bodyTech.model.entity.SchedaAllenamento" %>
+<%@ page import="bodyTech.model.entity.EsercizioAllenamento" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,12 +29,19 @@
         <p class="title">Esercizi</p>
 
         <div class="esercizi">
-            <c:forEach items="${scheda.listaEsercizi}" var="esercizio">
+            <%
+                SchedaAllenamento sa = (SchedaAllenamento)request.getAttribute("scheda");
+                List<EsercizioAllenamento> esercizi = sa.getListaEsercizi();
+                for (EsercizioAllenamento esercizio : esercizi){
+            %>
+
                 <div class="esercizio">
-                    <p>${esercizio.nomeEsercizio} : ${esercizio.volume}</p>
-                    <p class="descrizione">${esercizio.descrizione}</p>
+                    <p><%=esercizio.getNomeEsercizio()%> : <%=esercizio.getVolume()%></p>
+                    <p class="descrizione"><%=esercizio.getDescrizione()%></p>
                 </div>
-            </c:forEach>
+            <%
+                }
+            %>
         </div>
     </div>
 </body>

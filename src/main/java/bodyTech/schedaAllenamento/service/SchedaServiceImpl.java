@@ -20,7 +20,7 @@ public class SchedaServiceImpl implements SchedaService{
 
     @Override
     public void eliminaEsercizio(int schedaID, String nomeEsercizio) throws SQLException {
-        SchedaAllenamentoDAO.deleteExercise(schedaID, nomeEsercizio);
+        EsercizioAllenamentoDAO.deleteExercise(schedaID, nomeEsercizio);
     }
 
     @Override
@@ -83,6 +83,16 @@ public class SchedaServiceImpl implements SchedaService{
             throw new RuntimeException("Esercizio inesistente!");
         }
         EsercizioAllenamentoDAO.insertEsercizioAllenamento(es, volume, scheda.getIdScheda());
+    }
+
+    @Override
+    public void aggiungiSchedaUtente(Profilo p, SchedaAllenamento scheda, Utente utente) throws SQLException {
+        if (p.loggedUserLevel().equals("Istruttore")){
+            scheda.setUtente(utente);
+            SchedaAllenamentoDAO.insertScheda(scheda);
+        }
+        else
+            throw new RuntimeException("Utente non autorizzato!");
     }
 
     private boolean schedaEsistente (SchedaAllenamento scheda) throws SQLException {

@@ -66,8 +66,6 @@ public class ProfiloServiceImpl implements ProfiloService{
     }
 
     public SchedaAllenamento visualizzaScheda(Profilo p) throws SQLException {
-        if (!p.loggedUserLevel().equals("Utente"))
-            throw new RuntimeException("Accesso non autorizzato al metodo");
         SchedaAllenamento sa = SchedaAllenamentoDAO.findSchedaByUtente(((Utente)p).getCodiceFiscale());
         return sa;
     }

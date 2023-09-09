@@ -89,18 +89,10 @@ public class SchedaAllenamentoDAO {
         return null;
     }
 
-    public static void deleteExercise(int schedaID, String nomeEsercizio) throws SQLException {
-        Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM EsercizioAllenamento WHERE esercizio = ? and schedaAllenamento = ?");
-        pstmt.setString(1, nomeEsercizio);
-        pstmt.setInt(2, schedaID);
-        pstmt.executeUpdate();
-    }
-
     public static void updateScheda(SchedaAllenamento currentSa, SchedaAllenamento sa) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("UPDATE schedaAllenamento SET dataCompletamento = ?, tipo = ? WHERE idScheda = ?");
-        java.sql.Date nuovaDataCompletamento = new java.sql.Date(sa.getDataCompletamento().getTime());
+        Date nuovaDataCompletamento = new Date(sa.getDataCompletamento().getTime());
         pstmt.setDate(1, nuovaDataCompletamento);
         pstmt.setString(2, sa.getTipo());
         pstmt.setInt(3, currentSa.getIdScheda());
@@ -110,32 +102,24 @@ public class SchedaAllenamentoDAO {
     }
 
     public static void deleteScheda(int idScheda) throws SQLException {
+        EsercizioAllenamentoDAO.deleteAllSchedaExercises(idScheda);
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM SchedaAllenamento WHERE idScheda = ?");
         pstmt.setInt(1, idScheda);
         pstmt.executeUpdate();
     }
 
-    public static void insertScheda(SchedaAllenamento scheda) throws SQLException {
-        try (Connection con = ConPool.getConnection()) {
-            PreparedStatement ps = con.prepareStatement(
-                    "INSERT INTO schedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) VALUES(?,?,?,?,?)",
-                    Statement.RETURN_GENERATED_KEYS);
-            ps.setDate(1, scheda.getDataInizio());
-            ps.setDate(2, scheda.getDataCompletamento());
-            ps.setString(3, scheda.getTipo());
-            ps.setString(4, scheda.getUtente().getCodiceFiscale());
-            ps.setString(5, scheda.getIstruttore().getMatricolaIstruttore());
-            if (ps.executeUpdate() != 1) {
-                throw new RuntimeException("INSERT error.");
-            }
-
-            ResultSet rs = ps.getGeneratedKeys();
-            rs.next();
-            int id = rs.getInt(1);
-            scheda.setIdScheda(id);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+    public static void insertScheda(SchedaAllenamento sa) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) values" +
+                "(?, ?, ?, ?, ?)");
+        Date nuovaDataInizio = new Date(sa.getDataInizio().getTime());
+        pstmt.setDate(1, nuovaDataInizio);
+        Date nuovaDataCompletamento = new Date(sa.getDataCompletamento().getTime());
+        pstmt.setDate(2, nuovaDataCompletamento);
+        pstmt.setString(3, sa.getTipo());
+        pstmt.setString(4, sa.getUtente().getCodiceFiscale());
+        pstmt.setString(5, sa.getIstruttore().getMatricolaIstruttore());
+        pstmt.executeUpdate();
     }
 }
