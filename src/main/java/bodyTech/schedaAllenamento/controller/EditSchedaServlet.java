@@ -18,8 +18,7 @@ import java.util.Date;
 import java.util.List;
 
 /**
- * Servlet che consente ad un Istruttore o Amministratore di modificare
- * la data di completamento, il tipo, e il volume degli esercizi di una scheda di allenamento.
+ * Servlet che consente ad un Istruttore o Amministratore di modificare una scheda di allenamento.
  */
 @WebServlet(name = "EditSchedaServlet", value = "/editScheda")
 public class EditSchedaServlet extends HttpServlet {
