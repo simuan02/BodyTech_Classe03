@@ -18,7 +18,7 @@
     <%
         Istruttore istruttore = (Istruttore)request.getAttribute("istruttore");
         List<SchedaAllenamento> listaSchede = istruttore.getListaSchedeCreate();
-        if (listaSchede != null){
+        if (listaSchede.size() > 0){
     %>
             <a href="${pageContext.request.contextPath}/VisualizzaSchedeIstruttoreServlet?mat=${istruttore.matricolaIstruttore}"><div class="button">
                 Visualizza Schede d'allenamento create
