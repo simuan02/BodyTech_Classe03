@@ -14,6 +14,7 @@
 %>
 
 <form action="ModificaUtente" method="post">
+    <input type="hidden" name="CodiceFiscaleVecchio" value="<%=u.getCodiceFiscale()%>">
     <div id="FirstName" class="InfoProfile">
         <label for="NomeUtente" id="Nome">Nome: </label>
             <input type="text" class="volumeEsercizio" value="<%=u.getNome()%>" name="NomeUtente" id="NomeUtente">
@@ -28,7 +29,7 @@
         <input type="text" class="volumeEsercizio" value="<%=u.getCodiceFiscale()%>" name="CodiceFiscaleUtente"
                id="CodiceFiscaleUtente">
     </div><br>
-    <input type="submit" class="CentralButtons" value="Invia le modifiche">
+    <input type="submit" id="EditButton" value="Invia le modifiche">
 </div>
 </form>
 </body>

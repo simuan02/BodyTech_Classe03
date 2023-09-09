@@ -85,6 +85,16 @@ public class SchedaServiceImpl implements SchedaService{
         EsercizioAllenamentoDAO.insertEsercizioAllenamento(es, volume, scheda.getIdScheda());
     }
 
+    @Override
+    public void aggiungiSchedaUtente(Profilo p, SchedaAllenamento scheda, Utente utente) throws SQLException {
+        if (p.loggedUserLevel().equals("Istruttore")){
+            scheda.setUtente(utente);
+            SchedaAllenamentoDAO.insertScheda(scheda);
+        }
+        else
+            throw new RuntimeException("Utente non autorizzato!");
+    }
+
     private boolean schedaEsistente (SchedaAllenamento scheda) throws SQLException {
         List<SchedaAllenamento> listaSchede = SchedaAllenamentoDAO.findAll();
         boolean schedaEsistente = false;

@@ -16,7 +16,7 @@ public interface SchedaService {
     /**
      * Questa funzionalità consente agli Istruttori di visualizza una lista di Schede di Allenamento
      * @param p il profilo che invoca questo metodo
-     * @return
+     * @return la lista di schede di allenamento presenti nel DB
      */
     public List<SchedaAllenamento> visualizzaSchede (Profilo p) throws SQLException;
 
@@ -52,4 +52,12 @@ public interface SchedaService {
      * @throws SQLException
      */
     public void aggiungiEsercizio (Esercizio es, String volume, SchedaAllenamento scheda) throws SQLException;
+
+    /**
+     * Questa funzionalità consente agli Istruttori di creare una Scheda di Allenamento ed associarla ad un Utente.
+     * @param p profilo che invoca questa funzionalità
+     * @param scheda la scheda di allenamento da aggiungere all'utente
+     * @param utente l'utente a cui aggiungere la scheda di allenamento
+     */
+    public void aggiungiSchedaUtente (Profilo p, SchedaAllenamento scheda, Utente utente) throws SQLException;
 }

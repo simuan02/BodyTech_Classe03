@@ -9,7 +9,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Implementazione EliminaUtenteServlet" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaUtenteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/InformazioniUtenteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneEserciziAllenamentoServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneSchedaServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/VisualizzaSchedaUtenteServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/lib/jstl-1.2.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/webContexts.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/webContexts.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ModificaUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ModificaUtente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jstl-1.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/creazioneScheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/creazioneScheda.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/creazioneSchedaVolumi.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/creazioneSchedaVolumi.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/informazioniUtente.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/informazioniUtente.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/schedaAllenamento.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/schedaAllenamento.jsp" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +57,15 @@
       </list>
     </option>
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="main" />
+  </component>
   <component name="Git.Settings">
+    <option name="PREVIOUS_COMMIT_AUTHORS">
+      <list>
+        <option value="Abyss117 &lt;reektreep@gmail.com&gt;" />
+      </list>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitSEFilterConfiguration">
@@ -60,12 +95,15 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2TypkqXiqnHCcpfaN2YKW8HtKRi" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="Downloaded.Files.Path.Enabled" value="false" />
     <property name="Repository.Attach.Annotations" value="false" />
     <property name="Repository.Attach.JavaDocs" value="false" />
@@ -74,7 +112,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/jstl-1.2.jar" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp/lib/jstl-1.2.jar" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -82,15 +120,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp\lib" />
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp" />
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\ProgettoBodyTech\src\main\webapp\images" />
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\lib" />
       <recent name="C:\Users\jacop\IdeaProjects\BodyTech3\src\main\webapp\images" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp\WEB-INF\lib" />
+      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\java\bodyTech\schedaAllenamento\controller" />
+      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\java\bodyTech\gestioneProfilo\controller" />
+      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp\lib" />
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp" />
-      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp\WEB-INF" />
+      <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp\WEB-INF\lib" />
     </key>
   </component>
   <component name="RunManager">
@@ -233,6 +274,7 @@
       <workItem from="1694180159493" duration="3056000" />
       <workItem from="1694203597549" duration="94000" />
       <workItem from="1694203708736" duration="3739000" />
+      <workItem from="1694277114458" duration="7923000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -359,7 +401,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694207468504</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Commenti Javadoc servlet e service">
+      <created>1694277257209</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1694277257209</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,6 +456,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Modifica 2 Header e IndexServlet" />
     <MESSAGE value="File prova commit" />
     <MESSAGE value="Fix" />
@@ -423,6 +473,7 @@
     <MESSAGE value="Prova" />
     <MESSAGE value="Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento" />
     <MESSAGE value="Implementazione EliminaUtenteServlet" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implementazione EliminaUtenteServlet" />
+    <MESSAGE value="Commenti Javadoc servlet e service" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commenti Javadoc servlet e service" />
   </component>
 </project>

@@ -2,9 +2,8 @@ package bodyTech.gestioneProfilo.controller;
 
 import bodyTech.gestioneProfilo.service.GestioneProfiloService;
 import bodyTech.gestioneProfilo.service.GestioneProfiloServiceImpl;
-import bodyTech.model.dao.UtenteDAO;
-import bodyTech.model.entity.Profilo;
-import bodyTech.model.entity.Utente;
+import bodyTech.model.dao.*;
+import bodyTech.model.entity.*;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,37 +13,38 @@ import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 
-@WebServlet(name = "ModificaUtenteServlet", urlPatterns = {"/ModificaUtente"})
-public class ModificaUtenteServlet extends HttpServlet {
+@WebServlet(name = "EliminaUtenteServlet", urlPatterns = {"/EliminaUtenteServlet"})
+public class EliminaUtenteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Profilo p = (Profilo)request.getSession().getAttribute("Profilo");
+       String codiceFiscale = request.getParameter("cf");
+
         try {
-            String codiceFiscale = request.getParameter("CodiceFiscaleUtente");
-            String nome = request.getParameter("NomeUtente");
-            String cognome = request.getParameter("CognomeUtente");
-            String vecchioCodiceFiscale = request.getParameter("CodiceFiscaleVecchio");
-            Utente oldUser = UtenteDAO.findByCodiceFiscale(vecchioCodiceFiscale);
-            Utente newUser = new Utente();
-            newUser.setNome(nome);
-            newUser.setCognome(cognome);
-            newUser.setCodiceFiscale(codiceFiscale);
-            newUser.setPassword(oldUser.getPassword());
             GestioneProfiloService services = new GestioneProfiloServiceImpl();
-            services.modificaUtente(p, oldUser, newUser);
+            services.eliminaUtente((Profilo)request.getSession().getAttribute("Profilo"), UtenteDAO.findByCodiceFiscale(codiceFiscale));
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (RuntimeException e2){
-            response.sendError(403, e2.getMessage());
+            throw new RuntimeException(e);
         }
+
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
+        dispatcher.forward(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doGet(request, response);
     }
+
+
 }
+

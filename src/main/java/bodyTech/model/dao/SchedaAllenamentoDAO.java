@@ -108,4 +108,18 @@ public class SchedaAllenamentoDAO {
         pstmt.setInt(1, idScheda);
         pstmt.executeUpdate();
     }
+
+    public static void insertScheda(SchedaAllenamento sa) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) values" +
+                "(?, ?, ?, ?, ?)");
+        Date nuovaDataInizio = new Date(sa.getDataInizio().getTime());
+        pstmt.setDate(1, nuovaDataInizio);
+        Date nuovaDataCompletamento = new Date(sa.getDataCompletamento().getTime());
+        pstmt.setDate(2, nuovaDataCompletamento);
+        pstmt.setString(3, sa.getTipo());
+        pstmt.setString(4, sa.getUtente().getCodiceFiscale());
+        pstmt.setString(5, sa.getIstruttore().getMatricolaIstruttore());
+        pstmt.executeUpdate();
+    }
 }

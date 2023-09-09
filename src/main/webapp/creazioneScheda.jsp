@@ -1,11 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 04/09/2023
-  Time: 15:04
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Esercizio" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,13 +11,13 @@
     <%@include file="jsp/header.jsp"%>
 
     <div class="card">
-        <p id="title">Crazione Scheda</p>
+        <p id="title">Creazione Scheda</p>
         <div id="informazioni">
             <p>Cognome: ${utente.cognome}</p>
             <p>Nome: ${utente.nome}</p>
             <p>Codice Fiscale: ${utente.codiceFiscale}</p>
         </div>
-        <form action="CreazioneSchedaServlet", method="post">
+        <form action="CreazioneSchedaServlet?cf=${utente.codiceFiscale}" method="post">
 
             <div class="date">
                 <p id="tipo">Tipo Scheda: </p>
@@ -43,12 +37,18 @@
             </div>
 
             <div class="esercizi">
-                <c:forEach items="${esercizi}" var="esercizio">
+                <%
+                    List<Esercizio> esercizi = (List<Esercizio>)request.getAttribute("esercizi");
+                    for (Esercizio esercizio: esercizi) {
+                %>
                     <div class="esercizio">
-                        <input type="checkbox" id="${esercizio.nomeEsercizio}" name="esercizio" value="${esercizio.nomeEsercizio}">
-                        <label for="${esercizio.nomeEsercizio}">${esercizio.nomeEsercizio}</label>
+                        <input type="checkbox" id="<%=esercizio.getNomeEsercizio()%>" name="esercizio"
+                               value="<%=esercizio.getNomeEsercizio()%>">
+                        <label for="<%=esercizio.getNomeEsercizio()%>"><%=esercizio.getNomeEsercizio()%></label>
                     </div>
-                </c:forEach>
+                <%
+                    }
+                %>
             </div>
             <input type="submit" value="CONTINUA">
         </form>

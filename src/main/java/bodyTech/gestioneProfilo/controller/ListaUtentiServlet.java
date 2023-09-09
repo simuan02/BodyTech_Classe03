@@ -31,7 +31,6 @@ public class ListaUtentiServlet extends HttpServlet {
             GestioneProfiloService services = new GestioneProfiloServiceImpl();
             List<Utente> listaUtenti = services.visualizzaUtenti(p);
             if (p.loggedUserLevel().equals("Istruttore")) {
-                String matricola = request.getParameter("id");
                 List<Utente> listaTuoiAssociati = new ArrayList<>();
                 List<Utente> listaAssociati = new ArrayList<>();
                 List<Utente> listaNonAssociati = new ArrayList<>();
@@ -39,7 +38,7 @@ public class ListaUtentiServlet extends HttpServlet {
                     SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());
 
                     if (scheda != null) {
-                        if (scheda.getIstruttore().getMatricolaIstruttore().equals(matricola))
+                        if (scheda.getIstruttore().getMatricolaIstruttore().equals(((Istruttore)p).getMatricolaIstruttore()))
                             listaTuoiAssociati.add(u);
                         else listaAssociati.add(u);
                     } else

@@ -1,9 +1,5 @@
 <%@ page import="bodyTech.model.entity.Utente" %>
 <%@ page import="java.util.List" %>
-<%@ page import="bodyTech.model.dao.UtenteDAO" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="bodyTech.model.entity.SchedaAllenamento" %>
-<%@ page import="bodyTech.model.dao.SchedaAllenamentoDAO" %>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
@@ -15,9 +11,10 @@
 
     <style>
         .title {
-            font-size: 15pt;
+            font-size: 18pt;
             color: red;
             text-align: center;
+            font-weight: 700;
         }
     </style>
 </head>
@@ -76,19 +73,20 @@
             List<Utente> listaNonAssociati = (List<Utente>) request.getAttribute("listaNonAssociati");
             for (Utente user : listaNonAssociati)
             {
-        %>            <div class="utente">
-                <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=<%=user.getCodiceFiscale()%>&id=2" class="noDecoration">
-                    <div>
-                        <h4><%=user.getCodiceFiscale()%></h4>
-                        <h4><%=user.getCognome()%> <%=user.getNome()%></h4>
-                        <p class="negative_istruttore" style="color: darkred">L'utente non è associato a nessun istruttore</p>
-                    </div>
-                </a>
-            </div>
-    </div>
-
-    <%
+        %>      <div class="utente">
+                    <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=<%=user.getCodiceFiscale()%>&id=2" class="noDecoration">
+                        <div>
+                            <h4><%=user.getCodiceFiscale()%></h4>
+                            <h4><%=user.getCognome()%> <%=user.getNome()%></h4>
+                            <p class="negative_istruttore" style="color: darkred">L'utente non è associato a nessun istruttore</p>
+                        </div>
+                    </a>
+                </div>
+        <%
             }
+        %>
+        </div>
+    <%
         }
         else if (p.loggedUserLevel().equals("Amministratore"))
         {
@@ -109,11 +107,11 @@
                     </div>
                 </a>
             </div>
-    </div>
     <%
             }
         }
     %>
+    </div>
 
 </body>
 </html>

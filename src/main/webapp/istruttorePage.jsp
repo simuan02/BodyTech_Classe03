@@ -1,10 +1,4 @@
-<%@ page import="bodyTech.model.entity.Istruttore" %><%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 18/08/2023
-  Time: 18:40
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Istruttore" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -43,18 +37,18 @@
 
     <div class="cards_account">
 
-        <a href="infoProfilo" style="text-decoration: none">
         <div class="card">
+            <a href="infoProfilo" style="text-decoration: none">
             <img src="images/utente.png">
             <div class="container">
                 <h4><b>${istruttore.nome} ${istruttore.cognome}</b></h4>
                 <p>${istruttore.matricolaIstruttore}</p>
             </div>
+            </a>
         </div>
-        </a>
 
         <div class="card">
-            <a href="listaUtentiPage.jsp?id=${istruttore.matricolaIstruttore}">
+            <a href="listaUtenti">
                 <img src="images/pt.png">
                 <div class="container">
                     <h4><b>Istruttore</b></h4>
