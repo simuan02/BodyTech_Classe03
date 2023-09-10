@@ -5,6 +5,7 @@ import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.model.entity.Utente;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,8 @@ public class UtenteDAO {
             Utente u1 = setUtente(rs);
             utenti.add(u1);
         }
+        stmt.close();
+        conn.close();
         return utenti;
     }
 
@@ -64,6 +67,8 @@ public class UtenteDAO {
         while (rs.next()){
             u = setUtente(rs);
         }
+        stmt.close();
+        conn.close();
         return u;
     }
 
@@ -87,6 +92,8 @@ public class UtenteDAO {
         pstmt.setString(3, u.getCognome());
         pstmt.setString(4, u.getPassword());
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
         return true;
     }
 
@@ -96,14 +103,16 @@ public class UtenteDAO {
      * @param newUser l'Utente con le informazioni aggiornate
      * @throws SQLException
      */
-    public static void updateUser (Utente oldUser, Utente newUser) throws SQLException {
+    public static void updateUser (Utente oldUser, Utente newUser) throws SQLException, IOException {
         Connection conn = ConPool.getConnection();
         List<Utente> users = visualizzaUtenti();
         boolean existingUser = false;
         for (Utente u : users){
+            if (u.getCodiceFiscale().equalsIgnoreCase(newUser.getCodiceFiscale()) &&
+                    !u.getCodiceFiscale().equalsIgnoreCase(oldUser.getCodiceFiscale()))
+                throw new IOException("Codice Fiscale già presente all'interno della piattaforma");
             if (u.getCodiceFiscale().equalsIgnoreCase(oldUser.getCodiceFiscale())) {
                 existingUser = true;
-                break;
             }
         }
         if (existingUser){
@@ -117,10 +126,14 @@ public class UtenteDAO {
             pstmt.executeUpdate();
             if (!oldUser.getCodiceFiscale().equals(newUser.getCodiceFiscale())){
                 SchedaAllenamento nuovaSchedaUtente = SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale());
-                nuovaSchedaUtente.setUtente(newUser);
-                SchedaAllenamentoDAO.updateScheda(SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale()), nuovaSchedaUtente);
+                if (nuovaSchedaUtente != null) {
+                    nuovaSchedaUtente.setUtente(newUser);
+                    SchedaAllenamentoDAO.updateScheda(SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale()), nuovaSchedaUtente);
+                }
             }
+            pstmt.close();
         }
+        conn.close();
     }
 
     /**
@@ -131,8 +144,13 @@ public class UtenteDAO {
     public static void deleteUser(Utente u) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Utente WHERE codiceFiscale = ?");
-        SchedaAllenamentoDAO.deleteScheda(SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale()).getIdScheda());
+        SchedaAllenamento sa = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());
+        if (sa!=null) {
+            SchedaAllenamentoDAO.deleteScheda(sa.getIdScheda());
+        }
         pstmt.setString(1, u.getCodiceFiscale());
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 }

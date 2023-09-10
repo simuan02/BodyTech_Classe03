@@ -27,6 +27,8 @@ public class SchedaAllenamentoDAO {
         while (rs.next()){
             schede.add(createSchedaAllenamento(rs));
         }
+        stmt.close();
+        conn.close();
         return schede;
     }
 
@@ -81,6 +83,8 @@ public class SchedaAllenamentoDAO {
             SchedaAllenamento sa = createSchedaAllenamento(rs);
             listaSchede.add(sa);
         }
+        stmt.close();
+        conn.close();
         return listaSchede;
     }
 
@@ -131,6 +135,8 @@ public class SchedaAllenamentoDAO {
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM SchedaAllenamento WHERE idScheda = ?");
         pstmt.setInt(1, idScheda);
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 
     /**
@@ -150,5 +156,7 @@ public class SchedaAllenamentoDAO {
         pstmt.setString(4, sa.getUtente().getCodiceFiscale());
         pstmt.setString(5, sa.getIstruttore().getMatricolaIstruttore());
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 }

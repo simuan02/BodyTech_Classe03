@@ -17,7 +17,7 @@ public class ConPool {
             p.setDriverClassName("com.mysql.cj.jdbc.Driver");
             p.setUsername("user");
             p.setPassword("Password1");
-            p.setMaxActive(100);
+            p.setMaxActive(1000);
             p.setInitialSize(10);
             p.setMinIdle(10);
             p.setRemoveAbandonedTimeout(60);

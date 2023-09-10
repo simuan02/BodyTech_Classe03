@@ -32,6 +32,8 @@ public class EsercizioDAO {
             es.setNomeEsercizio(rs.getString(1));
             es.setDescrizione(rs.getString(2));
         }
+        stmt.close();
+        conn.close();
         return es;
     }
 
@@ -52,6 +54,28 @@ public class EsercizioDAO {
             es.setDescrizione(rs.getString(2));
             listaEsercizi.add(es);
         }
+        stmt.close();
+        conn.close();
         return listaEsercizi;
+    }
+
+    public static List<Esercizio> findAvailableForScheda(int idScheda) throws SQLException {
+        List<Esercizio> listaEsercizi = EsercizioDAO.findAll();
+        List<EsercizioAllenamento> listaEserciziScheda = EsercizioAllenamentoDAO.findBySchedaID(idScheda);
+        List<Esercizio> listaEserciziDisponibili = new ArrayList<>();
+        boolean esercizioDisponibile;
+        for (Esercizio esercizio: listaEsercizi){
+            esercizioDisponibile = true;
+            for (EsercizioAllenamento esercizioAllenamento: listaEserciziScheda){
+                if (esercizio.getNomeEsercizio().equals(esercizioAllenamento.getNomeEsercizio())) {
+                    esercizioDisponibile = false;
+                    break;
+                }
+            }
+            if (esercizioDisponibile) {
+                listaEserciziDisponibili.add(esercizio);
+            }
+        }
+        return listaEserciziDisponibili;
     }
 }

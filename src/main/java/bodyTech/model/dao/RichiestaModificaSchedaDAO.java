@@ -31,6 +31,8 @@ public class RichiestaModificaSchedaDAO {
             rms.setEsito(rs.getBoolean(4));
             richieste.add(rms);
         }
+        stmt.close();
+        conn.close();
         return richieste;
     }
 
@@ -49,5 +51,7 @@ public class RichiestaModificaSchedaDAO {
         System.out.println(richiesta.isEsito());
         pstmt.setBoolean(3, richiesta.isEsito());
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 }

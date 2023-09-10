@@ -40,6 +40,18 @@ public class ModificaUtenteServlet extends HttpServlet {
             e.printStackTrace();
         } catch (RuntimeException e2){
             response.sendError(403, e2.getMessage());
+        } catch (IOException e3) {
+            if (e3.getMessage().equalsIgnoreCase("Codice Fiscale già presente all'interno della piattaforma")) {
+                request.setAttribute("CodiceGiaPresente", true);
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Codice Errata")){
+                request.setAttribute("LunghezzaCodiceErrata", true);
+            }
+            else {
+                e3.printStackTrace();
+                response.sendError(500);
+            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");
+            dispatcher.forward(request, response);
         }
     }
 

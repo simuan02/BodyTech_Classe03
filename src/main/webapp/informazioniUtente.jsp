@@ -58,13 +58,18 @@
         %>
 
     </div>
-
+        <%
+            if (p.loggedUserLevel().equals("Amministratore")){
+        %>
         <div class="buttons">
             <a href="TrovaUtente?codiceFiscale=${utente.codiceFiscale}">
                 <div class="UtenteButtons">
                 Modifica i dati
             </div></a>
         </div>
+    <%
+        }
+    %>
 
         <a href="${pageContext.request.contextPath}/EliminaUtenteServlet?cf=${utente.codiceFiscale}">
             <div class="UtenteButtons">

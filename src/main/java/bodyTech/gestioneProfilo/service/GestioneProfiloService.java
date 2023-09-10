@@ -4,6 +4,7 @@ import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.Utente;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public interface GestioneProfiloService {
      * @param u2 l'Utente con le informazioni aggiornate.
      * @return l'utente con le informazioni aggiornate.
      */
-    public Utente modificaUtente(Profilo p, Utente u, Utente u2) throws SQLException;
+    public Utente modificaUtente(Profilo p, Utente u, Utente u2) throws SQLException, IOException;
 
     /**
      * Questa funzionalità consente agli Amministratori di modificare le informazioni associate
@@ -53,7 +54,7 @@ public interface GestioneProfiloService {
      * @param istr2 l'Istruttore con le informazioni aggiornate.
      * @return l'istruttore con le informazioni aggiornate.
      */
-    public Istruttore modificaIstruttore(Profilo p, Istruttore istr, Istruttore istr2) throws SQLException;
+    public Istruttore modificaIstruttore(Profilo p, Istruttore istr, Istruttore istr2) throws SQLException, IOException;
 
     /**
      * Questa funzionalità consente ad Istruttori ed Amministratori di eliminare dal Database un Utente iscritto alla piattaforma.

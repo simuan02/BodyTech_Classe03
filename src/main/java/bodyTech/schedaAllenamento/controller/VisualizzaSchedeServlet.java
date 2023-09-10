@@ -1,5 +1,7 @@
 package bodyTech.schedaAllenamento.controller;
 
+import bodyTech.model.dao.SchedaAllenamentoDAO;
+import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.schedaAllenamento.service.SchedaService;
@@ -31,7 +33,14 @@ public class VisualizzaSchedeServlet extends HttpServlet {
         Profilo p = (Profilo)session.getAttribute("Profilo");
         SchedaService services = new SchedaServiceImpl();
         try {
-            List<SchedaAllenamento> listaSchede = services.visualizzaSchede(p);
+            List<SchedaAllenamento> listaSchede = null;
+            if (p.loggedUserLevel().equals("Istruttore")) {
+                listaSchede = services.visualizzaSchede(p);
+            }
+            else if (p.loggedUserLevel().equals("Amministratore")){
+                String matricola = request.getParameter("mat");
+                listaSchede = SchedaAllenamentoDAO.findAllByInstructor(matricola);
+            }
             request.setAttribute("listaSchede", listaSchede);
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaSchedePage.jsp");
             dispatcher.forward(request, response);

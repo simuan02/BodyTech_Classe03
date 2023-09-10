@@ -33,6 +33,8 @@ public class AmministratoreDAO{
             admin.setPassword(rs.getString(4));
             admins.add(admin);
         }
+        stmt.close();
+        conn.close();
         return admins;
     }
 
@@ -54,6 +56,8 @@ public class AmministratoreDAO{
             admin.setCognome(rs.getString(3));
             admin.setPassword(rs.getString(4));
         }
+        stmt.close();
+        conn.close();
         return admin;
     }
 
@@ -82,6 +86,8 @@ public class AmministratoreDAO{
             pstmt.setString(4, newAdmin.getPassword());
             pstmt.setInt(5, oldAdmin.getCodice());
             pstmt.executeUpdate();
+            pstmt.close();
         }
+        conn.close();
     }
 }
