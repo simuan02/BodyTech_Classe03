@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Servlet che consente di recuperare un Utente tramite il suo codice fiscale dal DB, settarlo nella richiesta insieme
+ * alla sua scheda di allenamento e la sua lista delle richieste di modifica scheda effettuate, e invocare la
+ * jsp "informazioniUtente" con un forward.
+ */
 @WebServlet(name = "InformazioniUtenteServlet", urlPatterns = {"/InformazioniUtenteServlet"})
 public class InformazioniUtenteServlet extends HttpServlet {
     @Override

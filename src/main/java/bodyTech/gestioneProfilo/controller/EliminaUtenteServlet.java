@@ -20,6 +20,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Servlet che consente ad un Amministratore o Istruttore di eliminare un Utente, il quale viene selezionato dal suo
+ * codice fiscale.
+ */
 @WebServlet(name = "EliminaUtenteServlet", urlPatterns = {"/EliminaUtenteServlet"})
 public class EliminaUtenteServlet extends HttpServlet {
     @Override

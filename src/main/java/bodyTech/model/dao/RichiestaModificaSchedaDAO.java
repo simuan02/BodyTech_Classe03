@@ -13,9 +13,9 @@ import java.util.List;
 public class RichiestaModificaSchedaDAO {
 
     /**
-     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente
-     * @param codiceFiscale
-     * @return lista delle Richieste
+     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente.
+     * @param codiceFiscale dell'utente del quale recuperare le richieste di modifica scheda
+     * @return lista delle Richieste trovate
      * @throws SQLException
      */
     public static List<RichiestaModificaScheda> findByUser(String codiceFiscale) throws SQLException {

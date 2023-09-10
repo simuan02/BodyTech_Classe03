@@ -19,6 +19,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet che consente di recuperare un Istruttore tramite la sua matricola dal DB, settarlo nella richiesta e
+ * invocare la jsp "informazioniIstruttore" con un forward.
+ */
 @WebServlet(name = "InformazioniIstruttoreServlet", urlPatterns = {"/InformazioniIstruttoreServlet"})
 public class InformazioniIstruttoreServlet extends HttpServlet {
     @Override

@@ -16,7 +16,7 @@ import java.util.List;
 public class UtenteDAO {
 
     /**
-     * Implementa la funzionalità di creare un oggetto Utente e recuperare i suoi attributi dal DB
+     * Implementa la funzionalità di creare un oggetto Utente e recuperare i suoi attributi dal DB.
      * @param rs
      * @return Utente
      * @throws SQLException
@@ -33,7 +33,7 @@ public class UtenteDAO {
     }
 
     /**
-     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Utenti presenti
+     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Utenti presenti.
      * @return lista degli Utenti
      * @throws SQLException
      */
@@ -53,7 +53,7 @@ public class UtenteDAO {
     }
 
     /**
-     * Implementa la funzionalità di recuperare dal DB l'Utente associato a quel codice fiscale
+     * Implementa la funzionalità di recuperare dal DB l'Utente associato a quel codice fiscale.
      * @param codiceFiscale dell'Utente da cercare
      * @return Utente trovato
      * @throws SQLException
@@ -73,7 +73,7 @@ public class UtenteDAO {
     }
 
     /**
-     * Implementa la funzionalità di inserimento di un Utente all'interno del DB
+     * Implementa la funzionalità di inserimento di un Utente all'interno del DB.
      * @param u l'Utente da inserire nel DB
      * @return true, se l'inserimento è andato a buon fine; false, se esiste già un Utente nel DB con lo stesso codiceFiscale
      * di u

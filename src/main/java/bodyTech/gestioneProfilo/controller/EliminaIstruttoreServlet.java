@@ -15,6 +15,9 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet che consente ad un Amministratore di eliminare un Istruttore, il quale viene selezionato dalla sua matricola.
+ */
 @WebServlet(name = "EliminaIstruttoreServlet", urlPatterns = {"/EliminaIstruttoreServlet"})
 public class EliminaIstruttoreServlet extends HttpServlet {
     @Override

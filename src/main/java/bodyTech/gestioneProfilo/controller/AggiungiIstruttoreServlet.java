@@ -23,6 +23,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet che consente ad un Amministratore di aggiungere un Istruttore tramite un form. L'operazione non procede nel caso
+ * in cui la matricola appartenga ad un altro istruttore, e nel caso in cui la lunghezza della matricola sia errata.
+ */
 @WebServlet(name = "AggiungiIstruttoreServlet", value = "/AggiungiIstruttore")
 public class AggiungiIstruttoreServlet extends HttpServlet {
     @Override
