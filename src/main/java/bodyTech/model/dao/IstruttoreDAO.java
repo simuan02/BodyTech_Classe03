@@ -5,6 +5,7 @@ import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.model.entity.Utente;
 
+import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -51,6 +52,8 @@ public class IstruttoreDAO {
             Istruttore istr = createIstruttore(rs);
             istruttori.add(istr);
         }
+        stmt.close();
+        conn.close();
         return istruttori;
     }
 
@@ -69,6 +72,8 @@ public class IstruttoreDAO {
         Istruttore istr = null;
         if (rs.next())
             istr = createIstruttore(rs);
+        stmt.close();
+        conn.close();
         return istr;
     }
 
@@ -79,14 +84,16 @@ public class IstruttoreDAO {
      * @param newIstr l'istruttore che contiene le informazioni aggiornate
      * @throws SQLException
      */
-    public static void updateInstructor(Istruttore oldIstr, Istruttore newIstr) throws SQLException {
+    public static void updateInstructor(Istruttore oldIstr, Istruttore newIstr) throws SQLException, IOException {
         Connection conn = ConPool.getConnection();
         List<Istruttore> instructors = IstruttoreDAO.visualizzaIstruttori();
         boolean existingInstructor = false;
         for (Istruttore i : instructors) {
+            if (i.getMatricolaIstruttore().equalsIgnoreCase(newIstr.getMatricolaIstruttore()) &&
+                    !i.getMatricolaIstruttore().equalsIgnoreCase(oldIstr.getMatricolaIstruttore()))
+                throw new IOException("Matricola già presente all'interno della piattaforma");
             if (i.getMatricolaIstruttore().equalsIgnoreCase(oldIstr.getMatricolaIstruttore())) {
                 existingInstructor = true;
-                break;
             }
         }
         if (existingInstructor) {
@@ -99,7 +106,9 @@ public class IstruttoreDAO {
             pstmt.setString(5, newIstr.getSpecializzazione());
             pstmt.setString(6, oldIstr.getMatricolaIstruttore());
             pstmt.executeUpdate();
+            pstmt.close();
         }
+        conn.close();
     }
 
     /**
@@ -125,6 +134,8 @@ public class IstruttoreDAO {
             istr.setSpecializzazione(rs.getString(5));
             istr.setListaSchedeCreate(new ArrayList<>());
         }
+        stmt.close();
+        conn.close();
         return istr;
     }
 
@@ -137,6 +148,8 @@ public class IstruttoreDAO {
         pstmt.setString(4, istr.getPassword());
         pstmt.setString(5, istr.getSpecializzazione());
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 
     public static void deleteInstructor(Istruttore istr) throws SQLException {
@@ -144,5 +157,7 @@ public class IstruttoreDAO {
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Istruttore WHERE matricolaIstruttore = ?");
         pstmt.setString(1, istr.getMatricolaIstruttore());
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 }

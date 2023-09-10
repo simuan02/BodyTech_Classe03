@@ -22,6 +22,7 @@
             int i = 0;
             for (SchedaAllenamento sa: listaSchede)
             {
+                i++;
         %>
         <div class="SchedaAllenamento" id="SchedaAllenamento<%=i%>">
             <h2>Scheda N°: <%=sa.getIdScheda()%></h2>
@@ -60,8 +61,8 @@
                 </div>
                 <%
                     }
-                    if (p.loggedUserLevel().equals("Amministratore") ||
-                            ((Istruttore)p).getMatricolaIstruttore().equalsIgnoreCase(sa.getIstruttore().getMatricolaIstruttore())) {
+                    if (p.loggedUserLevel().equals("Istruttore") &&
+                        ((Istruttore)p).getMatricolaIstruttore().equalsIgnoreCase(sa.getIstruttore().getMatricolaIstruttore())) {
                 %>
                 <div class="SchedaButtonsContainer">
                     <a href="FindScheda?idScheda=<%=sa.getIdScheda()%>" class="noDecoration">

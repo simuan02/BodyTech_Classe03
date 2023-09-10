@@ -6,6 +6,7 @@ import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.Utente;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -44,8 +45,10 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
     }
 
     @Override
-    public Utente modificaUtente(Profilo p, Utente u, Utente u2) throws SQLException {
+    public Utente modificaUtente(Profilo p, Utente u, Utente u2) throws SQLException, IOException {
         if (p.loggedUserLevel().equals("Amministratore")) {
+            if (u2.getCodiceFiscale().length() != 16)
+                throw new IOException("Lunghezza Codice Errata");
             UtenteDAO.updateUser(u, u2);
             return u2;
         }
@@ -55,8 +58,10 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
     }
 
     @Override
-    public Istruttore modificaIstruttore(Profilo p, Istruttore istr, Istruttore istr2) throws SQLException {
+    public Istruttore modificaIstruttore(Profilo p, Istruttore istr, Istruttore istr2) throws SQLException, IOException {
         if (p.loggedUserLevel().equals("Amministratore")) {
+            if (istr2.getMatricolaIstruttore().length() != 10)
+                throw new IOException("Lunghezza Matricola Errata");
             IstruttoreDAO.updateInstructor(istr, istr2);
             return istr2;
         }
