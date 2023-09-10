@@ -33,6 +33,8 @@ public class EsercizioAllenamentoDAO {
             es.setDescrizione(EsercizioDAO.findByName(es.getNomeEsercizio()).getDescrizione());
             esercizi.add(es);
         }
+        stmt.close();
+        conn.close();
         return esercizi;
     }
 
@@ -43,6 +45,8 @@ public class EsercizioAllenamentoDAO {
         pstmt.setString(2, es.getNomeEsercizio());
         pstmt.setString(3, volume);
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 
     public static void updateEsercizio(EsercizioAllenamento ea, int idScheda) throws SQLException {
@@ -53,6 +57,8 @@ public class EsercizioAllenamentoDAO {
         pstmt.setString(2, ea.getNomeEsercizio());
         pstmt.setInt(3, idScheda);
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 
 
@@ -62,6 +68,8 @@ public class EsercizioAllenamentoDAO {
         pstmt.setString(1, nomeEsercizio);
         pstmt.setInt(2, schedaID);
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 
     public static void deleteAllSchedaExercises(int schedaID) throws SQLException {
@@ -69,5 +77,7 @@ public class EsercizioAllenamentoDAO {
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM EsercizioAllenamento WHERE schedaAllenamento = ?");
         pstmt.setInt(1, schedaID);
         pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
     }
 }

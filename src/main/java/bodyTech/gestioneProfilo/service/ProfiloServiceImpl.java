@@ -6,13 +6,14 @@ import bodyTech.model.dao.SchedaAllenamentoDAO;
 import bodyTech.model.dao.UtenteDAO;
 import bodyTech.model.entity.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class ProfiloServiceImpl implements ProfiloService{
 
     @Override
-    public boolean modificaDati(Profilo oldProfile, Profilo newProfile) throws SQLException {
+    public boolean modificaDati(Profilo oldProfile, Profilo newProfile) throws SQLException, IOException {
         boolean okUpdate = false;
         if (oldProfile != null){
             switch (oldProfile.loggedUserLevel()){

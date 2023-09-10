@@ -59,7 +59,6 @@ public class EditSchedaServlet extends HttpServlet {
                 List<EsercizioAllenamento> listaEsercizi = sa.getListaEsercizi();
                 for (EsercizioAllenamento ea: listaEsercizi){
                     ea.setVolume(request.getParameter(ea.getNomeEsercizio()));
-                    System.out.println(ea.getVolume());
                 }
                 sa.setListaEsercizi(listaEsercizi);
                 SchedaService services = new SchedaServiceImpl();
@@ -72,6 +71,7 @@ public class EditSchedaServlet extends HttpServlet {
             } catch (RuntimeException e2){
                 response.sendError(403, e2.getMessage());
             }
+
         }
         else
             response.sendError(403, "Utente non autorizzato!");

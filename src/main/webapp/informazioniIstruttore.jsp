@@ -19,13 +19,14 @@
         Istruttore istruttore = (Istruttore)request.getAttribute("istruttore");
         List<SchedaAllenamento> listaSchede = istruttore.getListaSchedeCreate();
         if (listaSchede.size() > 0){
+            request.setAttribute("istruttore", istruttore);
     %>
-            <a href="${pageContext.request.contextPath}/VisualizzaSchedeIstruttoreServlet?mat=${istruttore.matricolaIstruttore}"><div class="button">
+            <a href="${pageContext.request.contextPath}/showTrainingCards?mat=<%=istruttore.getMatricolaIstruttore()%>"><div class="button">
                 Visualizza Schede d'allenamento create
             </div></a>
     <%
         }
-        else if (p.loggedUserLevel().equals("Istruttore")){
+        else{
     %>
 
             <div class="button">

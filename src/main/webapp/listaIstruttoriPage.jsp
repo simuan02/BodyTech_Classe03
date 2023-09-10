@@ -52,7 +52,7 @@
                 <div class="utente">
                 <a href="${pageContext.request.contextPath}/InformazioniIstruttoreServlet?mat=<%=istr.getMatricolaIstruttore()%>" class="noDecoration">
                     <div>
-                        <h4><%=istr.getMatricolaIstruttore()%>></h4>
+                        <h4><%=istr.getMatricolaIstruttore()%></h4>
                         <h4><%=istr.getCognome()%> <%=istr.getNome()%></h4>
                     </div>
                 </a>

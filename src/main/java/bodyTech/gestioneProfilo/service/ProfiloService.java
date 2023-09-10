@@ -3,6 +3,7 @@ package bodyTech.gestioneProfilo.service;
 import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.SchedaAllenamento;
 
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +19,7 @@ public interface ProfiloService {
      * @return l'esito dell'aggiornamento: true, se andato a buon fine; false, altrimenti.
      * @throws SQLException
      */
-    public boolean modificaDati (Profilo oldProfile, Profilo newProfile) throws SQLException;
+    public boolean modificaDati (Profilo oldProfile, Profilo newProfile) throws SQLException, IOException;
 
 
     /**
