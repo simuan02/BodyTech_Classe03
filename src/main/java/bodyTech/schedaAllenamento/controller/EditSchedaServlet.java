@@ -66,8 +66,8 @@ public class EditSchedaServlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
                 dispatcher.forward(request, response);
             } catch (SQLException e) {
-                e.printStackTrace();
-                response.sendError(500, "Errore del Server");
+                log(e.getMessage(), e);
+                response.sendError(500);
             } catch (RuntimeException e2){
                 response.sendError(403, e2.getMessage());
             }

@@ -36,8 +36,8 @@ public class DeleteSchedaServlet extends HttpServlet {
             else
                 response.sendError(400, "Errore nell'eliminazione della scheda: scheda inesistente");
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(500, "Errore del server");
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
     }
 

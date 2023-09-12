@@ -26,7 +26,7 @@
                 %>
                     <div class="esercizio">
                         <p><%=esercizio.getNomeEsercizio()%></p>
-                        <input type="text" id="volume" name="volume">
+                        <input type="text" id="volume" name="volume" required>
                     </div>
                 <%
                     }

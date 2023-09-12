@@ -38,7 +38,8 @@ public class CreazioneEserciziAllenamentoServlet extends HttpServlet {
                 services.aggiungiEsercizio(esercizi.get(i), volumiHtml[i], scheda);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
 
 

@@ -2,7 +2,7 @@
 <%@ page import="bodyTech.model.entity.Istruttore" %>
 <html>
 <head>
-    <title>BodyTech - Informazioni Utente</title>
+    <title>BodyTech - Modifica Istruttore ${istruttore.matricolaIstruttore}</title>
     <link rel="stylesheet" href="css/profiloPage.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
 </head>
@@ -17,23 +17,23 @@
 <form action="ModificaIstruttore" method="post">
     <input type="hidden" name="MatricolaVecchia" value="<%=istr.getMatricolaIstruttore()%>">
     <div id="FirstName" class="InfoProfile">
-        <label for="NomeIstruttore" id="Nome">Nome: </label>
-            <input type="text" class="volumeEsercizio" value="<%=istr.getNome()%>" name="NomeIstruttore" id="NomeIstruttore">
+        <label for="NomeIstruttore" class="FormLabel">Nome: </label>
+            <input type="text" class="FormInput" value="<%=istr.getNome()%>" name="NomeIstruttore" id="NomeIstruttore" required>
     </div>
     <div id="LastName" class="InfoProfile">
-        <label for="CognomeIstruttore" id="Cognome">Cognome: </label>
-            <input type="text" class="volumeEsercizio" value="<%=istr.getCognome()%>" name="CognomeIstruttore" id="CognomeIstruttore">
+        <label for="CognomeIstruttore" class="FormLabel">Cognome: </label>
+            <input type="text" class="FormInput" value="<%=istr.getCognome()%>" name="CognomeIstruttore" id="CognomeIstruttore" required>
     </div>
 
     <div id="Matricola" class="InfoProfile">
-        <label for="MatricolaIstruttore">Matricola Istruttore: </label>
-        <input type="text" class="volumeEsercizio" value="<%=istr.getMatricolaIstruttore()%>" name="MatricolaIstruttore"
-               id="MatricolaIstruttore">
+        <label for="MatricolaIstruttore" class="FormLabel">Matricola Istruttore: </label>
+        <input type="text" class="FormInput" value="<%=istr.getMatricolaIstruttore()%>" name="MatricolaIstruttore"
+               id="MatricolaIstruttore" required>
     </div>
 
     <div id="Specializzazione" class="InfoProfile">
-        <label for="SpecializzazioneIstruttore">Specializzazione: </label>
-        <input type="text" class="volumeEsercizio" value="<%=istr.getSpecializzazione()%>" name="SpecializzazioneIstruttore"
+        <label for="SpecializzazioneIstruttore" class="FormLabel">Specializzazione: </label>
+        <input type="text" class="FormInput" value="<%=istr.getSpecializzazione()%>" name="SpecializzazioneIstruttore"
                id="SpecializzazioneIstruttore">
     </div><br>
     <input type="submit" id="EditButton" value="Invia le modifiche">

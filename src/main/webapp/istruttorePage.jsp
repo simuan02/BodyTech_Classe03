@@ -22,17 +22,7 @@
     </style>
 </head>
 <body>
-    <%
-        Object o = session.getAttribute("Istruttore");
-        if (o != null) {
-            Istruttore i = (Istruttore) o;
-            request.setAttribute("istruttore", i);
-        }
-        else {
-            response.sendError(403, "ACCESSO NON AUTORIZZATO");
-        }
-    %>
-
+    <%@include file="jsp/controlloIstruttore.jsp"%>
     <%@include file="jsp/header.jsp"%>
 
     <div class="cards_account">
@@ -41,8 +31,8 @@
             <a href="infoProfilo" style="text-decoration: none">
             <img src="images/utente.png">
             <div class="container">
-                <h4><b>${istruttore.nome} ${istruttore.cognome}</b></h4>
-                <p>${istruttore.matricolaIstruttore}</p>
+                <h4><b>${Istruttore.nome} ${Istruttore.cognome}</b></h4>
+                <p>${Istruttore.matricolaIstruttore}</p>
             </div>
             </a>
         </div>
@@ -51,7 +41,7 @@
             <a href="listaUtenti">
                 <img src="images/pt.png">
                 <div class="container">
-                    <h4><b>Istruttore</b></h4>
+                    <h4><b>Gestione Utenti</b></h4>
                     <p>Visualizza o aggiungi i tuoi utenti.</p>
                 </div>
             </a>
@@ -69,15 +59,5 @@
 
     </div>
 
-    <script>
-        function openListaUtenti() {
-            window.open("listaUtentiPage.jsp?id=${istruttore.matricolaIstruttore}");
-            /*var xhr = new XMLHttpRequest();
-
-
-            xhr.open('GET', '${pageContext.request.contextPath}/ListaUtentiServlet', true);
-            xhr.send(null);*/
-        }
-    </script>
 </body>
 </html>

@@ -45,8 +45,8 @@ public class VisualizzaSchedeServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaSchedePage.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(400);
+            log(e.getMessage(), e);
+            response.sendError(500);
         } catch (RuntimeException re){
             response.sendError(403, "Operazione non consentita");
         }

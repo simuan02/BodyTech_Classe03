@@ -48,8 +48,8 @@ public class AddExerciseServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(500, "Errore Server!");
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
     }
 }

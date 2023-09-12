@@ -1,11 +1,4 @@
-<%@ page import="bodyTech.model.entity.Profilo" %>
-<%@ page import="bodyTech.model.entity.Utente" %><%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 16/08/2023
-  Time: 16:28
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Utente" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -15,16 +8,7 @@
 
 </head>
 <body>
-    <%
-        Object o = session.getAttribute("Utente");
-        if (o != null) {
-            Utente u = (Utente) o;
-            request.setAttribute("utente", u);
-        }
-        else {
-            response.sendError(403, "ACCESSO NON AUTORIZZATO");
-        }
-    %>
+    <%@include file="jsp/controlloUtente.jsp"%>
 
     <%@include file="jsp/header.jsp"%>
 
@@ -34,8 +18,8 @@
             <a href="infoProfilo" class="noDecoration">
             <img src="images/utente.png">
             <div class="container">
-                <h4><b>${utente.nome} ${utente.cognome}</b></h4>
-                <p>${utente.codiceFiscale}</p>
+                <h4><b>${Utente.nome} ${Utente.cognome}</b></h4>
+                <p>${Utente.codiceFiscale}</p>
             </div>
             </a>
         </div>
@@ -49,14 +33,6 @@
                 <p>Visualizza la tua scheda d'allenamento</p>
             </div>
             </a>
-        </div>
-
-        <div class="card">
-            <img src="images/pt.png">
-            <div class="container">
-                <h4><b>Istruttore</b></h4>
-                <p>Visualizza o contatta il tuo istruttore, se non ne hai uno associati.</p>
-            </div>
         </div>
 
     </div>

@@ -32,7 +32,8 @@ public class FindSchedaServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/modificaScheda.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
 
     }

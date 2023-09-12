@@ -45,7 +45,8 @@ public class ModificaIstruttoreServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log(e.getMessage(), e);
+            response.sendError(500);
         } catch (RuntimeException e2){
             response.sendError(403, e2.getMessage());
         } catch (IOException e3){
@@ -55,7 +56,7 @@ public class ModificaIstruttoreServlet extends HttpServlet {
                 request.setAttribute("LunghezzaMatricolaErrata", true);
             }
             else {
-                e3.printStackTrace();
+                log(e3.getMessage(), e3);
                 response.sendError(500);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");

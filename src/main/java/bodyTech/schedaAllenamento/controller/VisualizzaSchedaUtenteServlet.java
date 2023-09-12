@@ -31,7 +31,8 @@ public class VisualizzaSchedaUtenteServlet extends HttpServlet {
 
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
 
 
