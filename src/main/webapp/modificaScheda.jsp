@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>BodyTech - Lista Schede</title>
+    <title>BodyTech - Modifica Scheda Allenamento ${SchedaAllenamento.idScheda}</title>
     <link rel="stylesheet" href="css/profiloPage.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
@@ -25,9 +25,9 @@
 </div>
 <form action="editScheda" method="post" id="FormModificaScheda">
     <input type="hidden" value="<%=sa.getIdScheda()%>" name="idScheda">
-    <label for="TipoScheda">Tipo Scheda: </label><input type="text" value="<%=sa.getTipo()%>" id="TipoScheda" name="TipoScheda"><br>
+    <label for="TipoScheda">Tipo Scheda: </label><input type="text" value="<%=sa.getTipo()%>" id="TipoScheda" name="TipoScheda" required><br>
     <label for="DataCompletamento">Data Completamento: </label>
-    <input type="date" value="<%=sa.getDataCompletamento()%>" name="DataCompletamento" id="DataCompletamento"><br>
+    <input type="date" value="<%=sa.getDataCompletamento()%>" name="DataCompletamento" id="DataCompletamento" required><br>
     <%
         if (sa.getListaEsercizi().size() > 0){
     %>
@@ -38,7 +38,8 @@
         for (EsercizioAllenamento ea: sa.getListaEsercizi()){
     %>
     <label for="<%=ea.getNomeEsercizio()%>"><%=ea.getNomeEsercizio()%> - Volume: </label>
-    <input type="text" value="<%=ea.getVolume()%>" class="VolumeEsercizio" name="<%=ea.getNomeEsercizio()%>"><br>
+    <input type="text" value="<%=ea.getVolume()%>" class="VolumeEsercizio" id="<%=ea.getNomeEsercizio()%>"
+           name="<%=ea.getNomeEsercizio()%>" required><br>
     <%
             i++;
         }

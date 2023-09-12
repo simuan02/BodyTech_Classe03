@@ -20,7 +20,9 @@ public class LogoutController extends HttpServlet {
         HttpSession session = request.getSession();
         Profilo p = (Profilo)session.getAttribute("Profilo");
         LoginService services = new LoginServiceImpl();
-        services.logout(p);
+        if (services.logout(p)) {
+            session.setAttribute("Profilo", p);
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/");
         dispatcher.forward(request, response);
     }

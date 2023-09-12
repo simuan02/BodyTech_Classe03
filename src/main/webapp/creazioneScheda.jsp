@@ -21,18 +21,18 @@
 
             <div class="date">
                 <p id="tipo">Tipo Scheda: </p>
-                <input type="text" id="tipo_input" name="tipo_input">
+                <input type="text" id="tipo_input" name="tipo_input" required>
             </div>
 
             <div class="date">
                 <div id="data_inizio">
                     <p>Data inizio: </p>
-                    <input type="date" id="dataInizio" name="dataInizio">
+                    <input type="date" id="dataInizio" name="dataInizio" required>
                 </div>
 
                 <div id="data_fine">
                     <p>Data fine: </p>
-                    <input type="date" id="dataFine" name="dataFine">
+                    <input type="date" id="dataFine" name="dataFine" required>
                 </div>
             </div>
 

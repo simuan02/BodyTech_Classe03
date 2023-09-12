@@ -1,14 +1,12 @@
 package bodyTech.gestioneProfilo.controller;
 
-import bodyTech.gestioneProfilo.service.ProfiloService;
-import bodyTech.gestioneProfilo.service.ProfiloServiceImpl;
 import bodyTech.model.entity.Profilo;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
+import javax.security.auth.login.AccountException;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * Questa Servlet verifica, tramite il metodo ProfiloService.visualizzaProfilo(Profilo), se il profilo corrente è inizializzato,
@@ -31,10 +29,12 @@ public class ShowProfileInfoServlet extends HttpServlet {
                 dispatcher.forward(request, response);
             }
             else
-                throw new Exception();
-        } catch (Exception e) {
-            e.printStackTrace();
+                throw new AccountException();
+        } catch (AccountException e) {
             response.sendError(403, "Operazione non consentita!");
+        } catch (Exception e2){
+            log(e2.getMessage(), e2);
+            response.sendError(500);
         }
     }
 

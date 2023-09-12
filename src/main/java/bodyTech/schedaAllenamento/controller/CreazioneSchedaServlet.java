@@ -76,10 +76,11 @@ public class CreazioneSchedaServlet extends HttpServlet {
                 address = "/creazioneScheda.jsp";
             }
             else {
-                response.sendError(500);
+                response.sendError(400);
             }
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
         dispatcher.forward(request, response);

@@ -9,31 +9,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore">
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Inserimento funzionalità di visualizzazione di tutte le schede create da un istruttore e modifiche varie alle Servlet">
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloAmministratore.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloIndex.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloIstruttore.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloLancioPaginaMostraProfiloCorretto.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloLogin.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloModificaUtente.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloUtente.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AggiungiIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AggiungiIstruttoreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EditDataServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EditDataServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindInstructorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindInstructorServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindUserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaIstruttoreServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/ProfiloServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/ProfiloDAO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowInstructorsServlet.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LoginController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LogoutController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/login/controller/LogoutController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/controller/VisualizzaRichiesteModificaUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/controller/VisualizzaRichiesteModificaUtenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/AddExerciseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/AddExerciseServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneEserciziAllenamentoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneEserciziAllenamentoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneSchedaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/CreazioneSchedaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/DeleteExerciseServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/DeleteExerciseServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/DeleteSchedaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/DeleteSchedaServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/EditSchedaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/EditSchedaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/FindSchedaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/FindSchedaServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/GetExercisesServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/GetExercisesServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/VisualizzaSchedaUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/VisualizzaSchedaUtenteServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/VisualizzaSchedeServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/VisualizzaSchedeServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniIstruttore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniIstruttore.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaSchedePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaSchedePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/AggiungiIstruttore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/AggiungiIstruttore.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ModificaIstruttore.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ModificaIstruttore.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/ModificaUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/ModificaUtente.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/amministratorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/amministratorePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/creazioneScheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/creazioneScheda.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/creazioneSchedaVolumi.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/creazioneSchedaVolumi.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/listaUtentiPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/css/profiloPage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/infoProfile.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/istruttorePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/jsp/fileProva.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/jsp/controlloAggiuntaIstruttoreCorretta.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/login.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/modificaScheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/modificaScheda.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scheda.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/scripts.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/scripts.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/utentePage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/utentePage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/ProgettoBodyTech-1.0-SNAPSHOT/WEB-INF/classes/bodyTech/model/dao/RichiestaModificaSchedaDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,8 +78,8 @@
         <option value="JavaScript File" />
         <option value="CSS File" />
         <option value="Class" />
-        <option value="Jsp File" />
         <option value="Tag Library Descriptor" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -277,7 +305,8 @@
       <workItem from="1694203708736" duration="3739000" />
       <workItem from="1694277114458" duration="8291000" />
       <workItem from="1694296110413" duration="4468000" />
-      <workItem from="1694328827380" duration="6408000" />
+      <workItem from="1694328827380" duration="6733000" />
+      <workItem from="1694503244582" duration="9898000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -453,7 +482,14 @@
       <option name="project" value="LOCAL" />
       <updated>1694300571160</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="Inserimento funzionalità di visualizzazione di tutte le schede create da un istruttore e modifiche varie alle Servlet">
+      <created>1694335407412</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1694335407412</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -521,14 +557,15 @@
     <MESSAGE value="Commenti Javadoc servlet e service" />
     <MESSAGE value="Modifica Interfacce JSP e inserimento di nuove funzionalità nella gestione degli Utenti da parte di Istruttore e Amministratore" />
     <MESSAGE value="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore" />
+    <MESSAGE value="Inserimento funzionalità di visualizzazione di tutte le schede create da un istruttore e modifiche varie alle Servlet" />
+    <option name="LAST_COMMIT_MESSAGE" value="Inserimento funzionalità di visualizzazione di tutte le schede create da un istruttore e modifiche varie alle Servlet" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp</url>
-          <line>57</line>
+          <line>33</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

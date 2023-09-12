@@ -19,26 +19,11 @@
     </style>
 </head>
 <body>
-    <%
-
-    %>
+    <%@include file="jsp/controlloModificaUtente.jsp"%>
 
     <%@include file="jsp/header.jsp"%>
 
     <%
-        Object o = request.getAttribute("LunghezzaCodiceErrata");
-        if (o != null){
-    %>
-    <script>alert("Codice Fiscale inserito di lunghezza errata")</script>
-    <%
-        ;}
-        Object o2 = request.getAttribute("CodiceGiaPresente");
-        if (o2 != null)
-        {
-    %>
-    <script>alert("Codice Fiscale gia' registrato alla piattaforma")</script>
-    <%
-        };
         if (p.loggedUserLevel().equals("Istruttore")){
     %>
 

@@ -37,7 +37,8 @@ public class ModificaUtenteServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
+            response.sendError(500);
+            log(e.getMessage(), e);
         } catch (RuntimeException e2){
             response.sendError(403, e2.getMessage());
         } catch (IOException e3) {
@@ -47,7 +48,7 @@ public class ModificaUtenteServlet extends HttpServlet {
                 request.setAttribute("LunghezzaCodiceErrata", true);
             }
             else {
-                e3.printStackTrace();
+                log(e3.getMessage(), e3);
                 response.sendError(500);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");

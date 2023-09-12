@@ -3,6 +3,7 @@
 <html>
 <head>
     <title>BodyTech - Scheda di Allenamento</title>
+    <link rel="icon" href="images/logo.jpg" sizes="any">
     <link rel="stylesheet" type="text/css" href="css/profiloPage.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="scripts.js"></script>
@@ -30,7 +31,7 @@
             <h2 id="DataCompletamento">Data Completamento: <%=sa.getDataCompletamento()%></h2>
         </div>
         <div id="TrainingType" class="InfoProfile">
-            <h2 id="TipoScheda">Tipo: <%=sa.getTipo()%></h2>
+            <h2>Tipo: <%=sa.getTipo()%></h2>
         </div>
         <div id="AssociatedInstructor" class="InfoProfile">
             <h2 id="IstruttoreAssociato">Istruttore Associato: <%=sa.getIstruttore().getNome()%> <%=sa.getIstruttore().getCognome()%></h2>

@@ -65,7 +65,8 @@ public class AggiungiIstruttoreServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
     }
 }

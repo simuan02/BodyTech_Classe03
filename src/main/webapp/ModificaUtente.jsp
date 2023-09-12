@@ -1,7 +1,7 @@
 <%@ page import="bodyTech.model.entity.Utente" %>
 <html>
 <head>
-    <title>BodyTech - Informazioni Utente</title>
+    <title>BodyTech - Modifica Utente ${Utente.codiceFiscale}</title>
     <link rel="stylesheet" href="css/profiloPage.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
 </head>
@@ -16,18 +16,18 @@
 <form action="ModificaUtente" method="post">
     <input type="hidden" name="CodiceFiscaleVecchio" value="<%=u.getCodiceFiscale()%>">
     <div id="FirstName" class="InfoProfile">
-        <label for="NomeUtente" id="Nome">Nome: </label>
-            <input type="text" class="volumeEsercizio" value="<%=u.getNome()%>" name="NomeUtente" id="NomeUtente">
+        <label for="NomeUtente" class="FormLabel">Nome: </label>
+            <input type="text" class="FormInput" value="<%=u.getNome()%>" name="NomeUtente" id="NomeUtente" required>
     </div>
     <div id="LastName" class="InfoProfile">
-        <label for="CognomeUtente" id="Cognome">Cognome: </label>
-            <input type="text" class="volumeEsercizio" value="<%=u.getCognome()%>" name="CognomeUtente" id="CognomeUtente">
+        <label for="CognomeUtente" class="FormLabel">Cognome: </label>
+            <input type="text" class="FormInput" value="<%=u.getCognome()%>" name="CognomeUtente" id="CognomeUtente" required>
     </div>
 
     <div id="CF" class="InfoProfile">
-        <label for="CodiceFiscaleUtente" id="CodiceFiscale">Codice Fiscale: </label>
-        <input type="text" class="volumeEsercizio" value="<%=u.getCodiceFiscale()%>" name="CodiceFiscaleUtente"
-               id="CodiceFiscaleUtente">
+        <label for="CodiceFiscaleUtente" class="FormLabel">Codice Fiscale: </label>
+        <input type="text" class="FormInput" value="<%=u.getCodiceFiscale()%>" name="CodiceFiscaleUtente"
+               id="CodiceFiscaleUtente" required>
     </div><br>
     <input type="submit" id="EditButton" value="Invia le modifiche">
 </div>

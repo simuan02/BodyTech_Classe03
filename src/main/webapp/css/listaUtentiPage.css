@@ -37,9 +37,10 @@
 }
 
 .title {
-    font-size: 15pt;
+    font-size: 18pt;
     color: red;
     text-align: center;
+    font-weight: 700;
 }
 
 #AggiungiIstruttore {
@@ -47,6 +48,7 @@
     margin: 2%;
     color: #F7C70F;
     background-color: black;
+    cursor: pointer;
 }
 
 #AggiungiIstruttore:hover {

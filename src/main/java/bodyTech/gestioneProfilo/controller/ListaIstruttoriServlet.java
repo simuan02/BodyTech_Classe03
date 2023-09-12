@@ -37,7 +37,8 @@ public class ListaIstruttoriServlet extends HttpServlet {
             else
                 response.sendError(403, "Operazione non consentita!");
         } catch (SQLException e) {
-            e.printStackTrace();
+            log(e.getMessage(), e);
+            response.sendError(500);
         } catch (RuntimeException e2){
             response.sendError(403, e2.getMessage());
         }

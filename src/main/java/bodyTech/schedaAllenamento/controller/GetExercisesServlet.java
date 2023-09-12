@@ -41,8 +41,8 @@ public class GetExercisesServlet extends HttpServlet {
             response.setCharacterEncoding("UTF-8");
             response.getWriter().write(json);
         } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(500, "Errore Server!");
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
     }
 

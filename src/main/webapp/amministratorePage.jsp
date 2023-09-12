@@ -1,4 +1,3 @@
-<%@ page import="bodyTech.model.entity.Istruttore" %>
 <%@ page import="bodyTech.model.entity.Amministratore" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -23,17 +22,8 @@
     </style>
 </head>
 <body>
-    <%
-        Object o = session.getAttribute("Amministratore");
-        Amministratore a = null;
-        if (o != null) {
-            a = (Amministratore) o;
-            request.setAttribute("Amministratore", a);
-        }
-        else {
-            response.sendError(403, "ACCESSO NON AUTORIZZATO");
-        }
-    %>
+
+    <%@include file="jsp/controlloAmministratore.jsp"%>
 
     <%@include file="jsp/header.jsp"%>
 
@@ -43,8 +33,8 @@
             <a href="infoProfilo" style="text-decoration: none">
                 <img src="images/utente.png">
                 <div class="container">
-                    <h4><b><%=a.getNome()%> <%=a.getCognome()%></b></h4>
-                    <p><%=a.getCodice()%></p>
+                    <h4><b>${Amministratore.nome} ${Amministratore.cognome}</b></h4>
+                    <p>${Amministratore.codice}</p>
                 </div>
             </a>
         </div>
@@ -71,15 +61,5 @@
 
     </div>
 
-    <script>
-        function openListaUtenti() {
-            window.open("listaUtentiPage.jsp?id=${istruttore.matricolaIstruttore}");
-            /*var xhr = new XMLHttpRequest();
-
-
-            xhr.open('GET', '${pageContext.request.contextPath}/ListaUtentiServlet', true);
-            xhr.send(null);*/
-        }
-    </script>
 </body>
 </html>
