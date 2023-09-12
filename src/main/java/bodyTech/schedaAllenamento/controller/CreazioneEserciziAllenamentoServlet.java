@@ -20,6 +20,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Servlet che consente a Istruttori e Amministratori di creare una lista di EsercizioAllenamento e associarla ad una Scheda
+ * di Allenamento
+ */
 @WebServlet(name = "CreazioneEserciziAllenamentoServlet", urlPatterns = {"/CreazioneEserciziAllenamentoServlet"})
 public class CreazioneEserciziAllenamentoServlet extends HttpServlet {
     @Override

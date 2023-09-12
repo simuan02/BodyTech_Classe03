@@ -22,6 +22,10 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * Servlet che consente a Istruttori e Amministratori di creare una Scheda di Allenamento ed associarla ad un Utente
+ * che non ne ha nessuna associata.
+ */
 @WebServlet(name = "CreazioneSchedaServlet", urlPatterns = {"/CreazioneSchedaServlet"})
 public class CreazioneSchedaServlet extends HttpServlet {
     @Override

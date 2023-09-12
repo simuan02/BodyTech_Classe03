@@ -13,6 +13,10 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Servlet che consente a Istruttori e Amministratori di visualizzare la scheda associata a un Utente il cui codice è
+ * passato come parametro nella richiesta
+ */
 @WebServlet(name = "VisualizzaSchedaUtenteServlet", urlPatterns = {"/VisualizzaSchedaUtenteServlet"})
 public class VisualizzaSchedaUtenteServlet extends HttpServlet {
     @Override
@@ -27,8 +31,6 @@ public class VisualizzaSchedaUtenteServlet extends HttpServlet {
                 scheda.setListaEsercizi(listaEsercizi);
                 request.setAttribute("scheda", scheda);
                 request.setAttribute("utente", utente);
-
-
             }
         } catch (SQLException e) {
             log(e.getMessage(), e);
