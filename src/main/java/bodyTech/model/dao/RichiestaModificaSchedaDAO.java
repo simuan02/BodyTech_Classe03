@@ -13,9 +13,9 @@ import java.util.List;
 public class RichiestaModificaSchedaDAO {
 
     /**
-     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente.
-     * @param codiceFiscale dell'utente del quale recuperare le richieste di modifica scheda
-     * @return lista delle Richieste trovate
+     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente
+     * @param codiceFiscale
+     * @return lista delle Richieste
      * @throws SQLException
      */
     public static List<RichiestaModificaScheda> findByUser(String codiceFiscale) throws SQLException {
@@ -31,17 +31,23 @@ public class RichiestaModificaSchedaDAO {
             rms.setEsito(rs.getBoolean(4));
             richieste.add(rms);
         }
-        stmt.close();
-        conn.close();
         return richieste;
     }
 
-    /**
-     * Implementa la funzionalità di aggiungere nel DB una richiesta di modifica scheda creata da un utente.
-     * @param richiesta la richiesta di modifica
-     * @param codiceFiscale dell'utente che ha creato la richiesta
-     * @throws SQLException
-     */
+    public static RichiestaModificaScheda findById(int id) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM richiestaModificaScheda WHERE idRichiesta = " + id + "";
+        ResultSet rs = stmt.executeQuery(query);
+        RichiestaModificaScheda rms = new RichiestaModificaScheda();
+        while (rs.next()){
+            rms.setIdRichiesta(rs.getInt(1));
+            rms.setMessaggio(rs.getString(2));
+            rms.setEsito(rs.getBoolean(4));
+        }
+        return rms;
+    }
+
     public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
@@ -51,7 +57,5 @@ public class RichiestaModificaSchedaDAO {
         System.out.println(richiesta.isEsito());
         pstmt.setBoolean(3, richiesta.isEsito());
         pstmt.executeUpdate();
-        pstmt.close();
-        conn.close();
     }
 }

@@ -46,16 +46,13 @@
     font-size: 13pt;
 }
 
-.UtenteButtons {
-    width: 30%;
-    font-size: 13pt;
-    padding: 1%;
-    background-color: #F7C70F;
-    border-radius: 10px;
-    border: 2px solid #F7C70F;
-    text-align: center;
+
+#eliminaUtente {
+    background-color: red;
+}
+
+.richiesta_div {
+    display: flex;
+    flex-direction: row;
     margin-top: 20px;
-    color: black;
-    margin-left: 5%;
-    margin-bottom: 2%;
 }

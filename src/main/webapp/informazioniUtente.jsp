@@ -21,17 +21,17 @@
         SchedaAllenamento scheda = (SchedaAllenamento) request.getAttribute("scheda");
         if (scheda != null){
     %>
-            <a href="${pageContext.request.contextPath}/VisualizzaSchedaUtenteServlet?cf=${utente.codiceFiscale}"><div class="button">
-                Visualizza Scheda d'allenamento
-            </div></a>
+    <a href="${pageContext.request.contextPath}/VisualizzaSchedaUtenteServlet?cf=${utente.codiceFiscale}"><div class="button">
+        Visualizza Scheda d'allenamento
+    </div></a>
     <%
-        }
-        else if (p.loggedUserLevel().equals("Istruttore")){
+    }
+    else if (p.loggedUserLevel().equals("Istruttore")){
     %>
 
-            <a href="${pageContext.request.contextPath}/CreazioneSchedaServlet?cf=${utente.codiceFiscale}&id=1"><div class="button">
-                Aggiungi una Scheda d'allenamento
-            </div></a>
+    <a href="${pageContext.request.contextPath}/CreazioneSchedaServlet?cf=${utente.codiceFiscale}&id=1"><div class="button">
+        Aggiungi una Scheda d'allenamento
+    </div></a>
     <%
         }
     %>
@@ -45,37 +45,42 @@
             if (richieste.size() > 0){
                 for (RichiestaModificaScheda richiesta: richieste){
         %>
-        <p><a href="/VisualizzaRichiesta?idRichiesta=<%=richiesta.getIdRichiesta()%>"  class="noDecoration"><%=richiesta.getMessaggio()%></a></p>
+        <div class="richiesta_div">
+            <p>${richiesta.idRichiesta} - ${richiesta.messaggio}</p>
+            <a href="${pageContext.request.contextPath}/valutazioneRichiesta.jsp?id=${richiesta.idRichiesta}&cf=${utente.codiceFiscale}">
+                <img src="images/freccia_destra.png" style="margin-left: 10px; width: 40px; height: 40px; margin-top: 10px">
+            </a>
+        </div>
         <%
-                }
             }
-            else
-            {
+        }
+        else
+        {
         %>
-                <p style="color: darkred">L'utente non ha fatto nessuna richiesta</p>
+        <p style="color: darkred">L'utente non ha fatto nessuna richiesta</p>
         <%
             }
         %>
 
     </div>
-        <%
-            if (p.loggedUserLevel().equals("Amministratore")){
-        %>
-        <div class="buttons">
-            <a href="TrovaUtente?codiceFiscale=${utente.codiceFiscale}">
-                <div class="UtenteButtons">
+    <%
+        if (p.loggedUserLevel().equals("Amministratore")){
+    %>
+    <div class="buttons">
+        <a href="TrovaUtente?codiceFiscale=${utente.codiceFiscale}">
+            <div class="UtenteButtons">
                 Modifica i dati
             </div></a>
-        </div>
+    </div>
     <%
         }
     %>
 
-        <a href="${pageContext.request.contextPath}/EliminaUtenteServlet?cf=${utente.codiceFiscale}">
-            <div class="UtenteButtons">
-                Elimina ${utente.cognome}
-            </div>
-        </a>
-    </div>
+    <a href="${pageContext.request.contextPath}/EliminaUtenteServlet?cf=${utente.codiceFiscale}">
+        <div class="UtenteButtons">
+            Elimina ${utente.cognome}
+        </div>
+    </a>
+</div>
 </body>
 </html>
