@@ -27,6 +27,11 @@
             margin-left: 5%;
             margin-bottom: 20px;
         }
+
+        .richiesta_div{
+            display: flex;
+            flex-direction: row;
+        }
     </style>
 </head>
 <body>
@@ -59,7 +64,12 @@
                 <c:when test="${richieste.size() > 0}">
                     <!-- FOREACH -->
                     <c:forEach items="${richieste}" var="richiesta">
-                        <p>${richiesta.messaggio}</p>
+                        <div class="richiesta_div">
+                            <p>${richiesta.idRichiesta} - ${richiesta.messaggio}</p>
+                            <a href="${pageContext.request.contextPath}/valutazioneRichiesta.jsp?id=${richiesta.idRichiesta}&cf=${utente.codiceFiscale}">
+                                <img src="images/freccia_destra.png" style="margin-left: 10px; width: 40px; height: 40px; margin-top: 10px">
+                            </a>
+                        </div>
                     </c:forEach>
                 </c:when>
 

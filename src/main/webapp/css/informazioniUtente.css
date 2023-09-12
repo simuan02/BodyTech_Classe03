@@ -50,3 +50,9 @@
 #eliminaUtente {
     background-color: red;
 }
+
+.richiesta_div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+}

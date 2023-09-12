@@ -34,6 +34,20 @@ public class RichiestaModificaSchedaDAO {
         return richieste;
     }
 
+    public static RichiestaModificaScheda findById(int id) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM richiestaModificaScheda WHERE idRichiesta = " + id + "";
+        ResultSet rs = stmt.executeQuery(query);
+        RichiestaModificaScheda rms = new RichiestaModificaScheda();
+        while (rs.next()){
+            rms.setIdRichiesta(rs.getInt(1));
+            rms.setMessaggio(rs.getString(2));
+            rms.setEsito(rs.getBoolean(4));
+        }
+        return rms;
+    }
+
     public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
