@@ -14,6 +14,10 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet che consente di recuperare un Istruttore tramite la sua matricola dal DB, settarlo nella richiesta e
+ * invocare la jsp "ModificaIstruttore" con un forward.
+ */
 @WebServlet(name = "FindInstructorServlet", urlPatterns = {"/TrovaIstruttore"})
 public class FindInstructorServlet extends HttpServlet {
     @Override

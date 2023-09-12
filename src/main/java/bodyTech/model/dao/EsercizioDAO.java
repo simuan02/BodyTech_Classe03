@@ -18,8 +18,8 @@ public class EsercizioDAO {
 
     /**
      * Implementa la funzionalità di recuperare dal DB l'Esercizio che contiene la stringa passata come nome
-     * @param nome
-     * @return Esercizio
+     * @param nome nome dell'esercizio
+     * @return Esercizio trovato
      * @throws SQLException
      */
     public static Esercizio findByName (String nome) throws SQLException {
@@ -37,6 +37,11 @@ public class EsercizioDAO {
         return es;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare dal DB la lista di tutti gli esercizi presenti.
+     * @return lista degli esercizi trovati
+     * @throws SQLException
+     */
     public static List<Esercizio> findAll() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
@@ -54,6 +59,13 @@ public class EsercizioDAO {
         return listaEsercizi;
     }
 
+    /**
+     * Implementa la funzionalità di recuperare la lista di tutti gli esercizi presenti nel DB che non si trovano attribuiti
+     * alla scheda di allenamento il cui id è passato come parametro.
+     * @param idScheda id della scheda dalla quale recuperare gli esercizi non presenti
+     * @return lista degli esercizi trovati
+     * @throws SQLException
+     */
     public static List<Esercizio> findAvailableForScheda(int idScheda) throws SQLException {
         List<Esercizio> listaEsercizi = EsercizioDAO.findAll();
         List<EsercizioAllenamento> listaEserciziScheda = EsercizioAllenamentoDAO.findBySchedaID(idScheda);

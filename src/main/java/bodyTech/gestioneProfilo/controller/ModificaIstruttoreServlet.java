@@ -17,6 +17,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet che consente ad un Amministratore di modificare le informazioni di un Istruttore tramite un form. Viene creato
+ * un nuovo oggetto Istruttore con le informazioni aggiornate da sostituire a quelle dell'oggetto Istruttore presente nel DB.
+ * L'operazione non procede se la nuova matricola è attribuita ad un Istruttore già presente, o se la sua lunghezza è errata.
+ */
 @WebServlet(name = "ModificaIstruttoreServlet", urlPatterns = {"/ModificaIstruttore"})
 public class ModificaIstruttoreServlet extends HttpServlet {
     @Override

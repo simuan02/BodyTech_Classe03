@@ -16,10 +16,9 @@ import java.util.List;
 public class IstruttoreDAO {
 
     /**
-     * Implementa la funzionalità di creare un oggetto Istruttore e recuperare i suoi attributi dal DB
-     *
+     * Implementa la funzionalità di creare un oggetto Istruttore e recuperare i suoi attributi dal DB.
      * @param rs
-     * @return Istruttore
+     * @return Istruttore creato
      * @throws SQLException
      */
     public static Istruttore createIstruttore(ResultSet rs) throws SQLException {
@@ -37,8 +36,7 @@ public class IstruttoreDAO {
     }
 
     /**
-     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Istruttori presenti
-     *
+     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Istruttori presenti.
      * @return lista degli Istruttori
      * @throws SQLException
      */
@@ -58,10 +56,9 @@ public class IstruttoreDAO {
     }
 
     /**
-     * Implementa la funzionalità di recuperare dal DB l'Istruttore associato a quella matricola
-     *
-     * @param matricola
-     * @return Istruttore
+     * Implementa la funzionalità di recuperare dal DB l'Istruttore associato a quella matricola.
+     * @param matricola dell'Istruttore da cercare
+     * @return Istruttore trovato
      * @throws SQLException
      */
     public static Istruttore findByMatricola(String matricola) throws SQLException {
@@ -78,8 +75,7 @@ public class IstruttoreDAO {
     }
 
     /**
-     * Implementa la funzionalità di aggiornare le informazioni di un istruttore nel DB, se già esistente
-     *
+     * Implementa la funzionalità di aggiornare le informazioni di un istruttore nel DB, se già esistente.
      * @param oldIstr l'istruttore corrente da aggiornare
      * @param newIstr l'istruttore che contiene le informazioni aggiornate
      * @throws SQLException
@@ -112,11 +108,10 @@ public class IstruttoreDAO {
     }
 
     /**
-     * Implementa la funzionalità di recuperare dal DB l'Istruttore associato a quella matricola, senza però recuperarne le schede
-     * di allenamento a lui associate
-     *
-     * @param matricola
-     * @return Istruttore
+     * Implementa la funzionalità di recuperare dal DB l'Istruttore associato a quella matricola, senza però recuperarne
+     * le schede di allenamento a lui associate.
+     * @param matricola dell'Istruttore da cercare
+     * @return Istruttore trovato
      * @throws SQLException
      */
     public static Istruttore findByMatricolaNoSchede(String matricola) throws SQLException {
@@ -139,6 +134,11 @@ public class IstruttoreDAO {
         return istr;
     }
 
+    /**
+     * Implementa la funzionalità di inserire un nuovo Istruttore nel DB.
+     * @param istr da inserire
+     * @throws SQLException
+     */
     public static void insertInstructor(Istruttore istr) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Istruttore values (?, ?, ?, ?, ?)");
@@ -152,6 +152,11 @@ public class IstruttoreDAO {
         conn.close();
     }
 
+    /**
+     * Implementa la funzionalità di eliminare un Istruttore dal DB.
+     * @param istr da eliminare
+     * @throws SQLException
+     */
     public static void deleteInstructor(Istruttore istr) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Istruttore WHERE matricolaIstruttore = ?");

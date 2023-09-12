@@ -20,6 +20,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Servlet che consente ad un Amministratore di visualizzare la lista di tutti gli Istruttori. La lista viene recuperata
+ * dal DB e settata nella richiesta, e viene invocata la jsp "listaIstruttoriPage" con un forward.
+ */
 @WebServlet(name = "ListaIstruttoriServlet", urlPatterns = {"/listaIstruttori"})
 public class ListaIstruttoriServlet extends HttpServlet {
     @Override

@@ -13,9 +13,9 @@ import java.util.List;
 public class RichiestaModificaSchedaDAO {
 
     /**
-     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente
-     * @param codiceFiscale
-     * @return lista delle Richieste
+     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente.
+     * @param codiceFiscale dell'utente del quale recuperare le richieste di modifica scheda
+     * @return lista delle Richieste trovate
      * @throws SQLException
      */
     public static List<RichiestaModificaScheda> findByUser(String codiceFiscale) throws SQLException {
@@ -36,6 +36,12 @@ public class RichiestaModificaSchedaDAO {
         return richieste;
     }
 
+    /**
+     * Implementa la funzionalità di aggiungere nel DB una richiesta di modifica scheda creata da un utente.
+     * @param richiesta la richiesta di modifica
+     * @param codiceFiscale dell'utente che ha creato la richiesta
+     * @throws SQLException
+     */
     public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
