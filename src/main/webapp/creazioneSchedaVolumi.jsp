@@ -1,11 +1,5 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 04/09/2023
-  Time: 15:54
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Esercizio" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,21 +11,26 @@
     <%@include file="jsp/header.jsp"%>
 
     <div class="card">
-        <p id="title">Crazione Scheda</p>
+        <p id="title">Creazione Scheda</p>
         <div id="informazioni">
             <p>Cognome: ${utente.cognome}</p>
             <p>Nome: ${utente.nome}</p>
             <p>Codice Fiscale: ${utente.codiceFiscale}</p>
         </div>
-        <form action="CreazioneEserciziAllenamentoServlet", method="post">
+        <form action="CreazioneEserciziAllenamentoServlet?codiceFiscale=${utente.codiceFiscale}" method="post">
 
             <div class="esercizi">
-                <c:forEach items="${eserciziChecked}" var="esercizio">
+                <%
+                    List<Esercizio> listaEsercizi = (List<Esercizio>) request.getAttribute("listaEsercizi");
+                    for (Esercizio esercizio : listaEsercizi){
+                %>
                     <div class="esercizio">
-                        <p>${esercizio.nomeEsercizio}</p>
-                        <input type="text" id="volume" name="volume">
+                        <p><%=esercizio.getNomeEsercizio()%></p>
+                        <input type="text" id="volume" name="volume" required>
                     </div>
-                </c:forEach>
+                <%
+                    }
+                %>
             </div>
             <input type="submit" value="CREA">
         </form>

@@ -11,28 +11,11 @@
     <script src="scripts.js"></script>
 </head>
 <body>
-    <%@include file="jsp/header.jsp"%>
-    <%
-        Object servletLanciata = request.getAttribute("ServletMostraProfiloLanciata");
-        String richiestaEffettuata = (String)request.getAttribute("richiestaEffettuata");
-        if (servletLanciata == null && richiestaEffettuata == null) {
-            response.sendError(403, "Operazione non consentita!");
-            request.setAttribute("ServletMostraProfiloLanciata", null);
-        }
-        if (richiestaEffettuata != null){
-            if (richiestaEffettuata.equalsIgnoreCase("YES")){
-    %>
-            <script>alert("La richiesta è stata correttamente aperta");</script>
-    <%;
-            }
-        else if (richiestaEffettuata.equalsIgnoreCase("NO")){
 
-    %>
-            <script>alert("Errore nell'apertura della richiesta");</script>
-    <%;
-            }
-        }
-    %>
+    <%@include file="jsp/controlloLancioPaginaMostraProfiloCorretto.jsp"%>
+
+    <%@include file="jsp/header.jsp"%>
+
     <h1 id="profileTitle">DETTAGLI PROFILO</h1>
     <div id="FirstName" class="InfoProfile">
         <h2 id="Nome">Nome: <%=p.getNome()%></h2>

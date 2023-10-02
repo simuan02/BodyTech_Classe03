@@ -30,6 +30,7 @@ import java.sql.SQLException;
 public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);
     }
 
     @Override
@@ -39,50 +40,55 @@ public class LoginController extends HttpServlet {
         String dispatcherPath = "";
         LoginService services = new LoginServiceImpl();
         boolean adminCode = true;
-        for (int j = 0 ; j < identifier.length(); j++) {
-            if (identifier.charAt(j) < 48 || identifier.charAt(j)>57)
-                adminCode = false;
+        if (identifier == null || password == null) {
+            response.sendError(400, "Identificativo e/o password nullo. Impossibile procedere");
         }
-        if (adminCode){
-            int codice = Integer.parseInt(identifier);
-            Amministratore a = new Amministratore();
-            a.setPassword(password);
-            a.setCodice(codice);
-            try {
-                dispatcherPath = chooseDispatcherPath(request, services.login(a), a);
-            } catch (SQLException e) {
-                e.printStackTrace();
+        else {
+            for (int j = 0; j < identifier.length(); j++) {
+                if (identifier.charAt(j) < 48 || identifier.charAt(j) > 57)
+                    adminCode = false;
             }
-        }
-        else if (identifier.length() == 16) {
+            if (adminCode) {
+                int codice = Integer.parseInt(identifier);
+                Amministratore a = new Amministratore();
+                a.setPassword(password);
+                a.setCodice(codice);
+                try {
+                    dispatcherPath = chooseDispatcherPath(request, services.login(a), a);
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            } else if (identifier.length() == 16) {
                 Utente u = new Utente();
                 u.setPassword(password);
                 u.setCodiceFiscale(identifier);
                 try {
                     dispatcherPath = chooseDispatcherPath(request, services.login(u), u);
                 } catch (SQLException ex) {
-                    ex.printStackTrace();
+                    log(ex.getMessage(), ex);
+                    response.sendError(500);
                 }
-            }
-            else if (identifier.length() == 10){
+            } else if (identifier.length() == 10) {
                 Istruttore i = new Istruttore();
                 i.setPassword(password);
                 i.setMatricolaIstruttore(identifier);
                 try {
                     dispatcherPath = chooseDispatcherPath(request, services.login(i), i);
                 } catch (SQLException ex) {
-                    ex.printStackTrace();
+                    log(ex.getMessage(), ex);
+                    response.sendError(500);
+                }
+            } else {
+                try {
+                    dispatcherPath = chooseDispatcherPath(request, false, null);
+                } catch (SQLException e) {
+                    log(e.getMessage(), e);
+                    response.sendError(500);
                 }
             }
-            else {
-            try {
-                dispatcherPath = chooseDispatcherPath(request, false, null);
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+            RequestDispatcher dispatcher = request.getRequestDispatcher(dispatcherPath);
+            dispatcher.forward(request, response);
         }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(dispatcherPath);
-        dispatcher.forward(request, response);
     }
 
     /**

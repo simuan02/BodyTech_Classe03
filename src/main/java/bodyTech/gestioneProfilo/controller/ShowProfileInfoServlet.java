@@ -1,14 +1,12 @@
 package bodyTech.gestioneProfilo.controller;
 
-import bodyTech.gestioneProfilo.service.ProfiloService;
-import bodyTech.gestioneProfilo.service.ProfiloServiceImpl;
 import bodyTech.model.entity.Profilo;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
 
+import javax.security.auth.login.AccountException;
 import java.io.IOException;
-import java.sql.SQLException;
 
 /**
  * Questa Servlet verifica, tramite il metodo ProfiloService.visualizzaProfilo(Profilo), se il profilo corrente è inizializzato,
@@ -24,15 +22,19 @@ public class ShowProfileInfoServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
         HttpSession session = request.getSession();
         Profilo p = (Profilo)session.getAttribute("Profilo");
-        ProfiloService services = new ProfiloServiceImpl();
         try {
-            services.visualizzaProfilo(p);
-            request.setAttribute("ServletMostraProfiloLanciata", new Object());
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/infoProfile.jsp");
-            dispatcher.forward(request, response);
-        } catch (Exception e) {
-            e.printStackTrace();
+            if (p!=null){
+                request.setAttribute("ServletMostraProfiloLanciata", new Object());
+                RequestDispatcher dispatcher = request.getRequestDispatcher("/infoProfile.jsp");
+                dispatcher.forward(request, response);
+            }
+            else
+                throw new AccountException();
+        } catch (AccountException e) {
             response.sendError(403, "Operazione non consentita!");
+        } catch (Exception e2){
+            log(e2.getMessage(), e2);
+            response.sendError(500);
         }
     }
 

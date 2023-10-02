@@ -9,8 +9,20 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * Servlet che consente di recuperare una scheda di allenamento tramite il suo idScheda dal DB,
+ * settarla nella richiesta e invocare la jsp "modificaScheda" con un forward.
+ */
+
 @WebServlet(name = "FindSchedaServlet", value = "/FindScheda")
 public class FindSchedaServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         int schedaID = Integer.parseInt(request.getParameter("idScheda"));
@@ -20,11 +32,19 @@ public class FindSchedaServlet extends HttpServlet {
             RequestDispatcher dispatcher = request.getRequestDispatcher("/modificaScheda.jsp");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
 
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

@@ -1,96 +1,78 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="bodyTech.model.entity.Utente" %><%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 04/09/2023
-  Time: 13:38
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.entity.Utente" %>
+<%@ page import="bodyTech.model.entity.SchedaAllenamento" %>
+<%@ page import="bodyTech.model.entity.RichiestaModificaScheda" %>
+<%@ page import="java.util.List" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>BodyTech - Informazioni Utente</title>
     <link rel="stylesheet" href="css/informazioniUtente.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
-
-    <style>
-        #eliminaUtente {
-            width: 30%;
-            font-size: 13pt;
-            padding: 6px;
-            background-color: #F7C70F;
-            border-radius: 10px;
-            border: 2px solid #F7C70F;
-            text-align: center;
-            margin-top: 20px;
-            color: black;
-            margin-left: 5%;
-            margin-bottom: 20px;
-        }
-
-        .richiesta_div{
-            display: flex;
-            flex-direction: row;
-        }
-    </style>
 </head>
 <body>
-    <%@include file="jsp/header.jsp"%>
+<%@include file="jsp/header.jsp"%>
 
-    <div class="card">
-        <p>Nome: ${utente.nome}</p>
-        <p>Cognome: ${utente.cognome}</p>
-        <p>Codice Fiscale. ${utente.codiceFiscale}</p>
+<div class="card">
+    <p>Nome: ${utente.nome}</p>
+    <p>Cognome: ${utente.cognome}</p>
+    <p>Codice Fiscale. ${utente.codiceFiscale}</p>
 
-        <c:choose>
-            <c:when test="${scheda != null}">
-                <a href="${pageContext.request.contextPath}/VisualizzaSchedaAllenamentoServlet?cf=${utente.codiceFiscale}"><div class="button">
-                    Visualizza Scheda d'allenamento
-                </div></a>
-            </c:when>
+    <%
+        SchedaAllenamento scheda = (SchedaAllenamento) request.getAttribute("scheda");
+        if (scheda != null){
+    %>
+            <a href="${pageContext.request.contextPath}/VisualizzaSchedaUtenteServlet?cf=${utente.codiceFiscale}"><div class="button">
+                Visualizza Scheda d'allenamento
+            </div></a>
+    <%
+        }
+        else if (p.loggedUserLevel().equals("Istruttore")){
+    %>
 
-            <c:otherwise>
-                <a href="${pageContext.request.contextPath}/CreazioneSchedaServlet?cf=${utente.codiceFiscale}&id=1"><div class="button">
-                    Aggiungi una Scheda d'allenamento
-                </div></a>
-            </c:otherwise>
-        </c:choose>
+            <a href="${pageContext.request.contextPath}/CreazioneSchedaServlet?cf=${utente.codiceFiscale}&id=1"><div class="button">
+                Aggiungi una Scheda d'allenamento
+            </div></a>
+    <%
+        }
+    %>
 
 
-        <div class="richieste">
-            <p id="title_richieste">Richieste</p>
+    <div class="richieste">
+        <p id="title_richieste">Richieste</p>
 
-            <c:choose>
-                <c:when test="${richieste.size() > 0}">
-                    <!-- FOREACH -->
-                    <c:forEach items="${richieste}" var="richiesta">
-                        <div class="richiesta_div">
-                            <p>${richiesta.idRichiesta} - ${richiesta.messaggio}</p>
-                            <a href="${pageContext.request.contextPath}/valutazioneRichiesta.jsp?id=${richiesta.idRichiesta}&cf=${utente.codiceFiscale}">
-                                <img src="images/freccia_destra.png" style="margin-left: 10px; width: 40px; height: 40px; margin-top: 10px">
-                            </a>
-                        </div>
-                    </c:forEach>
-                </c:when>
+        <%
+            List<RichiestaModificaScheda> richieste = (List<RichiestaModificaScheda>)request.getAttribute("richieste");
+            if (richieste.size() > 0){
+                for (RichiestaModificaScheda richiesta: richieste){
+        %>
+                    <p><%=richiesta.getMessaggio()%></p>
+        <%
+                }
+            }
+            else
+            {
+        %>
+                <p style="color: darkred">L'utente non ha fatto nessuna richiesta</p>
+        <%
+            }
+        %>
 
-                <c:otherwise>
-                    <p style="color: darkred">L'utente non ha fatto nessuna richiesta</p>
-                </c:otherwise>
-            </c:choose>
-
-        </div>
-
-        <!--<div class="buttons">
-            <div id="modificaDati">
+    </div>
+        <%
+            if (p.loggedUserLevel().equals("Amministratore")){
+        %>
+        <div class="buttons">
+            <a href="TrovaUtente?codiceFiscale=${utente.codiceFiscale}">
+                <div class="UtenteButtons">
                 Modifica i dati
-            </div>
-            <a href=""><div id="eliminaUtente">
-                Elimina ${utente.cognome}
-            </div></a>>
-        </div>-->
+            </div></a>
+        </div>
+    <%
+        }
+    %>
 
         <a href="${pageContext.request.contextPath}/EliminaUtenteServlet?cf=${utente.codiceFiscale}">
-            <div id="eliminaUtente">
+            <div class="UtenteButtons">
                 Elimina ${utente.cognome}
             </div>
         </a>

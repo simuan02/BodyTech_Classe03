@@ -49,7 +49,8 @@ public class RegistrazioneController extends HttpServlet {
                 }
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
         if (b) {
             if (services.registrazioneUtente(u)) {

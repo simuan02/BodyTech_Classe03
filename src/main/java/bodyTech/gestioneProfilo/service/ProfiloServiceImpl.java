@@ -6,21 +6,14 @@ import bodyTech.model.dao.SchedaAllenamentoDAO;
 import bodyTech.model.dao.UtenteDAO;
 import bodyTech.model.entity.*;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 public class ProfiloServiceImpl implements ProfiloService{
-    @Override
-    public boolean visualizzaProfilo(Profilo p) {
-        if (p != null){
-            return true;
-        }
-        else
-            throw new RuntimeException("Operazione non consentita");
-    }
 
     @Override
-    public boolean modificaDati(Profilo oldProfile, Profilo newProfile) throws SQLException {
+    public boolean modificaDati(Profilo oldProfile, Profilo newProfile) throws SQLException, IOException {
         boolean okUpdate = false;
         if (oldProfile != null){
             switch (oldProfile.loggedUserLevel()){
@@ -66,8 +59,6 @@ public class ProfiloServiceImpl implements ProfiloService{
     }
 
     public SchedaAllenamento visualizzaScheda(Profilo p) throws SQLException {
-        if (!p.loggedUserLevel().equals("Utente"))
-            throw new RuntimeException("Accesso non autorizzato al metodo");
         SchedaAllenamento sa = SchedaAllenamentoDAO.findSchedaByUtente(((Utente)p).getCodiceFiscale());
         return sa;
     }

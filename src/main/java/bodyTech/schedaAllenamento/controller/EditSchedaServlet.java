@@ -17,13 +17,30 @@ import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.List;
 
+/**
+ * Servlet che consente ad un Istruttore o Amministratore di modificare una scheda di allenamento.
+ */
 @WebServlet(name = "EditSchedaServlet", value = "/editScheda")
 public class EditSchedaServlet extends HttpServlet {
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request, response);
     }
 
+    /**
+     *
+     * @param request
+     * @param response
+     * @throws ServletException
+     * @throws IOException
+     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
@@ -42,7 +59,6 @@ public class EditSchedaServlet extends HttpServlet {
                 List<EsercizioAllenamento> listaEsercizi = sa.getListaEsercizi();
                 for (EsercizioAllenamento ea: listaEsercizi){
                     ea.setVolume(request.getParameter(ea.getNomeEsercizio()));
-                    System.out.println(ea.getVolume());
                 }
                 sa.setListaEsercizi(listaEsercizi);
                 SchedaService services = new SchedaServiceImpl();
@@ -50,11 +66,12 @@ public class EditSchedaServlet extends HttpServlet {
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
                 dispatcher.forward(request, response);
             } catch (SQLException e) {
-                e.printStackTrace();
-                response.sendError(500, "Errore del Server");
+                log(e.getMessage(), e);
+                response.sendError(500);
             } catch (RuntimeException e2){
                 response.sendError(403, e2.getMessage());
             }
+
         }
         else
             response.sendError(403, "Utente non autorizzato!");

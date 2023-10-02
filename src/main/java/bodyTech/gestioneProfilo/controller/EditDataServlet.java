@@ -75,7 +75,8 @@ public class EditDataServlet extends HttpServlet {
             else
                 response.sendError(400);
         } catch (SQLException e) {
-            e.printStackTrace();
+            log(e.getMessage(), e);
+            response.sendError(500);
         }
     }
 
