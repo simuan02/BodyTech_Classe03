@@ -16,12 +16,10 @@ import static org.junit.Assert.assertTrue;
 public class UtenteDAOTest {
 
     private Utente user1;
-    private List<Utente> insertedUsers;
 
     @BeforeEach
     public void init (){
         user1 = new Utente();
-        insertedUsers = new ArrayList<>();
     }
 
     /**
@@ -43,7 +41,7 @@ public class UtenteDAOTest {
         user1.setPassword("ABCDEFGH");
         user1.setCodiceFiscale(s);
         assertTrue("Utente Registrato alla Piattaforma", UtenteDAO.insertUser(user1));
-        insertedUsers.add(user1);
+        UtenteDAO.deleteUser(user1);
     }
 
     /**
@@ -57,7 +55,7 @@ public class UtenteDAOTest {
         user1.setCodiceFiscale("ABCDEFGHIJKLMNOP");
         UtenteDAO.insertUser(user1);
         Assertions.assertFalse(UtenteDAO.insertUser(user1), "Codice Fiscale Già Presente");
-        insertedUsers.add(user1);
+        UtenteDAO.deleteUser(user1);
     }
 
     /**
@@ -96,13 +94,4 @@ public class UtenteDAOTest {
         assertFalse("Campo password mancante", UtenteDAO.insertUser(user2));
     }
 
-    /**
-     * Questo metodo elimina dal DB tutti gli Utenti inseriti nei vari cari di test
-     */
-    @After
-    public void deleteUsersFromDB () throws SQLException {
-        for (Utente u : insertedUsers){
-            UtenteDAO.deleteUser(u);
-        }
-    }
 }

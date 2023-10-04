@@ -43,10 +43,9 @@
     cursor: pointer;
 }
 
-<<<<<<<< HEAD:src/main/webapp/css/valutazioneRichiesta.css
-.button a p{
+.button a p {
     color: black;
-========
+}
 .card .richieste {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -69,5 +68,4 @@
     display: flex;
     flex-direction: row;
     margin-top: 20px;
->>>>>>>> 9ca8dda (Modifica):target/ProgettoBodyTech-1.0-SNAPSHOT/css/informazioniUtente.css
 }

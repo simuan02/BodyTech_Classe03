@@ -54,5 +54,31 @@
 .richiesta_div {
     display: flex;
     flex-direction: row;
+    margin-top: 1%;
+    width: 100%;
+    text-align: justify;
+}
+
+.UtenteButtons {
+    width: 30%;
+    font-size: 13pt;
+    padding: 1%;
+    background-color: #F7C70F;
+    border-radius: 10px;
+    border: 2px solid #F7C70F;
+    text-align: center;
     margin-top: 20px;
+    color: black;
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
+
+.ValutaRichiestaButton {
+    width: 40px;
+    height: 20px;
+    margin-left: auto;
+}
+
+.dettagli_richiesta {
+    flex-grow: 1;
 }

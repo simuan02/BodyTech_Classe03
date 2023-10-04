@@ -1,13 +1,7 @@
 <%@ page import="bodyTech.model.entity.RichiestaModificaScheda" %>
 <%@ page import="bodyTech.model.dao.RichiestaModificaSchedaDAO" %>
 <%@ page import="bodyTech.model.entity.Utente" %>
-<%@ page import="bodyTech.model.dao.UtenteDAO" %><%--
-  Created by IntelliJ IDEA.
-  User: jacop
-  Date: 08/09/2023
-  Time: 15:13
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="bodyTech.model.dao.UtenteDAO" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -17,15 +11,6 @@
 
 </head>
 <body>
-    <%
-        int id = Integer.parseInt(request.getParameter("id"));
-        String codiceFiscale = request.getParameter("cf");
-        Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
-        RichiestaModificaScheda richiesta = RichiestaModificaSchedaDAO.findById(id);
-        request.setAttribute("richiesta", richiesta);
-        request.setAttribute("utente", utente);
-    %>
-
     <%@include file="jsp/header.jsp"%>
 
     <div class="card">
@@ -43,27 +28,20 @@
         </div>
 
         <div class="buttons">
-            <a href="${pageContext.request.contextPath}/showTrainingCards" onclick="">
                 <div class="button">
-                    <p>Accetta</p>
+                    <a href="valutaRichiesta?id=${richiesta.idRichiesta}&valutazione=true" class="noDecoration">
+                        <p>Accetta Richiesta</p>
+                    </a>
                 </div>
-            </a>
 
-            <a href="#" onclick="">
-                <div class="button">
-                    <p>Rifiuta</p>
+                <div class="button" onclick="rifiutaRichiesta(${richiesta.idRichiesta}">
+                    <a href="valutaRichiesta?id=${richiesta.idRichiesta}&valutazione=false" class="noDecoration">
+                        <p>Respingi Richiesta</p>
+                    </a>
                 </div>
-            </a>
         </div>
     </div>
 
-    <script>
-        function accetta(id) {
-            <%
-
-            %>
-        }
-    </script>
 </body>
 
 

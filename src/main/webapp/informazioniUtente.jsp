@@ -46,9 +46,18 @@
                 for (RichiestaModificaScheda richiesta: richieste){
         %>
         <div class="richiesta_div">
-            <p>${richiesta.idRichiesta} - ${richiesta.messaggio}</p>
-            <a href="${pageContext.request.contextPath}/valutazioneRichiesta.jsp?id=${richiesta.idRichiesta}&cf=${utente.codiceFiscale}">
-                <img src="images/freccia_destra.png" style="margin-left: 10px; width: 40px; height: 40px; margin-top: 10px">
+            <p class="dettagli_richiesta"><%=richiesta.getIdRichiesta()%> - <%=richiesta.getMessaggio()%>
+                <%if(richiesta.isEsito() != null){
+                    if (richiesta.isEsito() == true){%> - <span style="color: darkgreen">Richiesta accettata</span> <%}
+                    else {
+                        %>
+                        - <span style="color: red">Richiesta respinta</span>
+                    <%}
+                    }
+                else {%> - Richiesta non ancora valutata<%}%>
+            </p>
+            <a href="${pageContext.request.contextPath}/VisualizzaRichiesta?id=<%=richiesta.getIdRichiesta()%>&cf=${utente.codiceFiscale}">
+                <img src="images/freccia_destra.png" class="ValutaRichiestaButton">
             </a>
         </div>
         <%

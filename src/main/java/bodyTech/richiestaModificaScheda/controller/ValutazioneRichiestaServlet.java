@@ -1,7 +1,6 @@
 package bodyTech.richiestaModificaScheda.controller;
 
-import bodyTech.model.dao.RichiestaModificaSchedaDAO;
-import bodyTech.model.dao.UtenteDAO;
+import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.richiestaModificaScheda.service.RichiestaModificaSchedaService;
@@ -13,33 +12,33 @@ import jakarta.servlet.annotation.*;
 import java.io.IOException;
 import java.sql.SQLException;
 
-@WebServlet(name = "VisualizzaSingolaRichiestaServlet", value = "/VisualizzaRichiesta")
-public class VisualizzaSingolaRichiestaServlet extends HttpServlet {
+@WebServlet(name = "ValutazioneRichiestaServlet", value = "/valutaRichiesta")
+public class ValutazioneRichiestaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idRichiesta = Integer.parseInt(request.getParameter("id"));
-        String codiceFiscale = request.getParameter("cf");
         HttpSession session = request.getSession();
+        Profilo p = (Profilo) session.getAttribute("Profilo");
+        int idRichiesta = Integer.parseInt(request.getParameter("id"));
+        boolean valutazione = Boolean.parseBoolean(request.getParameter("valutazione"));
         String address = "";
+        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
         try {
-            RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
-            RichiestaModificaScheda richiesta = services.visualizzaSingolaRichiesta((Profilo) session.getAttribute("Profilo"), idRichiesta);
-            if (richiesta.isEsito() == null) {
-                request.setAttribute("richiesta", richiesta);
-                request.setAttribute("utente", UtenteDAO.findByCodiceFiscale(codiceFiscale));
-                address = "/valutazioneRichiesta.jsp";
-            }
-            else {
+            RichiestaModificaScheda rms = services.visualizzaSingolaRichiesta(p, idRichiesta);
+            if (rms.isEsito() != null)
                 request.setAttribute("richiestaGiaEsaminata", true);
-                address = "/listaUtenti";
+            else {
+                rms.setEsito(valutazione);
+                services.valutaRichistaModifica(rms, (Istruttore) p);
+                request.setAttribute ("valutazioneRichiesta", valutazione);
             }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
             e.printStackTrace();
-            response.sendError(500);
+            response.sendError(500, "Errore Server!");
+        } catch (RuntimeException e2){
+            response.sendError(400, e2.getMessage());
         }
-
     }
 
     @Override
