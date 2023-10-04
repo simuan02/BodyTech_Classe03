@@ -22,15 +22,15 @@ public class RichiestaModificaScheda {
         this.messaggio = messaggio;
     }
 
-    public boolean isEsito() {
+    public Boolean isEsito() {
         return esito;
     }
 
-    public void setEsito(boolean esito) {
+    public void setEsito(Boolean esito) {
         this.esito = esito;
     }
 
     private int idRichiesta;
     private String messaggio;
-    private boolean esito;
+    private Boolean esito;
 }

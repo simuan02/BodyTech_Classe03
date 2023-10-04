@@ -20,6 +20,7 @@
 </head>
 <body>
     <%@include file="jsp/controlloModificaUtente.jsp"%>
+    <%@include file="jsp/controlloRichiestaEsaminata.jsp"%>
 
     <%@include file="jsp/header.jsp"%>
 
@@ -37,7 +38,7 @@
                 <div class="utente">
                 <a href="${pageContext.request.contextPath}/InformazioniUtenteServlet?cf=<%=user.getCodiceFiscale()%>&id=1" class="noDecoration">
                     <div>
-                        <h4><%=user.getCodiceFiscale()%>></h4>
+                        <h4><%=user.getCodiceFiscale()%></h4>
                         <h4><%=user.getCognome()%> <%=user.getNome()%></h4>
                         <p class="positive_istruttore" style="color: green">L'utente è associato a te</p>
                         </div>

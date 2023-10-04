@@ -26,18 +26,27 @@ public class RichiestaModificaSchedaServiceImpl implements RichiestaModificaSche
     }
 
     @Override
-    public List<RichiestaModificaScheda> visualizzaModifica(Profilo p) throws SQLException {
-        if (p.loggedUserLevel().equals("Utente")){
-            return RichiestaModificaSchedaDAO.findByUser(((Utente)p).getCodiceFiscale());
-        }
-        else if (p.loggedUserLevel().equals("Istruttore")){
-            return null;
+    public List<RichiestaModificaScheda> visualizzaModifica(Profilo p, Utente user) throws SQLException {
+        if (p.loggedUserLevel().equals("Utente") || p.loggedUserLevel().equals("Istruttore")) {
+            return RichiestaModificaSchedaDAO.findByUser(user.getCodiceFiscale());
         }
         return null;
     }
 
     @Override
-    public void valutaRichistaModifica(RichiestaModificaScheda richiesta, Istruttore istr) {
+    public RichiestaModificaScheda visualizzaSingolaRichiesta(Profilo p, int idRichiesta) throws SQLException {
+        if (p.loggedUserLevel().equals("Istruttore")){
+            return RichiestaModificaSchedaDAO.findById(idRichiesta);
+        }
+        return null;
+    }
 
+    @Override
+    public void valutaRichistaModifica(RichiestaModificaScheda richiesta, Istruttore istr) throws SQLException {
+        if (istr != null) {
+            RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta);
+        }
+        else
+            throw new RuntimeException("Utente Non Autorizzato!");
     }
 }

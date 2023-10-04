@@ -46,6 +46,19 @@
     font-size: 13pt;
 }
 
+
+#eliminaUtente {
+    background-color: red;
+}
+
+.richiesta_div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1%;
+    width: 100%;
+    text-align: justify;
+}
+
 .UtenteButtons {
     width: 30%;
     font-size: 13pt;
@@ -58,4 +71,14 @@
     color: black;
     margin-left: 5%;
     margin-bottom: 2%;
+}
+
+.ValutaRichiestaButton {
+    width: 40px;
+    height: 20px;
+    margin-left: auto;
+}
+
+.dettagli_richiesta {
+    flex-grow: 1;
 }

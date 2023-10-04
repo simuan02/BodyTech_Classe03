@@ -30,7 +30,7 @@ import java.util.List;
  * e settata nella richiesta</p>
  * Infine viene invocata la jsp "listaUtentiPage" con un forward.
  */
-@WebServlet(name = "ListaUtentiServlet", urlPatterns = {"/listaUtenti"})
+@WebServlet(name = "ListaUtentiServlet", value = "/listaUtenti")
 public class ListaUtentiServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

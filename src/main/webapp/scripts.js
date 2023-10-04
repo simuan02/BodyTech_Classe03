@@ -183,3 +183,18 @@ function aggiungiEsercizio(idScheda, numeroScheda) {
         }
     })
 }
+
+function accettaRichiesta(id){
+    if (confirm("Sicuro di voler accettare tale richiesta?")) {
+        $.ajax({
+            url: "valutaRichiesta",
+            data: {
+                idRichiesta: id,
+                valutazione: true
+            },
+            success: function () {
+                alert("Richiesta Accettata!");
+            }
+        })
+    }
+}

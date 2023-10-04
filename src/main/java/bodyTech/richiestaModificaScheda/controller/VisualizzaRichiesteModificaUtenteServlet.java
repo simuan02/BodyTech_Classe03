@@ -22,7 +22,7 @@ public class VisualizzaRichiesteModificaUtenteServlet extends HttpServlet {
         RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
         List<RichiestaModificaScheda> richiesteModifica = null;
         try {
-            richiesteModifica = services.visualizzaModifica(u);
+            richiesteModifica = services.visualizzaModifica(u, u);
             String json = new Gson().toJson(richiesteModifica);
             response.setContentType("application/json");
             response.setCharacterEncoding("UTF-8");

@@ -2,6 +2,7 @@ package bodyTech.model.dao;
 
 import bodyTech.model.ConPool;
 import bodyTech.model.entity.RichiestaModificaScheda;
+import com.mysql.cj.log.BaseMetricsHolder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -13,9 +14,9 @@ import java.util.List;
 public class RichiestaModificaSchedaDAO {
 
     /**
-     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente.
-     * @param codiceFiscale dell'utente del quale recuperare le richieste di modifica scheda
-     * @return lista delle Richieste trovate
+     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente
+     * @param codiceFiscale
+     * @return lista delle Richieste
      * @throws SQLException
      */
     public static List<RichiestaModificaScheda> findByUser(String codiceFiscale) throws SQLException {
@@ -24,11 +25,20 @@ public class RichiestaModificaSchedaDAO {
         String query = "SELECT * FROM richiestaModificaScheda WHERE utente = '" + codiceFiscale + "'";
         ResultSet rs = stmt.executeQuery(query);
         List<RichiestaModificaScheda> richieste = new ArrayList<RichiestaModificaScheda>();
+        List<RichiestaModificaScheda> richiesteModificaNonEsaminate = findNotExaminated();
         while (rs.next()){
             RichiestaModificaScheda rms = new RichiestaModificaScheda();
             rms.setIdRichiesta(rs.getInt(1));
             rms.setMessaggio(rs.getString(2));
-            rms.setEsito(rs.getBoolean(4));
+            boolean richiestaNonEsaminata = false;
+            for (RichiestaModificaScheda rmne : richiesteModificaNonEsaminate) {
+                if (rmne.getIdRichiesta() == rms.getIdRichiesta()){
+                    richiestaNonEsaminata = true;
+                    break;
+                }
+            }
+            if (!richiestaNonEsaminata)
+                rms.setEsito(rs.getBoolean(4));
             richieste.add(rms);
         }
         stmt.close();
@@ -36,20 +46,69 @@ public class RichiestaModificaSchedaDAO {
         return richieste;
     }
 
-    /**
-     * Implementa la funzionalità di aggiungere nel DB una richiesta di modifica scheda creata da un utente.
-     * @param richiesta la richiesta di modifica
-     * @param codiceFiscale dell'utente che ha creato la richiesta
-     * @throws SQLException
-     */
+    private static List<RichiestaModificaScheda> findNotExaminated () throws SQLException {
+        Connection conn = ConPool.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM richiestaModificaScheda WHERE esito IS NULL";
+        ResultSet rs = stmt.executeQuery(query);
+        List<RichiestaModificaScheda> richiesteNonEsaminate = new ArrayList<>();
+        while (rs.next()){
+            RichiestaModificaScheda rms = new RichiestaModificaScheda();
+            rms.setIdRichiesta(rs.getInt(1));
+            rms.setMessaggio(rs.getString(2));
+            rms.setEsito(null);
+            richiesteNonEsaminate.add(rms);
+        }
+        stmt.close();
+        conn.close();
+        return richiesteNonEsaminate;
+    }
+
+    public static RichiestaModificaScheda findById(int id) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM richiestaModificaScheda WHERE idRichiesta = " + id + "";
+        ResultSet rs = stmt.executeQuery(query);
+        RichiestaModificaScheda rms = new RichiestaModificaScheda();
+        List<RichiestaModificaScheda> richiesteNonEsaminate = findNotExaminated();
+        while (rs.next()){
+            rms.setIdRichiesta(rs.getInt(1));
+            rms.setMessaggio(rs.getString(2));
+            boolean richiestaNonEsaminata = false;
+            for (RichiestaModificaScheda rmne : richiesteNonEsaminate) {
+                if (rmne.getIdRichiesta() == rms.getIdRichiesta()){
+                    richiestaNonEsaminata = true;
+                    break;
+                }
+            }
+            if (!richiestaNonEsaminata)
+                rms.setEsito(rs.getBoolean(4));
+        }
+        stmt.close();
+        conn.close();
+        return rms;
+    }
+
     public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
                 "values (?, ?, ?)");
         pstmt.setString(1, richiesta.getMessaggio());
         pstmt.setString(2, codiceFiscale);
-        System.out.println(richiesta.isEsito());
-        pstmt.setBoolean(3, richiesta.isEsito());
+        if (richiesta.isEsito() != null)
+            pstmt.setBoolean(3, richiesta.isEsito());
+        else
+            pstmt.setNull(3, Types.BOOLEAN);
+        pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
+    }
+
+    public static void cambiaEsitoRichiesta(RichiestaModificaScheda richiesta) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("UPDATE RichiestaModificaScheda SET esito = ? WHERE idRichiesta = ?");
+        pstmt.setBoolean(1, richiesta.isEsito());
+        pstmt.setInt(2, richiesta.getIdRichiesta());
         pstmt.executeUpdate();
         pstmt.close();
         conn.close();

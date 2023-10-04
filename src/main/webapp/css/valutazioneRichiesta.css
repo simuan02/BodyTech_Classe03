@@ -13,10 +13,59 @@
 }
 
 .card .title {
+    margin-top: 10%;
     color: red;
     font-size: 14pt;
 }
 
 .card p {
     margin-top: 1%;
+}
+
+.card .buttons {
+    margin-top: 40px;
+}
+
+.card .button {
+    width: 50%;
+    font-size: 13pt;
+    padding: 6px;
+    background-color: #F7C70F;
+    border-radius: 10px;
+    border: 2px solid #F7C70F;
+    text-align: center;
+    margin-top: 10px;
+    color: black;
+    margin-left: 25%;
+}
+
+.card .button:hover {
+    cursor: pointer;
+}
+
+.button a p {
+    color: black;
+}
+.card .richieste {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    text-align: center;
+    width: 50%;
+    margin-left: 25%;
+}
+
+.card .richieste #title_richieste{
+    color: red;
+    font-size: 13pt;
+}
+
+
+#eliminaUtente {
+    background-color: red;
+}
+
+.richiesta_div {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
 }
