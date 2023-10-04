@@ -15,56 +15,6 @@
     <link rel="stylesheet" href="css/valutazioneRichiesta.css">
     <link rel="icon" href="images/logo.jpg" sizes="any">
 
-    <style>
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-            transition: 0.3s;
-            width: 50%;
-            text-align: center;
-            margin-left: 25%;
-            margin-top: 50px;
-            margin-bottom: 50px;
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-        }
-
-        .card .title {
-            margin-top: 10%;
-            color: red;
-            font-size: 14pt;
-        }
-
-        .card p {
-            margin-top: 1%;
-        }
-
-        .card .buttons {
-            margin-top: 40px;
-        }
-
-        .card .button {
-            width: 50%;
-            font-size: 13pt;
-            padding: 6px;
-            background-color: #F7C70F;
-            border-radius: 10px;
-            border: 2px solid #F7C70F;
-            text-align: center;
-            margin-top: 10px;
-            color: black;
-            margin-left: 25%;
-        }
-
-        .card .button:hover {
-            cursor: pointer;
-        }
-
-        .button a p{
-            color: black;
-        }
-    </style>
 </head>
 <body>
     <%
@@ -86,7 +36,7 @@
             <p>Codice Fiscale: ${utente.codiceFiscale}</p>
         </div>
 
-        <p class="title">Informazioni Rischiesta</p>
+        <p class="title">Informazioni Richiesta</p>
         <div class="informazioni_richiesta">
             <p>ID : ${richiesta.idRichiesta}</p>
             <p>Messaggio : ${richiesta.messaggio}</p>

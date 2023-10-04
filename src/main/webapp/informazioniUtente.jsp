@@ -45,7 +45,7 @@
             if (richieste.size() > 0){
                 for (RichiestaModificaScheda richiesta: richieste){
         %>
-                    <p><%=richiesta.getMessaggio()%></p>
+        <p><a href="/VisualizzaRichiesta?idRichiesta=<%=richiesta.getIdRichiesta()%>"  class="noDecoration"><%=richiesta.getMessaggio()%></a></p>
         <%
                 }
             }

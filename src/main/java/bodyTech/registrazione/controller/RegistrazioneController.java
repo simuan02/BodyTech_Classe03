@@ -10,6 +10,8 @@ import jakarta.servlet.annotation.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * Questa Servlet consente la registrazione di un utente alla piattaforma.
@@ -40,23 +42,14 @@ public class RegistrazioneController extends HttpServlet {
         u.setCognome(cognome);
         u.setPassword(password);
         RegistrazioneService services = new RegistrazioneServiceImpl();
-        boolean b = true;
-        try {
-            for (Utente user : UtenteDAO.visualizzaUtenti()){
-                if (user.getCodiceFiscale().equalsIgnoreCase(u.getCodiceFiscale())) {
-                    request.setAttribute("CodiceGiaPresente", true);
-                    b = false;
-                }
-            }
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
-        if (b) {
-            if (services.registrazioneUtente(u)) {
-                request.setAttribute("Registrazione", true);
-            } else {
-                request.setAttribute("Registrazione", false);
+        List<String> problemiRegistrazione = services.registrazioneUtente(u, password);
+        if (problemiRegistrazione.isEmpty()) {
+            request.setAttribute("Registrazione", true);
+        } else {
+            request.setAttribute("Registrazione", false);
+            for (String problema : problemiRegistrazione) {
+                String problemaNoSpaces = problema.replaceAll(" ", "");
+                request.setAttribute(problemaNoSpaces, problema);
             }
         }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/index.jsp");
