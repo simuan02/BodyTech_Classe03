@@ -49,6 +49,10 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
         if (p.loggedUserLevel().equals("Amministratore")) {
             if (u2.getCodiceFiscale().length() != 16)
                 throw new IOException("Lunghezza Codice Errata");
+            if (u2.getNome().length() > 40)
+                throw new IOException("Lunghezza Nome Errata");
+            if (u2.getCognome().length() > 40)
+                throw new IOException("Lunghezza Cognome Errata");
             UtenteDAO.updateUser(u, u2);
             return u2;
         }

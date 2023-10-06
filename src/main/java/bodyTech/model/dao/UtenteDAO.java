@@ -103,11 +103,14 @@ public class UtenteDAO {
      * Implementa la funzionalità di aggiornamento nel DB delle informazioni di oldUser, se presente, con quelle di newUser.
      * @param oldUser l'Utente da aggiornare
      * @param newUser l'Utente con le informazioni aggiornate
+     * @return valore booleano che indica se la modifica è andata a buon fine
      * @throws SQLException
      */
-    public static void updateUser (Utente oldUser, Utente newUser) throws SQLException, IOException {
+    public static boolean updateUser (Utente oldUser, Utente newUser) throws SQLException, IOException {
         Connection conn = ConPool.getConnection();
         List<Utente> users = visualizzaUtenti();
+        if (newUser.getCodiceFiscale()==null || newUser.getNome() == null || newUser.getCognome() == null)
+            return false;
         boolean existingUser = false;
         for (Utente u : users){
             if (u.getCodiceFiscale().equalsIgnoreCase(newUser.getCodiceFiscale()) &&
@@ -134,8 +137,11 @@ public class UtenteDAO {
                 }
             }
             pstmt.close();
+            conn.close();
+            return true;
         }
-        conn.close();
+        else
+            return false;
     }
 
     /**
