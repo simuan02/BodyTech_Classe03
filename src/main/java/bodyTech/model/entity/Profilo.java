@@ -38,7 +38,7 @@ public abstract class Profilo {
      */
     public void setPassword(String password) {
         try {
-            if (password.length() == 40){
+            if (password == null || password.length() == 40){
                 this.password = password;
             }
             else {

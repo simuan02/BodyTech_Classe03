@@ -32,10 +32,6 @@
     <a href="${pageContext.request.contextPath}/CreazioneSchedaServlet?cf=${utente.codiceFiscale}&id=1"><div class="button">
         Aggiungi una Scheda d'allenamento
     </div></a>
-    <%
-        }
-    %>
-
 
     <div class="richieste">
         <p id="title_richieste">Richieste</p>
@@ -63,16 +59,15 @@
         <%
             }
         }
-        else
-        {
+        else {
         %>
         <p style="color: darkred">L'utente non ha fatto nessuna richiesta</p>
         <%
             }
         %>
-
-    </div>
+            </div>
     <%
+        }
         if (p.loggedUserLevel().equals("Amministratore")){
     %>
     <div class="buttons">
