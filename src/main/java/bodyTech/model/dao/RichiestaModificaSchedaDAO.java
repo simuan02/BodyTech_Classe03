@@ -36,6 +36,22 @@ public class RichiestaModificaSchedaDAO {
         return richieste;
     }
 
+    public static RichiestaModificaScheda findById(int id) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        Statement stmt = conn.createStatement();
+        String query = "SELECT * FROM richiestaModificaScheda WHERE id = " + id;
+        ResultSet rs = stmt.executeQuery(query);
+        if (rs.next()) {
+            RichiestaModificaScheda rms = null;
+            rms.setIdRichiesta(rs.getInt(1));
+            rms.setMessaggio(rs.getString(2));
+            rms.setEsito(rs.getBoolean(4));
+            return rms;
+        }
+
+        return null;
+    }
+
     /**
      * Implementa la funzionalità di aggiungere nel DB una richiesta di modifica scheda creata da un utente.
      * @param richiesta la richiesta di modifica
@@ -54,4 +70,6 @@ public class RichiestaModificaSchedaDAO {
         pstmt.close();
         conn.close();
     }
+
+
 }
