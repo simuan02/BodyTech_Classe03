@@ -80,7 +80,7 @@ public class GestioneProfiloController {
                     }
                 }
                 if (b) {
-                    services.aggiungiIstruttore(p, i);
+                    services.aggiungiIstruttore(p, i, password);
                 }
             }
             else {

@@ -35,7 +35,7 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
     }
 
     @Override
-    public void aggiungiIstruttore(Profilo p, Istruttore istr) throws SQLException, IOException {
+    public void aggiungiIstruttore(Profilo p, Istruttore istr, String password) throws SQLException, IOException {
         if (p.loggedUserLevel().equals("Amministratore")) {
             if (istr.getNome().length() > 40) {
                 throw new IOException("Lunghezza Nome Errata");}
@@ -43,7 +43,7 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
             if (istr.getCognome().length() > 40) {
                 throw new IOException("Lunghezza Cognome Errata");}
 
-            if (istr.getPassword().length() < 8 || istr.getPassword().length() > 32) {
+            if (password.length() < 8 || password.length() > 32) {
                 throw new IOException("Lunghezza Password Errata");}
 
             if (istr.getSpecializzazione().length() > 30) {
@@ -52,6 +52,7 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
             if (istr.getMatricolaIstruttore().length() != 10) {
                 throw new IOException("Lunghezza Matricola Errata");}
 
+            istr.setPassword(password);
             IstruttoreDAO.insertInstructor(istr);
         }
         else {
@@ -87,9 +88,6 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
 
             if (istr2.getCognome().length() > 40) {
                 throw new IOException("Lunghezza Cognome Errata");}
-
-            if (istr2.getPassword().length() < 8 || istr.getPassword().length() > 32) {
-                throw new IOException("Lunghezza Password Errata");}
 
             if (istr2.getSpecializzazione().length() > 30) {
                 throw new IOException("Lunghezza Specializzazione Errata");}

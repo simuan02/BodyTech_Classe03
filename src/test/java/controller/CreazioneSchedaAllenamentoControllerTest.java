@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -37,6 +38,15 @@ public class CreazioneSchedaAllenamentoControllerTest {
     private SchedaAllenamento scheda;
     private Utente user;
     private Istruttore istr;
+
+    @AfterEach
+    public void refreshDB() throws SQLException {
+        for (SchedaAllenamento scheda: SchedaAllenamentoDAO.findAll()){
+            if (scheda.getUtente().getCodiceFiscale().equalsIgnoreCase(user.getCodiceFiscale()))
+                SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());
+        }
+        UtenteDAO.deleteUser(user);
+    }
 
     @BeforeEach
     public void setUp() throws SQLException {
@@ -201,10 +211,5 @@ public class CreazioneSchedaAllenamentoControllerTest {
             eccezioneLanciata = true;
         }
         assertFalse("Eccezione Non Prevista lanciata", eccezioneLanciata);
-        try {
-            SchedaAllenamentoDAO.deleteScheda(SchedaAllenamentoDAO.findSchedaByUtente(scheda.getUtente().getCodiceFiscale()).getIdScheda());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 }

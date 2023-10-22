@@ -13,6 +13,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.runners.Parameterized;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -30,14 +31,15 @@ public class SchedaDAOTest {
         user.setCognome("Esposito");
         user.setCodiceFiscale("SPSSMN01B04L845A");
         user.setPassword("ABCDEFGHIJ");
-        istr.setNome("A");
-        istr.setCognome("B");
+        istr.setNome("P");
+        istr.setCognome("H");
         istr.setMatricolaIstruttore("ALCOEPROW1");
         istr.setPassword("ABCDEFGHIJ");
+        istr.setSpecializzazione("BodyBuilding");
         scheda.setUtente(user);
-        Date dataInizio = new Date();
+        Date dataInizio = new Date(123, Calendar.OCTOBER, 25);
         scheda.setDataInizio(dataInizio);
-        Date dataCompletamento = new Date();
+        Date dataCompletamento = new Date(123, Calendar.DECEMBER, 25);
         dataCompletamento.setMonth(11);
         scheda.setDataCompletamento(dataCompletamento);
         scheda.setTipo("Powerbuilding");
@@ -178,7 +180,7 @@ public class SchedaDAOTest {
      */
     @Test
     public void insertScheda_TESTING_DataCompletamento_Precedente_DataInizio() throws SQLException {
-        scheda.setDataCompletamento(new Date(scheda.getDataInizio().getYear(), scheda.getDataInizio().getMonth(), scheda.getDataInizio().getDay() - 1));
+        scheda.setDataCompletamento(new Date(123, Calendar.OCTOBER, 24));
         UtenteDAO.insertUser(user);
         boolean inserimentoRiuscito;
         try {
@@ -250,7 +252,17 @@ public class SchedaDAOTest {
         scheda.setTipo("Powerbuilding");
         scheda.setDataCompletamento(new Date(123, Calendar.DECEMBER, 25));
         scheda.setDataInizio(new Date(123, Calendar.OCTOBER,25));
-        scheda.setUtente(UtenteDAO.findByCodiceFiscale("SPSSMN02A12L844S"));
+        Utente user2 = UtenteDAO.findByCodiceFiscale("SPSSMN02A12L844S");
+        if (user2 == null){
+            user2 = new Utente();
+            user2.setNome("Simone");
+            user2.setCognome("Esposito");
+            user2.setListeRichiesteModifica(new ArrayList<>());
+            user2.setPassword("ABCDEFGHIJ");
+            user2.setCodiceFiscale("SPSSMN02A12L844S");
+            UtenteDAO.insertUser(user2);
+        }
+        scheda.setUtente(user2);
         scheda.setIstruttore(IstruttoreDAO.visualizzaIstruttori().get(0));
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento values (?,?,?,?,?,?)");
         pstmt.setInt(1, scheda.getIdScheda());

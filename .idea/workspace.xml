@@ -9,8 +9,242 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest">
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Modifica Casi di Test">
+      <change afterPath="$PROJECT_DIR$/src/coverage/css/coverage.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/css/highlight-idea.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/img/arrowDown.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/img/arrowUp.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/js/highlight.pack.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-1/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-10.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-b.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-c.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-d.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-e.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-2/sources/source-f.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-3/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-4/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-5/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-6/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/sources/source-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-7/sources/source-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-8/sources/source-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-9/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-a/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-b/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-c/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-2.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-3.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-4.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-5.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-6.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-7.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-8.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-9.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-a.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-d/sources/source-b.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_BLOCK.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_BLOCK_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_CLASS.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_CLASS_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_LINE.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_LINE_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_METHOD.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_METHOD_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/index_SORT_BY_NAME_DESC.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/sources/source-1.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/coverage/ns-e/sources/source-2.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/GestioneProfiloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/GestioneProfiloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/listaUtentiPage.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/CreazioneSchedaAllenamentoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/CreazioneSchedaAllenamentoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/ModificaDatiUtenteControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/ModificaDatiUtenteControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/AggiuntaIstruttoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/AggiuntaIstruttoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/ModificaDatiIstruttoreTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ModificaDatiIstruttoreTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/ModificaSchedaAllenamentoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ModificaSchedaAllenamentoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +253,10 @@
   </component>
   <component name="ComposerSettings">
     <execution />
+  </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OPEN_IN_BROWSER" value="true" />
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\coverage" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -38,8 +276,8 @@
   <component name="Git.Settings">
     <option name="PREVIOUS_COMMIT_AUTHORS">
       <list>
-        <option value="JacopoDeveloper &lt;jacopodedominicisdeveloper@gmail.com&gt;" />
         <option value="Abyss117 &lt;reektreep@gmail.com&gt;" />
+        <option value="JacopoDeveloper &lt;jacopodedominicisdeveloper@gmail.com&gt;" />
       </list>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -91,7 +329,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/coverage" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -116,7 +354,7 @@
       <recent name="bodyTech.gestioneProfilo.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ProgettoBodyTech">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.1.15">
     <configuration name="All in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <option name="PACKAGE_NAME" value="" />
@@ -140,6 +378,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ModificaDatiUtenteControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettoBodyTech" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ModificaDatiUtenteControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ModificaSchedaAllenamentoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <extension name="coverage">
@@ -155,32 +408,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ModificaSchedaAllenamentoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="controller in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="services.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="services" />
-      <option name="MAIN_CLASS_NAME" value="services.ModificaSchedaAllenamentoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SchedaDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProgettoBodyTech" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SchedaDAOTest" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -302,20 +539,20 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="JUnit.SchedaDAOTest" />
       <item itemvalue="JUnit.CreazioneSchedaAllenamentoControllerTest" />
-      <item itemvalue="JUnit.ModificaSchedaAllenamentoTest" />
       <item itemvalue="JUnit.All in ProgettoBodyTech" />
       <item itemvalue="JUnit.ModificaSchedaAllenamentoControllerTest" />
+      <item itemvalue="JUnit.ModificaDatiUtenteControllerTest" />
+      <item itemvalue="JUnit.controller in ProgettoBodyTech" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.15" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.controller in ProgettoBodyTech" />
         <item itemvalue="JUnit.All in ProgettoBodyTech" />
+        <item itemvalue="JUnit.ModificaDatiUtenteControllerTest" />
         <item itemvalue="JUnit.ModificaSchedaAllenamentoControllerTest" />
         <item itemvalue="JUnit.CreazioneSchedaAllenamentoControllerTest" />
-        <item itemvalue="JUnit.ModificaSchedaAllenamentoTest" />
-        <item itemvalue="JUnit.SchedaDAOTest" />
       </list>
     </recent_temporary>
   </component>
@@ -373,7 +610,9 @@
       <workItem from="1698652166160" duration="572000" />
       <workItem from="1698658724394" duration="4777000" />
       <workItem from="1698687530333" duration="4401000" />
-      <workItem from="1698774536006" duration="181000" />
+      <workItem from="1698774536006" duration="3544000" />
+      <workItem from="1698834219458" duration="3699000" />
+      <workItem from="1698859453903" duration="694000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -619,7 +858,21 @@
       <option name="project" value="LOCAL" />
       <updated>1698691674228</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest">
+      <created>1698774968271</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1698774968271</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Testing IstruttoreDAO">
+      <created>1698775158818</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1698775158818</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -668,8 +921,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Aggiunta utentePage.jsp, AccountServlet e profiloPage.css" />
-    <MESSAGE value="Continuo utentePage.jsp, AccountServlet e profiloPage.css" />
     <MESSAGE value="Aggiunta Servlet e jsp" />
     <MESSAGE value="Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente" />
     <MESSAGE value="Inserimento nuova Funzione di Modifica Dati per Utenti.&#10;Inserimento pagina per la visualizzazione completa dei dati per gli Utenti.&#10;Aggiunta Funzioni JS per la chiamata asincrona alla Servlet di Modifica dei Dati del Profilo." />
@@ -693,7 +944,9 @@
     <MESSAGE value="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest" />
     <MESSAGE value="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest" />
     <MESSAGE value="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest" />
+    <MESSAGE value="Testing IstruttoreDAO" />
+    <MESSAGE value="Modifica Casi di Test e Generazione Report Coverage" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modifica Casi di Test e Generazione Report Coverage" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -707,6 +960,9 @@
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Esame$All_in_ProgettoBodyTech.ic" NAME="All in ProgettoBodyTech Coverage Results" MODIFIED="1698599619582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Esame$All_in_ProgettoBodyTech.ic" NAME="All in ProgettoBodyTech Coverage Results" MODIFIED="1698835836175" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
+    <SUITE FILE_PATH="coverage/Esame$controller_in_ProgettoBodyTech.ic" NAME="controller in ProgettoBodyTech Coverage Results" MODIFIED="1698836842912" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>controller.*</FILTER>
+    </SUITE>
   </component>
 </project>

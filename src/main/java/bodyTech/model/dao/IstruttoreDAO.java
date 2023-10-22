@@ -178,6 +178,9 @@ public class IstruttoreDAO {
      */
     public static void deleteInstructor(Istruttore istr) throws SQLException {
         Connection conn = ConPool.getConnection();
+        for (SchedaAllenamento scheda: SchedaAllenamentoDAO.findAllByInstructor(istr.getMatricolaIstruttore())){
+            SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());
+        }
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Istruttore WHERE matricolaIstruttore = ?");
         pstmt.setString(1, istr.getMatricolaIstruttore());
         pstmt.executeUpdate();
