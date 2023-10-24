@@ -78,11 +78,15 @@ public class IstruttoreDAO {
      * Implementa la funzionalità di aggiornare le informazioni di un istruttore nel DB, se già esistente.
      * @param oldIstr l'istruttore corrente da aggiornare
      * @param newIstr l'istruttore che contiene le informazioni aggiornate
+     * @return true se la modifica è andata a buon fine; false altrimenti
      * @throws SQLException
      */
-    public static void updateInstructor(Istruttore oldIstr, Istruttore newIstr) throws SQLException, IOException {
+    public static boolean updateInstructor(Istruttore oldIstr, Istruttore newIstr) throws SQLException, IOException {
         Connection conn = ConPool.getConnection();
         List<Istruttore> instructors = IstruttoreDAO.visualizzaIstruttori();
+        if (newIstr.getNome()==null || newIstr.getCognome()==null || newIstr.getPassword() ==null ||
+                newIstr.getMatricolaIstruttore()==null || newIstr.getSpecializzazione()==null)
+            return false;
         boolean existingInstructor = false;
         for (Istruttore i : instructors) {
             if (i.getMatricolaIstruttore().equalsIgnoreCase(newIstr.getMatricolaIstruttore()) &&
@@ -103,8 +107,11 @@ public class IstruttoreDAO {
             pstmt.setString(6, oldIstr.getMatricolaIstruttore());
             pstmt.executeUpdate();
             pstmt.close();
+            conn.close();
+            return true;
         }
-        conn.close();
+        else
+            return false;
     }
 
     /**
@@ -137,10 +144,21 @@ public class IstruttoreDAO {
     /**
      * Implementa la funzionalità di inserire un nuovo Istruttore nel DB.
      * @param istr da inserire
+     * @return true, se l'inserimento è andato a buon fine; false, se uno dei parametri è nullo oppure se esiste già un
+     * Istruttore nel DB con la stessa matricola
      * @throws SQLException
      */
-    public static void insertInstructor(Istruttore istr) throws SQLException {
+    public static boolean insertInstructor(Istruttore istr) throws SQLException {
         Connection conn = ConPool.getConnection();
+        List<Istruttore> istrs = visualizzaIstruttori();
+        if (istr.getNome()==null || istr.getCognome()==null || istr.getPassword() ==null ||
+            istr.getMatricolaIstruttore()==null || istr.getSpecializzazione()==null)
+            return false;
+        for (Istruttore istruttore : istrs){
+            if (istruttore.getMatricolaIstruttore().equalsIgnoreCase(istr.getMatricolaIstruttore()))
+            return false;
+        }
+
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Istruttore values (?, ?, ?, ?, ?)");
         pstmt.setString(1, istr.getMatricolaIstruttore());
         pstmt.setString(2, istr.getNome());
@@ -150,6 +168,7 @@ public class IstruttoreDAO {
         pstmt.executeUpdate();
         pstmt.close();
         conn.close();
+        return true;
     }
 
     /**
