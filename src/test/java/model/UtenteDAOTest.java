@@ -117,7 +117,7 @@ public class UtenteDAOTest {
      * newUser.CodiceFiscale già esistente, diverso da quello di oldUser
     */
     @Test
-    public void testUpdateUser_Method_1() throws SQLException, IOException {
+    public void testUpdateUser_Method_1() throws SQLException{
         Utente user1 = new Utente();
         user1.setNome("A");
         user1.setCognome("B");
