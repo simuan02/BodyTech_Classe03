@@ -20,26 +20,11 @@ import java.io.IOException;
 public class ShowProfileInfoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo)session.getAttribute("Profilo");
-        try {
-            if (p!=null){
-                request.setAttribute("ServletMostraProfiloLanciata", new Object());
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/infoProfile.jsp");
-                dispatcher.forward(request, response);
-            }
-            else
-                throw new AccountException();
-        } catch (AccountException e) {
-            response.sendError(403, "Operazione non consentita!");
-        } catch (Exception e2){
-            log(e2.getMessage(), e2);
-            response.sendError(500);
-        }
+        GestioneProfiloController.showProfileInfoServlet(request, response);
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 }

@@ -26,42 +26,7 @@ import java.sql.SQLException;
 public class ModificaIstruttoreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Profilo p = (Profilo)request.getSession().getAttribute("Profilo");
-        try {
-            String matricola = request.getParameter("MatricolaIstruttore");
-            String nome = request.getParameter("NomeIstruttore");
-            String cognome = request.getParameter("CognomeIstruttore");
-            String vecchiaMatricola = request.getParameter("MatricolaVecchia");
-            String specializzazione = request.getParameter("SpecializzazioneIstruttore");
-            Istruttore oldIstr = IstruttoreDAO.findByMatricola(vecchiaMatricola);
-            Istruttore newIstr = new Istruttore();
-            newIstr.setNome(nome);
-            newIstr.setCognome(cognome);
-            newIstr.setMatricolaIstruttore(matricola);
-            newIstr.setPassword(oldIstr.getPassword());
-            newIstr.setSpecializzazione(specializzazione);
-            GestioneProfiloService services = new GestioneProfiloServiceImpl();
-            services.modificaIstruttore(p, oldIstr, newIstr);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        } catch (RuntimeException e2){
-            response.sendError(403, e2.getMessage());
-        } catch (IOException e3){
-            if (e3.getMessage().equalsIgnoreCase("Matricola già presente all'interno della piattaforma")) {
-                request.setAttribute("CodiceGiaPresente", true);
-            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Matricola Errata")){
-                request.setAttribute("LunghezzaMatricolaErrata", true);
-            }
-            else {
-                log(e3.getMessage(), e3);
-                response.sendError(500);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");
-            dispatcher.forward(request, response);
-        }
+        GestioneProfiloController.modificaIstruttoreMethod(request, response);
     }
 
     @Override

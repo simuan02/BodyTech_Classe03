@@ -28,20 +28,7 @@ import java.util.Set;
 public class EliminaUtenteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-       String codiceFiscale = request.getParameter("cf");
-
-        try {
-            GestioneProfiloService services = new GestioneProfiloServiceImpl();
-            services.eliminaUtente((Profilo)request.getSession().getAttribute("Profilo"), UtenteDAO.findByCodiceFiscale(codiceFiscale));
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
-        dispatcher.forward(request, response);
+       GestioneProfiloController.eliminaUtenteMethod(request, response);
     }
 
     @Override

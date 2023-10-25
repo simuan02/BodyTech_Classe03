@@ -35,7 +35,7 @@ public class Istruttore extends Profilo{
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Amministratore)) return false;
+        if (!(o instanceof Istruttore)) return false;
         Istruttore instructor = (Istruttore) o;
         return matricolaIstruttore.equals(instructor.getMatricolaIstruttore()) && super.equals(instructor);
     }

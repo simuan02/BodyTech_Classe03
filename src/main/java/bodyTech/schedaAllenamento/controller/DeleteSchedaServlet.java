@@ -25,20 +25,7 @@ public class DeleteSchedaServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idScheda = Integer.parseInt(request.getParameter("idScheda"));
-        try {
-            SchedaAllenamento sa = SchedaAllenamentoDAO.findByID(idScheda);
-            SchedaService services = new SchedaServiceImpl();
-            if (services.rimuoviSchedaUtente(sa) != null){
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
-                dispatcher.forward(request, response);
-            }
-            else
-                response.sendError(400, "Errore nell'eliminazione della scheda: scheda inesistente");
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
+        SchedaAllenamentoController.deleteSchedaMethod(request, response);
     }
 
     /**
@@ -50,6 +37,6 @@ public class DeleteSchedaServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doGet(request, response);
     }
 }

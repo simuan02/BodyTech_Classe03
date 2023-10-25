@@ -27,18 +27,7 @@ import java.util.List;
 public class InformazioniIstruttoreServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String matricolaIstruttore = request.getParameter("mat");
-        String address = "";
-        try {
-            Istruttore istr = IstruttoreDAO.findByMatricola(matricolaIstruttore);
-            request.setAttribute("istruttore", istr);
-            address = "/informazioniIstruttore.jsp";
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+        GestioneProfiloController.informazioniIstruttoreMethod(request, response);
     }
 
     @Override
