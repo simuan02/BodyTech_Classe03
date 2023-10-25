@@ -9,15 +9,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore">
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/ModificaDatiUtenteTest.java" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente">
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/GestioneProfiloController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneControllerImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/controller/RegistrazioneUtenteControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RegistrazioneUtenteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/RegistrazioneUtenteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UtenteDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AccountServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AccountServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AggiungiIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/AggiungiIstruttoreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EditDataServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EditDataServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaIstruttoreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/EliminaUtenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindInstructorServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindInstructorServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindUserServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/FindUserServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/InformazioniIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/InformazioniIstruttoreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/InformazioniUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/InformazioniUtenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaIstruttoriServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ListaUtentiServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaIstruttoreServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaIstruttoreServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ModificaUtenteServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/ShowProfileInfoServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/VisualizzaSchedaServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/VisualizzaSchedaServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/registrazione/controller/RegistrazioneController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -123,7 +135,7 @@
       <recent name="bodyTech.gestioneProfilo.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ProgettoBodyTech">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 10.0.17">
     <configuration name="All in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <option name="PACKAGE_NAME" value="" />
@@ -132,10 +144,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrazioneUtenteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="RegistrazioneUtenteControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
-      <option name="PACKAGE_NAME" value="services" />
-      <option name="MAIN_CLASS_NAME" value="services.RegistrazioneUtenteTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.RegistrazioneUtenteControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -274,11 +292,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.RegistrazioneUtenteControllerTest" />
         <item itemvalue="JUnit.All in ProgettoBodyTech" />
         <item itemvalue="JUnit.UtenteDAOTest" />
         <item itemvalue="JUnit.services in ProgettoBodyTech" />
         <item itemvalue="JUnit.UtenteDAOTest.testInsertUser_Method_2" />
-        <item itemvalue="JUnit.RegistrazioneUtenteTest" />
       </list>
     </recent_temporary>
   </component>
@@ -327,7 +345,8 @@
       <workItem from="1694328827380" duration="6408000" />
       <workItem from="1695917557487" duration="21882000" />
       <workItem from="1696433970465" duration="7036000" />
-      <workItem from="1696582826519" duration="5889000" />
+      <workItem from="1696582826519" duration="6232000" />
+      <workItem from="1698150945565" duration="8401000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -531,7 +550,14 @@
       <option name="project" value="LOCAL" />
       <updated>1696452184139</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente">
+      <created>1696617847230</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1696617847230</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -602,7 +628,8 @@
     <MESSAGE value="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService" />
     <MESSAGE value="Modifica" />
     <MESSAGE value="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore" />
+    <MESSAGE value="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
