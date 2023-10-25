@@ -43,37 +43,6 @@ public class EditSchedaServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo)session.getAttribute("Profilo");
-        if (p.loggedUserLevel().equals("Istruttore") || p.loggedUserLevel().equals("Amministratore")){
-            int idScheda = Integer.parseInt(request.getParameter("idScheda"));
-            SchedaAllenamento sa = null;
-            try {
-                sa = SchedaAllenamentoDAO.findByID(idScheda);
-                String dataCompletamento = request.getParameter("DataCompletamento");
-                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-                LocalDate localDate = LocalDate.parse(dataCompletamento, formatter);
-                Date date = java.sql.Date.valueOf(localDate);
-                sa.setDataCompletamento(date);
-                sa.setTipo(request.getParameter("TipoScheda"));
-                List<EsercizioAllenamento> listaEsercizi = sa.getListaEsercizi();
-                for (EsercizioAllenamento ea: listaEsercizi){
-                    ea.setVolume(request.getParameter(ea.getNomeEsercizio()));
-                }
-                sa.setListaEsercizi(listaEsercizi);
-                SchedaService services = new SchedaServiceImpl();
-                services.modificaSchedaUtente(sa, sa.getUtente());
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
-                dispatcher.forward(request, response);
-            } catch (SQLException e) {
-                log(e.getMessage(), e);
-                response.sendError(500);
-            } catch (RuntimeException e2){
-                response.sendError(403, e2.getMessage());
-            }
-
-        }
-        else
-            response.sendError(403, "Utente non autorizzato!");
+        SchedaAllenamentoController.editSchedaMethod(request, response);
     }
 }

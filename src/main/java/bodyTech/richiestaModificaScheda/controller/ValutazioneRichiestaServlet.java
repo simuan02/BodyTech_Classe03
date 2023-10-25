@@ -16,29 +16,7 @@ import java.sql.SQLException;
 public class ValutazioneRichiestaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo) session.getAttribute("Profilo");
-        int idRichiesta = Integer.parseInt(request.getParameter("id"));
-        boolean valutazione = Boolean.parseBoolean(request.getParameter("valutazione"));
-        String address = "";
-        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
-        try {
-            RichiestaModificaScheda rms = services.visualizzaSingolaRichiesta(p, idRichiesta);
-            if (rms.isEsito() != null)
-                request.setAttribute("richiestaGiaEsaminata", true);
-            else {
-                rms.setEsito(valutazione);
-                services.valutaRichistaModifica(rms, (Istruttore) p);
-                request.setAttribute ("valutazioneRichiesta", valutazione);
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(500, "Errore Server!");
-        } catch (RuntimeException e2){
-            response.sendError(400, e2.getMessage());
-        }
+        RichiestaModificaSchedaController.valutazioneRichiestaMethod(request, response);
     }
 
     @Override

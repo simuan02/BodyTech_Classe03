@@ -9,32 +9,18 @@ import bodyTech.model.entity.Amministratore;
 import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.Profilo;
 import bodyTech.model.entity.Utente;
-import jakarta.servlet.*;
-import jakarta.servlet.http.*;
-import jakarta.servlet.annotation.*;
+import jakarta.servlet.RequestDispatcher;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
+public class LoginController {
 
-/**
- * Questa Servlet, mediante il metodo doPost(request, response) consente di effettuare l'accesso alla piattaforma a un
- * Utente, Istruttore o Amministratore con credenziali valide, ossia con identificativo e password corrispondenti.
- * Questa Servlet decide, in base al tipo d'identificativo, quale Profilo sta tentando l'accesso:
- * - Se l'identificativo è un intero, allora l'accesso è tentato da un Amministratore;
- * - Se l'identificativo è una Stringa di 16 caratteri, allora l'accesso è tentato da un Utente;
- * - Se l'identificativo è una Stringa di 10 caratteri, allora l'accesso è tentato da un Istruttore.
- * Infine, in base alla risposta fornita dal metodo LoginService.Login() si decide se consentire l'accesso o meno.
- */
-@WebServlet(name = "LoginController", value = "/ProfileLogin")
-public class LoginController extends HttpServlet {
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
-    }
-
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public static void loginMethod(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String identifier = request.getParameter("identifier");
         String password = request.getParameter("password");
         String dispatcherPath = "";
@@ -65,7 +51,7 @@ public class LoginController extends HttpServlet {
                 try {
                     dispatcherPath = chooseDispatcherPath(request, services.login(u), u);
                 } catch (SQLException ex) {
-                    log(ex.getMessage(), ex);
+                    ex.printStackTrace();
                     response.sendError(500);
                 }
             } else if (identifier.length() == 10) {
@@ -75,14 +61,14 @@ public class LoginController extends HttpServlet {
                 try {
                     dispatcherPath = chooseDispatcherPath(request, services.login(i), i);
                 } catch (SQLException ex) {
-                    log(ex.getMessage(), ex);
+                    ex.printStackTrace();
                     response.sendError(500);
                 }
             } else {
                 try {
                     dispatcherPath = chooseDispatcherPath(request, false, null);
                 } catch (SQLException e) {
-                    log(e.getMessage(), e);
+                    e.printStackTrace();
                     response.sendError(500);
                 }
             }
@@ -90,6 +76,7 @@ public class LoginController extends HttpServlet {
             dispatcher.forward(request, response);
         }
     }
+
 
     /**
      * Questo metodo consente di scegliere l'indirizzo URL a cui andare in base all'esito del metodo LoginService.Login.
@@ -100,7 +87,7 @@ public class LoginController extends HttpServlet {
      * @return indirizzo URL di destinazione
      * @throws SQLException
      */
-    private String chooseDispatcherPath(HttpServletRequest request, boolean b, Profilo p) throws SQLException {
+    private static String chooseDispatcherPath(HttpServletRequest request, boolean b, Profilo p) throws SQLException {
         String dispatcherPath;
         if (b) {
             dispatcherPath = "/index.jsp";
@@ -128,5 +115,16 @@ public class LoginController extends HttpServlet {
             request.setAttribute("logged", false);
         }
         return dispatcherPath;
+    }
+
+    public static void logoutMethod(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        Profilo p = (Profilo)session.getAttribute("Profilo");
+        LoginService services = new LoginServiceImpl();
+        if (services.logout(p)) {
+            session.setAttribute("Profilo", p);
+        }
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/");
+        dispatcher.forward(request, response);
     }
 }

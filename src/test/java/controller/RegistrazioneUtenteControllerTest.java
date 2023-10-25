@@ -2,30 +2,17 @@ package controller;
 
 import bodyTech.model.dao.UtenteDAO;
 import bodyTech.model.entity.Utente;
-import bodyTech.registrazione.controller.RegistrazioneController;
 import bodyTech.registrazione.controller.RegistrazioneControllerImpl;
-import bodyTech.registrazione.service.RegistrazioneService;
-import bodyTech.registrazione.service.RegistrazioneServiceImpl;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import junit.framework.TestCase;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.MockitoAnnotations;
 
 import java.io.IOException;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.mockito.Mockito.*;
 
 public class RegistrazioneUtenteControllerTest {
@@ -34,13 +21,11 @@ public class RegistrazioneUtenteControllerTest {
 
     private HttpServletResponse response;
 
-    private RegistrazioneService services;
 
     private RegistrazioneControllerImpl controller;
 
     @BeforeEach
     public void setUp() {
-        services = mock(RegistrazioneServiceImpl.class);
         request = mock(HttpServletRequest.class);
         response = mock(HttpServletResponse.class);
         controller = new RegistrazioneControllerImpl();

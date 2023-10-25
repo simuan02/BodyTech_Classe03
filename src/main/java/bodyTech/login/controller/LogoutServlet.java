@@ -1,8 +1,5 @@
 package bodyTech.login.controller;
 
-import bodyTech.login.service.LoginService;
-import bodyTech.login.service.LoginServiceImpl;
-import bodyTech.model.entity.Profilo;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -14,17 +11,10 @@ import java.io.IOException;
  * LoginService.
  */
 @WebServlet(name = "LogoutController", value = "/Logout")
-public class LogoutController extends HttpServlet {
+public class LogoutServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo)session.getAttribute("Profilo");
-        LoginService services = new LoginServiceImpl();
-        if (services.logout(p)) {
-            session.setAttribute("Profilo", p);
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/");
-        dispatcher.forward(request, response);
+        LoginController.logoutMethod(request, response);
     }
 
     @Override

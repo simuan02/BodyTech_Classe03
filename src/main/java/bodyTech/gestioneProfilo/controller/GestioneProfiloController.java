@@ -136,7 +136,8 @@ public class GestioneProfiloController {
         }
         ProfiloService services = new ProfiloServiceImpl();
         try {
-            if (services.modificaDati(oldProfile, newProfile)){
+            boolean x = services.modificaDati(oldProfile, newProfile);
+            if (x){
                 session.setAttribute("Profilo", newProfile);
                 response.setStatus(200);
             }
@@ -383,7 +384,12 @@ public class GestioneProfiloController {
                 request.setAttribute("CodiceGiaPresente", true);
             } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Codice Errata")) {
                 request.setAttribute("LunghezzaCodiceErrata", true);
-            } else {
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Nome Errata")){
+                request.setAttribute("LunghezzaNomeErrata", true);
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Cognome Errata")) {
+                request.setAttribute("LunghezzaCognomeErrata", true);
+            }
+            else {
                 e3.printStackTrace();
                 response.sendError(500);
             }

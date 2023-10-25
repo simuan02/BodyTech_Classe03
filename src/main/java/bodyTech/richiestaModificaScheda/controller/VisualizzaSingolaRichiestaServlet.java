@@ -17,29 +17,7 @@ import java.sql.SQLException;
 public class VisualizzaSingolaRichiestaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int idRichiesta = Integer.parseInt(request.getParameter("id"));
-        String codiceFiscale = request.getParameter("cf");
-        HttpSession session = request.getSession();
-        String address = "";
-        try {
-            RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
-            RichiestaModificaScheda richiesta = services.visualizzaSingolaRichiesta((Profilo) session.getAttribute("Profilo"), idRichiesta);
-            if (richiesta.isEsito() == null) {
-                request.setAttribute("richiesta", richiesta);
-                request.setAttribute("utente", UtenteDAO.findByCodiceFiscale(codiceFiscale));
-                address = "/valutazioneRichiesta.jsp";
-            }
-            else {
-                request.setAttribute("richiestaGiaEsaminata", true);
-                address = "/listaUtenti";
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            e.printStackTrace();
-            response.sendError(500);
-        }
-
+        RichiestaModificaSchedaController.visualizzaSingolaRichiestaMethod(request, response);
     }
 
     @Override

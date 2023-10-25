@@ -30,64 +30,7 @@ import java.util.Set;
 public class CreazioneSchedaServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String codiceFiscale = request.getParameter("cf");
-        String id = request.getParameter("id");
-        String address = "";
-        HttpSession session = request.getSession();
-
-        try {
-            Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
-            request.setAttribute("utente", utente);
-            if (id == null) {
-                //prendere tutti i dati;
-                Date dataInizio = Date.valueOf(request.getParameter("dataInizio"));
-                Date dataFine = Date.valueOf(request.getParameter("dataFine"));
-                String tipo = request.getParameter("tipo_input");
-
-                Istruttore istruttore = (Istruttore) session.getAttribute("Profilo");
-
-                String[] eserciziHtml = request.getParameterValues("esercizio");
-
-                if (eserciziHtml != null && eserciziHtml.length > 0) {
-                    List<Esercizio> eserciziChecked = new ArrayList<>();
-                    for (int i = 0; i < eserciziHtml.length; i++) {
-                        Esercizio e = EsercizioDAO.findByName(eserciziHtml[i]);
-                        eserciziChecked.add(e);
-                    }
-
-                    SchedaAllenamento scheda = new SchedaAllenamento();
-                    scheda.setDataInizio(dataInizio);
-                    scheda.setDataCompletamento(dataFine);
-                    scheda.setTipo(tipo);
-                    scheda.setUtente(UtenteDAO.findByCodiceFiscale(codiceFiscale));
-                    scheda.setIstruttore(istruttore);
-
-                    SchedaService services = new SchedaServiceImpl();
-                    services.aggiungiSchedaUtente(istruttore, scheda, utente);
-
-                    session.setAttribute("listaEsercizi", eserciziChecked);
-                    request.setAttribute("listaEsercizi", eserciziChecked);
-                    address = "/creazioneSchedaVolumi.jsp";
-
-                } else {
-                    response.sendError(400, "Nessun esercizio inserito");
-                }
-            }
-            else if (Integer.parseInt(id) == 1) {
-                List<Esercizio> list = EsercizioDAO.findAll();
-                session.setAttribute("codiceFiscale", codiceFiscale);
-                request.setAttribute("esercizi", list);
-                address = "/creazioneScheda.jsp";
-            }
-            else {
-                response.sendError(400);
-            }
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+        SchedaAllenamentoController.creazioneSchedaMethod(request, response);
     }
 
     @Override

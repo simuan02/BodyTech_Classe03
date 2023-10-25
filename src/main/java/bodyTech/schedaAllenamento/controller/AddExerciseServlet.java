@@ -38,18 +38,6 @@ public class AddExerciseServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String nomeEsercizio = request.getParameter("SelezionaEsercizio");
-        System.out.println(request.getParameter("idScheda"));
-        String volume = request.getParameter("Volume");
-        int idScheda = Integer.parseInt(request.getParameter("idScheda"));
-        SchedaService services = new SchedaServiceImpl();
-        try {
-            services.aggiungiEsercizio(EsercizioDAO.findByName(nomeEsercizio), volume, SchedaAllenamentoDAO.findByID(idScheda));
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
+        SchedaAllenamentoController.aggiungiEsercizioMethod(request, response);
     }
 }

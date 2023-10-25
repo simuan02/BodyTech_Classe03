@@ -94,7 +94,7 @@ public class IstruttoreDAO {
         }
         if (existingInstructor) {
             PreparedStatement pstmt = conn.prepareStatement("UPDATE Istruttore SET matricolaIstruttore = ?, nome = ?, cognome = ?, pass = ?, specializzazione = ?" +
-                    "WHERE matricolaIstruttore = ?");
+                    " WHERE matricolaIstruttore = ?");
             pstmt.setString(1, newIstr.getMatricolaIstruttore());
             pstmt.setString(2, newIstr.getNome());
             pstmt.setString(3, newIstr.getCognome());
