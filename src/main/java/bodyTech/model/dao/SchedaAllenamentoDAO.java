@@ -149,10 +149,10 @@ public class SchedaAllenamentoDAO {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) values" +
                 "(?, ?, ?, ?, ?)");
+        if (sa.getTipo() == null || sa.getTipo().length() == 0)
+            throw new RuntimeException("Errato: Tipo Assente");
         if (sa.getTipo().length() > 30)
             throw new RuntimeException("Errato: Tipo troppo lungo");
-        if (sa.getTipo().length() == 0)
-            throw new RuntimeException("Errato: Tipo Assente");
         if (SchedaAllenamentoDAO.findSchedaByUtente(sa.getUtente().getCodiceFiscale()) != null)
             return;
         Date nuovaDataInizio = new Date(sa.getDataInizio().getTime());

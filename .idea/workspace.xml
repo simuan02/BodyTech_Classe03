@@ -9,12 +9,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)">
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest">
+      <change afterPath="$PROJECT_DIR$/src/test/java/controller/CreazioneSchedaAllenamentoControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,11 +119,26 @@
       <recent name="bodyTech.gestioneProfilo.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.All in ProgettoBodyTech">
+  <component name="RunManager" selected="JUnit.CreazioneSchedaAllenamentoControllerTest">
     <configuration name="All in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <option name="PACKAGE_NAME" value="" />
       <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CreazioneSchedaAllenamentoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettoBodyTech" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.CreazioneSchedaAllenamentoControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -139,21 +153,6 @@
       </extension>
       <option name="PACKAGE_NAME" value="services" />
       <option name="MAIN_CLASS_NAME" value="services.CreazioneSchedaAllenamentoTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ModificaDatiUtenteControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProgettoBodyTech" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="controller.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ModificaDatiUtenteControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -289,11 +288,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CreazioneSchedaAllenamentoControllerTest" />
         <item itemvalue="JUnit.All in ProgettoBodyTech" />
         <item itemvalue="JUnit.UtenteDAOTest" />
         <item itemvalue="JUnit.CreazioneSchedaAllenamentoTest" />
         <item itemvalue="JUnit.SchedaDAOTest" />
-        <item itemvalue="JUnit.ModificaDatiUtenteControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -345,7 +344,8 @@
       <workItem from="1696582826519" duration="6232000" />
       <workItem from="1698150945565" duration="16069000" />
       <workItem from="1698259759785" duration="3349000" />
-      <workItem from="1698263496691" duration="6917000" />
+      <workItem from="1698263496691" duration="7198000" />
+      <workItem from="1698422162378" duration="2088000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -570,7 +570,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698254830062</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest">
+      <created>1698270659661</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1698270659661</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -619,7 +626,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modifica 2 Header e IndexServlet" />
     <MESSAGE value="File prova commit" />
     <MESSAGE value="Fix" />
     <MESSAGE value="Aggiunta utentePage.jsp, AccountServlet e profiloPage.css" />
@@ -644,7 +650,8 @@
     <MESSAGE value="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente" />
     <MESSAGE value="Aggiunta Casi di test RegistrazioneController e modifica Struttura Sottosistema GestioneProfiloController" />
     <MESSAGE value="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)" />
+    <MESSAGE value="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -70,6 +70,8 @@ public class SchedaAllenamentoController {
         try {
             Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
             request.setAttribute("utente", utente);
+            if (utente == null)
+                throw new IOException("Codice Fiscale Utente Inesistente");
             if (id == null) {
                 //prendere tutti i dati;
                 Date dataInizio = Date.valueOf(request.getParameter("dataInizio"));
