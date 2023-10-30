@@ -114,6 +114,14 @@ public class SchedaAllenamentoDAO {
      * @throws SQLException
      */
     public static void updateScheda(SchedaAllenamento currentSa, SchedaAllenamento sa) throws SQLException {
+        if (sa.getDataCompletamento().getTime() <= sa.getDataInizio().getTime())
+            throw new RuntimeException("Errato: Data di completamento precedente alla data di inizio");
+        if (SchedaAllenamentoDAO.findByID(currentSa.getIdScheda()) == null)
+            throw new RuntimeException("Scheda con id = " + currentSa.getIdScheda() + " assente");
+        if (sa.getTipo() == null || sa.getTipo().equals(""))
+            throw new RuntimeException("Errato: tipo assente");
+        if (sa.getTipo().length() > 30)
+            throw new RuntimeException("Errato: tipo troppo lungo");
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("UPDATE schedaAllenamento SET dataCompletamento = ?, tipo = ? WHERE idScheda = ?");
         Date nuovaDataCompletamento = new Date(sa.getDataCompletamento().getTime());
@@ -149,12 +157,14 @@ public class SchedaAllenamentoDAO {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) values" +
                 "(?, ?, ?, ?, ?)");
+        if (sa.getTipo() == null || sa.getTipo().length() == 0)
+            throw new RuntimeException("Errato: Tipo Assente");
         if (sa.getTipo().length() > 30)
             throw new RuntimeException("Errato: Tipo troppo lungo");
-        if (sa.getTipo().length() == 0)
-            throw new RuntimeException("Errato: Tipo Assente");
         if (SchedaAllenamentoDAO.findSchedaByUtente(sa.getUtente().getCodiceFiscale()) != null)
-            return;
+            throw new RuntimeException("Errato: Scheda già esistente");
+        if (sa.getDataCompletamento().getTime() <= sa.getDataInizio().getTime())
+            throw new RuntimeException("Errato: Data Completamento Precedente alla Data di Inizio");
         Date nuovaDataInizio = new Date(sa.getDataInizio().getTime());
         pstmt.setDate(1, nuovaDataInizio);
         Date nuovaDataCompletamento = new Date(sa.getDataCompletamento().getTime());

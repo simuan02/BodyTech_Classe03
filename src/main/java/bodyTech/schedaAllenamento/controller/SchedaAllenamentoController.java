@@ -70,6 +70,8 @@ public class SchedaAllenamentoController {
         try {
             Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
             request.setAttribute("utente", utente);
+            if (utente == null)
+                throw new IOException("Codice Fiscale Utente Inesistente");
             if (id == null) {
                 //prendere tutti i dati;
                 Date dataInizio = Date.valueOf(request.getParameter("dataInizio"));
@@ -186,9 +188,9 @@ public class SchedaAllenamentoController {
                 e.printStackTrace();
                 response.sendError(500);
             } catch (RuntimeException e2){
+                e2.printStackTrace();
                 response.sendError(403, e2.getMessage());
             }
-
         }
         else
             response.sendError(403, "Utente non autorizzato!");
