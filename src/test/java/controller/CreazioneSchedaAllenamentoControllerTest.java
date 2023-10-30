@@ -52,8 +52,8 @@ public class CreazioneSchedaAllenamentoControllerTest {
         istr = IstruttoreDAO.visualizzaIstruttori().get(0);
         scheda.setIstruttore(istr);
         scheda.setTipo("Powerbuiling");
-        scheda.setDataInizio(new Date(2023, 9, 25));
-        scheda.setDataCompletamento(new Date(2023, 11, 25));
+        scheda.setDataInizio(new Date(123, 9, 25));
+        scheda.setDataCompletamento(new Date(123, 11, 25));
     }
 
     public void creaScheda(){
@@ -71,11 +71,11 @@ public class CreazioneSchedaAllenamentoControllerTest {
     }
 
     /**
-     * Questo caso di test verifica il comportamento del metodo SchedaService.aggiungiSchedaUtente, nel caso in cui il codice fiscale
+     * Questo caso di test verifica il comportamento del metodo SchedaAllenamentoController.creazioneSchedaMethod, nel caso in cui il codice fiscale
      * dell'utente fosse inesistente
      */
     @Test
-    public void test_CreazioneScheda_3_1_1() throws SQLException, ServletException, IOException {
+    public void test_CreazioneScheda_3_1_1(){
         when(request.getParameter("cf")).thenReturn("CODICEERRATO");
         when(request.getParameter("id")).thenReturn(null);
         when(request.getParameter("dataInizio")).thenReturn("2023-10-25");
@@ -90,14 +90,14 @@ public class CreazioneSchedaAllenamentoControllerTest {
         try {
             SchedaAllenamentoController.creazioneSchedaMethod(request, response);
             verify(dispatcher).forward(request, response);
-        } catch (IOException e){
-            e.printStackTrace();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
             assertTrue("Altra eccezione lanciata", e.getMessage().equals("Codice Fiscale Utente Inesistente"));
         }
     }
 
     /**
-     * Questo caso di test verifica il comportamento del metodo SchedaService.aggiungiSchedaUtente, nel caso in cui il tipo
+     * Questo caso di test verifica il comportamento del metodo SchedaAllenamentoController.creazioneSchedaMethod, nel caso in cui il tipo
      * di scheda fosse di lunghezza maggiore di 30
      */
     @Test
@@ -116,58 +116,95 @@ public class CreazioneSchedaAllenamentoControllerTest {
         try {
             SchedaAllenamentoController.creazioneSchedaMethod(request, response);
             verify(dispatcher).forward(request, response);
-        } catch (RuntimeException e){
-            e.printStackTrace();
+        } catch (Exception e){
+            System.out.println(e.getMessage());
             assertTrue("Altra eccezione lanciata: " + e.getMessage(), e.getMessage().equals("Errato: Tipo troppo lungo"));
         }
     }
 
     /**
-     * Questo caso di test verifica il comportamento del metodo SchedaService.aggiungiSchedaUtente, nel caso in cui il tipo
+     * Questo caso di test verifica il comportamento del metodo SchedaAllenamentoController.creazioneSchedaMethod, nel caso in cui il tipo
      * di scheda fosse null
      */
     @Test
-    public void test_CreazioneScheda_3_1_3() throws SQLException {
-        SchedaAllenamento scheda = new SchedaAllenamento();
-        scheda.setTipo(null);
-        scheda.setDataInizio(new Date(2023, 9, 25));
-        scheda.setDataCompletamento(new Date(2023, 11, 25));
-        Utente user = UtenteDAO.findByCodiceFiscale("SPSSMN01B04L845A");
-        SchedaService services = new SchedaServiceImpl();
-        Istruttore istr = IstruttoreDAO.visualizzaIstruttori().get(0);
-        scheda.setIstruttore(istr);
-        boolean inserimentoEffettuato;
+    public void test_CreazioneScheda_3_1_3() throws SQLException, ServletException, IOException {
+        when(request.getParameter("cf")).thenReturn(scheda.getUtente().getCodiceFiscale());
+        when(request.getParameter("id")).thenReturn(null);
+        when(request.getParameter("dataInizio")).thenReturn("2023-10-25");
+        when(request.getParameter("dataFine")).thenReturn("2023-12-25");
+        when(request.getParameter("tipo_input")).thenReturn(null);
+        String[] esercizi = new String[1];
+        esercizi[0] = "Crunch";
+        when(request.getParameterValues("esercizio")).thenReturn(esercizi);
+        when(request.getRequestDispatcher("/creazioneSchedaVolumi.jsp")).thenReturn(dispatcher);
+        when(request.getSession()).thenReturn(session);
+        when(request.getSession().getAttribute("Profilo")).thenReturn(scheda.getIstruttore());
         try {
-            services.aggiungiSchedaUtente(istr, scheda, user);
-            inserimentoEffettuato = true;
-        } catch (RuntimeException e) {
-            inserimentoEffettuato = false;
+            SchedaAllenamentoController.creazioneSchedaMethod(request, response);
+            verify(dispatcher).forward(request, response);
+        } catch (RuntimeException e){
+            System.out.println(e.getMessage());
+            assertTrue("Altra eccezione lanciata: " + e.getMessage(), e.getMessage().equals("Errato: Tipo Assente"));
         }
-        assertFalse("Nessuna eccezione lanciata. Inserimento erroneamente effettuato", inserimentoEffettuato);
     }
 
     /**
-     * Questo caso di test verifica il comportamento del metodo SchedaService.aggiungiSchedaUtente, nel caso in cui il tipo
-     * di scheda fosse di lunghezza compresa tra 1 e 30 caratteri e il codice fiscale fosse esistente.
+     * Questo caso di test verifica il comportamento del metodo SchedaAllenamentoController.creazioneSchedaMethod, nel caso in cui la data
+     * di completamento sia precedente alla data di inizio
      */
     @Test
-    public void test_CreazioneScheda_3_1_4() throws SQLException {
-        SchedaAllenamento scheda = new SchedaAllenamento();
-        scheda.setTipo("Powerbuilding");
-        scheda.setDataInizio(new Date(2023, 9, 25));
-        scheda.setDataCompletamento(new Date(2023, 11, 25));
-        Utente user = UtenteDAO.findByCodiceFiscale("SPSSMN01B04L845A");
-        SchedaService services = new SchedaServiceImpl();
-        Istruttore istr = IstruttoreDAO.visualizzaIstruttori().get(0);
-        scheda.setIstruttore(istr);
-        boolean inserimentoEffettuato;
+    public void test_CreazioneScheda_3_1_4() throws SQLException, ServletException, IOException {
+        when(request.getParameter("cf")).thenReturn(scheda.getUtente().getCodiceFiscale());
+        when(request.getParameter("id")).thenReturn(null);
+        when(request.getParameter("dataInizio")).thenReturn("2023-10-25");
+        when(request.getParameter("dataFine")).thenReturn("2023-10-24");
+        when(request.getParameter("tipo_input")).thenReturn(scheda.getTipo());
+        String[] esercizi = new String[1];
+        esercizi[0] = "Crunch";
+        when(request.getParameterValues("esercizio")).thenReturn(esercizi);
+        when(request.getRequestDispatcher("/creazioneSchedaVolumi.jsp")).thenReturn(dispatcher);
+        when(request.getSession()).thenReturn(session);
+        when(request.getSession().getAttribute("Profilo")).thenReturn(scheda.getIstruttore());
         try {
-            services.aggiungiSchedaUtente(istr, scheda, user);
-            inserimentoEffettuato = true;
-        } catch (RuntimeException e) {
-            inserimentoEffettuato = false;
+            SchedaAllenamentoController.creazioneSchedaMethod(request, response);
+            verify(dispatcher).forward(request, response);
+        } catch (RuntimeException e){
+            System.out.println(e.getMessage());
+            assertTrue("Altra eccezione lanciata: " + e.getMessage(), e.getMessage().equals("Errato: Data Completamento Precedente alla Data di Inizio"));
         }
-        assertTrue("Eccezione lanciata. Inserimento NON effettuato", inserimentoEffettuato);
-        SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());
+    }
+
+    /**
+     * Questo caso di test verifica il comportamento del metodo SchedaAllenamentoController.creazioneSchedaMethod, nel caso in cui il tipo
+     * di scheda fosse di lunghezza compresa tra 1 e 30 caratteri, il codice fiscale fosse esistente e la data di completamento
+     * fosse successiva alla data d'inizio.
+     */
+    @Test
+    public void test_CreazioneScheda_3_1_5(){
+        when(request.getParameter("cf")).thenReturn(scheda.getUtente().getCodiceFiscale());
+        when(request.getParameter("id")).thenReturn(null);
+        when(request.getParameter("dataInizio")).thenReturn("2023-10-25");
+        when(request.getParameter("dataFine")).thenReturn("2023-12-25");
+        when(request.getParameter("tipo_input")).thenReturn(scheda.getTipo());
+        String[] esercizi = new String[1];
+        esercizi[0] = "Crunch";
+        when(request.getParameterValues("esercizio")).thenReturn(esercizi);
+        when(request.getRequestDispatcher("/creazioneSchedaVolumi.jsp")).thenReturn(dispatcher);
+        when(request.getSession()).thenReturn(session);
+        when(request.getSession().getAttribute("Profilo")).thenReturn(scheda.getIstruttore());
+        boolean eccezioneLanciata = false;
+        try {
+            SchedaAllenamentoController.creazioneSchedaMethod(request, response);
+            verify(dispatcher).forward(request, response);
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            eccezioneLanciata = true;
+        }
+        assertFalse("Eccezione Non Prevista lanciata", eccezioneLanciata);
+        try {
+            SchedaAllenamentoDAO.deleteScheda(SchedaAllenamentoDAO.findSchedaByUtente(scheda.getUtente().getCodiceFiscale()).getIdScheda());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -2,6 +2,7 @@ package bodyTech.model.entity;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Contiene i dati relativi ad una scheda di allenamento.

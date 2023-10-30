@@ -38,7 +38,7 @@ public class SchedaServiceImpl implements SchedaService{
         SchedaAllenamento currentSa = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());
         if (currentSa != null){
             SchedaAllenamentoDAO.updateScheda(currentSa, sa);
-            for (EsercizioAllenamento ea: sa.getListaEsercizi()){
+            for (EsercizioAllenamento ea : sa.getListaEsercizi()) {
                 EsercizioAllenamentoDAO.updateEsercizio(ea, sa.getIdScheda());
             }
         }
