@@ -21,25 +21,7 @@ import java.util.List;
 public class VisualizzaSchedaUtenteServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String codiceFiscale = request.getParameter("cf");
-
-        try {
-            Utente utente = UtenteDAO.findByCodiceFiscale(codiceFiscale);
-            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(utente.getCodiceFiscale());
-            if (scheda != null) {
-                List<EsercizioAllenamento> listaEsercizi = EsercizioAllenamentoDAO.findBySchedaID(scheda.getIdScheda());
-                scheda.setListaEsercizi(listaEsercizi);
-                request.setAttribute("scheda", scheda);
-                request.setAttribute("utente", utente);
-            }
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
-
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/schedaAllenamento.jsp");
-        dispatcher.forward(request, response);
+        SchedaAllenamentoController.visualizzaSchedaUtenteMethod(request, response);
     }
 
     @Override

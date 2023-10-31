@@ -26,24 +26,7 @@ public class GetExercisesServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            String idScheda = request.getParameter("idScheda");
-            List<Esercizio> listaEsercizi = null;
-            if (idScheda == null){
-                listaEsercizi = EsercizioDAO.findAll();
-            }
-            else {
-                int id = Integer.parseInt(idScheda);
-                listaEsercizi = EsercizioDAO.findAvailableForScheda(id);
-            }
-            String json = new Gson().toJson(listaEsercizi);
-            response.setContentType("application/json");
-            response.setCharacterEncoding("UTF-8");
-            response.getWriter().write(json);
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
+        SchedaAllenamentoController.getExercisesMethod(request, response);
     }
 
     /**

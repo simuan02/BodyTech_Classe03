@@ -19,17 +19,6 @@ public class OpenRequestServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String messaggio = request.getParameter("richiesta");
-        HttpSession session = request.getSession();
-        Utente u = (Utente)session.getAttribute("Profilo");
-        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
-        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
-        richiesta.setMessaggio(messaggio);
-        if (services.richiediModificaScheda(richiesta, u))
-            request.setAttribute("richiestaEffettuata", "YES");
-        else
-            request.setAttribute("richiestaEffettuata", "NO");
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/infoProfile.jsp");
-        dispatcher.forward(request, response);
+        RichiestaModificaSchedaController.openRequestMethod(request, response);
     }
 }

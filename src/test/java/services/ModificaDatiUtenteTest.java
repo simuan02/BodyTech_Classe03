@@ -78,7 +78,7 @@ public class ModificaDatiUtenteTest {
      */
     @Test
     public void Test_ModificaDatiUtente_2_3() throws SQLException{
-        newUser.setNome("SimoneABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHISimoneABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHI"); //lunghezza nome = 41
+        newUser.setNome("SimoneABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHI"); //lunghezza nome = 41
         boolean longName = false;
         try{
             GestioneProfiloService services = new GestioneProfiloServiceImpl();
@@ -98,7 +98,7 @@ public class ModificaDatiUtenteTest {
      */
     @Test
     public void Test_ModificaDatiUtente_2_4() throws SQLException{
-        newUser.setCognome("EspositoABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHISimoneABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFG"); //lunghezza cognome = 41
+        newUser.setCognome("EspositoABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHI"); //lunghezza cognome = 41
         boolean longLastName = false;
         try{
             GestioneProfiloService services = new GestioneProfiloServiceImpl();

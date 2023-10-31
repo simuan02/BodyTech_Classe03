@@ -22,18 +22,7 @@ import java.sql.SQLException;
 public class FindInstructorServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            String matricola = request.getParameter("matricola");
-            Istruttore istr = IstruttoreDAO.findByMatricola(matricola);
-            request.setAttribute("istruttore", istr);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/ModificaIstruttore.jsp");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        } catch (RuntimeException e2){
-            response.sendError(403, e2.getMessage());
-        }
+        GestioneProfiloController.findInstructorMethod(request, response);
     }
 
     @Override

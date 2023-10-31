@@ -23,35 +23,7 @@ import java.io.IOException;
 public class AccountServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo) session.getAttribute("Profilo");
-
-        String address = "";
-        if (p == null){
-            response.sendError(403, "ACCESSO NEGATO. Non è stato effettuato l'accesso alla piattaforma");
-        }
-        else {
-            switch (p.loggedUserLevel()) {
-                case "Utente":
-                    Utente utente = (Utente) p;
-                    session.setAttribute("Utente", utente);
-                    address = "/utentePage.jsp";
-                    break;
-                case "Istruttore":
-                    Istruttore istruttore = (Istruttore) p;
-                    session.setAttribute("Istruttore", istruttore);
-                    address = "/istruttorePage.jsp";
-                    break;
-                case "Amministratore":
-                    Amministratore amministratore = (Amministratore) p;
-                    session.setAttribute("Amministratore", amministratore);
-                    address = "/amministratorePage.jsp";
-                    break;
-            }
-            RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-            dispatcher.forward(request, response);
-        }
+        GestioneProfiloController.profilePageMethod(request, response);
     }
 
     @Override

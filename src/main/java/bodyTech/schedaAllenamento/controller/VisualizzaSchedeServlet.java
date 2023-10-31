@@ -29,27 +29,7 @@ public class VisualizzaSchedeServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo)session.getAttribute("Profilo");
-        SchedaService services = new SchedaServiceImpl();
-        try {
-            List<SchedaAllenamento> listaSchede = null;
-            if (p.loggedUserLevel().equals("Istruttore")) {
-                listaSchede = services.visualizzaSchede(p);
-            }
-            else if (p.loggedUserLevel().equals("Amministratore")){
-                String matricola = request.getParameter("mat");
-                listaSchede = SchedaAllenamentoDAO.findAllByInstructor(matricola);
-            }
-            request.setAttribute("listaSchede", listaSchede);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/listaSchedePage.jsp");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        } catch (RuntimeException re){
-            response.sendError(403, "Operazione non consentita");
-        }
+        SchedaAllenamentoController.visualizzaSchedeMethod(request, response);
     }
 
     /**

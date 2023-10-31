@@ -9,15 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore">
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/ModificaDatiUtenteTest.java" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest">
+      <change afterPath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/services/ModificaSchedaAllenamentoTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/service/GestioneProfiloServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/Profilo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/informazioniUtente.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/RegistrazioneUtenteTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/RegistrazioneUtenteTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/UtenteDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/SchedaAllenamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/SchedaAllenamento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/CreazioneSchedaAllenamentoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/CreazioneSchedaAllenamentoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -132,35 +134,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="RegistrazioneUtenteTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CreazioneSchedaAllenamentoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
-      <option name="PACKAGE_NAME" value="services" />
-      <option name="MAIN_CLASS_NAME" value="services.RegistrazioneUtenteTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.CreazioneSchedaAllenamentoControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UtenteDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ModificaSchedaAllenamentoControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.UtenteDAOTest" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ModificaSchedaAllenamentoControllerTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UtenteDAOTest.testInsertUser_Method_2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProgettoBodyTech" />
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.UtenteDAOTest" />
-      <option name="METHOD_NAME" value="testInsertUser_Method_2" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="services in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ModificaSchedaAllenamentoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <extension name="coverage">
         <pattern>
@@ -169,7 +173,23 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="services" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="services.ModificaSchedaAllenamentoTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SchedaDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettoBodyTech" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SchedaDAOTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -185,7 +205,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.0.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.17" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17">
+    <configuration name="Tomcat 10.0.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.17" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ProgettoBodyTech:war exploded">
@@ -195,15 +215,33 @@
         </artifact>
       </deployment>
       <server-settings>
-        <option name="BASE_DIRECTORY_NAME" value="ac1495fc-eb23-4dcf-99b1-c4fc5dfb9926" />
+        <option name="BASE_DIRECTORY_NAME" value="41a7d2ce-f41d-467b-a988-28ecf78d9ec9" />
       </server-settings>
       <predefined_log_file enabled="true" id="Tomcat" />
       <predefined_log_file enabled="true" id="Tomcat Catalina" />
       <predefined_log_file id="Tomcat Manager" />
       <predefined_log_file id="Tomcat Host Manager" />
       <predefined_log_file id="Tomcat Localhost Access" />
+      <extension name="coverage" runner="jacoco">
+        <pattern>
+          <option name="PATTERN" value="bodyTech.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+        <pattern>
+          <option name="PATTERN" value="services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <RunnerSettings RunnerId="Debug">
-        <option name="DEBUG_PORT" value="59622" />
+        <option name="DEBUG_PORT" value="52333" />
       </RunnerSettings>
       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
         <option name="USE_ENV_VARIABLES" value="true" />
@@ -272,13 +310,21 @@
         </option>
       </method>
     </configuration>
+    <list>
+      <item itemvalue="JUnit.SchedaDAOTest" />
+      <item itemvalue="JUnit.CreazioneSchedaAllenamentoControllerTest" />
+      <item itemvalue="JUnit.ModificaSchedaAllenamentoTest" />
+      <item itemvalue="Tomcat Server.Tomcat 10.0.17" />
+      <item itemvalue="JUnit.All in ProgettoBodyTech" />
+      <item itemvalue="JUnit.ModificaSchedaAllenamentoControllerTest" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="JUnit.All in ProgettoBodyTech" />
-        <item itemvalue="JUnit.UtenteDAOTest" />
-        <item itemvalue="JUnit.services in ProgettoBodyTech" />
-        <item itemvalue="JUnit.UtenteDAOTest.testInsertUser_Method_2" />
-        <item itemvalue="JUnit.RegistrazioneUtenteTest" />
+        <item itemvalue="JUnit.ModificaSchedaAllenamentoControllerTest" />
+        <item itemvalue="JUnit.CreazioneSchedaAllenamentoControllerTest" />
+        <item itemvalue="JUnit.ModificaSchedaAllenamentoTest" />
+        <item itemvalue="JUnit.SchedaDAOTest" />
       </list>
     </recent_temporary>
   </component>
@@ -327,7 +373,15 @@
       <workItem from="1694328827380" duration="6408000" />
       <workItem from="1695917557487" duration="21882000" />
       <workItem from="1696433970465" duration="7036000" />
-      <workItem from="1696582826519" duration="5889000" />
+      <workItem from="1696582826519" duration="6232000" />
+      <workItem from="1698150945565" duration="16069000" />
+      <workItem from="1698259759785" duration="3349000" />
+      <workItem from="1698263496691" duration="7198000" />
+      <workItem from="1698422162378" duration="2130000" />
+      <workItem from="1698598080329" duration="10390000" />
+      <workItem from="1698652166160" duration="572000" />
+      <workItem from="1698658724394" duration="4777000" />
+      <workItem from="1698687530333" duration="4077000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -531,7 +585,42 @@
       <option name="project" value="LOCAL" />
       <updated>1696452184139</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente">
+      <created>1696617847230</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1696617847230</updated>
+    </task>
+    <task id="LOCAL-00031" summary="Aggiunta Casi di test RegistrazioneController e modifica Struttura Sottosistema GestioneProfiloController">
+      <created>1698245638449</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1698245638449</updated>
+    </task>
+    <task id="LOCAL-00032" summary="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)">
+      <created>1698254830062</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1698254830062</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest">
+      <created>1698270659661</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1698270659661</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest">
+      <created>1698424293841</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1698424293841</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -580,8 +669,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modifica 2 Header e IndexServlet" />
-    <MESSAGE value="File prova commit" />
     <MESSAGE value="Fix" />
     <MESSAGE value="Aggiunta utentePage.jsp, AccountServlet e profiloPage.css" />
     <MESSAGE value="Continuo utentePage.jsp, AccountServlet e profiloPage.css" />
@@ -602,7 +689,12 @@
     <MESSAGE value="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService" />
     <MESSAGE value="Modifica" />
     <MESSAGE value="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore" />
+    <MESSAGE value="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente" />
+    <MESSAGE value="Aggiunta Casi di test RegistrazioneController e modifica Struttura Sottosistema GestioneProfiloController" />
+    <MESSAGE value="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)" />
+    <MESSAGE value="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest" />
+    <MESSAGE value="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -614,5 +706,8 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Esame$All_in_ProgettoBodyTech.ic" NAME="All in ProgettoBodyTech Coverage Results" MODIFIED="1698599619582" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

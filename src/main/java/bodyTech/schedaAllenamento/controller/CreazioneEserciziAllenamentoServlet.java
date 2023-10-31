@@ -28,27 +28,7 @@ import java.util.Set;
 public class CreazioneEserciziAllenamentoServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String address = "";
-        HttpSession session = request.getSession();
-
-        String[] volumiHtml = request.getParameterValues("volume");
-        List<Esercizio> esercizi = (List<Esercizio>) session.getAttribute("listaEsercizi");
-        String codiceFiscale = (String) session.getAttribute("codiceFiscale");
-        try {
-            SchedaAllenamento scheda = SchedaAllenamentoDAO.findSchedaByUtente(codiceFiscale);
-            SchedaService services = new SchedaServiceImpl();
-
-            for(int i = 0; i < volumiHtml.length; i++) {
-                services.aggiungiEsercizio(esercizi.get(i), volumiHtml[i], scheda);
-            }
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
-
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
-        dispatcher.forward(request, response);
+        SchedaAllenamentoController.creaListaEserciziMethod(request, response);
     }
 
     @Override

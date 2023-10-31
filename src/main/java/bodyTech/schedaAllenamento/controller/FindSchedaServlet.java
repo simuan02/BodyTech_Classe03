@@ -25,17 +25,7 @@ public class FindSchedaServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        int schedaID = Integer.parseInt(request.getParameter("idScheda"));
-        try {
-            SchedaAllenamento sa = SchedaAllenamentoDAO.findByID(schedaID);
-            request.setAttribute("SchedaAllenamento", sa);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/modificaScheda.jsp");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        }
-
+        SchedaAllenamentoController.findSchedaMethod(request, response);
     }
 
     /**
@@ -47,6 +37,5 @@ public class FindSchedaServlet extends HttpServlet {
      */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

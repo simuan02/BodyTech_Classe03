@@ -24,18 +24,7 @@ import java.sql.SQLException;
 public class FindUserServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        try {
-            String codiceFiscale = request.getParameter("codiceFiscale");
-            Utente u = UtenteDAO.findByCodiceFiscale(codiceFiscale);
-            request.setAttribute("Utente", u);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("/ModificaUtente.jsp");
-            dispatcher.forward(request, response);
-        } catch (SQLException e) {
-            log(e.getMessage(), e);
-            response.sendError(500);
-        } catch (RuntimeException e2){
-            response.sendError(403, e2.getMessage());
-        }
+        GestioneProfiloController.findUserMethod(request, response);
     }
 
     @Override

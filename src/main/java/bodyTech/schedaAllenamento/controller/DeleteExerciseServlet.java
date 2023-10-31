@@ -24,24 +24,7 @@ public class DeleteExerciseServlet extends HttpServlet {
      */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession();
-        Profilo p = (Profilo) session.getAttribute("Profilo");
-        if (p != null && (p.loggedUserLevel().equals("Istruttore") || p.loggedUserLevel().equals("Amministratore"))){
-            SchedaService services = new SchedaServiceImpl();
-            String nomeEsercizio = request.getParameter("nomeEsercizio");
-            int schedaId = Integer.parseInt(request.getParameter("idScheda"));
-            try {
-                services.eliminaEsercizio(schedaId, nomeEsercizio);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("/istruttorePage.jsp");
-                dispatcher.forward(request, response);
-            } catch (SQLException e) {
-                log(e.getMessage(), e);
-                response.sendError(500);
-            }
-
-        }
-        else
-            response.sendError(403, "Utente non autorizzato");
+        SchedaAllenamentoController.deleteExerciseMethod(request, response);
     }
 
     /**
