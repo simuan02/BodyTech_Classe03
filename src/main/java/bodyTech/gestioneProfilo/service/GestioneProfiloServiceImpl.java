@@ -49,6 +49,9 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
             if (istr.getSpecializzazione().length() > 30) {
                 throw new IOException("Lunghezza Specializzazione Errata");}
 
+            if (istr.getMatricolaIstruttore().length() != 10) {
+                throw new IOException("Lunghezza Matricola Errata");}
+
             IstruttoreDAO.insertInstructor(istr);
         }
         else {
