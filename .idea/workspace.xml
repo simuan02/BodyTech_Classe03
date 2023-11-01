@@ -9,17 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest">
-      <change afterPath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/ModificaSchedaAllenamentoTest.java" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/SchedaAllenamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/entity/SchedaAllenamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/service/SchedaServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/CreazioneSchedaAllenamentoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/CreazioneSchedaAllenamentoControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +196,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Tomcat 10.0.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.17" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+    <configuration name="Tomcat 10.1.15" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.1.15" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
       <option name="UPDATING_POLICY" value="restart-server" />
       <deployment>
         <artifact name="ProgettoBodyTech:war exploded">
@@ -314,9 +305,9 @@
       <item itemvalue="JUnit.SchedaDAOTest" />
       <item itemvalue="JUnit.CreazioneSchedaAllenamentoControllerTest" />
       <item itemvalue="JUnit.ModificaSchedaAllenamentoTest" />
-      <item itemvalue="Tomcat Server.Tomcat 10.0.17" />
       <item itemvalue="JUnit.All in ProgettoBodyTech" />
       <item itemvalue="JUnit.ModificaSchedaAllenamentoControllerTest" />
+      <item itemvalue="Tomcat Server.Tomcat 10.1.15" />
     </list>
     <recent_temporary>
       <list>
@@ -381,7 +372,8 @@
       <workItem from="1698598080329" duration="10390000" />
       <workItem from="1698652166160" duration="572000" />
       <workItem from="1698658724394" duration="4777000" />
-      <workItem from="1698687530333" duration="4077000" />
+      <workItem from="1698687530333" duration="4401000" />
+      <workItem from="1698774536006" duration="181000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -620,7 +612,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698424293841</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest">
+      <created>1698691674228</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1698691674228</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -669,7 +668,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fix" />
     <MESSAGE value="Aggiunta utentePage.jsp, AccountServlet e profiloPage.css" />
     <MESSAGE value="Continuo utentePage.jsp, AccountServlet e profiloPage.css" />
     <MESSAGE value="Aggiunta Servlet e jsp" />
@@ -694,7 +692,8 @@
     <MESSAGE value="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)" />
     <MESSAGE value="Aggiunta Casi di test CreazioneSchedaAllenamentoTest e SchedaDAOTest" />
     <MESSAGE value="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di test CreazioneSchedaAllenamentoControllerTest" />
+    <MESSAGE value="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di test ModificaSchedaAllenamentoControllerTest, ModificaSchedaAllenamentoTest e SchedaDAOTest" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

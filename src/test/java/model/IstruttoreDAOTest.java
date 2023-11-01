@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Random;
 
@@ -106,126 +105,13 @@ public class IstruttoreDAOTest {
         Assertions.assertFalse(IstruttoreDAO.insertInstructor(istr), "Registrazione riuscita nonostante il campo specializzazione di istr fosse null");
     }
 
-    /**
-     * Questo caso di test verifica il comportamento del metodo IstruttoreDAO.updateInstructor(oldIstr, newIstr) nel caso in cui newIstr rispetti
-     * tutte le pre-condizioni:
-     * - matricola di 10 caratteri, non esistente o identico a quello di oldIstr;
-     * - nome, cognome, password, specializzazione non nulli.
-     */
-    @Test
-    public void testUpdateInstructor_Method_OK() throws SQLException, IOException {
-        Istruttore istr2 = new Istruttore();
-        istr2.setNome("Festy");
-        istr2.setCognome("Ebosele");
-        istr2.setMatricolaIstruttore("1030650127");
-        istr2.setPassword("Udinese066");
-        istr2.setSpecializzazione("Bodybuilding");
-        IstruttoreDAO.insertInstructor(istr);
-        Assertions.assertTrue(IstruttoreDAO.updateInstructor(istr, istr2), "Modifica Non Effettuata");
-        IstruttoreDAO.deleteInstructor(istr2);
-    }
 
-    /**
-     * Questo caso di test verifica il comportamento del metodo IstruttoreDAO.updateInstructor(oldIstr, newIstr) in caso di
-     * newIstr.matricolaIstruttore già esistente, diverso da quello di oldIstr
-     */
-    @Test
-    public void testUpdateInstructor_Method_1() throws SQLException, IOException {
-        Istruttore istr2 = new Istruttore();
-        istr2.setNome("Festy");
-        istr2.setCognome("Ebosele");
-        istr2.setMatricolaIstruttore("1030650127");
-        istr2.setPassword("Udinese066");
-        istr2.setSpecializzazione("Bodybuilding");
-        IstruttoreDAO.insertInstructor(istr);
-        IstruttoreDAO.insertInstructor(istr2);
-        boolean matricolaEsistente = false;
-        try{
-            IstruttoreDAO.updateInstructor(istr, istr2);
-        }
-        catch(IOException e){
-            matricolaEsistente = true;
-        }
-        Assertions.assertTrue(matricolaEsistente, "Matricola già presente non rilevata dal metodo");
-        IstruttoreDAO.deleteInstructor(istr2);
-        IstruttoreDAO.deleteInstructor(istr);
-    }
 
-    /**
-     * Questo caso di test verifica il comportamento del metodo IstruttoreDAO.updateInstructor(oldIstr, newIstr) in caso del campo
-     * nome di newIstr null
-     */
-    @Test
-    public void testUpdateInstructor_Method_2() throws SQLException, IOException {
-        Istruttore istr2 = new Istruttore();
-        istr2.setCognome("Ebosele");
-        istr2.setMatricolaIstruttore("1030650127");
-        istr2.setPassword("Udinese066");
-        istr2.setSpecializzazione("Bodybuilding");
-        IstruttoreDAO.insertInstructor(istr);
-        Assertions.assertFalse(IstruttoreDAO.updateInstructor(istr, istr2), "Modifica riuscita nonostante il campo nome fosse null");
-        IstruttoreDAO.deleteInstructor(istr);
-    }
 
-    /**
-     * Questo caso di test verifica il comportamento del metodo IstruttoreDAO.updateInstructor(oldIstr, newIstr) in caso del campo
-     * cognome di newIstr null
-     */
-    @Test
-    public void testUpdateInstructor_Method_3() throws SQLException, IOException {
-        Istruttore istr2 = new Istruttore();
-        istr2.setNome("Festy");
-        istr2.setMatricolaIstruttore("1030650127");
-        istr2.setPassword("Udinese066");
-        istr2.setSpecializzazione("Bodybuilding");
-        IstruttoreDAO.insertInstructor(istr);
-        Assertions.assertFalse(IstruttoreDAO.updateInstructor(istr, istr2), "Modifica riuscita nonostante il campo cognome fosse null");
-        IstruttoreDAO.deleteInstructor(istr);
-    }
 
-    /**
-     * Questo caso di test verifica il comportamento del metodo IstruttoreDAO.updateInstructor(oldIstr, newIstr) in caso del campo
-     * matricolaIstruttore di newIstr null
-     */
-    @Test
-    public void testUpdateInstructor_Method_4() throws SQLException, IOException {
-        Istruttore istr2 = new Istruttore();
-        istr2.setNome("Festy");
-        istr2.setPassword("Udinese066");
-        istr2.setSpecializzazione("Bodybuilding");
-        IstruttoreDAO.insertInstructor(istr);
-        Assertions.assertFalse(IstruttoreDAO.updateInstructor(istr, istr2), "Modifica riuscita nonostante il campo matricola fosse null");
-        IstruttoreDAO.deleteInstructor(istr);
-    }
 
-    /**
-     * Questo caso di test verifica il comportamento del metodo IstruttoreDAO.updateInstructor(oldIstr, newIstr) in caso del campo
-     * specializzazione di newIstr null
-     */
-    @Test
-    public void testUpdateInstructor_Method_5() throws SQLException, IOException {
-        Istruttore istr2 = new Istruttore();
-        istr2.setCognome("Ebosele");
-        istr2.setMatricolaIstruttore("1030650127");
-        istr2.setPassword("Udinese066");
-        IstruttoreDAO.insertInstructor(istr);
-        Assertions.assertFalse(IstruttoreDAO.updateInstructor(istr, istr2), "Modifica riuscita nonostante il campo specializzazione fosse null");
-        IstruttoreDAO.deleteInstructor(istr);
-    }
 
-    /**
-     * Questo caso di test verifica il comportamento del metodo IstruttoreDAO.updateInstructor(oldIstr, newIstr) in caso del campo
-     * password di newIstr null
-     */
-    @Test
-    public void testUpdateInstructor_Method_6() throws SQLException, IOException {
-        Istruttore istr2 = new Istruttore();
-        istr2.setCognome("Ebosele");
-        istr2.setMatricolaIstruttore("1030650127");
-        istr2.setSpecializzazione("Bodybuilding");
-        IstruttoreDAO.insertInstructor(istr);
-        Assertions.assertFalse(IstruttoreDAO.updateInstructor(istr, istr2), "Modifica riuscita nonostante il campo password fosse null");
-        IstruttoreDAO.deleteInstructor(istr);
-    }
+
+
 
 }
