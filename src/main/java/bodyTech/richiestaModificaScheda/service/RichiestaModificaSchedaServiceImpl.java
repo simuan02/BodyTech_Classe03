@@ -14,7 +14,7 @@ import java.util.List;
 public class RichiestaModificaSchedaServiceImpl implements RichiestaModificaSchedaService{
     @Override
     public boolean richiediModificaScheda(RichiestaModificaScheda richiesta, Utente u) {
-        if (u!= null){
+        if (u!= null && (richiesta.getMessaggio().length() > 0 && richiesta.getMessaggio().length() <= 250)){
             try {
                 RichiestaModificaSchedaDAO.insertNewRequest(richiesta, u.getCodiceFiscale());
             } catch (SQLException e) {

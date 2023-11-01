@@ -9,12 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)">
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" afterDir="false" />
+    <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta casi di Test relativi alla creazione richiesta di modifica scheda">
+      <change afterPath="$PROJECT_DIR$/src/test/java/services/RichiestaModificaSchedaTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,22 +83,12 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
-    <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "git-widget-placeholder": "main",
+    "node.js.selected.package.tslint": "(autodetect)"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp" />
@@ -578,13 +566,26 @@
       <option name="project" value="LOCAL" />
       <updated>1698254830062</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Aggiunta casi di Test relativi alla creazione richiesta di modifica scheda">
+      <option name="closed" value="true" />
+      <created>1698866828356</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1698866828356</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="OPEN_GENERIC_TABS">
+      <map>
+        <entry key="cdb0114a-4d5b-40d5-9283-7b8eaec92d77" value="TOOL_WINDOW" />
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -595,7 +596,6 @@
         <entry key="cdb0114a-4d5b-40d5-9283-7b8eaec92d77">
           <value>
             <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
               <option name="FILTERS">
                 <map>
                   <entry key="branch">
@@ -614,20 +614,15 @@
                   </entry>
                 </map>
               </option>
+              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
             </State>
           </value>
         </entry>
       </map>
     </option>
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="cdb0114a-4d5b-40d5-9283-7b8eaec92d77" value="TOOL_WINDOW" />
-      </map>
-    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Modifica 2 Header e IndexServlet" />
     <MESSAGE value="File prova commit" />
     <MESSAGE value="Fix" />
     <MESSAGE value="Aggiunta utentePage.jsp, AccountServlet e profiloPage.css" />
@@ -652,7 +647,8 @@
     <MESSAGE value="Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente" />
     <MESSAGE value="Aggiunta Casi di test RegistrazioneController e modifica Struttura Sottosistema GestioneProfiloController" />
     <MESSAGE value="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)" />
+    <MESSAGE value="Aggiunta casi di Test relativi alla creazione richiesta di modifica scheda" />
+    <option name="LAST_COMMIT_MESSAGE" value="Aggiunta casi di Test relativi alla creazione richiesta di modifica scheda" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
