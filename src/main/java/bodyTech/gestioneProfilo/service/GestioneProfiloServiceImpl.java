@@ -88,9 +88,6 @@ public class GestioneProfiloServiceImpl implements GestioneProfiloService{
             if (istr2.getCognome().length() > 40) {
                 throw new IOException("Lunghezza Cognome Errata");}
 
-            if (istr2.getPassword().length() < 8 || istr.getPassword().length() > 32) {
-                throw new IOException("Lunghezza Password Errata");}
-
             if (istr2.getSpecializzazione().length() > 30) {
                 throw new IOException("Lunghezza Specializzazione Errata");}
 

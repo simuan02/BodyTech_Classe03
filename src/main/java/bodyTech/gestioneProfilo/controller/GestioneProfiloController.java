@@ -55,7 +55,7 @@ public class GestioneProfiloController {
         }
     }
 
-    public static void aggiungiIstruttoreMethod(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void aggiungiIstruttoreMethod(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         Profilo p = (Profilo)session.getAttribute("Profilo");
         String nome = request.getParameter("NomeIstruttore");
@@ -72,7 +72,6 @@ public class GestioneProfiloController {
         GestioneProfiloService services = new GestioneProfiloServiceImpl();
         boolean b = true;
         try {
-            if (i.getMatricolaIstruttore().length() == 10) {
                 for (Istruttore istr : services.visualizzaIstruttori(p)) {
                     if (istr.getMatricolaIstruttore().equalsIgnoreCase(i.getMatricolaIstruttore())) {
                         request.setAttribute("CodiceGiaPresente", true);
@@ -80,12 +79,16 @@ public class GestioneProfiloController {
                     }
                 }
                 if (b) {
-                    services.aggiungiIstruttore(p, i);
+                    try {
+                        services.aggiungiIstruttore(p, i);
+                        request.setAttribute("Registrazione", true);
+                    }catch (Exception e) {
+                        request.setAttribute("Registrazione", false);
+                        request.setAttribute(e.getMessage(), true);
+                    }
+                } else {
+                   request.setAttribute("Registrazione", false);
                 }
-            }
-            else {
-                request.setAttribute("LunghezzaMatricolaErrata", true);
-            }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");
             dispatcher.forward(request, response);
         } catch (SQLException e) {
@@ -345,9 +348,14 @@ public class GestioneProfiloController {
         } catch (IOException e3){
             if (e3.getMessage().equalsIgnoreCase("Matricola già presente all'interno della piattaforma")) {
                 request.setAttribute("CodiceGiaPresente", true);
-            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Matricola Errata")){
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Matricola Errata")) {
                 request.setAttribute("LunghezzaMatricolaErrata", true);
-            }
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Nome Errata")) {
+                request.setAttribute("LunghezzaNomeErrata", true);
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Cognome Errata")){
+                request.setAttribute("LunghezzaCognomeErrata", true);
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Specializzazione Errata")){
+                request.setAttribute("LunghezzaSpecializzazioneErrata", true);}
             else {
                 e3.printStackTrace();
                 response.sendError(500);

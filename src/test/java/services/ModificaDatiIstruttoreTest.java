@@ -78,41 +78,41 @@ public class ModificaDatiIstruttoreTest {
 
     /**
      * Questo caso di test verifica il comportamento del metodo GestioneProfiloService.modificaIstruttore(p, oldUser, newUser)
-     * in caso di newIstr.password di lunghezza maggiore di 32 caratteri
+     * in caso di newIstr.matricolaIstruttore di lunghezza maggiore di 10 caratteri
      */
     @Test
     public void Test_ModificaDatiIstruttore_2_3() throws SQLException{
-        newIstr.setPassword("Udinese066EboseleEnzoEbosseKingsley"); //lunghezza password = 35
-        boolean longPw = false;
+        newIstr.setMatricolaIstruttore("103065012700"); //lunghezza matricola = 12
+        boolean longMat = false;
         try{
             GestioneProfiloService services = new GestioneProfiloServiceImpl();
             services.modificaIstruttore(new Amministratore(), oldIstr, newIstr);
         } catch (IOException e) {
-            if (e.getMessage().equals("Lunghezza Password Errata"))
-                longPw = true;
+            if (e.getMessage().equals("Lunghezza Matricola Errata"))
+                longMat = true;
         }
-        Assertions.assertTrue(longPw, "Modifica Effettuata Correttamente oppure altro errore rilevato " +
-                "nonostante la password fosse di lunghezza maggiore di 32 caratteri");
+        Assertions.assertTrue(longMat, "Modifica Effettuata Correttamente oppure altro errore rilevato " +
+                "nonostante la matricola fosse di lunghezza maggiore di 10 caratteri");
         IstruttoreDAO.deleteInstructor(oldIstr);
     }
 
     /**
      * Questo caso di test verifica il comportamento del metodo GestioneProfiloService.modificaIstruttore(p, oldUser, newUser)
-     * in caso di newIstr.password di lunghezza minore di 8 caratteri
+     * in caso di newIstr.matricolaIstruttore di lunghezza minore di 10 caratteri
      */
     @Test
     public void Test_ModificaDatiIstruttore_2_4() throws SQLException{
-        newIstr.setPassword("Udinese"); //lunghezza password = 7
-        boolean shortPw = false;
+        newIstr.setMatricolaIstruttore("10306501"); //lunghezza matricola = 8
+        boolean shortMat = false;
         try{
             GestioneProfiloService services = new GestioneProfiloServiceImpl();
             services.modificaIstruttore(new Amministratore(), oldIstr, newIstr);
         } catch (IOException e) {
-            if (e.getMessage().equals("Lunghezza Password Errata"))
-                shortPw = true;
+            if (e.getMessage().equals("Lunghezza Matricola Errata"))
+                shortMat = true;
         }
-        Assertions.assertTrue(shortPw, "Modifica Effettuata Correttamente oppure altro errore rilevato " +
-                "nonostante la password fosse di lunghezza minore di 8 caratteri");
+        Assertions.assertTrue(shortMat, "Modifica Effettuata Correttamente oppure altro errore rilevato " +
+                "nonostante la matricola fosse di lunghezza minore di 10 caratteri");
         IstruttoreDAO.deleteInstructor(oldIstr);
     }
 
@@ -141,14 +141,14 @@ public class ModificaDatiIstruttoreTest {
      * in caso di:
      * - newIstr.nome di lunghezza minore o uguale di 40 caratteri;
      * - newIstr.cognome di lunghezza minore o uguale di 40 caratteri;
-     * - newIstr.password di lunghezza minore o uguale di 32 e maggiore o uguale di 8 caratteri;
+     * - newIstr.matricolaIstruttore di lunghezza di 10 caratteri;
      * - newIstr.specializzazione di lunghezza minore o uguale di 30 caratteri;
      */
     @Test
     public void Test_ModificaDatiIstruttore_2_6() throws SQLException{
         newIstr.setNome("Fiery");
         newIstr.setCognome("Ebosele");
-        newIstr.setPassword("Udinese066");
+        newIstr.setMatricolaIstruttore("1030650127");
         newIstr.setSpecializzazione("Bodybuilding");
         boolean exception = false;
         String erroreTrovato = "";
