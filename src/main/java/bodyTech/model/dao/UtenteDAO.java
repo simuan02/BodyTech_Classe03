@@ -1,6 +1,7 @@
 package bodyTech.model.dao;
 
 import bodyTech.model.ConPool;
+import bodyTech.model.entity.EsercizioAllenamento;
 import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.model.entity.Utente;
@@ -128,14 +129,32 @@ public class UtenteDAO {
             pstmt.setString(3, newUser.getCognome());
             pstmt.setString(4, newUser.getPassword());
             pstmt.setString(5, oldUser.getCodiceFiscale());
-            pstmt.executeUpdate();
             if (!oldUser.getCodiceFiscale().equals(newUser.getCodiceFiscale())){
-                SchedaAllenamento nuovaSchedaUtente = SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale());
-                if (nuovaSchedaUtente != null) {
+                SchedaAllenamento vecchiaSchedaUtente = SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale());
+                SchedaAllenamento nuovaSchedaUtente = null;
+                if (vecchiaSchedaUtente != null) {
+                    nuovaSchedaUtente = SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale());
                     nuovaSchedaUtente.setUtente(newUser);
-                    SchedaAllenamentoDAO.updateScheda(SchedaAllenamentoDAO.findSchedaByUtente(oldUser.getCodiceFiscale()), nuovaSchedaUtente);
+                    SchedaAllenamentoDAO.deleteScheda(vecchiaSchedaUtente.getIdScheda());
+                }
+                List<RichiestaModificaScheda> listaRichieste = RichiestaModificaSchedaDAO.findByUser(oldUser.getCodiceFiscale());
+                for (RichiestaModificaScheda richiesta: listaRichieste){
+                    RichiestaModificaSchedaDAO.deleteRichiesta(richiesta);
+                }
+                pstmt.executeUpdate();
+                if (nuovaSchedaUtente != null) {
+                    SchedaAllenamentoDAO.insertScheda(nuovaSchedaUtente);
+                    for (RichiestaModificaScheda richiesta : listaRichieste) {
+                        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, newUser.getCodiceFiscale());
+                    }
+                    for (EsercizioAllenamento ea : nuovaSchedaUtente.getListaEsercizi()) {
+                        EsercizioAllenamentoDAO.insertEsercizioAllenamento(ea, ea.getVolume(),
+                                SchedaAllenamentoDAO.findSchedaByUtente(newUser.getCodiceFiscale()).getIdScheda());
+                    }
                 }
             }
+            else
+                pstmt.executeUpdate();
             pstmt.close();
             conn.close();
             return true;
@@ -155,6 +174,9 @@ public class UtenteDAO {
         SchedaAllenamento sa = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());
         if (sa!=null) {
             SchedaAllenamentoDAO.deleteScheda(sa.getIdScheda());
+        }
+        for (RichiestaModificaScheda richiesta: RichiestaModificaSchedaDAO.findByUser(u.getCodiceFiscale())){
+            RichiestaModificaSchedaDAO.deleteRichiesta(richiesta);
         }
         pstmt.setString(1, u.getCodiceFiscale());
         pstmt.executeUpdate();

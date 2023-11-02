@@ -5,7 +5,6 @@ import bodyTech.model.dao.UtenteDAO;
 import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.Utente;
 import bodyTech.richiestaModificaScheda.controller.RichiestaModificaSchedaController;
-import bodyTech.richiestaModificaScheda.service.RichiestaModificaSchedaServiceImpl;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -20,7 +19,7 @@ import java.util.List;
 
 import static org.mockito.Mockito.*;
 
-public class RichiestaModificaSchedaControllerTest {
+public class CreazioneRichiestaModificaSchedaControllerTest {
 
     private HttpServletRequest request;
     private HttpServletResponse response;

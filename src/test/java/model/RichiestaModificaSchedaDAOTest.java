@@ -6,8 +6,9 @@ import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.Utente;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+
+import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.fail;
 
 import java.sql.SQLException;
 import java.util.List;
@@ -82,6 +83,121 @@ public class RichiestaModificaSchedaDAOTest {
         String codiceFiscale = "AAAA";
         assertFalse("Richiesta creata con successo, nonostante il codice fiscale non è corretto o è inesistente",
                 RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale));
+    }
+
+    /**
+     * Questo test verifica il comportamento del metodo deleteRichiesta(richiesta) nel caso in cui la richiesta sia null
+     */
+    @Test
+    public void testDeleteRichiestaMethod_NULL(){
+        RichiestaModificaScheda richiesta = null;
+        try{
+            RichiestaModificaSchedaDAO.deleteRichiesta(richiesta);
+            fail ("Nessuna eccezione lanciata dal metodo");
+        }
+        catch(Exception e){
+            assertTrue("E' stata lanciata un'eccezione di un tipo diverso da NullPointerException",
+                    e.getClass().getSimpleName().equals("NullPointerException"));
+        }
+    }
+
+    /**
+     * Questo test verifica il comportamento del metodo deleteRichiesta(richiesta) nel caso in cui l'id della richiesta
+     * sia presente all'interno del DB
+     */
+    @Test
+    public void testDeleteRichiestaMethod_OK() throws SQLException {
+        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setMessaggio("ABCDEFGHIJKL");
+        String codiceFiscaleUtente = "SPSSMN02B06L845X";
+        Utente u = UtenteDAO.findByCodiceFiscale(codiceFiscaleUtente);
+        if (u == null){
+            u.setNome("Simone");
+            u.setCognome("Esposito");
+            u.setCodiceFiscale(codiceFiscaleUtente);
+            u.setPassword("ABCDEFGHIJ");
+            UtenteDAO.insertUser(u);
+        }
+        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, u.getCodiceFiscale());
+        List<RichiestaModificaScheda> listaRichiesteUtente = RichiestaModificaSchedaDAO.findByUser(codiceFiscaleUtente);
+        richiesta.setIdRichiesta(listaRichiesteUtente.get(listaRichiesteUtente.size()-1).getIdRichiesta());
+        try{
+            RichiestaModificaSchedaDAO.deleteRichiesta(richiesta);
+            assertNull("Nessuna eccezione lanciata dal metodo, ma eliminazione non avvenuta", RichiestaModificaSchedaDAO.findById(richiesta.getIdRichiesta()).getMessaggio());
+        }
+        catch(Exception e){
+            fail("Eccezione lanciata");
+        }
+    }
+
+
+    /**
+     * Questo caso di test verifica il comportamento del metodo  RichiestaDAO.findById(idRichiesta),
+     * nel caso in cui rispetto la precondizione che l'id è esistente.
+     * */
+    @Test
+    public void testFindMyId_Method_OK() throws SQLException {
+        int id = 1;
+        while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
+            id++;
+        }
+        assertNotNull("Errore nella ricerca della richiesta", RichiestaModificaSchedaDAO.findById(id).getMessaggio());
+    }
+
+    /**
+     * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.findByID(idRichiesta),
+     * nel caso in cui l'id è inesistente.
+     * */
+    @Test
+    public void testFindById_Method_1() throws SQLException{
+        int id = -1;
+        assertNull("Richiesta trovata con successo, nonostante l'id non esiste", RichiestaModificaSchedaDAO.findById(id).getMessaggio());
+    }
+
+    /**
+     * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(RichiestaModificaScheda richiesta),
+     * nel caso in cui rispetta tutte le precondizioni:
+     * richiesta != null
+     * */
+    @Test
+    public void testCambiaEsitoRichiesta_Method_OK() throws SQLException {
+        Random rand = new Random();
+        String message = "";
+        for (int i = 0; i < 249; i++){
+            char c = (char) (rand.nextInt(43) + 48);
+            message += c;
+        }
+        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        int id = 1;
+        while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
+            id++;
+        }
+        richiesta.setIdRichiesta(id);
+        richiesta.setMessaggio(message);
+        richiesta.setEsito(true);
+        try{
+            RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta);
+        }
+        catch(SQLException e){
+            fail ("Errore nel cambiamento dell'esito della richiesta");
+        }
+    }
+
+    /**
+     * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(RichiestaModificaScheda richiesta),
+     * nel caso in cui la richiesta non esiste
+     * */
+    @Test
+    public void testCambiaEsitoRichiesta_Method_1(){
+        RichiestaModificaScheda richiesta = null;
+        try{
+            RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta);
+            fail ("Richiesta creata con successo nonostante la richiesta non esiste");
+        }
+        catch(Exception e){
+            assertTrue("E' stata lanciata un'eccezione diversa da NullPointerException",
+                    e.getClass().getSimpleName().equals("NullPointerException"));
+        }
     }
 
 }

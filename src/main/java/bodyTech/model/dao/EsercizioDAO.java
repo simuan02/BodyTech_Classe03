@@ -27,8 +27,9 @@ public class EsercizioDAO {
         Statement stmt = conn.createStatement();
         String query = "SELECT * FROM esercizio WHERE nomeEsercizio = '" + nome + "'";
         ResultSet rs = stmt.executeQuery(query);
-        Esercizio es = new Esercizio();
+        Esercizio es = null;
         while (rs.next()){
+            es = new Esercizio();
             es.setNomeEsercizio(rs.getString(1));
             es.setDescrizione(rs.getString(2));
         }

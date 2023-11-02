@@ -173,6 +173,7 @@ public class ModificaDatiIstruttoreControllerTest {
         GestioneProfiloController.modificaIstruttoreMethod(request, response);
         Assertions.assertTrue(IstruttoreDAO.visualizzaIstruttori().contains(istr2), "Modifica non effettutata!");
         verify(dispatcher).forward(request, response);
+        IstruttoreDAO.deleteInstructor(istr2);
     }
 
 }

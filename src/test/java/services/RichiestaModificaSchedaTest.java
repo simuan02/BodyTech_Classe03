@@ -1,7 +1,9 @@
 package services;
 
+import bodyTech.model.dao.IstruttoreDAO;
 import bodyTech.model.dao.RichiestaModificaSchedaDAO;
 import bodyTech.model.dao.UtenteDAO;
+import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.Utente;
 import bodyTech.richiestaModificaScheda.service.RichiestaModificaSchedaService;
@@ -11,9 +13,9 @@ import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 import java.util.List;
+import java.util.Random;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class RichiestaModificaSchedaTest {
@@ -109,6 +111,85 @@ public class RichiestaModificaSchedaTest {
             RichiestaModificaSchedaDAO.deleteRichiesta(listaRichieste.get(listaRichieste.size()-1));
         } catch (Exception e) {
             fail("Il servizio RichiestaModificaScheda ha un comportamento inatteso per quanto riguarda il parametro Utente");
+        }
+    }
+
+    /**
+     * Questo caso di test verifica il comportamento del service RichiestaModificaSchedaService.valutaRichiestaModifica()
+     * in caso in cui l'esito della richiesta è null
+     */
+    @Test
+    public void testValutazioneRichiesta_1() throws SQLException {
+        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
+        Istruttore i = new Istruttore();
+        i.setMatricolaIstruttore("100000000P");
+        i.setNome("Fabio");
+        i.setCognome("Istruttore");
+        i.setPassword("FabioP1");
+        IstruttoreDAO.insertInstructor(i);
+        int id = 1;
+        while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
+            id++;
+        }
+        richiesta.setIdRichiesta(id);
+        try {
+            services.valutaRichiestaModifica(richiesta, i);
+            fail("Richiesta inserita nonostante l'esito della richiesta fosse nullo");
+        } catch (Exception e) {
+            assertTrue("Il servizio RichiestaModificaScheda lancia un altro tipo di eccezione, diversa da NullPointerException",
+                    e.getClass().getSimpleName().equals("NullPointerException"));
+        }
+        IstruttoreDAO.deleteInstructor(i);
+    }
+
+    /**
+     * Questo caso di test verifica il comportamento del service RichiestaModificaSchedaService.valutaRichiestaModifica()
+     * in caso in cui l'istruttore che valuta la richiesta sia uguale a null
+     * */
+    @Test
+    public void testValutazioneRichiesta_2() throws  SQLException {
+        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
+        Istruttore i = null;
+        int id = 1;
+        while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
+            id++;
+        }
+        richiesta.setIdRichiesta(id);
+
+        try {
+            services.valutaRichiestaModifica(richiesta, i);
+        } catch (Exception e) {
+            assertTrue("Il service non ha tenuto conto dell'istruttore null",
+                    e.getMessage().contains("Utente Non Autorizzato!"));
+        }
+    }
+
+    /**
+     * Questo caso di test verifica il comportamento del service RichiestaModificaSchedaService.valutaRichiestaModifica()
+     * in caso in cui l'istruttore che valuta la richiesta sia esistente e l'esito della richiesta sia true
+     * */
+    @Test
+    public void testValutazioneRichiesta_3() throws SQLException {
+        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
+        Istruttore i = new Istruttore();
+        i.setMatricolaIstruttore("100000000P");
+        i.setNome("Fabio");
+        i.setCognome("Istruttore");
+        i.setPassword("FabioP1");
+        IstruttoreDAO.insertInstructor(i);
+        int id = 1;
+        while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
+            id++;
+        }
+        richiesta.setIdRichiesta(id);
+        richiesta.setMessaggio("Richiedo un cambiamento della scheda");
+        richiesta.setEsito(true);
+        try{
+            services.valutaRichiestaModifica(richiesta, i);
+            assertTrue("Richiesta non valutata correttamente", RichiestaModificaSchedaDAO.findById(richiesta.getIdRichiesta()).isEsito());
+        }
+        catch(Exception e){
+            fail ("Eccezione lanciata");
         }
     }
 

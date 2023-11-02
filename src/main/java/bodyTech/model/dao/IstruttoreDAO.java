@@ -1,6 +1,7 @@
 package bodyTech.model.dao;
 
 import bodyTech.model.ConPool;
+import bodyTech.model.entity.EsercizioAllenamento;
 import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.model.entity.Utente;
@@ -85,7 +86,9 @@ public class IstruttoreDAO {
         Connection conn = ConPool.getConnection();
         List<Istruttore> instructors = IstruttoreDAO.visualizzaIstruttori();
         if (newIstr.getNome()==null || newIstr.getCognome()==null || newIstr.getPassword() ==null ||
-                newIstr.getMatricolaIstruttore()==null || newIstr.getSpecializzazione()==null)
+                newIstr.getMatricolaIstruttore()==null)
+            return false;
+        if (newIstr.getSpecializzazione() == null && oldIstr.getSpecializzazione() != null)
             return false;
         boolean existingInstructor = false;
         for (Istruttore i : instructors) {
@@ -105,6 +108,23 @@ public class IstruttoreDAO {
             pstmt.setString(4, newIstr.getPassword());
             pstmt.setString(5, newIstr.getSpecializzazione());
             pstmt.setString(6, oldIstr.getMatricolaIstruttore());
+            if (!newIstr.getMatricolaIstruttore().equals(oldIstr.getMatricolaIstruttore())){
+                List<SchedaAllenamento> listaSchedeIstruttore = SchedaAllenamentoDAO.findAllByInstructor(oldIstr.getMatricolaIstruttore());
+                for (SchedaAllenamento scheda: listaSchedeIstruttore){
+                    SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());
+                    scheda.setIstruttore(newIstr);
+                }
+                pstmt.executeUpdate();
+                for (SchedaAllenamento scheda: listaSchedeIstruttore){
+                    SchedaAllenamentoDAO.insertScheda(scheda);
+                    for (EsercizioAllenamento ea: scheda.getListaEsercizi()){
+                        EsercizioAllenamentoDAO.insertEsercizioAllenamento(ea, ea.getVolume(),
+                                SchedaAllenamentoDAO.findSchedaByUtente(scheda.getUtente().getCodiceFiscale()).getIdScheda());
+                    }
+                }
+            }
+            else
+                pstmt.executeUpdate();
             pstmt.executeUpdate();
             pstmt.close();
             conn.close();

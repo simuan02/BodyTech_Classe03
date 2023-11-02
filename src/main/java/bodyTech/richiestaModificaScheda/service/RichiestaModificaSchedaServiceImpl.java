@@ -46,7 +46,7 @@ public class RichiestaModificaSchedaServiceImpl implements RichiestaModificaSche
     }
 
     @Override
-    public void valutaRichistaModifica(RichiestaModificaScheda richiesta, Istruttore istr) throws SQLException {
+    public void valutaRichiestaModifica(RichiestaModificaScheda richiesta, Istruttore istr) throws SQLException {
         if (istr != null) {
             RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta);
         }

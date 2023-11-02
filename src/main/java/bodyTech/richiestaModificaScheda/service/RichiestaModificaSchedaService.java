@@ -45,5 +45,5 @@ public interface RichiestaModificaSchedaService {
      * @param richiesta la richiesta da esaminare
      * @param istr l'istruttore che esamina la richiesta
      */
-    public void valutaRichistaModifica (RichiestaModificaScheda richiesta, Istruttore istr) throws SQLException;
+    public void valutaRichiestaModifica (RichiestaModificaScheda richiesta, Istruttore istr) throws SQLException;
 }

@@ -20,7 +20,7 @@ public class ConPool {
             p.setMaxActive(1000);
             p.setInitialSize(10);
             p.setMinIdle(10);
-            p.setRemoveAbandonedTimeout(60);
+            p.setRemoveAbandonedTimeout(10);
             p.setRemoveAbandoned(true);
             datasource = new DataSource();
             datasource.setPoolProperties(p);

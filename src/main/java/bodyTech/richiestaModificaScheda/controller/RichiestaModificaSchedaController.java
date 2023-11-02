@@ -41,6 +41,8 @@ public class RichiestaModificaSchedaController {
         HttpSession session = request.getSession();
         Profilo p = (Profilo) session.getAttribute("Profilo");
         int idRichiesta = Integer.parseInt(request.getParameter("id"));
+        if (request.getParameter("valutazione") == null)
+            throw new RuntimeException("Valutazione Null");
         boolean valutazione = Boolean.parseBoolean(request.getParameter("valutazione"));
         RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
         try {
@@ -49,7 +51,7 @@ public class RichiestaModificaSchedaController {
                 request.setAttribute("richiestaGiaEsaminata", true);
             else {
                 rms.setEsito(valutazione);
-                services.valutaRichistaModifica(rms, (Istruttore) p);
+                services.valutaRichiestaModifica(rms, (Istruttore) p);
                 request.setAttribute ("valutazioneRichiesta", valutazione);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaUtenti");
