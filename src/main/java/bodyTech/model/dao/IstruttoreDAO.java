@@ -149,11 +149,11 @@ public class IstruttoreDAO {
      * @throws SQLException
      */
     public static boolean insertInstructor(Istruttore istr) throws SQLException {
+        if (istr.getNome()==null || istr.getCognome()==null || istr.getPassword() ==null ||
+                istr.getMatricolaIstruttore()==null || istr.getSpecializzazione()==null)
+            return false;
         Connection conn = ConPool.getConnection();
         List<Istruttore> istrs = visualizzaIstruttori();
-        if (istr.getNome()==null || istr.getCognome()==null || istr.getPassword() ==null ||
-            istr.getMatricolaIstruttore()==null || istr.getSpecializzazione()==null)
-            return false;
         for (Istruttore istruttore : istrs){
             if (istruttore.getMatricolaIstruttore().equalsIgnoreCase(istr.getMatricolaIstruttore()))
             return false;
@@ -178,6 +178,9 @@ public class IstruttoreDAO {
      */
     public static void deleteInstructor(Istruttore istr) throws SQLException {
         Connection conn = ConPool.getConnection();
+        for (SchedaAllenamento scheda: SchedaAllenamentoDAO.findAllByInstructor(istr.getMatricolaIstruttore())){
+            SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());
+        }
         PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Istruttore WHERE matricolaIstruttore = ?");
         pstmt.setString(1, istr.getMatricolaIstruttore());
         pstmt.executeUpdate();

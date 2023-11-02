@@ -35,12 +35,14 @@ public class ModificaDatiIstruttoreControllerTest {
     }
 
     public void inserisciIstruttoreTest() throws SQLException {
+        if (IstruttoreDAO.findByMatricola("10306501T7") != null)
+            IstruttoreDAO.deleteInstructor(IstruttoreDAO.findByMatricola("10306501T7"));
         istr = new Istruttore();
-        istr.setNome("Nome");
+        istr.setNome("Fiery");
         istr.setCognome("Cognome");
-        istr.setPassword("ooo909ioio");
-        istr.setMatricolaIstruttore("0129032143");
-        istr.setSpecializzazione("Specializzazione");
+        istr.setPassword("Udinese066");
+        istr.setMatricolaIstruttore("012T032143");
+        istr.setSpecializzazione("Bodybuilding");
         IstruttoreDAO.insertInstructor(istr);
     }
 
@@ -51,8 +53,8 @@ public class ModificaDatiIstruttoreControllerTest {
     @Test
     public void Test_ModificaDatiIstruttore_2_1() throws ServletException, IOException {
         when(request.getParameter("NomeIstruttore")).thenReturn("FieryEboseleEnzoEbosseKingsleyEhizibueeee");
-        when(request.getParameter("CognomeIstruttore")).thenReturn(istr.getCognome());
-        when(request.getParameter("MatricolaIstruttore")).thenReturn(istr.getMatricolaIstruttore());
+        when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("MatricolaVecchia")).thenReturn(istr.getMatricolaIstruttore());
         when(request.getParameter("PasswordIstruttore")).thenReturn(istr.getPassword());
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn(istr.getSpecializzazione());
@@ -72,7 +74,7 @@ public class ModificaDatiIstruttoreControllerTest {
     public void Test_ModificaDatiIstruttore_2_2() throws ServletException, IOException {
         when(request.getParameter("NomeIstruttore")).thenReturn(istr.getNome());
         when(request.getParameter("CognomeIstruttore")).thenReturn("EboseleFieryEnzoEbosseKingsleyEhizibueeee");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn(istr.getMatricolaIstruttore());
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("MatricolaVecchia")).thenReturn(istr.getMatricolaIstruttore());
         when(request.getParameter("PasswordIstruttore")).thenReturn(istr.getPassword());
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn(istr.getSpecializzazione());
@@ -91,8 +93,8 @@ public class ModificaDatiIstruttoreControllerTest {
     @Test
     public void Test_ModificaDatiIstruttore_2_3() throws ServletException, IOException {
         when(request.getParameter("NomeIstruttore")).thenReturn(istr.getNome());
-        when(request.getParameter("CognomeIstruttore")).thenReturn(istr.getCognome());
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("103065012700");
+        when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T700");
         when(request.getParameter("MatricolaVecchia")).thenReturn(istr.getMatricolaIstruttore());
         when(request.getParameter("PasswordIstruttore")).thenReturn(istr.getPassword());
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn(istr.getSpecializzazione());
@@ -111,7 +113,7 @@ public class ModificaDatiIstruttoreControllerTest {
     @Test
     public void Test_ModificaDatiIstruttore_2_4() throws ServletException, IOException {
         when(request.getParameter("NomeIstruttore")).thenReturn(istr.getNome());
-        when(request.getParameter("CognomeIstruttore")).thenReturn(istr.getCognome());
+        when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
         when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501");
         when(request.getParameter("MatricolaVecchia")).thenReturn(istr.getMatricolaIstruttore());
         when(request.getParameter("PasswordIstruttore")).thenReturn(istr.getPassword());
@@ -131,8 +133,8 @@ public class ModificaDatiIstruttoreControllerTest {
     @Test
     public void Test_ModificaDatiIstruttore_2_5() throws ServletException, IOException {
         when(request.getParameter("NomeIstruttore")).thenReturn(istr.getNome());
-        when(request.getParameter("CognomeIstruttore")).thenReturn(istr.getCognome());
-        when(request.getParameter("MatricolaIstruttore")).thenReturn(istr.getMatricolaIstruttore());
+        when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("MatricolaVecchia")).thenReturn(istr.getMatricolaIstruttore());
         when(request.getParameter("PasswordIstruttore")).thenReturn(istr.getPassword());
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("BodybuildingPowerliftingCrossfit");
@@ -157,20 +159,19 @@ public class ModificaDatiIstruttoreControllerTest {
         Istruttore istr2 = new Istruttore();
         istr2.setNome("Fiery");
         istr2.setCognome("Ebosele");
-        istr2.setMatricolaIstruttore("0129032143");
+        istr2.setMatricolaIstruttore("10306501T7");
         istr2.setSpecializzazione("Bodybuilding");
         when(request.getParameter("NomeIstruttore")).thenReturn(istr2.getNome());
         when(request.getParameter("CognomeIstruttore")).thenReturn(istr2.getCognome());
-        when(request.getParameter("MatricolaIstruttore")).thenReturn(istr2.getMatricolaIstruttore());
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("MatricolaVecchia")).thenReturn(istr.getMatricolaIstruttore());
-        when(request.getParameter("PasswordIstruttore")).thenReturn(istr2.getPassword());
+        when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn(istr2.getSpecializzazione());
         when(request.getRequestDispatcher("/listaIstruttori")).thenReturn(dispatcher);
         when(request.getSession()).thenReturn(session);
         when(request.getSession().getAttribute("Profilo")).thenReturn(new Amministratore());
         GestioneProfiloController.modificaIstruttoreMethod(request, response);
         Assertions.assertTrue(IstruttoreDAO.visualizzaIstruttori().contains(istr2), "Modifica non effettutata!");
-        IstruttoreDAO.deleteInstructor(istr2);
         verify(dispatcher).forward(request, response);
     }
 

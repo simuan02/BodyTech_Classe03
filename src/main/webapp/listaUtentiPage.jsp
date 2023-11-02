@@ -59,7 +59,7 @@
         %>
             <div class="utente">
                 <div>
-                    <h4><%=user.getCodiceFiscale()%>></h4>
+                    <h4><%=user.getCodiceFiscale()%></h4>
                     <h4><%=user.getCognome()%> <%=user.getNome()%></h4>
                     <p class="negative_istruttore" style="color: darkred">L'utente è associato già ad un'istruttore</p>
                 </div>

@@ -33,8 +33,9 @@ public interface GestioneProfiloService {
      * Questa funzionalità consente agli Amministratori di creare nuovi Istruttori.
      * @param p il profilo che utilizza questa funzionalità.
      * @param istr l'istruttore da inserire all'interno del DB.
+     * @param password la password dell'istruttore da inserire all'interno del DB.
      */
-    public void aggiungiIstruttore(Profilo p, Istruttore istr) throws SQLException, IOException;
+    public void aggiungiIstruttore(Profilo p, Istruttore istr, String password) throws SQLException, IOException;
 
     /**
      * Questa funzionalità consente agli Amministratori di modificare le

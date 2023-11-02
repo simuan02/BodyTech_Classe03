@@ -16,6 +16,7 @@ import org.junit.jupiter.api.*;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import static junit.framework.TestCase.assertFalse;
 import static junit.framework.TestCase.assertTrue;
@@ -38,12 +39,16 @@ public class ModificaDatiUtenteControllerTest {
     }
 
     public void inserisciUtenteTest() throws SQLException {
-        user = new Utente();
-        user.setNome("Prova");
-        user.setCognome("ABC");
-        user.setCodiceFiscale("SPSBCD09D02A301F");
-        user.setPassword("ABCDEFGHIJ");
-        UtenteDAO.insertUser(user);
+        user = UtenteDAO.findByCodiceFiscale("SPSBCD09D02A301F");
+        if (user == null) {
+            user = new Utente();
+            user.setNome("Prova");
+            user.setCognome("ABC");
+            user.setCodiceFiscale("SPSBCD09D02A301F");
+            user.setPassword("ABCDEFGHIJ");
+            user.setListeRichiesteModifica(new ArrayList<>());
+            UtenteDAO.insertUser(user);
+        }
     }
 
     /**

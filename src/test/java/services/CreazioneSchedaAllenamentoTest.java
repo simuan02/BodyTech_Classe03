@@ -8,6 +8,7 @@ import bodyTech.model.entity.SchedaAllenamento;
 import bodyTech.model.entity.Utente;
 import bodyTech.schedaAllenamento.service.SchedaService;
 import bodyTech.schedaAllenamento.service.SchedaServiceImpl;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -22,6 +23,14 @@ public class CreazioneSchedaAllenamentoTest {
 
     private SchedaAllenamento scheda = new SchedaAllenamento();
     private Utente user = new Utente();
+
+    @AfterEach
+    public void refreshDB() throws SQLException {
+        SchedaAllenamento scheda2 = SchedaAllenamentoDAO.findSchedaByUtente(user.getCodiceFiscale());
+        if (scheda2 != null)
+            SchedaAllenamentoDAO.deleteScheda(scheda2.getIdScheda());
+        UtenteDAO.deleteUser(user);
+    }
 
     @BeforeEach
     public void setUp() throws SQLException {

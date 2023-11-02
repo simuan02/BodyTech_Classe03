@@ -5,6 +5,7 @@ import bodyTech.model.dao.IstruttoreDAO;
 import bodyTech.model.dao.SchedaAllenamentoDAO;
 import bodyTech.model.dao.UtenteDAO;
 import bodyTech.model.entity.SchedaAllenamento;
+import bodyTech.model.entity.Utente;
 import bodyTech.schedaAllenamento.service.SchedaService;
 import bodyTech.schedaAllenamento.service.SchedaServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +36,17 @@ public class ModificaSchedaAllenamentoTest {
             scheda.setTipo("Powerbuilding");
             scheda.setDataCompletamento(new Date(123, Calendar.DECEMBER, 25));
             scheda.setDataInizio(new Date(123, Calendar.OCTOBER, 25));
-            scheda.setUtente(UtenteDAO.findByCodiceFiscale("SPSSMN02A12L844S"));
+            Utente user2 = UtenteDAO.findByCodiceFiscale("SPSSMN02A12L844S");
+            if (user2 == null){
+                user2 = new Utente();
+                user2.setNome("Simone");
+                user2.setCognome("Esposito");
+                user2.setListeRichiesteModifica(new ArrayList<>());
+                user2.setPassword("ABCDEFGHIJ");
+                user2.setCodiceFiscale("SPSSMN02A12L844S");
+                UtenteDAO.insertUser(user2);
+            }
+            scheda.setUtente(user2);
             scheda.setIstruttore(IstruttoreDAO.visualizzaIstruttori().get(0));
             scheda.setListaEsercizi(new ArrayList<>());
             PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento values (?,?,?,?,?,?)");

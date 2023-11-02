@@ -26,10 +26,13 @@ public class RichiestaModificaSchedaController {
         RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
         RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
         richiesta.setMessaggio(messaggio);
-        if (services.richiediModificaScheda(richiesta, u))
+        try {
+            services.richiediModificaScheda(richiesta, u);
             request.setAttribute("richiestaEffettuata", "YES");
-        else
+        }
+        catch (Exception e) {
             request.setAttribute("richiestaEffettuata", "NO");
+        }
         RequestDispatcher dispatcher = request.getRequestDispatcher("/infoProfile.jsp");
         dispatcher.forward(request, response);
     }

@@ -14,15 +14,19 @@ import java.util.List;
 public class RichiestaModificaSchedaServiceImpl implements RichiestaModificaSchedaService{
     @Override
     public boolean richiediModificaScheda(RichiestaModificaScheda richiesta, Utente u) {
-        if (u!= null && (richiesta.getMessaggio().length() > 0 && richiesta.getMessaggio().length() <= 250)){
-            try {
-                RichiestaModificaSchedaDAO.insertNewRequest(richiesta, u.getCodiceFiscale());
-            } catch (SQLException e) {
-                e.printStackTrace();
-            }
+        if (u == null)
+            throw new NullPointerException("L'utente non esiste");
+        if (richiesta.getMessaggio().length() == 0)
+            throw new RuntimeException("Lunghezza messaggio uguale a 0");
+        if (richiesta.getMessaggio().length() > 250)
+            throw new RuntimeException("Lunghezza messaggio maggiore di 250 caratteri");
+        try {
+            RichiestaModificaSchedaDAO.insertNewRequest(richiesta, u.getCodiceFiscale());
             return true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
         }
-        return false;
     }
 
     @Override

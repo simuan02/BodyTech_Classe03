@@ -45,9 +45,9 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
         }catch (Exception e) {
-            Assertions.assertTrue(e.getMessage().contains("Lunghezza Matricola Errata"),
+            Assertions.assertTrue(e.getMessage().equals("Lunghezza Matricola Errata"),
                     "Il servizio GestioneProfilo ha un comportamento inatteso per quanto riguarda il parametro matricola");
         }
 
@@ -72,9 +72,9 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
         }catch (Exception e) {
-            Assertions.assertTrue(e.getMessage().contains("Lunghezza Matricola Errata"),
+            Assertions.assertTrue(e.getMessage().equals("Lunghezza Matricola Errata"),
                     "Il servizio GestioneProfilo ha un comportamento inatteso per quanto riguarda il parametro matricola");
         }
 
@@ -99,9 +99,9 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
         }catch (Exception e) {
-            Assertions.assertTrue(e.getMessage().contains("Lunghezza Nome Errata"),
+            Assertions.assertTrue(e.getMessage().equals("Lunghezza Nome Errata"),
                     "Il servizio GestioneProfilo ha un comportamento inatteso per quanto riguarda il parametro nome");
         }
 
@@ -126,7 +126,7 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
         }catch (Exception e) {
             Assertions.assertTrue(e.getMessage().contains("Lunghezza Cognome Errata"),
                     "Il servizio GestioneProfilo ha un comportamento inatteso per quanto riguarda il parametro cognome");
@@ -153,7 +153,7 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
         }catch (Exception e) {
             Assertions.assertTrue(e.getMessage().contains("Lunghezza Password Errata"),
                     "Il servizio GestioneProfilo ha un comportamento inatteso per quanto riguarda il parametro password");
@@ -180,7 +180,7 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
         }catch (Exception e) {
             Assertions.assertTrue(e.getMessage().contains("Lunghezza Password Errata"),
                     "Il servizio GestioneProfilo ha un comportamento inatteso per quanto riguarda il parametro password");
@@ -207,7 +207,7 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
         }catch (Exception e) {
             Assertions.assertTrue(e.getMessage().contains("Lunghezza Specializzazione Errata"),
                     "Il servizio GestioneProfilo ha un comportamento inatteso per quanto riguarda il parametro specializzazione");
@@ -238,11 +238,11 @@ public class AggiuntaIstruttoreTest {
         istr.setSpecializzazione(specializzazione);
         Amministratore admin = new Amministratore();
         try {
-            services.aggiungiIstruttore( (Profilo)admin, istr);
+            services.aggiungiIstruttore(admin, istr, password);
+            services.eliminaIstruttore(admin, istr);
         }catch (Exception e) {
             Assertions.assertFalse(e.getMessage().contains("Lunghezza"),
                     "Il servizio GestioneProfilo ha riscontrato un problema inaspettato");
         }
     }
-
 }
