@@ -1,11 +1,14 @@
 package controller;
 
 import bodyTech.gestioneProfilo.controller.GestioneProfiloController;
+import bodyTech.model.dao.IstruttoreDAO;
+import bodyTech.model.entity.Amministratore;
 import bodyTech.model.entity.Istruttore;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,6 +19,8 @@ import static org.mockito.Mockito.*;
 
 public class AggiuntaIstruttoreControllerTest {
 
+    private HttpSession session;
+
     private HttpServletRequest request;
 
     private HttpServletResponse response;
@@ -23,7 +28,10 @@ public class AggiuntaIstruttoreControllerTest {
     private GestioneProfiloController controller;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp() throws SQLException {
+        if(IstruttoreDAO.findByMatricola("10306501T7") != null)
+            IstruttoreDAO.deleteInstructor(IstruttoreDAO.findByMatricola("10306501T7"));
+        session = mock(HttpSession.class);
         request = mock(HttpServletRequest.class);
         response = mock(HttpServletResponse.class);
         controller = new GestioneProfiloController();
@@ -35,16 +43,17 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_1() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("Fiery");
         when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("103065012700");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T700");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("Bodybuilding");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("/listaIstruttori")).thenReturn(dispatcher);
         controller.aggiungiIstruttoreMethod(request, response);
-        verify(request).setAttribute("Registrazione", false);
-        verify(request).setAttribute("Lunghezza Matricola Errata", true);
+        verify(request).setAttribute("LunghezzaMatricolaErrata", true);
         verify(dispatcher).forward(request, response);
     }
 
@@ -54,16 +63,17 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_2() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("Fiery");
         when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("1030650T");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("Bodybuilding");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
         when(request.getRequestDispatcher("/listaIstruttori")).thenReturn(dispatcher);
         controller.aggiungiIstruttoreMethod(request, response);
-        verify(request).setAttribute("Registrazione", false);
-        verify(request).setAttribute("Lunghezza Matricola Errata", true);
+        verify(request).setAttribute("LunghezzaMatricolaErrata", true);
         verify(dispatcher).forward(request, response);
     }
 
@@ -73,9 +83,11 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_3() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("FieryEboseleEnzoEbosseKingsleyEhizibueeee");
         when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("1030650127");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("Bodybuilding");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
@@ -92,9 +104,11 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_4() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("Fiery");
         when(request.getParameter("CognomeIstruttore")).thenReturn("EboseleFieryEnzoEbosseKingsleyEhizibueeee");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("1030650127");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("Bodybuilding");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
@@ -111,9 +125,11 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_5() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("Fiery");
         when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("1030650127");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066EboseleEnzoEbosseKingsley");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("Bodybuilding");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
@@ -130,9 +146,11 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_6() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("Fiery");
         when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("1030650127");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("Bodybuilding");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
@@ -149,9 +167,11 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_7() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("Fiery");
         when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("1030650127");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("BodybuildingPowerliftingCrossfit");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);
@@ -172,9 +192,11 @@ public class AggiuntaIstruttoreControllerTest {
      */
     @Test
     public void testAggiunta_1_8() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(new Amministratore());
         when(request.getParameter("NomeIstruttore")).thenReturn("Fiery");
         when(request.getParameter("CognomeIstruttore")).thenReturn("Ebosele");
-        when(request.getParameter("MatricolaIstruttore")).thenReturn("1030650127");
+        when(request.getParameter("MatricolaIstruttore")).thenReturn("10306501T7");
         when(request.getParameter("PasswordIstruttore")).thenReturn("Udinese066");
         when(request.getParameter("SpecializzazioneIstruttore")).thenReturn("Bodybuilding");
         RequestDispatcher dispatcher = mock(RequestDispatcher.class);

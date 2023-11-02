@@ -149,11 +149,11 @@ public class IstruttoreDAO {
      * @throws SQLException
      */
     public static boolean insertInstructor(Istruttore istr) throws SQLException {
+        if (istr.getNome()==null || istr.getCognome()==null || istr.getPassword() ==null ||
+                istr.getMatricolaIstruttore()==null || istr.getSpecializzazione()==null)
+            return false;
         Connection conn = ConPool.getConnection();
         List<Istruttore> istrs = visualizzaIstruttori();
-        if (istr.getNome()==null || istr.getCognome()==null || istr.getPassword() ==null ||
-            istr.getMatricolaIstruttore()==null || istr.getSpecializzazione()==null)
-            return false;
         for (Istruttore istruttore : istrs){
             if (istruttore.getMatricolaIstruttore().equalsIgnoreCase(istr.getMatricolaIstruttore()))
             return false;

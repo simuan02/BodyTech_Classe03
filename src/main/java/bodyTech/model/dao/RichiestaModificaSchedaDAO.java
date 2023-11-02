@@ -89,6 +89,10 @@ public class RichiestaModificaSchedaDAO {
     }
 
     public static boolean insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
+        if (richiesta.getMessaggio().length() == 0 || richiesta.getMessaggio() == null)
+            return false;
+        if (UtenteDAO.findByCodiceFiscale(codiceFiscale) == null)
+            return false;
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
                 "values (?, ?, ?)");

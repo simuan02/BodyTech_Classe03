@@ -80,19 +80,25 @@ public class GestioneProfiloController {
                     }
                 }
                 if (b) {
-                    try{
-                    services.aggiungiIstruttore(p, i);
-                    }
-                    catch(Exception e){
+                    try {
+                        services.aggiungiIstruttore(p, i, password);
+                        request.setAttribute("Registrazione", true);
+                    } catch (Exception e) {
+                        request.setAttribute("Registrazione", false);
                         request.setAttribute(e.getMessage(), true);
                     }
+                }
+                else {
+                    request.setAttribute("Registrazione", false);
+                }
             }
             else {
                 request.setAttribute("LunghezzaMatricolaErrata", true);
             }
             RequestDispatcher dispatcher = request.getRequestDispatcher("/listaIstruttori");
             dispatcher.forward(request, response);
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) {
             e.printStackTrace();
             response.sendError(500);
         }
