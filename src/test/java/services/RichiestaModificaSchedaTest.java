@@ -2,6 +2,7 @@ package services;
 
 import bodyTech.model.dao.RichiestaModificaSchedaDAO;
 import bodyTech.model.dao.UtenteDAO;
+import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.Utente;
 import bodyTech.richiestaModificaScheda.service.RichiestaModificaSchedaService;
@@ -112,4 +113,64 @@ public class RichiestaModificaSchedaTest {
         }
     }
 
+    /*
+    * Questo caso di test verifica il comportamento del sistema in caso in cui l'esito è null
+    */
+    @Test
+    public void testValutazioneRichiesta_1() throws SQLException {
+        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
+        Istruttore i = new Istruttore();
+        i.setMatricolaIstruttore("100000000P");
+        i.setNome("Fabio");
+        i.setCognome("Istruttore");
+        i.setPassword("FabioP1");
+
+        richiesta.setIdRichiesta(1);
+        richiesta.setMessaggio("Richiedo un cambiamento della scheda");
+
+        try {
+            services.valutaRichistaModifica(richiesta, i);
+        } catch (Exception e) {
+            fail("Il servizio RichiestaModificaScheda ha un comportamento inatteso per quanto riguarda il parametro Istruttore");
+        }
+
+    }
+
+    /*
+    * Questo caso di test verifica il comportamento del sistema in caso in cui l'istruttore è null
+    * */
+    @Test
+    public void testValutazioneRichiesta_2() throws  SQLException {
+        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
+        Istruttore i = null;
+
+        richiesta.setIdRichiesta(1);
+        richiesta.setMessaggio("Richiedo un cambiamento della scheda");
+
+        try {
+            services.valutaRichistaModifica(richiesta, i);
+        } catch (Exception e) {
+            assertTrue("Richiesta creata con successo, nonostante l'istruttore non esiste",
+                    e.getMessage().contains("Istruttore inesistente"));
+        }
+    }
+
+    /*
+    * Questo caso di test verifica il comportamento del sistema in caso in cui l'esito è true
+    * */
+    @Test
+    public void testValutazioneRichiesta_3() throws SQLException {
+        RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
+        Istruttore i = new Istruttore();
+        i.setMatricolaIstruttore("100000000P");
+        i.setNome("Fabio");
+        i.setCognome("Istruttore");
+        i.setPassword("FabioP1");
+
+        richiesta.setIdRichiesta(1);
+        richiesta.setMessaggio("Richiedo un cambiamento della scheda");
+        richiesta.setEsito(true);
+
+
+    }
 }

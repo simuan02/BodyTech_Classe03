@@ -84,4 +84,56 @@ public class RichiestaModificaSchedaDAOTest {
                 RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale));
     }
 
+    /*
+    * Questo caso di test verifica il comportamento del metodo  RichiestaDAO.findById(idRichiesta),
+    * nel caso in cui rispetto la precondizione che l'id è esistente.
+    * */
+    @Test
+    public void testFindMyId_Method_OK() throws SQLException {
+        int id = 1;
+        assertTrue("Errore nella ricerca della richiesta", RichiestaModificaSchedaDAO.findById(id));
+    }
+
+    /*
+    * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.findByID(idRichiesta),
+    * nel caso in cui l'id è inesistente.
+    * */
+    @Test
+    public void testFindById_Method_1() throws SQLException{
+        int id = 0;
+        assertFalse("Richiesta trovata con successo, nonostante l'id non esiste", RichiestaModificaSchedaDAO.findById(id));
+    }
+
+    /*
+    * Questo caso di test verifica il comportament del medoto RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(RichiestaModificaScheda richiesta),
+    * nel caso in cui rispetta tutte le precondizioni :
+    * richiesta != null
+    * */
+    @Test
+    public void testCambiaEsitoRichiesta_Method_OK() throws SQLException {
+        Random rand = new Random();
+        String message = "";
+        for (int i = 0; i < 249; i++){
+            char c = (char) (rand.nextInt(43) + 48);
+            message += c;
+        }
+        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setIdRichiesta(1);
+        richiesta.setMessaggio(message);
+        richiesta.setEsito(true);
+        assertTrue("Errore nel cambiamento dell'esito della richiesta", RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta));
+    }
+
+    /*
+    * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(RichiestaModificaScheda richiesta),
+    * nel caso in cui la richiesta non esiste
+    * */
+    @Test
+    public void testCambiaEsitoRichiesta_Method_1() throws SQLException {
+        RichiestaModificaScheda richiesta = null;
+        assertFalse("Richiesta creata con successo nonostante la richiesta non esiste", RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta));
+    }
+
+
+
 }
