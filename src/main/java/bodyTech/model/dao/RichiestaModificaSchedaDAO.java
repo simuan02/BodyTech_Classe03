@@ -2,7 +2,6 @@ package bodyTech.model.dao;
 
 import bodyTech.model.ConPool;
 import bodyTech.model.entity.RichiestaModificaScheda;
-import com.mysql.cj.log.BaseMetricsHolder;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -89,7 +88,7 @@ public class RichiestaModificaSchedaDAO {
         return rms;
     }
 
-    public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
+    public static boolean insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
         Connection conn = ConPool.getConnection();
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
                 "values (?, ?, ?)");
@@ -102,6 +101,7 @@ public class RichiestaModificaSchedaDAO {
         pstmt.executeUpdate();
         pstmt.close();
         conn.close();
+        return true;
     }
 
     public static void cambiaEsitoRichiesta(RichiestaModificaScheda richiesta) throws SQLException {
@@ -109,6 +109,15 @@ public class RichiestaModificaSchedaDAO {
         PreparedStatement pstmt = conn.prepareStatement("UPDATE RichiestaModificaScheda SET esito = ? WHERE idRichiesta = ?");
         pstmt.setBoolean(1, richiesta.isEsito());
         pstmt.setInt(2, richiesta.getIdRichiesta());
+        pstmt.executeUpdate();
+        pstmt.close();
+        conn.close();
+    }
+
+    public static void deleteRichiesta(RichiestaModificaScheda richiesta) throws SQLException {
+        Connection conn = ConPool.getConnection();
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM richiestaModificaScheda WHERE idRichiesta = ?");
+        pstmt.setInt(1, richiesta.getIdRichiesta());
         pstmt.executeUpdate();
         pstmt.close();
         conn.close();

@@ -21,6 +21,7 @@ public class AggiungiIstruttoreServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        GestioneProfiloController.aggiungiIstruttoreMethod(request, response);
+        GestioneProfiloController gestioneProfiloController = new GestioneProfiloController();
+        gestioneProfiloController.aggiungiIstruttoreMethod(request, response);
     }
 }

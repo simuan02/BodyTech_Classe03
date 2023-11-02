@@ -80,8 +80,12 @@ public class GestioneProfiloController {
                     }
                 }
                 if (b) {
-                    services.aggiungiIstruttore(p, i, password);
-                }
+                    try{
+                    services.aggiungiIstruttore(p, i);
+                    }
+                    catch(Exception e){
+                        request.setAttribute(e.getMessage(), true);
+                    }
             }
             else {
                 request.setAttribute("LunghezzaMatricolaErrata", true);
@@ -347,7 +351,12 @@ public class GestioneProfiloController {
                 request.setAttribute("CodiceGiaPresente", true);
             } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Matricola Errata")){
                 request.setAttribute("LunghezzaMatricolaErrata", true);
-            }
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Nome Errata")) {
+                request.setAttribute("LunghezzaNomeErrata", true);
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Cognome Errata")){
+                request.setAttribute("LunghezzaCognomeErrata", true);
+            } else if (e3.getMessage().equalsIgnoreCase("Lunghezza Specializzazione Errata")){
+                request.setAttribute("LunghezzaSpecializzazioneErrata", true);}
             else {
                 e3.printStackTrace();
                 response.sendError(500);
