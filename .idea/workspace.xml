@@ -10,24 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Progetto Completo con Modifiche ai Casi di Test e altre Modifiche Varie">
-      <change afterPath="$PROJECT_DIR$/src/test/java/controller/ValutazioneRichiestaModificaSchedaController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/model/EsercizioDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_11_2023_20_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_11_2023_20_23__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_19_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_19_58__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_23__16_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_23__16_25__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/controller/RichiestaModificaSchedaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/controller/RichiestaModificaSchedaController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/richiestaModificaScheda/service/RichiestaModificaSchedaServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/ModificaDatiIstruttoreControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/ModificaDatiIstruttoreControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/controller/CreazioneRichiestaModificaSchedaControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/CreazioneRichiestaModificaSchedaControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/RichiestaModificaSchedaControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/CreazioneRichiestaModificaSchedaControllerTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/IstruttoreDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/IstruttoreDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/model/RichiestaModificaSchedaDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/RichiestaModificaSchedaDAOTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/services/RichiestaModificaSchedaTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/RichiestaModificaSchedaTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -395,7 +384,7 @@
       <workItem from="1698834219458" duration="3699000" />
       <workItem from="1698859453903" duration="694000" />
       <workItem from="1698911102888" duration="4980000" />
-      <workItem from="1698951118469" duration="10398000" />
+      <workItem from="1698951118469" duration="11185000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -662,7 +651,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698911188068</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="Progetto Completo con Modifiche ai Casi di Test e altre Modifiche Varie">
+      <created>1698963085269</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1698963085269</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

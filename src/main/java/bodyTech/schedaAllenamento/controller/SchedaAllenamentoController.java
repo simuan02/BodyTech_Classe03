@@ -188,6 +188,7 @@ public class SchedaAllenamentoController {
                 e.printStackTrace();
                 response.sendError(500);
             } catch (RuntimeException e2){
+                e2.printStackTrace();
                 response.sendError(403, e2.getMessage());
             }
         }

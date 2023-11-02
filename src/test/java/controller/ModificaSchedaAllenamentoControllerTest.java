@@ -162,6 +162,7 @@ public class ModificaSchedaAllenamentoControllerTest {
             SchedaAllenamentoController.editSchedaMethod(request, response);
             verify(dispatcher).forward(request, response);
         } catch (Exception e){
+            System.out.println(e.getMessage());
             fail("Eccezione lanciata nonostante la correttezza degli input");
         }
     }
