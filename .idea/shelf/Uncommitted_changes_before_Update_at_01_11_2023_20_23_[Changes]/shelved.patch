@@ -1,0 +1,536 @@
+Index: src/test/java/model/RichiestaModificaSchedaDAOTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/model/RichiestaModificaSchedaDAOTest.java b/src/test/java/model/RichiestaModificaSchedaDAOTest.java
+new file mode 100644
+--- /dev/null	(date 1698866584542)
++++ b/src/test/java/model/RichiestaModificaSchedaDAOTest.java	(date 1698866584542)
+@@ -0,0 +1,77 @@
++package model;
++
++import bodyTech.model.dao.RichiestaModificaSchedaDAO;
++import bodyTech.model.entity.RichiestaModificaScheda;
++import org.junit.jupiter.api.BeforeEach;
++import org.junit.jupiter.api.Test;
++import static org.junit.Assert.assertFalse;
++import static org.junit.Assert.assertTrue;
++
++import java.sql.SQLException;
++import java.util.Random;
++
++public class RichiestaModificaSchedaDAOTest {
++
++    private RichiestaModificaScheda richiesta;
++
++    @BeforeEach
++    public void init() {
++        richiesta = new RichiestaModificaScheda();
++        richiesta.setIdRichiesta(1);
++        richiesta.setMessaggio("Richiedo al mio istruttore la modifica nella sezione delle gambe perché sono impossibilitato ad allenarmi a questa intensità a causa di un grave infortunio che mi ha portato danni permanenti alla gamba. Grazie e buona giornata.");
++        richiesta.setEsito(true);
++    }
++
++    /*
++    * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale),
++    *  nel caso in cui rispetti tutte le pre-condizioni.
++    * - messaggio di lunghezza compreso tra 1 e 250 caratteri.7
++    * - codiceFiscale esistente
++    * */
++    @Test
++    public void testInsertNewRequest_Method_OK() throws SQLException {
++        Random rand = new Random();
++        String message = "";
++        String codiceFiscale = "DDMJCP01A06A509F";
++        for (int i = 0; i < 249; i++){
++            char c = (char) (rand.nextInt(43) + 48);
++            message += c;
++        }
++        richiesta.setMessaggio(message);
++        assertTrue("Errore nella creazione della richiesta.", RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale));
++        RichiestaModificaSchedaDAO.deleteRichiesta(richiesta);
++    }
++
++    /*
++    * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale),
++    * nel caso in cui il messaggio abbia lunghezza 0.
++    * */
++
++    @Test
++    public void testInsertNewRequest_Method_1() throws SQLException {
++        richiesta.setMessaggio("");
++        String codiceFiscale = "DDMJCP01A06A509F";
++        assertFalse("Richiesta creata con successo, nonostante il messaggio è vuoto",
++                RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale));
++        RichiestaModificaSchedaDAO.deleteRichiesta(richiesta);
++    }
++
++    /*
++     * Questo caso di test verifica il comportamento del metodo RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale),
++     * nel caso in cui il codice fiscale è errato o inesistente.
++     * */
++
++    @Test
++    public void testInsertNewRequest_Method_2() throws SQLException {
++        Random rand = new Random();
++        String message = "";
++        for (int i = 0; i < 249; i++){
++            char c = (char) (rand.nextInt(43) + 48);
++            message += c;
++        }
++        String codiceFiscale = "AAAA";
++        assertFalse("Richiesta creata con successo, nonostante il codice fiscale non è corretto o è inesistente",
++                RichiestaModificaSchedaDAO.insertNewRequest(richiesta, codiceFiscale));
++    }
++
++}
+Index: src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package bodyTech.model.dao;\r\n\r\nimport bodyTech.model.ConPool;\r\nimport bodyTech.model.entity.RichiestaModificaScheda;\r\nimport com.mysql.cj.log.BaseMetricsHolder;\r\n\r\nimport java.sql.*;\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\n/**\r\n * Questa classe rappresenta il DAO di una Richiesta di Modifica Scheda\r\n */\r\npublic class RichiestaModificaSchedaDAO {\r\n\r\n    /**\r\n     * Implementa la funzionalità di recuperare dal DB tutte le Richieste di modifica scheda associate a quell'utente\r\n     * @param codiceFiscale\r\n     * @return lista delle Richieste\r\n     * @throws SQLException\r\n     */\r\n    public static List<RichiestaModificaScheda> findByUser(String codiceFiscale) throws SQLException {\r\n        Connection conn = ConPool.getConnection();\r\n        Statement stmt = conn.createStatement();\r\n        String query = \"SELECT * FROM richiestaModificaScheda WHERE utente = '\" + codiceFiscale + \"'\";\r\n        ResultSet rs = stmt.executeQuery(query);\r\n        List<RichiestaModificaScheda> richieste = new ArrayList<RichiestaModificaScheda>();\r\n        List<RichiestaModificaScheda> richiesteModificaNonEsaminate = findNotExaminated();\r\n        while (rs.next()){\r\n            RichiestaModificaScheda rms = new RichiestaModificaScheda();\r\n            rms.setIdRichiesta(rs.getInt(1));\r\n            rms.setMessaggio(rs.getString(2));\r\n            boolean richiestaNonEsaminata = false;\r\n            for (RichiestaModificaScheda rmne : richiesteModificaNonEsaminate) {\r\n                if (rmne.getIdRichiesta() == rms.getIdRichiesta()){\r\n                    richiestaNonEsaminata = true;\r\n                    break;\r\n                }\r\n            }\r\n            if (!richiestaNonEsaminata)\r\n                rms.setEsito(rs.getBoolean(4));\r\n            richieste.add(rms);\r\n        }\r\n        stmt.close();\r\n        conn.close();\r\n        return richieste;\r\n    }\r\n\r\n    private static List<RichiestaModificaScheda> findNotExaminated () throws SQLException {\r\n        Connection conn = ConPool.getConnection();\r\n        Statement stmt = conn.createStatement();\r\n        String query = \"SELECT * FROM richiestaModificaScheda WHERE esito IS NULL\";\r\n        ResultSet rs = stmt.executeQuery(query);\r\n        List<RichiestaModificaScheda> richiesteNonEsaminate = new ArrayList<>();\r\n        while (rs.next()){\r\n            RichiestaModificaScheda rms = new RichiestaModificaScheda();\r\n            rms.setIdRichiesta(rs.getInt(1));\r\n            rms.setMessaggio(rs.getString(2));\r\n            rms.setEsito(null);\r\n            richiesteNonEsaminate.add(rms);\r\n        }\r\n        stmt.close();\r\n        conn.close();\r\n        return richiesteNonEsaminate;\r\n    }\r\n\r\n    public static RichiestaModificaScheda findById(int id) throws SQLException {\r\n        Connection conn = ConPool.getConnection();\r\n        Statement stmt = conn.createStatement();\r\n        String query = \"SELECT * FROM richiestaModificaScheda WHERE idRichiesta = \" + id + \"\";\r\n        ResultSet rs = stmt.executeQuery(query);\r\n        RichiestaModificaScheda rms = new RichiestaModificaScheda();\r\n        List<RichiestaModificaScheda> richiesteNonEsaminate = findNotExaminated();\r\n        while (rs.next()){\r\n            rms.setIdRichiesta(rs.getInt(1));\r\n            rms.setMessaggio(rs.getString(2));\r\n            boolean richiestaNonEsaminata = false;\r\n            for (RichiestaModificaScheda rmne : richiesteNonEsaminate) {\r\n                if (rmne.getIdRichiesta() == rms.getIdRichiesta()){\r\n                    richiestaNonEsaminata = true;\r\n                    break;\r\n                }\r\n            }\r\n            if (!richiestaNonEsaminata)\r\n                rms.setEsito(rs.getBoolean(4));\r\n        }\r\n        stmt.close();\r\n        conn.close();\r\n        return rms;\r\n    }\r\n\r\n    public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {\r\n        Connection conn = ConPool.getConnection();\r\n        PreparedStatement pstmt = conn.prepareStatement(\"INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) \" +\r\n                \"values (?, ?, ?)\");\r\n        pstmt.setString(1, richiesta.getMessaggio());\r\n        pstmt.setString(2, codiceFiscale);\r\n        if (richiesta.isEsito() != null)\r\n            pstmt.setBoolean(3, richiesta.isEsito());\r\n        else\r\n            pstmt.setNull(3, Types.BOOLEAN);\r\n        pstmt.executeUpdate();\r\n        pstmt.close();\r\n        conn.close();\r\n    }\r\n\r\n    public static void cambiaEsitoRichiesta(RichiestaModificaScheda richiesta) throws SQLException {\r\n        Connection conn = ConPool.getConnection();\r\n        PreparedStatement pstmt = conn.prepareStatement(\"UPDATE RichiestaModificaScheda SET esito = ? WHERE idRichiesta = ?\");\r\n        pstmt.setBoolean(1, richiesta.isEsito());\r\n        pstmt.setInt(2, richiesta.getIdRichiesta());\r\n        pstmt.executeUpdate();\r\n        pstmt.close();\r\n        conn.close();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java b/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java
+--- a/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java	(revision 0d6374e9082e5f94780425f3e4ef3899150be558)
++++ b/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java	(date 1698866251733)
+@@ -2,7 +2,6 @@
+ 
+ import bodyTech.model.ConPool;
+ import bodyTech.model.entity.RichiestaModificaScheda;
+-import com.mysql.cj.log.BaseMetricsHolder;
+ 
+ import java.sql.*;
+ import java.util.ArrayList;
+@@ -89,7 +88,7 @@
+         return rms;
+     }
+ 
+-    public static void insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
++    public static boolean insertNewRequest(RichiestaModificaScheda richiesta, String codiceFiscale) throws SQLException {
+         Connection conn = ConPool.getConnection();
+         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
+                 "values (?, ?, ?)");
+@@ -102,6 +101,7 @@
+         pstmt.executeUpdate();
+         pstmt.close();
+         conn.close();
++        return true;
+     }
+ 
+     public static void cambiaEsitoRichiesta(RichiestaModificaScheda richiesta) throws SQLException {
+@@ -113,4 +113,13 @@
+         pstmt.close();
+         conn.close();
+     }
++
++    public static void deleteRichiesta(RichiestaModificaScheda richiesta) throws SQLException {
++        Connection conn = ConPool.getConnection();
++        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM richiestaModificaScheda WHERE idRichiesta = ?");
++        pstmt.setInt(1, richiesta.getIdRichiesta());
++        pstmt.executeUpdate();
++        pstmt.close();
++        conn.close();
++    }
+ }
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"ProgettoBodyTech:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"823a312f-f24b-4fc3-81d8-69439ce5eaf8\" name=\"Changes\" comment=\"Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)\">\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"ComposerSettings\">\r\n    <execution />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Servlet\" />\r\n        <option value=\"JavaScript File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"Tag Library Descriptor\" />\r\n        <option value=\"Jsp File\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Rebase.Settings\">\r\n    <option name=\"NEW_BASE\" value=\"main\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"PREVIOUS_COMMIT_AUTHORS\">\r\n      <list>\r\n        <option value=\"JacopoDeveloper &lt;jacopodedominicisdeveloper@gmail.com&gt;\" />\r\n        <option value=\"Abyss117 &lt;reektreep@gmail.com&gt;\" />\r\n      </list>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitSEFilterConfiguration\">\r\n    <file-type-list>\r\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\r\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\r\n      <filtered-out-file-type name=\"TAG\" />\r\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\r\n    </file-type-list>\r\n  </component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"recentNewPullRequestHead\">\r\n      <RepoCoordinatesHolder>\r\n        <option name=\"owner\" value=\"simuan02\" />\r\n        <option name=\"repository\" value=\"BodyTech_Classe03\" />\r\n      </RepoCoordinatesHolder>\r\n    </option>\r\n  </component>\r\n  <component name=\"JspContextManager\">\r\n    <jsp-to-context jsp-file=\"file://$PROJECT_DIR$/src/main/webapp/jsp/controlloIndex.jsp\" context-file=\"file://$PROJECT_DIR$/src/main/webapp/index.jsp\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2TypkqXiqnHCcpfaN2YKW8HtKRi\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <ConfirmationsSetting value=\"2\" id=\"Add\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">\r\n    <property name=\"ASKED_ADD_EXTERNAL_FILES\" value=\"true\" />\r\n    <property name=\"Downloaded.Files.Path.Enabled\" value=\"false\" />\r\n    <property name=\"Repository.Attach.Annotations\" value=\"false\" />\r\n    <property name=\"Repository.Attach.JavaDocs\" value=\"false\" />\r\n    <property name=\"Repository.Attach.Sources\" value=\"false\" />\r\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\r\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\r\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\r\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\r\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$/src/main/webapp\" />\r\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\r\n    <property name=\"project.structure.last.edited\" value=\"Modules\" />\r\n    <property name=\"project.structure.proportion\" value=\"0.15\" />\r\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\r\n  </component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\Esame\\src\\main\\webapp\" />\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\Esame\\src\\main\\webapp\\lib\" />\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\ProgettoBodyTech\\src\\main\\webapp\\images\" />\r\n      <recent name=\"C:\\Users\\jacop\\IdeaProjects\\BodyTech3\\src\\main\\webapp\\lib\" />\r\n      <recent name=\"C:\\Users\\jacop\\IdeaProjects\\BodyTech3\\src\\main\\webapp\\images\" />\r\n    </key>\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\Esame\\src\\main\\java\\bodyTech\\schedaAllenamento\\controller\" />\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\Esame\\src\\main\\java\\bodyTech\\gestioneProfilo\\controller\" />\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\Esame\\src\\main\\webapp\\lib\" />\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\Esame\\src\\main\\webapp\" />\r\n      <recent name=\"C:\\Users\\Limon\\Documents\\Università\\Esercizi\\Ingegneria del Software\\Esame\\src\\main\\webapp\\WEB-INF\\lib\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"bodyTech.gestioneProfilo.controller\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.All in ProgettoBodyTech\">\r\n    <configuration name=\"All in ProgettoBodyTech\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ProgettoBodyTech\" />\r\n      <option name=\"PACKAGE_NAME\" value=\"\" />\r\n      <option name=\"TEST_OBJECT\" value=\"package\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CreazioneSchedaAllenamentoTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ProgettoBodyTech\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"services.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"services\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"services.CreazioneSchedaAllenamentoTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ModificaDatiUtenteControllerTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ProgettoBodyTech\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"controller.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"controller\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"controller.ModificaDatiUtenteControllerTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"SchedaDAOTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ProgettoBodyTech\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"model.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"model\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"model.SchedaDAOTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"UtenteDAOTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ProgettoBodyTech\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"model.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"model\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"model.UtenteDAOTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 10.0.17\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 10.0.17\" ALTERNATIVE_JRE_ENABLED=\"true\" ALTERNATIVE_JRE_PATH=\"17\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"ProgettoBodyTech:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"/ProgettoBodyTech_war_exploded\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"ac1495fc-eb23-4dcf-99b1-c4fc5dfb9926\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"59622\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"ProgettoBodyTech:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.All in ProgettoBodyTech\" />\r\n        <item itemvalue=\"JUnit.UtenteDAOTest\" />\r\n        <item itemvalue=\"JUnit.CreazioneSchedaAllenamentoTest\" />\r\n        <item itemvalue=\"JUnit.SchedaDAOTest\" />\r\n        <item itemvalue=\"JUnit.ModificaDatiUtenteControllerTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task id=\"LOCAL-00001\" summary=\"File prova commit\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1692025031842</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692025031842</updated>\r\n    </task>\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"823a312f-f24b-4fc3-81d8-69439ce5eaf8\" name=\"Changes\" comment=\"File prova commit\" />\r\n      <created>1692025321578</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1692025321578</updated>\r\n      <workItem from=\"1692025323295\" duration=\"51000\" />\r\n      <workItem from=\"1692025978276\" duration=\"6560000\" />\r\n      <workItem from=\"1692206236639\" duration=\"976000\" />\r\n      <workItem from=\"1692209925181\" duration=\"3156000\" />\r\n      <workItem from=\"1692373685060\" duration=\"6367000\" />\r\n      <workItem from=\"1693237965670\" duration=\"3389000\" />\r\n      <workItem from=\"1693338041868\" duration=\"1361000\" />\r\n      <workItem from=\"1693339457422\" duration=\"2893000\" />\r\n      <workItem from=\"1693342430508\" duration=\"33000\" />\r\n      <workItem from=\"1693342477462\" duration=\"3767000\" />\r\n      <workItem from=\"1693725634092\" duration=\"5873000\" />\r\n      <workItem from=\"1693811353896\" duration=\"4848000\" />\r\n      <workItem from=\"1693817274069\" duration=\"7380000\" />\r\n      <workItem from=\"1693824792863\" duration=\"18000\" />\r\n      <workItem from=\"1693824897597\" duration=\"34000\" />\r\n      <workItem from=\"1693824947174\" duration=\"20000\" />\r\n      <workItem from=\"1693825007539\" duration=\"2553000\" />\r\n      <workItem from=\"1693846681334\" duration=\"9736000\" />\r\n      <workItem from=\"1693897868960\" duration=\"7200000\" />\r\n      <workItem from=\"1693929349000\" duration=\"6348000\" />\r\n      <workItem from=\"1694083073922\" duration=\"4406000\" />\r\n      <workItem from=\"1694180159493\" duration=\"3056000\" />\r\n      <workItem from=\"1694203597549\" duration=\"94000\" />\r\n      <workItem from=\"1694203708736\" duration=\"3739000\" />\r\n      <workItem from=\"1694277114458\" duration=\"8291000\" />\r\n      <workItem from=\"1694296110413\" duration=\"4468000\" />\r\n      <workItem from=\"1694328827380\" duration=\"6408000\" />\r\n      <workItem from=\"1695917557487\" duration=\"21882000\" />\r\n      <workItem from=\"1696433970465\" duration=\"7036000\" />\r\n      <workItem from=\"1696582826519\" duration=\"6232000\" />\r\n      <workItem from=\"1698150945565\" duration=\"16069000\" />\r\n      <workItem from=\"1698259759785\" duration=\"3349000\" />\r\n      <workItem from=\"1698263496691\" duration=\"6917000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Fix\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1692026442581</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692026442581</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Aggiunta utentePage.jsp, AccountServlet e profiloPage.css\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1692196725054</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692196725054</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Continuo utentePage.jsp, AccountServlet e profiloPage.css\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1692211256394</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692211256394</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Aggiunta Servlet e jsp\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1692377259408</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692377259408</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00006\" summary=\"Modifica\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1692389438704</created>\r\n      <option name=\"number\" value=\"00006\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692389438704</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00007\" summary=\"Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente\">\r\n      <created>1692639216759</created>\r\n      <option name=\"number\" value=\"00007\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00007\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1692639216759</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00008\" summary=\"Inserimento nuova Funzione di Modifica Dati per Utenti.&#10;Inserimento pagina per la visualizzazione completa dei dati per gli Utenti.&#10;Aggiunta Funzioni JS per la chiamata asincrona alla Servlet di Modifica dei Dati del Profilo.\">\r\n      <created>1693346044245</created>\r\n      <option name=\"number\" value=\"00008\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00008\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693346044245</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00009\" summary=\"Aggiunta interfaccia per la visualizzazione della scheda e per l'apertura di una nuova richiesta di modifica della scheda utente.&#10;Modifiche varie a SchedaAllenamentoDAO e IstruttoreDAO.&#10;Aggiunta servlet per l'accesso alle informazioni presenti nel DB relative alla scheda di allenamento dell'utente che ha effettuato l'accesso nella sessione corrente.\">\r\n      <created>1693731486320</created>\r\n      <option name=\"number\" value=\"00009\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00009\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693731486320</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00010\" summary=\"Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.\">\r\n      <created>1693816074153</created>\r\n      <option name=\"number\" value=\"00010\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00010\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693816074153</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00011\" summary=\"Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.\">\r\n      <created>1693820398973</created>\r\n      <option name=\"number\" value=\"00011\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00011\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693820398973</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00012\" summary=\"Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito\">\r\n      <created>1693824153558</created>\r\n      <option name=\"number\" value=\"00012\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00012\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693824153558</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00013\" summary=\"Implementazione servizio per la visualizzazione di tutte le richieste di modifica scheda effettuate dall'utente corrente\">\r\n      <created>1693826417806</created>\r\n      <option name=\"number\" value=\"00013\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00013\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693826417806</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00014\" summary=\"Implementazione servizio per la visualizzazione di tutte le richieste di modifica scheda effettuate dall'utente corrente\">\r\n      <created>1693827550485</created>\r\n      <option name=\"number\" value=\"00014\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00014\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693827550485</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00015\" summary=\"Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento\">\r\n      <created>1693865307253</created>\r\n      <option name=\"number\" value=\"00015\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00015\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1693865307253</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00016\" summary=\"Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1694022341092</created>\r\n      <option name=\"number\" value=\"00016\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00016\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694022341092</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00017\" summary=\"Implementazione EliminaUtenteServlet\">\r\n      <created>1694199489328</created>\r\n      <option name=\"number\" value=\"00017\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00017\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694199489328</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00018\" summary=\"Implementazione EliminaUtenteServlet\">\r\n      <created>1694207468504</created>\r\n      <option name=\"number\" value=\"00018\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00018\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694207468504</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00019\" summary=\"Commenti Javadoc servlet e service\">\r\n      <created>1694277257209</created>\r\n      <option name=\"number\" value=\"00019\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00019\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694277257209</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00020\" summary=\"Modifica Interfacce JSP e inserimento di nuove funzionalità nella gestione degli Utenti da parte di Istruttore e Amministratore\">\r\n      <created>1694285411336</created>\r\n      <option name=\"number\" value=\"00020\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00020\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694285411336</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00021\" summary=\"Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore\">\r\n      <created>1694298412805</created>\r\n      <option name=\"number\" value=\"00021\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00021\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694298412805</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00022\" summary=\"Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore\">\r\n      <created>1694300076442</created>\r\n      <option name=\"number\" value=\"00022\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00022\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694300076442</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00023\" summary=\"Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore\">\r\n      <created>1694300215189</created>\r\n      <option name=\"number\" value=\"00023\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00023\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694300215189</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00024\" summary=\"Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore\">\r\n      <created>1694300451340</created>\r\n      <option name=\"number\" value=\"00024\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00024\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694300451340</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00025\" summary=\"Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore\">\r\n      <created>1694300571160</created>\r\n      <option name=\"number\" value=\"00025\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00025\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694300571160</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00026\" summary=\"Aggiunta Commenti Servlet\">\r\n      <created>1694514850851</created>\r\n      <option name=\"number\" value=\"00026\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00026\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1694514850851</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00027\" summary=\"Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService\">\r\n      <created>1696430832315</created>\r\n      <option name=\"number\" value=\"00027\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00027\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696430832315</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00028\" summary=\"Modifica\">\r\n      <created>1696431202443</created>\r\n      <option name=\"number\" value=\"00028\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00028\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696431202443</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00029\" summary=\"Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore\">\r\n      <created>1696452184139</created>\r\n      <option name=\"number\" value=\"00029\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00029\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696452184139</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00030\" summary=\"Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente\">\r\n      <created>1696617847230</created>\r\n      <option name=\"number\" value=\"00030\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00030\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1696617847230</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00031\" summary=\"Aggiunta Casi di test RegistrazioneController e modifica Struttura Sottosistema GestioneProfiloController\">\r\n      <created>1698245638449</created>\r\n      <option name=\"number\" value=\"00031\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00031\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1698245638449</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00032\" summary=\"Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)\">\r\n      <created>1698254830062</created>\r\n      <option name=\"number\" value=\"00032\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00032\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1698254830062</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"33\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n        <entry key=\"cdb0114a-4d5b-40d5-9283-7b8eaec92d77\">\r\n          <value>\r\n            <State>\r\n              <option name=\"SHOW_ONLY_AFFECTED_CHANGES\" value=\"true\" />\r\n              <option name=\"FILTERS\">\r\n                <map>\r\n                  <entry key=\"branch\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"HEAD\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                  <entry key=\"roots\">\r\n                    <value>\r\n                      <list>\r\n                        <option value=\"$PROJECT_DIR$\" />\r\n                      </list>\r\n                    </value>\r\n                  </entry>\r\n                </map>\r\n              </option>\r\n            </State>\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n    <option name=\"OPEN_GENERIC_TABS\">\r\n      <map>\r\n        <entry key=\"cdb0114a-4d5b-40d5-9283-7b8eaec92d77\" value=\"TOOL_WINDOW\" />\r\n      </map>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <option name=\"ADD_EXTERNAL_FILES_SILENTLY\" value=\"true\" />\r\n    <MESSAGE value=\"Modifica 2 Header e IndexServlet\" />\r\n    <MESSAGE value=\"File prova commit\" />\r\n    <MESSAGE value=\"Fix\" />\r\n    <MESSAGE value=\"Aggiunta utentePage.jsp, AccountServlet e profiloPage.css\" />\r\n    <MESSAGE value=\"Continuo utentePage.jsp, AccountServlet e profiloPage.css\" />\r\n    <MESSAGE value=\"Aggiunta Servlet e jsp\" />\r\n    <MESSAGE value=\"Aggiunta Controllo per la Visualizzazione del Profilo salvato nella sessione corrente.&#10;Aggiunta metodi per la verifica dell'esistenza del profilo di sessione corrente (visualizzaProfilo()) e per la modifica dei Dati del Profilo di sessione corrente\" />\r\n    <MESSAGE value=\"Inserimento nuova Funzione di Modifica Dati per Utenti.&#10;Inserimento pagina per la visualizzazione completa dei dati per gli Utenti.&#10;Aggiunta Funzioni JS per la chiamata asincrona alla Servlet di Modifica dei Dati del Profilo.\" />\r\n    <MESSAGE value=\"Aggiunta interfaccia per la visualizzazione della scheda e per l'apertura di una nuova richiesta di modifica della scheda utente.&#10;Modifiche varie a SchedaAllenamentoDAO e IstruttoreDAO.&#10;Aggiunta servlet per l'accesso alle informazioni presenti nel DB relative alla scheda di allenamento dell'utente che ha effettuato l'accesso nella sessione corrente.\" />\r\n    <MESSAGE value=\"Aggiunta commenti JavaDoc, ove mancanti, in Servlet e DAO.\" />\r\n    <MESSAGE value=\"Aggiunta Servlet per l'apertura di una richiesta di Modifica Scheda. &#10;Modifica allo Script SQL nella definizione della tabella RichiestaModificaScheda. In particolare, il campo esito è diventato NULLABLE, poiché una scheda non ancora valutata non ha alcun esito\" />\r\n    <MESSAGE value=\"Implementazione servizio per la visualizzazione di tutte le richieste di modifica scheda effettuate dall'utente corrente\" />\r\n    <MESSAGE value=\"Prova\" />\r\n    <MESSAGE value=\"Implementazione Sottosistema per la visualizzazione di tutte le schede di allenamento da parte di un istruttore e per la modifica di una selezionata scheda di allenamento\" />\r\n    <MESSAGE value=\"Implementazione EliminaUtenteServlet\" />\r\n    <MESSAGE value=\"Commenti Javadoc servlet e service\" />\r\n    <MESSAGE value=\"Modifica Interfacce JSP e inserimento di nuove funzionalità nella gestione degli Utenti da parte di Istruttore e Amministratore\" />\r\n    <MESSAGE value=\"Inserimento di nuove funzionalità nella gestione degli Istruttori da parte di Amministratore\" />\r\n    <MESSAGE value=\"Aggiunta Commenti Servlet\" />\r\n    <MESSAGE value=\"Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService\" />\r\n    <MESSAGE value=\"Modifica\" />\r\n    <MESSAGE value=\"Aggiunta Casi di Test RegistrazioneService.java&#10;Modifica Classi RegistrazioneController e RegistrazioneService.&#10;Aggiunta Funzione di Valutazione di una Richiesta di Modifica Scheda per l'Istruttore\" />\r\n    <MESSAGE value=\"Aggiunta Casi di Test per la funzionalità di Modifica Dati Utente\" />\r\n    <MESSAGE value=\"Aggiunta Casi di test RegistrazioneController e modifica Struttura Sottosistema GestioneProfiloController\" />\r\n    <MESSAGE value=\"Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)\" />\r\n  </component>\r\n  <component name=\"XDebuggerManager\">\r\n    <breakpoint-manager>\r\n      <breakpoints>\r\n        <line-breakpoint enabled=\"true\" type=\"java-line\">\r\n          <url>file://$PROJECT_DIR$/src/main/webapp/listaIstruttoriPage.jsp</url>\r\n          <line>57</line>\r\n          <option name=\"timeStamp\" value=\"1\" />\r\n        </line-breakpoint>\r\n      </breakpoints>\r\n    </breakpoint-manager>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 0d6374e9082e5f94780425f3e4ef3899150be558)
++++ b/.idea/workspace.xml	(date 1698866584595)
+@@ -2,7 +2,7 @@
+ <project version="4">
+   <component name="ArtifactsWorkspaceSettings">
+     <artifacts-to-build>
+-      <artifact name="ProgettoBodyTech:war exploded" />
++      <artifact name="ProgettoBodyTech:war" />
+     </artifacts-to-build>
+   </component>
+   <component name="AutoImportSettings">
+@@ -10,11 +10,12 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Aggiunta Casi di test EditDataServlet e modifica Struttura Sottosistemi (Parte Controller)">
+-      <change afterPath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/src/test/java/services/CreazioneSchedaAllenamentoTest.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/controller/RichiestaModificaSchedaControllerTest.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/src/test/java/model/RichiestaModificaSchedaDAOTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/UtenteDAOTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -77,6 +78,9 @@
+   <component name="MarkdownSettingsMigration">
+     <option name="stateVersion" value="1" />
+   </component>
++  <component name="ProjectColorInfo">{
++  &quot;associatedIndex&quot;: 8
++}</component>
+   <component name="ProjectId" id="2TypkqXiqnHCcpfaN2YKW8HtKRi" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+     <ConfirmationsSetting value="2" id="Add" />
+@@ -85,22 +89,20 @@
+     <option name="hideEmptyMiddlePackages" value="true" />
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent">
+-    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+-    <property name="Downloaded.Files.Path.Enabled" value="false" />
+-    <property name="Repository.Attach.Annotations" value="false" />
+-    <property name="Repository.Attach.JavaDocs" value="false" />
+-    <property name="Repository.Attach.Sources" value="false" />
+-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+-    <property name="WebServerToolWindowFactoryState" value="false" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/webapp" />
+-    <property name="nodejs_package_manager_path" value="npm" />
+-    <property name="project.structure.last.edited" value="Modules" />
+-    <property name="project.structure.proportion" value="0.15" />
+-    <property name="project.structure.side.proportion" value="0.2" />
+-  </component>
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
++  }
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="C:\Users\Limon\Documents\Università\Esercizi\Ingegneria del Software\Esame\src\main\webapp" />
+@@ -120,7 +122,7 @@
+       <recent name="bodyTech.gestioneProfilo.controller" />
+     </key>
+   </component>
+-  <component name="RunManager" selected="JUnit.All in ProgettoBodyTech">
++  <component name="RunManager" selected="Tomcat Server.Tomcat 10">
+     <configuration name="All in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ProgettoBodyTech" />
+       <option name="PACKAGE_NAME" value="" />
+@@ -189,18 +191,94 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration default="true" type="JetRunConfigurationType">
+-      <method v="2">
+-        <option name="Make" enabled="true" />
+-      </method>
+-    </configuration>
+-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+-      <option name="filePath" />
++    <configuration name="Tomcat 10" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
++      <option name="UPDATING_POLICY" value="restart-server" />
++      <deployment>
++        <artifact name="ProgettoBodyTech:war">
++          <settings>
++            <option name="CONTEXT_PATH" value="/ProgettoBodyTech_war" />
++          </settings>
++        </artifact>
++      </deployment>
++      <server-settings>
++        <option name="BASE_DIRECTORY_NAME" value="c7eea419-56ff-4e8c-ad13-5b2abf756faf" />
++      </server-settings>
++      <predefined_log_file enabled="true" id="Tomcat" />
++      <predefined_log_file enabled="true" id="Tomcat Catalina" />
++      <predefined_log_file id="Tomcat Manager" />
++      <predefined_log_file id="Tomcat Host Manager" />
++      <predefined_log_file id="Tomcat Localhost Access" />
++      <RunnerSettings RunnerId="Debug">
++        <option name="DEBUG_PORT" value="52133" />
++      </RunnerSettings>
++      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
++        <option name="USE_ENV_VARIABLES" value="true" />
++        <STARTUP>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </STARTUP>
++        <SHUTDOWN>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </SHUTDOWN>
++      </ConfigurationWrapper>
++      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
++        <option name="USE_ENV_VARIABLES" value="true" />
++        <STARTUP>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </STARTUP>
++        <SHUTDOWN>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </SHUTDOWN>
++      </ConfigurationWrapper>
++      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Profile">
++        <option name="USE_ENV_VARIABLES" value="true" />
++        <STARTUP>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </STARTUP>
++        <SHUTDOWN>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </SHUTDOWN>
++      </ConfigurationWrapper>
++      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
++        <option name="USE_ENV_VARIABLES" value="true" />
++        <STARTUP>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </STARTUP>
++        <SHUTDOWN>
++          <option name="USE_DEFAULT" value="true" />
++          <option name="SCRIPT" value="" />
++          <option name="VM_PARAMETERS" value="" />
++          <option name="PROGRAM_PARAMETERS" value="" />
++        </SHUTDOWN>
++      </ConfigurationWrapper>
+       <method v="2">
+         <option name="Make" enabled="true" />
++        <option name="BuildArtifacts" enabled="true">
++          <artifact name="ProgettoBodyTech:war" />
++        </option>
+       </method>
+     </configuration>
+-    <configuration name="Tomcat 10.0.17" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 10.0.17" ALTERNATIVE_JRE_ENABLED="true" ALTERNATIVE_JRE_PATH="17">
++    <configuration name="Tomcat 9.0" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 9.0" ALTERNATIVE_JRE_ENABLED="false" nameIsGenerated="true">
+       <option name="UPDATING_POLICY" value="restart-server" />
+       <deployment>
+         <artifact name="ProgettoBodyTech:war exploded">
+@@ -210,7 +288,8 @@
+         </artifact>
+       </deployment>
+       <server-settings>
+-        <option name="BASE_DIRECTORY_NAME" value="ac1495fc-eb23-4dcf-99b1-c4fc5dfb9926" />
++        <option name="BASE_DIRECTORY_NAME" value="5f943676-4632-4193-9e60-579fa996682c" />
++        <option name="HTTP_PORT" value="8080" />
+       </server-settings>
+       <predefined_log_file enabled="true" id="Tomcat" />
+       <predefined_log_file enabled="true" id="Tomcat Catalina" />
+@@ -218,7 +297,7 @@
+       <predefined_log_file id="Tomcat Host Manager" />
+       <predefined_log_file id="Tomcat Localhost Access" />
+       <RunnerSettings RunnerId="Debug">
+-        <option name="DEBUG_PORT" value="59622" />
++        <option name="DEBUG_PORT" value="50526" />
+       </RunnerSettings>
+       <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+         <option name="USE_ENV_VARIABLES" value="true" />
+@@ -287,6 +366,15 @@
+         </option>
+       </method>
+     </configuration>
++    <list>
++      <item itemvalue="JUnit.All in ProgettoBodyTech" />
++      <item itemvalue="JUnit.CreazioneSchedaAllenamentoTest" />
++      <item itemvalue="JUnit.ModificaDatiUtenteControllerTest" />
++      <item itemvalue="JUnit.SchedaDAOTest" />
++      <item itemvalue="JUnit.UtenteDAOTest" />
++      <item itemvalue="Tomcat Server.Tomcat 9.0" />
++      <item itemvalue="Tomcat Server.Tomcat 10" />
++    </list>
+     <recent_temporary>
+       <list>
+         <item itemvalue="JUnit.All in ProgettoBodyTech" />
+@@ -346,6 +434,14 @@
+       <workItem from="1698150945565" duration="16069000" />
+       <workItem from="1698259759785" duration="3349000" />
+       <workItem from="1698263496691" duration="6917000" />
++      <workItem from="1698593643838" duration="765000" />
++      <workItem from="1698594421073" duration="529000" />
++      <workItem from="1698597826801" duration="2713000" />
++      <workItem from="1698763430109" duration="261000" />
++      <workItem from="1698774138413" duration="404000" />
++      <workItem from="1698857411637" duration="6000" />
++      <workItem from="1698857444169" duration="813000" />
++      <workItem from="1698858339903" duration="5242000" />
+     </task>
+     <task id="LOCAL-00002" summary="Fix">
+       <option name="closed" value="true" />
+@@ -577,6 +673,11 @@
+     <option name="version" value="3" />
+   </component>
+   <component name="Vcs.Log.Tabs.Properties">
++    <option name="OPEN_GENERIC_TABS">
++      <map>
++        <entry key="cdb0114a-4d5b-40d5-9283-7b8eaec92d77" value="TOOL_WINDOW" />
++      </map>
++    </option>
+     <option name="TAB_STATES">
+       <map>
+         <entry key="MAIN">
+@@ -587,7 +688,6 @@
+         <entry key="cdb0114a-4d5b-40d5-9283-7b8eaec92d77">
+           <value>
+             <State>
+-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+               <option name="FILTERS">
+                 <map>
+                   <entry key="branch">
+@@ -606,14 +706,10 @@
+                   </entry>
+                 </map>
+               </option>
++              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
+             </State>
+           </value>
+         </entry>
+-      </map>
+-    </option>
+-    <option name="OPEN_GENERIC_TABS">
+-      <map>
+-        <entry key="cdb0114a-4d5b-40d5-9283-7b8eaec92d77" value="TOOL_WINDOW" />
+       </map>
+     </option>
+   </component>
+Index: src/test/java/controller/RichiestaModificaSchedaControllerTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/controller/RichiestaModificaSchedaControllerTest.java b/src/test/java/controller/RichiestaModificaSchedaControllerTest.java
+new file mode 100644
+--- /dev/null	(date 1698863458919)
++++ b/src/test/java/controller/RichiestaModificaSchedaControllerTest.java	(date 1698863458919)
+@@ -0,0 +1,88 @@
++package controller;
++
++import bodyTech.model.dao.RichiestaModificaSchedaDAO;
++import bodyTech.model.entity.RichiestaModificaScheda;
++import bodyTech.model.entity.Utente;
++import bodyTech.richiestaModificaScheda.service.RichiestaModificaSchedaServiceImpl;
++import jakarta.servlet.RequestDispatcher;
++import jakarta.servlet.ServletException;
++import jakarta.servlet.http.HttpServletRequest;
++import jakarta.servlet.http.HttpServletResponse;
++import jakarta.servlet.http.HttpSession;
++import org.junit.jupiter.api.BeforeEach;
++import org.junit.jupiter.api.Test;
++
++import java.io.IOException;
++import java.sql.SQLException;
++
++import static org.mockito.Mockito.*;
++
++public class RichiestaModificaSchedaControllerTest {
++
++    private HttpServletRequest request;
++    private HttpServletResponse response;
++    private HttpSession session;
++    private RichiestaModificaSchedaServiceImpl controller;
++    private RichiestaModificaScheda richiesta;
++    private Utente utente;
++
++    @BeforeEach
++    public void setUp() {
++        request = mock(HttpServletRequest.class);
++        response = mock(HttpServletResponse.class);
++        session = mock(HttpSession.class);
++        controller = new RichiestaModificaSchedaServiceImpl();
++        richiesta = new RichiestaModificaScheda();
++        utente = new Utente();
++    }
++
++    /*
++    * Questo caso di test verifica come si comporta il sistema in caso di creazione richiesta di modifica scheda
++    * con messaggio di lunghezza 0.
++    * */
++    @Test
++    public void testCreazioneRichiesta_1_1() throws ServletException, IOException {
++        when(request.getParameter("richiesta")).thenReturn("");
++        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
++        when(request.getRequestDispatcher("/infoProfile.jsp")).thenReturn(dispatcher);
++        when(session.getAttribute("Profilo")).thenReturn(Utente.class);
++        controller.richiediModificaScheda(richiesta, utente);
++        verify(request).setAttribute("richiestaEffettuata", false);
++        verify(request).setAttribute("LunghezzaMessaggioErrato", "Lunghezza Messaggio Errato");
++        verify(dispatcher).forward(request, response);
++    }
++
++    /*
++     * Questo caso di test verifica come si comporta il sistema in caso di creazione richiesta di modifica scheda
++     * con messaggio di lunghezza maggiore di 250 caratteri.
++     * */
++    @Test
++    public void testCreazioneRichiesta_1_2() throws ServletException, IOException {
++        when(request.getParameter("richiesta")).thenReturn("Richiedo la modifica della scheda perché sono impossibilitato ad allenarmi a questa intensità a causa di un grave infortunio subito due mesi fa che mi ha portato danni permanenti alla gamba. Quindi richiedo al mio istruttore una modifica nella sezione delle gambe. Grazie e buona giornata.");
++        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
++        when(request.getRequestDispatcher("/infoProfile.jsp")).thenReturn(dispatcher);
++        when(session.getAttribute("Profilo")).thenReturn(Utente.class);
++        controller.richiediModificaScheda(richiesta, utente);
++        verify(request).setAttribute("richiestaEffettuata", false);
++        verify(request).setAttribute("LunghezzaMessaggioErrato", "Lunghezza Messaggio Errato");
++        verify(dispatcher).forward(request, response);
++    }
++
++    /*
++     * Questo caso di test verifica come si comporta il sistema in caso di creazione richiesta di modifica scheda
++     * con messaggio di lunghezza compreso tra 1 e 250 caratteri.
++     * */
++    @Test
++    public void testCreazioneRichiesta_1_3() throws ServletException, IOException, SQLException {
++        when(request.getParameter("richiesta")).thenReturn("Richiedo al mio istruttore la modifica nella sezione delle gambe perché sono impossibilitato ad allenarmi a questa intensità a causa di un grave infortunio che mi ha portato danni permanenti alla gamba. Grazie e buona giornata.");
++        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
++        when(request.getRequestDispatcher("/infoProfile.jsp")).thenReturn(dispatcher);
++        when(session.getAttribute("Profilo")).thenReturn(Utente.class);
++        controller.richiediModificaScheda(richiesta, utente);
++        verify(request).setAttribute("richiestaEffettuata", true);
++        verify(dispatcher).forward(request, response);
++        RichiestaModificaSchedaDAO.deleteRichiesta(richiesta);
++    }
++
++}
++
+Index: src/main/java/bodyTech/model/ConPool.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package bodyTech.model;\r\n\r\nimport org.apache.tomcat.jdbc.pool.DataSource;\r\nimport org.apache.tomcat.jdbc.pool.PoolProperties;\r\n\r\nimport java.util.TimeZone;\r\nimport java.sql.Connection;\r\nimport java.sql.SQLException;\r\n\r\npublic class ConPool {\r\n    private static DataSource datasource;\r\n\r\n    public static Connection getConnection() throws SQLException {\r\n        if (datasource == null) {\r\n            PoolProperties p = new PoolProperties();\r\n            p.setUrl(\"jdbc:mysql://localhost:3306/bodytechdb?serverTimezone=\" + TimeZone.getDefault().getID());\r\n            p.setDriverClassName(\"com.mysql.cj.jdbc.Driver\");\r\n            p.setUsername(\"user\");\r\n            p.setPassword(\"Password1\");\r\n            p.setMaxActive(1000);\r\n            p.setInitialSize(10);\r\n            p.setMinIdle(10);\r\n            p.setRemoveAbandonedTimeout(60);\r\n            p.setRemoveAbandoned(true);\r\n            datasource = new DataSource();\r\n            datasource.setPoolProperties(p);\r\n        }\r\n        return datasource.getConnection();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/bodyTech/model/ConPool.java b/src/main/java/bodyTech/model/ConPool.java
+--- a/src/main/java/bodyTech/model/ConPool.java	(revision 0d6374e9082e5f94780425f3e4ef3899150be558)
++++ b/src/main/java/bodyTech/model/ConPool.java	(date 1698858451566)
+@@ -15,8 +15,8 @@
+             PoolProperties p = new PoolProperties();
+             p.setUrl("jdbc:mysql://localhost:3306/bodytechdb?serverTimezone=" + TimeZone.getDefault().getID());
+             p.setDriverClassName("com.mysql.cj.jdbc.Driver");
+-            p.setUsername("user");
+-            p.setPassword("Password1");
++            p.setUsername("root");
++            p.setPassword("admin");
+             p.setMaxActive(1000);
+             p.setInitialSize(10);
+             p.setMinIdle(10);

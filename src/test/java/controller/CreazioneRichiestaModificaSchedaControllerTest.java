@@ -2,6 +2,7 @@ package controller;
 
 import bodyTech.model.dao.RichiestaModificaSchedaDAO;
 import bodyTech.model.dao.UtenteDAO;
+import bodyTech.model.entity.Istruttore;
 import bodyTech.model.entity.RichiestaModificaScheda;
 import bodyTech.model.entity.Utente;
 import bodyTech.richiestaModificaScheda.controller.RichiestaModificaSchedaController;
@@ -25,6 +26,9 @@ public class CreazioneRichiestaModificaSchedaControllerTest {
     private HttpServletResponse response;
     private HttpSession session;
     private Utente utente;
+    private Istruttore istruttore;
+    private boolean valutazione;
+    private int id;
 
     @BeforeEach
     public void setUp() throws SQLException {
@@ -90,6 +94,53 @@ public class CreazioneRichiestaModificaSchedaControllerTest {
         List<RichiestaModificaScheda> listaRichieste = RichiestaModificaSchedaDAO.findByUser(utente.getCodiceFiscale());
         RichiestaModificaSchedaDAO.deleteRichiesta(listaRichieste.get(listaRichieste.size()-1));
         verify(dispatcher).forward(request, response);
+    }
+
+    /*
+    * Questo caso di test verifica come si comporta il sistema in caso di valutazione richiesta di modifica scheda
+    * con esito inesistente
+    * */
+    @Test
+    public void testValutazioneRichiesta_1_1() throws ServletException, IOException {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(istruttore);
+        when(request.getParameter("id")).thenReturn(String.valueOf(1));
+        when(request.getParameter("valutazione")).thenReturn(null);
+        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher("/listaUtenti")).thenReturn(dispatcher);
+        RichiestaModificaSchedaController.valutazioneRichiestaMethod(request, response);
+        verify(request).setAttribute("valutazioneRichiesta", valutazione);
+        verify(dispatcher).forward(request, response);
+    }
+
+    /*
+    * Questo caso di test verifica come si comporta il sistema in caso di valutazione richiesta di modifica scheda
+    * con esito = true
+    * */
+    @Test
+    public void testValutazioneRichiesta_1_2() {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(istruttore);
+        when(request.getParameter("id")).thenReturn(String.valueOf(1));
+        when(request.getParameter("valutazione")).thenReturn(String.valueOf(true));
+        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher("/listaUtenti")).thenReturn(dispatcher);
+        verify(request).setAttribute("valutazioneRichiesta", true);
+    }
+
+    /*
+     * Questo caso di test verifica come si comporta il sistema in caso di valutazione richiesta di modifica scheda
+     * con esito = false
+     * */
+    @Test
+    public void testValutazioneRichiesta_1_3() {
+        when(request.getSession()).thenReturn(session);
+        when(session.getAttribute("Profilo")).thenReturn(istruttore);
+        when(request.getParameter("id")).thenReturn(String.valueOf(1));
+        when(request.getParameter("valutazione")).thenReturn(String.valueOf(false));
+        RequestDispatcher dispatcher = mock(RequestDispatcher.class);
+        when(request.getRequestDispatcher("/listaUtenti")).thenReturn(dispatcher);
+        verify(request).setAttribute("valutazioneRichiesta", true);
     }
 
 }
