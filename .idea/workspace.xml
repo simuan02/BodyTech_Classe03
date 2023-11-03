@@ -10,13 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="823a312f-f24b-4fc3-81d8-69439ce5eaf8" name="Changes" comment="Progetto Completo con Modifiche ai Casi di Test e altre Modifiche Varie">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_11_2023_20_23__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_01_11_2023_20_23__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_19_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_2023_19_58__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_23__16_25__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_11_23__16_25__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/schedaAllenamento/controller/SchedaAllenamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/controller/CreazioneRichiestaModificaSchedaControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/CreazioneRichiestaModificaSchedaControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/GestioneProfiloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/gestioneProfilo/controller/GestioneProfiloController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/ConPool.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/AmministratoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioAllenamentoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/EsercizioDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/IstruttoreDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/RichiestaModificaSchedaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/SchedaAllenamentoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/bodyTech/model/dao/UtenteDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/controller/ModificaSchedaAllenamentoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/RichiestaModificaSchedaDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/RichiestaModificaSchedaDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/model/SchedaDAOTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/services/ModificaSchedaAllenamentoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/services/ModificaSchedaAllenamentoTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +133,7 @@
       <recent name="bodyTech.gestioneProfilo.controller" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.controller in ProgettoBodyTech">
+  <component name="RunManager" selected="JUnit.All in ProgettoBodyTech">
     <configuration name="All in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <option name="PACKAGE_NAME" value="" />
@@ -135,17 +142,33 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ValutazioneRichiestaModificaSchedaController" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SchedaDAOTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="ProgettoBodyTech" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="controller.*" />
+          <option name="PATTERN" value="model.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="controller" />
-      <option name="MAIN_CLASS_NAME" value="controller.ValutazioneRichiestaModificaSchedaController" />
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SchedaDAOTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SchedaDAOTest.updateScheda_TESTING_METHOD_OK" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="ProgettoBodyTech" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SchedaDAOTest" />
+      <option name="METHOD_NAME" value="updateScheda_TESTING_METHOD_OK" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -173,20 +196,6 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="model" />
-      <option name="TEST_OBJECT" value="package" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="services in ProgettoBodyTech" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="ProgettoBodyTech" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="services.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="services" />
       <option name="TEST_OBJECT" value="package" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -311,18 +320,18 @@
     <list>
       <item itemvalue="JUnit.All in ProgettoBodyTech" />
       <item itemvalue="Tomcat Server.Tomcat 10.1.15" />
-      <item itemvalue="JUnit.model in ProgettoBodyTech" />
-      <item itemvalue="JUnit.services in ProgettoBodyTech" />
       <item itemvalue="JUnit.controller in ProgettoBodyTech" />
-      <item itemvalue="JUnit.ValutazioneRichiestaModificaSchedaController" />
+      <item itemvalue="JUnit.SchedaDAOTest" />
+      <item itemvalue="JUnit.SchedaDAOTest.updateScheda_TESTING_METHOD_OK" />
+      <item itemvalue="JUnit.model in ProgettoBodyTech" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.controller in ProgettoBodyTech" />
         <item itemvalue="JUnit.All in ProgettoBodyTech" />
-        <item itemvalue="JUnit.services in ProgettoBodyTech" />
         <item itemvalue="JUnit.model in ProgettoBodyTech" />
-        <item itemvalue="JUnit.ValutazioneRichiestaModificaSchedaController" />
+        <item itemvalue="JUnit.controller in ProgettoBodyTech" />
+        <item itemvalue="JUnit.SchedaDAOTest.updateScheda_TESTING_METHOD_OK" />
+        <item itemvalue="JUnit.SchedaDAOTest" />
       </list>
     </recent_temporary>
   </component>
@@ -384,7 +393,7 @@
       <workItem from="1698834219458" duration="3699000" />
       <workItem from="1698859453903" duration="694000" />
       <workItem from="1698911102888" duration="4980000" />
-      <workItem from="1698951118469" duration="11185000" />
+      <workItem from="1698951118469" duration="17645000" />
     </task>
     <task id="LOCAL-00002" summary="Fix">
       <option name="closed" value="true" />
@@ -658,7 +667,14 @@
       <option name="project" value="LOCAL" />
       <updated>1698963085269</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Progetto Completo con Modifiche ai Casi di Test e altre Modifiche Varie">
+      <created>1698963863063</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1698963863063</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

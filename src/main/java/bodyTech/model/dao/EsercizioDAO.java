@@ -46,7 +46,7 @@ public class EsercizioDAO {
     public static List<Esercizio> findAll() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM Esercizio";
+        String query = "SELECT * FROM esercizio";
         ResultSet rs = stmt.executeQuery(query);
         List<Esercizio> listaEsercizi = new ArrayList<>();
         while(rs.next()){

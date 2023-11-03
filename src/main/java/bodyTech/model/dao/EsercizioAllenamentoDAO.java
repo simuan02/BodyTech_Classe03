@@ -47,7 +47,7 @@ public class EsercizioAllenamentoDAO {
      */
     public static void insertEsercizioAllenamento(Esercizio es, String volume, int idScheda) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO EsercizioAllenamento VALUES (?, ?, ?)");
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO esercizioAllenamento VALUES (?, ?, ?)");
         pstmt.setInt(1, idScheda);
         pstmt.setString(2, es.getNomeEsercizio());
         pstmt.setString(3, volume);
@@ -65,7 +65,7 @@ public class EsercizioAllenamentoDAO {
      */
     public static void updateEsercizio(EsercizioAllenamento ea, int idScheda) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("UPDATE EsercizioAllenamento SET volume = ? WHERE esercizio = ? and " +
+        PreparedStatement pstmt = conn.prepareStatement("UPDATE esercizioAllenamento SET volume = ? WHERE esercizio = ? and " +
                 "schedaAllenamento = ?");
         pstmt.setString(1, ea.getVolume());
         pstmt.setString(2, ea.getNomeEsercizio());
@@ -83,7 +83,7 @@ public class EsercizioAllenamentoDAO {
      */
     public static void deleteExercise(int schedaID, String nomeEsercizio) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM EsercizioAllenamento WHERE esercizio = ? and schedaAllenamento = ?");
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM esercizioAllenamento WHERE esercizio = ? and schedaAllenamento = ?");
         pstmt.setString(1, nomeEsercizio);
         pstmt.setInt(2, schedaID);
         pstmt.executeUpdate();
@@ -98,7 +98,7 @@ public class EsercizioAllenamentoDAO {
      */
     public static void deleteAllSchedaExercises(int schedaID) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM EsercizioAllenamento WHERE schedaAllenamento = ?");
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM esercizioAllenamento WHERE schedaAllenamento = ?");
         pstmt.setInt(1, schedaID);
         pstmt.executeUpdate();
         pstmt.close();

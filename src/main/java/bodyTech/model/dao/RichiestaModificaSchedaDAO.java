@@ -94,7 +94,7 @@ public class RichiestaModificaSchedaDAO {
         if (UtenteDAO.findByCodiceFiscale(codiceFiscale) == null)
             return false;
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO RichiestaModificaScheda (Messaggio, Utente, Esito) " +
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO richiestaModificaScheda (Messaggio, Utente, Esito) " +
                 "values (?, ?, ?)");
         pstmt.setString(1, richiesta.getMessaggio());
         pstmt.setString(2, codiceFiscale);
@@ -110,7 +110,7 @@ public class RichiestaModificaSchedaDAO {
 
     public static void cambiaEsitoRichiesta(RichiestaModificaScheda richiesta) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("UPDATE RichiestaModificaScheda SET esito = ? WHERE idRichiesta = ?");
+        PreparedStatement pstmt = conn.prepareStatement("UPDATE richiestaModificaScheda SET esito = ? WHERE idRichiesta = ?");
         pstmt.setBoolean(1, richiesta.isEsito());
         pstmt.setInt(2, richiesta.getIdRichiesta());
         pstmt.executeUpdate();

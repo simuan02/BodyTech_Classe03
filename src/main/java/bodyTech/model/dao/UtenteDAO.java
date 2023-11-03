@@ -89,7 +89,7 @@ public class UtenteDAO {
             if (user.getCodiceFiscale().equalsIgnoreCase(u.getCodiceFiscale()))
                 return false;
         }
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Utente values (?,?,?,?)");
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO utente values (?,?,?,?)");
         pstmt.setString(1, u.getCodiceFiscale());
         pstmt.setString(2, u.getNome());
         pstmt.setString(3, u.getCognome());
@@ -122,7 +122,7 @@ public class UtenteDAO {
             }
         }
         if (existingUser){
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE Utente SET codiceFiscale = ?, nome = ?, cognome = ?, pass = ?" +
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE utente SET codiceFiscale = ?, nome = ?, cognome = ?, pass = ?" +
                     "WHERE codiceFiscale = ?");
             pstmt.setString(1, newUser.getCodiceFiscale());
             pstmt.setString(2, newUser.getNome());
@@ -170,7 +170,7 @@ public class UtenteDAO {
      */
     public static void deleteUser(Utente u) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Utente WHERE codiceFiscale = ?");
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM utente WHERE codiceFiscale = ?");
         SchedaAllenamento sa = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());
         if (sa!=null) {
             SchedaAllenamentoDAO.deleteScheda(sa.getIdScheda());

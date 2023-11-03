@@ -120,6 +120,8 @@ public class GestioneProfiloController {
                 case "Istruttore": {
                     newProfile = new Istruttore();
                     ((Istruttore)newProfile).setMatricolaIstruttore(((Istruttore)oldProfile).getMatricolaIstruttore());
+                    if (((Istruttore) oldProfile).getSpecializzazione() != null)
+                        ((Istruttore)newProfile).setSpecializzazione(((Istruttore)oldProfile).getSpecializzazione());
                     break;
                 }
                 case "Amministratore": {
