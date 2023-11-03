@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RegistrazioneServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bodyTech.registrazione.service</a>
+</div>
+
+<h1>Coverage Summary for Class: RegistrazioneServiceImpl (bodyTech.registrazione.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RegistrazioneServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    74,2%
+  </span>
+  <span class="absValue">
+    (23/31)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package bodyTech.registrazione.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import bodyTech.model.dao.UtenteDAO;
+<i class="no-highlight">4</i>&nbsp;import bodyTech.model.entity.Utente;
+<i class="no-highlight">5</i>&nbsp;import jakarta.servlet.http.HttpServletRequest;
+<i class="no-highlight">6</i>&nbsp;
+<i class="no-highlight">7</i>&nbsp;import java.sql.SQLException;
+<i class="no-highlight">8</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">9</i>&nbsp;import java.util.List;
+<i class="no-highlight">10</i>&nbsp;
+<b class="fc"><i class="no-highlight">11</i>&nbsp;public class RegistrazioneServiceImpl implements RegistrazioneService{</b>
+<i class="no-highlight">12</i>&nbsp;
+<i class="no-highlight">13</i>&nbsp;    @Override
+<i class="no-highlight">14</i>&nbsp;    public List&lt;String&gt; registrazioneUtente(Utente utente, String password) {
+<b class="fc"><i class="no-highlight">15</i>&nbsp;        boolean wrongParameters = false;</b>
+<b class="fc"><i class="no-highlight">16</i>&nbsp;        List&lt;String&gt; problemiRegistrazione = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        if (password.length() &lt; 8 || password.length() &gt; 32){</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;            wrongParameters = true;</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;            problemiRegistrazione.add(&quot;Lunghezza PW Errata&quot;);</b>
+<i class="no-highlight">20</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        if (utente.getNome().length() &gt; 40) {</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;            wrongParameters = true;</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;            problemiRegistrazione.add(&quot;Lunghezza Nome Errata&quot;);</b>
+<i class="no-highlight">24</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">25</i>&nbsp;        if (utente.getCognome().length() &gt; 40) {</b>
+<b class="fc"><i class="no-highlight">26</i>&nbsp;            wrongParameters = true;</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;            problemiRegistrazione.add(&quot;Lunghezza Cognome Errata&quot;);</b>
+<i class="no-highlight">28</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        if (utente.getCodiceFiscale().length() != 16){</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;            wrongParameters = true;</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;            problemiRegistrazione.add(&quot;Lunghezza CF Errata&quot;);</b>
+<i class="no-highlight">32</i>&nbsp;        }
+<i class="no-highlight">33</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">34</i>&nbsp;            for (Utente user : UtenteDAO.visualizzaUtenti()){</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;                if (user.getCodiceFiscale().equalsIgnoreCase(utente.getCodiceFiscale())) {</b>
+<b class="nc"><i class="no-highlight">36</i>&nbsp;                    problemiRegistrazione.add(&quot;Codice Fiscale Registrato&quot;);</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;                    wrongParameters = true;</b>
+<i class="no-highlight">38</i>&nbsp;                }
+<b class="fc"><i class="no-highlight">39</i>&nbsp;            }</b>
+<b class="nc"><i class="no-highlight">40</i>&nbsp;        } catch (SQLException e) {</b>
+<b class="nc"><i class="no-highlight">41</i>&nbsp;            throw new RuntimeException(&quot;Errore Server!&quot;);</b>
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        }</b>
+<i class="no-highlight">43</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">44</i>&nbsp;            if (!wrongParameters) {</b>
+<b class="fc"><i class="no-highlight">45</i>&nbsp;                boolean b = UtenteDAO.insertUser(utente);</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;                if (!b)</b>
+<b class="nc"><i class="no-highlight">47</i>&nbsp;                    problemiRegistrazione.add(&quot;Errore Server&quot;);</b>
+<i class="no-highlight">48</i>&nbsp;            }
+<b class="fc"><i class="no-highlight">49</i>&nbsp;            return problemiRegistrazione;</b>
+<i class="no-highlight">50</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        catch (SQLException ex){</b>
+<b class="nc"><i class="no-highlight">52</i>&nbsp;            ex.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">53</i>&nbsp;            return null;</b>
+<i class="no-highlight">54</i>&nbsp;        }
+<i class="no-highlight">55</i>&nbsp;    }
+<i class="no-highlight">56</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 02:06</div>
+</div>
+</body>
+</html>

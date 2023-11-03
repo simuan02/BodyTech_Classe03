@@ -1,0 +1,314 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > IstruttoreDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bodyTech.model.dao</a>
+</div>
+
+<h1>Coverage Summary for Class: IstruttoreDAO (bodyTech.model.dao)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">IstruttoreDAO</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    87,5%
+  </span>
+  <span class="absValue">
+    (7/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    88,4%
+  </span>
+  <span class="absValue">
+    (107/121)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package bodyTech.model.dao;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import bodyTech.model.ConPool;
+<i class="no-highlight">4</i>&nbsp;import bodyTech.model.entity.EsercizioAllenamento;
+<i class="no-highlight">5</i>&nbsp;import bodyTech.model.entity.Istruttore;
+<i class="no-highlight">6</i>&nbsp;import bodyTech.model.entity.SchedaAllenamento;
+<i class="no-highlight">7</i>&nbsp;import bodyTech.model.entity.Utente;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">10</i>&nbsp;import java.sql.*;
+<i class="no-highlight">11</i>&nbsp;import java.util.ArrayList;
+<i class="no-highlight">12</i>&nbsp;import java.util.List;
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;/**
+<i class="no-highlight">15</i>&nbsp; * Questa classe rappresenta il DAO di un Istruttore
+<i class="no-highlight">16</i>&nbsp; */
+<b class="nc"><i class="no-highlight">17</i>&nbsp;public class IstruttoreDAO {</b>
+<i class="no-highlight">18</i>&nbsp;
+<i class="no-highlight">19</i>&nbsp;    /**
+<i class="no-highlight">20</i>&nbsp;     * Implementa la funzionalità di creare un oggetto Istruttore e recuperare i suoi attributi dal DB.
+<i class="no-highlight">21</i>&nbsp;     * @param rs
+<i class="no-highlight">22</i>&nbsp;     * @return Istruttore creato
+<i class="no-highlight">23</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">24</i>&nbsp;     */
+<i class="no-highlight">25</i>&nbsp;    public static Istruttore createIstruttore(ResultSet rs) throws SQLException {
+<b class="fc"><i class="no-highlight">26</i>&nbsp;        Istruttore istr = new Istruttore();</b>
+<b class="fc"><i class="no-highlight">27</i>&nbsp;        istr.setMatricolaIstruttore(rs.getString(1));</b>
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        istr.setNome(rs.getString(2));</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        istr.setCognome(rs.getString(3));</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        istr.setPassword(rs.getString(4));</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;        istr.setSpecializzazione(rs.getString(5));</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;        istr.setListaSchedeCreate(SchedaAllenamentoDAO.findAllByInstructor(istr.getMatricolaIstruttore()));</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;        for (SchedaAllenamento sa : istr.getListaSchedeCreate()) {</b>
+<b class="fc"><i class="no-highlight">34</i>&nbsp;            sa.setIstruttore(istr);</b>
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        return istr;</b>
+<i class="no-highlight">37</i>&nbsp;    }
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    /**
+<i class="no-highlight">40</i>&nbsp;     * Implementa la funzionalità di recuperare dal DB una lista di tutti gli Istruttori presenti.
+<i class="no-highlight">41</i>&nbsp;     * @return lista degli Istruttori
+<i class="no-highlight">42</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">43</i>&nbsp;     */
+<i class="no-highlight">44</i>&nbsp;    public static List&lt;Istruttore&gt; visualizzaIstruttori() throws SQLException {
+<b class="fc"><i class="no-highlight">45</i>&nbsp;        Connection conn = ConPool.getConnection();</b>
+<b class="fc"><i class="no-highlight">46</i>&nbsp;        Statement stmt = conn.createStatement();</b>
+<b class="fc"><i class="no-highlight">47</i>&nbsp;        String query = &quot;SELECT * FROM istruttore&quot;;</b>
+<b class="fc"><i class="no-highlight">48</i>&nbsp;        ResultSet rs = stmt.executeQuery(query);</b>
+<b class="fc"><i class="no-highlight">49</i>&nbsp;        List&lt;Istruttore&gt; istruttori = new ArrayList&lt;&gt;();</b>
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        while (rs.next()) {</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;            Istruttore istr = createIstruttore(rs);</b>
+<b class="fc"><i class="no-highlight">52</i>&nbsp;            istruttori.add(istr);</b>
+<b class="fc"><i class="no-highlight">53</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">54</i>&nbsp;        stmt.close();</b>
+<b class="fc"><i class="no-highlight">55</i>&nbsp;        conn.close();</b>
+<b class="fc"><i class="no-highlight">56</i>&nbsp;        return istruttori;</b>
+<i class="no-highlight">57</i>&nbsp;    }
+<i class="no-highlight">58</i>&nbsp;
+<i class="no-highlight">59</i>&nbsp;    /**
+<i class="no-highlight">60</i>&nbsp;     * Implementa la funzionalità di recuperare dal DB l&#39;Istruttore associato a quella matricola.
+<i class="no-highlight">61</i>&nbsp;     * @param matricola dell&#39;Istruttore da cercare
+<i class="no-highlight">62</i>&nbsp;     * @return Istruttore trovato
+<i class="no-highlight">63</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">64</i>&nbsp;     */
+<i class="no-highlight">65</i>&nbsp;    public static Istruttore findByMatricola(String matricola) throws SQLException {
+<b class="fc"><i class="no-highlight">66</i>&nbsp;        Connection conn = ConPool.getConnection();</b>
+<b class="fc"><i class="no-highlight">67</i>&nbsp;        Statement stmt = conn.createStatement();</b>
+<b class="fc"><i class="no-highlight">68</i>&nbsp;        String query = &quot;SELECT * FROM istruttore WHERE matricolaIstruttore = &#39;&quot; + matricola + &quot;&#39;&quot;;</b>
+<b class="fc"><i class="no-highlight">69</i>&nbsp;        ResultSet rs = stmt.executeQuery(query);</b>
+<b class="fc"><i class="no-highlight">70</i>&nbsp;        Istruttore istr = null;</b>
+<b class="fc"><i class="no-highlight">71</i>&nbsp;        if (rs.next())</b>
+<b class="fc"><i class="no-highlight">72</i>&nbsp;            istr = createIstruttore(rs);</b>
+<b class="fc"><i class="no-highlight">73</i>&nbsp;        stmt.close();</b>
+<b class="fc"><i class="no-highlight">74</i>&nbsp;        conn.close();</b>
+<b class="fc"><i class="no-highlight">75</i>&nbsp;        return istr;</b>
+<i class="no-highlight">76</i>&nbsp;    }
+<i class="no-highlight">77</i>&nbsp;
+<i class="no-highlight">78</i>&nbsp;    /**
+<i class="no-highlight">79</i>&nbsp;     * Implementa la funzionalità di aggiornare le informazioni di un istruttore nel DB, se già esistente.
+<i class="no-highlight">80</i>&nbsp;     * @param oldIstr l&#39;istruttore corrente da aggiornare
+<i class="no-highlight">81</i>&nbsp;     * @param newIstr l&#39;istruttore che contiene le informazioni aggiornate
+<i class="no-highlight">82</i>&nbsp;     * @return true se la modifica è andata a buon fine; false altrimenti
+<i class="no-highlight">83</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">84</i>&nbsp;     */
+<i class="no-highlight">85</i>&nbsp;    public static boolean updateInstructor(Istruttore oldIstr, Istruttore newIstr) throws SQLException, IOException {
+<b class="fc"><i class="no-highlight">86</i>&nbsp;        Connection conn = ConPool.getConnection();</b>
+<b class="fc"><i class="no-highlight">87</i>&nbsp;        List&lt;Istruttore&gt; instructors = IstruttoreDAO.visualizzaIstruttori();</b>
+<b class="fc"><i class="no-highlight">88</i>&nbsp;        if (newIstr.getNome()==null || newIstr.getCognome()==null || newIstr.getPassword() ==null ||</b>
+<b class="fc"><i class="no-highlight">89</i>&nbsp;                newIstr.getMatricolaIstruttore()==null)</b>
+<b class="fc"><i class="no-highlight">90</i>&nbsp;            return false;</b>
+<b class="fc"><i class="no-highlight">91</i>&nbsp;        if (newIstr.getSpecializzazione() == null &amp;&amp; oldIstr.getSpecializzazione() != null)</b>
+<b class="nc"><i class="no-highlight">92</i>&nbsp;            return false;</b>
+<b class="fc"><i class="no-highlight">93</i>&nbsp;        boolean existingInstructor = false;</b>
+<b class="fc"><i class="no-highlight">94</i>&nbsp;        for (Istruttore i : instructors) {</b>
+<b class="fc"><i class="no-highlight">95</i>&nbsp;            if (i.getMatricolaIstruttore().equalsIgnoreCase(newIstr.getMatricolaIstruttore()) &amp;&amp;</b>
+<b class="fc"><i class="no-highlight">96</i>&nbsp;                    !i.getMatricolaIstruttore().equalsIgnoreCase(oldIstr.getMatricolaIstruttore()))</b>
+<b class="fc"><i class="no-highlight">97</i>&nbsp;                throw new IOException(&quot;Matricola già presente all&#39;interno della piattaforma&quot;);</b>
+<b class="fc"><i class="no-highlight">98</i>&nbsp;            if (i.getMatricolaIstruttore().equalsIgnoreCase(oldIstr.getMatricolaIstruttore())) {</b>
+<b class="fc"><i class="no-highlight">99</i>&nbsp;                existingInstructor = true;</b>
+<i class="no-highlight">100</i>&nbsp;            }
+<b class="fc"><i class="no-highlight">101</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">102</i>&nbsp;        if (existingInstructor) {</b>
+<b class="fc"><i class="no-highlight">103</i>&nbsp;            PreparedStatement pstmt = conn.prepareStatement(&quot;UPDATE istruttore SET matricolaIstruttore = ?, nome = ?, cognome = ?, pass = ?, specializzazione = ?&quot; +</b>
+<i class="no-highlight">104</i>&nbsp;                    &quot; WHERE matricolaIstruttore = ?&quot;);
+<b class="fc"><i class="no-highlight">105</i>&nbsp;            pstmt.setString(1, newIstr.getMatricolaIstruttore());</b>
+<b class="fc"><i class="no-highlight">106</i>&nbsp;            pstmt.setString(2, newIstr.getNome());</b>
+<b class="fc"><i class="no-highlight">107</i>&nbsp;            pstmt.setString(3, newIstr.getCognome());</b>
+<b class="fc"><i class="no-highlight">108</i>&nbsp;            pstmt.setString(4, newIstr.getPassword());</b>
+<b class="fc"><i class="no-highlight">109</i>&nbsp;            pstmt.setString(5, newIstr.getSpecializzazione());</b>
+<b class="fc"><i class="no-highlight">110</i>&nbsp;            pstmt.setString(6, oldIstr.getMatricolaIstruttore());</b>
+<b class="fc"><i class="no-highlight">111</i>&nbsp;            if (!newIstr.getMatricolaIstruttore().equals(oldIstr.getMatricolaIstruttore())){</b>
+<b class="fc"><i class="no-highlight">112</i>&nbsp;                List&lt;SchedaAllenamento&gt; listaSchedeIstruttore = SchedaAllenamentoDAO.findAllByInstructor(oldIstr.getMatricolaIstruttore());</b>
+<b class="fc"><i class="no-highlight">113</i>&nbsp;                for (SchedaAllenamento scheda: listaSchedeIstruttore){</b>
+<b class="nc"><i class="no-highlight">114</i>&nbsp;                    SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());</b>
+<b class="nc"><i class="no-highlight">115</i>&nbsp;                    scheda.setIstruttore(newIstr);</b>
+<b class="nc"><i class="no-highlight">116</i>&nbsp;                }</b>
+<b class="fc"><i class="no-highlight">117</i>&nbsp;                pstmt.executeUpdate();</b>
+<b class="fc"><i class="no-highlight">118</i>&nbsp;                for (SchedaAllenamento scheda: listaSchedeIstruttore){</b>
+<b class="nc"><i class="no-highlight">119</i>&nbsp;                    SchedaAllenamentoDAO.insertScheda(scheda);</b>
+<b class="nc"><i class="no-highlight">120</i>&nbsp;                    for (EsercizioAllenamento ea: scheda.getListaEsercizi()){</b>
+<b class="nc"><i class="no-highlight">121</i>&nbsp;                        EsercizioAllenamentoDAO.insertEsercizioAllenamento(ea, ea.getVolume(),</b>
+<b class="nc"><i class="no-highlight">122</i>&nbsp;                                SchedaAllenamentoDAO.findSchedaByUtente(scheda.getUtente().getCodiceFiscale()).getIdScheda());</b>
+<b class="nc"><i class="no-highlight">123</i>&nbsp;                    }</b>
+<b class="nc"><i class="no-highlight">124</i>&nbsp;                }</b>
+<b class="fc"><i class="no-highlight">125</i>&nbsp;            }</b>
+<i class="no-highlight">126</i>&nbsp;            else
+<b class="fc"><i class="no-highlight">127</i>&nbsp;                pstmt.executeUpdate();</b>
+<b class="fc"><i class="no-highlight">128</i>&nbsp;            pstmt.close();</b>
+<b class="fc"><i class="no-highlight">129</i>&nbsp;            conn.close();</b>
+<b class="fc"><i class="no-highlight">130</i>&nbsp;            return true;</b>
+<i class="no-highlight">131</i>&nbsp;        }
+<i class="no-highlight">132</i>&nbsp;        else
+<b class="nc"><i class="no-highlight">133</i>&nbsp;            return false;</b>
+<i class="no-highlight">134</i>&nbsp;    }
+<i class="no-highlight">135</i>&nbsp;
+<i class="no-highlight">136</i>&nbsp;    /**
+<i class="no-highlight">137</i>&nbsp;     * Implementa la funzionalità di recuperare dal DB l&#39;Istruttore associato a quella matricola, senza però recuperarne
+<i class="no-highlight">138</i>&nbsp;     * le schede di allenamento a lui associate.
+<i class="no-highlight">139</i>&nbsp;     * @param matricola dell&#39;Istruttore da cercare
+<i class="no-highlight">140</i>&nbsp;     * @return Istruttore trovato
+<i class="no-highlight">141</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">142</i>&nbsp;     */
+<i class="no-highlight">143</i>&nbsp;    public static Istruttore findByMatricolaNoSchede(String matricola) throws SQLException {
+<b class="fc"><i class="no-highlight">144</i>&nbsp;        Connection conn = ConPool.getConnection();</b>
+<b class="fc"><i class="no-highlight">145</i>&nbsp;        Statement stmt = conn.createStatement();</b>
+<b class="fc"><i class="no-highlight">146</i>&nbsp;        String query = &quot;SELECT * FROM istruttore WHERE matricolaIstruttore = &#39;&quot; + matricola + &quot;&#39;&quot;;</b>
+<b class="fc"><i class="no-highlight">147</i>&nbsp;        ResultSet rs = stmt.executeQuery(query);</b>
+<b class="fc"><i class="no-highlight">148</i>&nbsp;        Istruttore istr = null;</b>
+<b class="fc"><i class="no-highlight">149</i>&nbsp;        if (rs.next()) {</b>
+<b class="fc"><i class="no-highlight">150</i>&nbsp;            istr = new Istruttore();</b>
+<b class="fc"><i class="no-highlight">151</i>&nbsp;            istr.setMatricolaIstruttore(rs.getString(1));</b>
+<b class="fc"><i class="no-highlight">152</i>&nbsp;            istr.setNome(rs.getString(2));</b>
+<b class="fc"><i class="no-highlight">153</i>&nbsp;            istr.setCognome(rs.getString(3));</b>
+<b class="fc"><i class="no-highlight">154</i>&nbsp;            istr.setPassword(rs.getString(4));</b>
+<b class="fc"><i class="no-highlight">155</i>&nbsp;            istr.setSpecializzazione(rs.getString(5));</b>
+<b class="fc"><i class="no-highlight">156</i>&nbsp;            istr.setListaSchedeCreate(new ArrayList&lt;&gt;());</b>
+<i class="no-highlight">157</i>&nbsp;        }
+<b class="fc"><i class="no-highlight">158</i>&nbsp;        stmt.close();</b>
+<b class="fc"><i class="no-highlight">159</i>&nbsp;        conn.close();</b>
+<b class="fc"><i class="no-highlight">160</i>&nbsp;        return istr;</b>
+<i class="no-highlight">161</i>&nbsp;    }
+<i class="no-highlight">162</i>&nbsp;
+<i class="no-highlight">163</i>&nbsp;    /**
+<i class="no-highlight">164</i>&nbsp;     * Implementa la funzionalità di inserire un nuovo Istruttore nel DB.
+<i class="no-highlight">165</i>&nbsp;     * @param istr da inserire
+<i class="no-highlight">166</i>&nbsp;     * @return true, se l&#39;inserimento è andato a buon fine; false, se uno dei parametri è nullo oppure se esiste già un
+<i class="no-highlight">167</i>&nbsp;     * Istruttore nel DB con la stessa matricola
+<i class="no-highlight">168</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">169</i>&nbsp;     */
+<i class="no-highlight">170</i>&nbsp;    public static boolean insertInstructor(Istruttore istr) throws SQLException {
+<b class="fc"><i class="no-highlight">171</i>&nbsp;        if (istr.getNome()==null || istr.getCognome()==null || istr.getPassword() ==null ||</b>
+<b class="fc"><i class="no-highlight">172</i>&nbsp;                istr.getMatricolaIstruttore()==null || istr.getSpecializzazione()==null)</b>
+<b class="fc"><i class="no-highlight">173</i>&nbsp;            return false;</b>
+<b class="fc"><i class="no-highlight">174</i>&nbsp;        Connection conn = ConPool.getConnection();</b>
+<b class="fc"><i class="no-highlight">175</i>&nbsp;        List&lt;Istruttore&gt; istrs = visualizzaIstruttori();</b>
+<b class="fc"><i class="no-highlight">176</i>&nbsp;        for (Istruttore istruttore : istrs){</b>
+<b class="fc"><i class="no-highlight">177</i>&nbsp;            if (istruttore.getMatricolaIstruttore().equalsIgnoreCase(istr.getMatricolaIstruttore()))</b>
+<b class="fc"><i class="no-highlight">178</i>&nbsp;            return false;</b>
+<b class="fc"><i class="no-highlight">179</i>&nbsp;        }</b>
+<i class="no-highlight">180</i>&nbsp;
+<b class="fc"><i class="no-highlight">181</i>&nbsp;        PreparedStatement pstmt = conn.prepareStatement(&quot;INSERT INTO istruttore values (?, ?, ?, ?, ?)&quot;);</b>
+<b class="fc"><i class="no-highlight">182</i>&nbsp;        pstmt.setString(1, istr.getMatricolaIstruttore());</b>
+<b class="fc"><i class="no-highlight">183</i>&nbsp;        pstmt.setString(2, istr.getNome());</b>
+<b class="fc"><i class="no-highlight">184</i>&nbsp;        pstmt.setString(3, istr.getCognome());</b>
+<b class="fc"><i class="no-highlight">185</i>&nbsp;        pstmt.setString(4, istr.getPassword());</b>
+<b class="fc"><i class="no-highlight">186</i>&nbsp;        pstmt.setString(5, istr.getSpecializzazione());</b>
+<b class="fc"><i class="no-highlight">187</i>&nbsp;        pstmt.executeUpdate();</b>
+<b class="fc"><i class="no-highlight">188</i>&nbsp;        pstmt.close();</b>
+<b class="fc"><i class="no-highlight">189</i>&nbsp;        conn.close();</b>
+<b class="fc"><i class="no-highlight">190</i>&nbsp;        return true;</b>
+<i class="no-highlight">191</i>&nbsp;    }
+<i class="no-highlight">192</i>&nbsp;
+<i class="no-highlight">193</i>&nbsp;    /**
+<i class="no-highlight">194</i>&nbsp;     * Implementa la funzionalità di eliminare un Istruttore dal DB.
+<i class="no-highlight">195</i>&nbsp;     * @param istr da eliminare
+<i class="no-highlight">196</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">197</i>&nbsp;     */
+<i class="no-highlight">198</i>&nbsp;    public static void deleteInstructor(Istruttore istr) throws SQLException {
+<b class="fc"><i class="no-highlight">199</i>&nbsp;        Connection conn = ConPool.getConnection();</b>
+<b class="fc"><i class="no-highlight">200</i>&nbsp;        for (SchedaAllenamento scheda: SchedaAllenamentoDAO.findAllByInstructor(istr.getMatricolaIstruttore())){</b>
+<b class="nc"><i class="no-highlight">201</i>&nbsp;            SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());</b>
+<b class="nc"><i class="no-highlight">202</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">203</i>&nbsp;        PreparedStatement pstmt = conn.prepareStatement(&quot;DELETE FROM istruttore WHERE matricolaIstruttore = ?&quot;);</b>
+<b class="fc"><i class="no-highlight">204</i>&nbsp;        pstmt.setString(1, istr.getMatricolaIstruttore());</b>
+<b class="fc"><i class="no-highlight">205</i>&nbsp;        pstmt.executeUpdate();</b>
+<b class="fc"><i class="no-highlight">206</i>&nbsp;        pstmt.close();</b>
+<b class="fc"><i class="no-highlight">207</i>&nbsp;        conn.close();</b>
+<i class="no-highlight">208</i>&nbsp;    }
+<i class="no-highlight">209</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 02:06</div>
+</div>
+</body>
+</html>
