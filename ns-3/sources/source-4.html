@@ -1,0 +1,102 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > ProfiloService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bodyTech.gestioneProfilo.service</a>
+</div>
+
+<h1>Coverage Summary for Class: ProfiloService (bodyTech.gestioneProfilo.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">ProfiloService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package bodyTech.gestioneProfilo.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import bodyTech.model.entity.Profilo;
+<i class="no-highlight">4</i>&nbsp;import bodyTech.model.entity.SchedaAllenamento;
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;import java.io.IOException;
+<i class="no-highlight">7</i>&nbsp;import java.sql.SQLException;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;/**
+<i class="no-highlight">10</i>&nbsp; * Questa classe fornisce tutte le operazioni di visualizzazione del profilo.
+<i class="no-highlight">11</i>&nbsp; */
+<i class="no-highlight">12</i>&nbsp;public interface ProfiloService {
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;    /**
+<i class="no-highlight">15</i>&nbsp;     * Questa funzionalità consente a Utenti, Istruttori ed Amministratori di modificare
+<i class="no-highlight">16</i>&nbsp;     * le informazioni relative al proprio profilo.
+<i class="no-highlight">17</i>&nbsp;     * @param oldProfile il profilo da aggiornare
+<i class="no-highlight">18</i>&nbsp;     * @param newProfile il profilo con le informazioni aggiornate
+<i class="no-highlight">19</i>&nbsp;     * @return l&#39;esito dell&#39;aggiornamento: true, se andato a buon fine; false, altrimenti.
+<i class="no-highlight">20</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">21</i>&nbsp;     */
+<i class="no-highlight">22</i>&nbsp;    public boolean modificaDati (Profilo oldProfile, Profilo newProfile) throws SQLException, IOException;
+<i class="no-highlight">23</i>&nbsp;
+<i class="no-highlight">24</i>&nbsp;
+<i class="no-highlight">25</i>&nbsp;    /**
+<i class="no-highlight">26</i>&nbsp;     * Questa funzionalità consente agli Utenti di visualizzare le informazioni
+<i class="no-highlight">27</i>&nbsp;     * relative alla propria scheda di allenamento, se esistente.
+<i class="no-highlight">28</i>&nbsp;     * @param p il Profilo di cui trovare la Scheda di Allenamento
+<i class="no-highlight">29</i>&nbsp;     * @return scheda di allenamento associata al profilo passato come parametro.
+<i class="no-highlight">30</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">31</i>&nbsp;     */
+<i class="no-highlight">32</i>&nbsp;    public SchedaAllenamento visualizzaScheda (Profilo p) throws SQLException;
+<i class="no-highlight">33</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 02:06</div>
+</div>
+</body>
+</html>
