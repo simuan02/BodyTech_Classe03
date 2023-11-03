@@ -55,7 +55,7 @@ public class ModificaSchedaAllenamentoControllerTest {
             scheda.setUtente(user);
             scheda.setIstruttore(IstruttoreDAO.visualizzaIstruttori().get(0));
             scheda.setListaEsercizi(new ArrayList<>());
-            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento values (?,?,?,?,?,?)");
+            PreparedStatement pstmt = conn.prepareStatement("INSERT INTO schedaAllenamento values (?,?,?,?,?,?)");
             pstmt.setInt(1, scheda.getIdScheda());
             java.sql.Date dataInizio = new java.sql.Date(scheda.getDataInizio().getTime());
             pstmt.setDate(2, dataInizio);

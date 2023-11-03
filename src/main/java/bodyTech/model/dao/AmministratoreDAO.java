@@ -78,7 +78,7 @@ public class AmministratoreDAO{
             }
         }
         if (existingAdmin){
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE Amministratore SET codice = ?, nome = ?, cognome = ?, pass = ?" +
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE amministratore SET codice = ?, nome = ?, cognome = ?, pass = ?" +
                     "WHERE codice = ?");
             pstmt.setInt(1, newAdmin.getCodice());
             pstmt.setString(2, newAdmin.getNome());

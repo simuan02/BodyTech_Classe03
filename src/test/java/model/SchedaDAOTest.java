@@ -264,7 +264,7 @@ public class SchedaDAOTest {
         }
         scheda.setUtente(user2);
         scheda.setIstruttore(IstruttoreDAO.visualizzaIstruttori().get(0));
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento values (?,?,?,?,?,?)");
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO schedaAllenamento values (?,?,?,?,?,?)");
         pstmt.setInt(1, scheda.getIdScheda());
         java.sql.Date dataInizio = new java.sql.Date(scheda.getDataInizio().getTime());
         pstmt.setDate(2, dataInizio);
@@ -389,14 +389,20 @@ public class SchedaDAOTest {
         SchedaAllenamento scheda1 = beforeUpdateSchedaTests();
         SchedaAllenamento scheda2 = new SchedaAllenamento();
         scheda2.setDataInizio(scheda1.getDataInizio());
-        scheda2.setDataCompletamento(new Date(123, Calendar.NOVEMBER, 29));
+        scheda2.setDataCompletamento(scheda1.getDataCompletamento());
+        scheda2.getDataCompletamento().setMonth(Calendar.NOVEMBER);
+        scheda2.getDataCompletamento().setDate(29);
         scheda2.setIstruttore(scheda1.getIstruttore());
         scheda2.setUtente(scheda1.getUtente());
         scheda2.setTipo("Powerlifting");
         try{
             SchedaAllenamentoDAO.updateScheda(scheda1, scheda2);
             boolean schedaAggiornata = false;
+            System.out.println(scheda1.getIdScheda() + " " + scheda2.getUtente().getCodiceFiscale() + " " + scheda2.getTipo() +
+                    scheda2.getDataCompletamento() + " " + scheda2.getDataInizio() + " " + scheda2.getIstruttore().getMatricolaIstruttore());
             for (SchedaAllenamento schedaDB: SchedaAllenamentoDAO.findAll()){
+                System.out.println(schedaDB.getIdScheda() + " " + schedaDB.getUtente().getCodiceFiscale() + " " + schedaDB.getTipo() +
+                        schedaDB.getDataCompletamento() + " " + schedaDB.getDataInizio() + " " + schedaDB.getIstruttore().getMatricolaIstruttore());
                 if (schedaDB.getIdScheda() == scheda1.getIdScheda() && schedaDB.getTipo().equals(scheda2.getTipo()) &&
                 schedaDB.getDataInizio().getTime() == scheda2.getDataInizio().getTime() &&
                 schedaDB.getDataCompletamento().getTime() == scheda2.getDataCompletamento().getTime() &&

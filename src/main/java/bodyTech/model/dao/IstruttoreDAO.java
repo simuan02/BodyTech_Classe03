@@ -100,7 +100,7 @@ public class IstruttoreDAO {
             }
         }
         if (existingInstructor) {
-            PreparedStatement pstmt = conn.prepareStatement("UPDATE Istruttore SET matricolaIstruttore = ?, nome = ?, cognome = ?, pass = ?, specializzazione = ?" +
+            PreparedStatement pstmt = conn.prepareStatement("UPDATE istruttore SET matricolaIstruttore = ?, nome = ?, cognome = ?, pass = ?, specializzazione = ?" +
                     " WHERE matricolaIstruttore = ?");
             pstmt.setString(1, newIstr.getMatricolaIstruttore());
             pstmt.setString(2, newIstr.getNome());
@@ -125,7 +125,6 @@ public class IstruttoreDAO {
             }
             else
                 pstmt.executeUpdate();
-            pstmt.executeUpdate();
             pstmt.close();
             conn.close();
             return true;
@@ -179,7 +178,7 @@ public class IstruttoreDAO {
             return false;
         }
 
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO Istruttore values (?, ?, ?, ?, ?)");
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO istruttore values (?, ?, ?, ?, ?)");
         pstmt.setString(1, istr.getMatricolaIstruttore());
         pstmt.setString(2, istr.getNome());
         pstmt.setString(3, istr.getCognome());
@@ -201,7 +200,7 @@ public class IstruttoreDAO {
         for (SchedaAllenamento scheda: SchedaAllenamentoDAO.findAllByInstructor(istr.getMatricolaIstruttore())){
             SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());
         }
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM Istruttore WHERE matricolaIstruttore = ?");
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM istruttore WHERE matricolaIstruttore = ?");
         pstmt.setString(1, istr.getMatricolaIstruttore());
         pstmt.executeUpdate();
         pstmt.close();

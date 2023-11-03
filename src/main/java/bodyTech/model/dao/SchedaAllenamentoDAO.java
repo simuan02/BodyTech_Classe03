@@ -77,7 +77,7 @@ public class SchedaAllenamentoDAO {
     public static List<SchedaAllenamento> findAll() throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM SchedaAllenamento";
+        String query = "SELECT * FROM schedaAllenamento";
         ResultSet rs = stmt.executeQuery(query);
         List<SchedaAllenamento> listaSchede = new ArrayList<>();
         while(rs.next()){
@@ -98,7 +98,7 @@ public class SchedaAllenamentoDAO {
     public static SchedaAllenamento findByID(int schedaID) throws SQLException {
         Connection conn = ConPool.getConnection();
         Statement stmt = conn.createStatement();
-        String query = "SELECT * FROM SchedaAllenamento WHERE idScheda = " + schedaID;
+        String query = "SELECT * FROM schedaAllenamento WHERE idScheda = " + schedaID;
         ResultSet rs = stmt.executeQuery(query);
         if (rs.next()){
             return createSchedaAllenamento(rs);
@@ -141,7 +141,7 @@ public class SchedaAllenamentoDAO {
     public static void deleteScheda(int idScheda) throws SQLException {
         EsercizioAllenamentoDAO.deleteAllSchedaExercises(idScheda);
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM SchedaAllenamento WHERE idScheda = ?");
+        PreparedStatement pstmt = conn.prepareStatement("DELETE FROM schedaAllenamento WHERE idScheda = ?");
         pstmt.setInt(1, idScheda);
         pstmt.executeUpdate();
         pstmt.close();
@@ -155,7 +155,7 @@ public class SchedaAllenamentoDAO {
      */
     public static void insertScheda(SchedaAllenamento sa) throws SQLException {
         Connection conn = ConPool.getConnection();
-        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO SchedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) values" +
+        PreparedStatement pstmt = conn.prepareStatement("INSERT INTO schedaAllenamento (dataInizio, dataCompletamento, tipo, utente, istruttore) values" +
                 "(?, ?, ?, ?, ?)");
         if (sa.getTipo() == null || sa.getTipo().length() == 0)
             throw new RuntimeException("Errato: Tipo Assente");

@@ -26,6 +26,7 @@ public class RichiestaModificaSchedaDAOTest {
         richiesta.setEsito(true);
         utente = UtenteDAO.findByCodiceFiscale("DDMJCP01A06A509F");
         if (utente == null){
+            utente = new Utente();
             utente.setNome("Jacopo");
             utente.setCognome("De Dominicis");
             utente.setPassword("ABCDEFGHIJ");
@@ -112,6 +113,7 @@ public class RichiestaModificaSchedaDAOTest {
         String codiceFiscaleUtente = "SPSSMN02B06L845X";
         Utente u = UtenteDAO.findByCodiceFiscale(codiceFiscaleUtente);
         if (u == null){
+            u = new Utente();
             u.setNome("Simone");
             u.setCognome("Esposito");
             u.setCodiceFiscale(codiceFiscaleUtente);
@@ -132,16 +134,23 @@ public class RichiestaModificaSchedaDAOTest {
 
 
     /**
-     * Questo caso di test verifica il comportamento del metodo  RichiestaDAO.findById(idRichiesta),
+     * Questo caso di test verifica il comportamento del metodo RichiestaDAO.findById(idRichiesta),
      * nel caso in cui rispetto la precondizione che l'id è esistente.
      * */
     @Test
     public void testFindMyId_Method_OK() throws SQLException {
+        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setMessaggio("Richiesta di Prova");
+        String cfRichiesta = UtenteDAO.visualizzaUtenti().get(0).getCodiceFiscale();
+        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, cfRichiesta);//richiesta inserita per ovviare al caso in cui non c'è alcuna richiesta nel DB
         int id = 1;
         while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
             id++;
         }
         assertNotNull("Errore nella ricerca della richiesta", RichiestaModificaSchedaDAO.findById(id).getMessaggio());
+        List<RichiestaModificaScheda> richieste = RichiestaModificaSchedaDAO.findByUser(cfRichiesta);
+        RichiestaModificaScheda richiestaDaCancellare = richieste.get(richieste.size() - 1);
+        RichiestaModificaSchedaDAO.deleteRichiesta(richiestaDaCancellare);
     }
 
     /**
@@ -168,6 +177,9 @@ public class RichiestaModificaSchedaDAOTest {
             message += c;
         }
         RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setMessaggio("Richiesta di Prova");
+        String cfRichiesta = UtenteDAO.visualizzaUtenti().get(0).getCodiceFiscale();
+        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, cfRichiesta);//richiesta inserita per ovviare al caso in cui non c'è alcuna richiesta nel DB
         int id = 1;
         while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
             id++;
@@ -177,6 +189,9 @@ public class RichiestaModificaSchedaDAOTest {
         richiesta.setEsito(true);
         try{
             RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta);
+            List<RichiestaModificaScheda> richieste = RichiestaModificaSchedaDAO.findByUser(cfRichiesta);
+            RichiestaModificaScheda richiestaDaCancellare = richieste.get(richieste.size() - 1);
+            RichiestaModificaSchedaDAO.deleteRichiesta(richiestaDaCancellare);
         }
         catch(SQLException e){
             fail ("Errore nel cambiamento dell'esito della richiesta");
