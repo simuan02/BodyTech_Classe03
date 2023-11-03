@@ -132,7 +132,9 @@ public class ModificaSchedaAllenamentoTest {
     @Test
     public void test_ModificaScheda_3_2_4(){
         schedaModificata.setTipo("Powerlifting");
-        schedaModificata.setDataCompletamento(new Date(123, Calendar.NOVEMBER, 30));
+        schedaModificata.setDataCompletamento(scheda.getDataCompletamento());
+        schedaModificata.getDataCompletamento().setMonth(Calendar.NOVEMBER);
+        schedaModificata.getDataCompletamento().setDate(30);
         try{
             SchedaService services = new SchedaServiceImpl();
             services.modificaSchedaUtente(schedaModificata, scheda.getUtente());

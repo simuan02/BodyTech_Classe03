@@ -82,13 +82,10 @@ public class UtenteDAO {
      */
     public static boolean insertUser (Utente u) throws SQLException {
         Connection conn = ConPool.getConnection();
-        List<Utente> users = visualizzaUtenti();
         if (u.getCodiceFiscale()==null || u.getNome() == null || u.getCognome() == null || u.getPassword() == null)
             return false;
-        for (Utente user : users){
-            if (user.getCodiceFiscale().equalsIgnoreCase(u.getCodiceFiscale()))
-                return false;
-        }
+        if (findByCodiceFiscale(u.getCodiceFiscale())!=null)
+            return false;
         PreparedStatement pstmt = conn.prepareStatement("INSERT INTO utente values (?,?,?,?)");
         pstmt.setString(1, u.getCodiceFiscale());
         pstmt.setString(2, u.getNome());
