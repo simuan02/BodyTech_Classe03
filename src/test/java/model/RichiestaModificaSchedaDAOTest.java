@@ -177,6 +177,9 @@ public class RichiestaModificaSchedaDAOTest {
             message += c;
         }
         RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setMessaggio("Richiesta di Prova");
+        String cfRichiesta = UtenteDAO.visualizzaUtenti().get(0).getCodiceFiscale();
+        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, cfRichiesta);//richiesta inserita per ovviare al caso in cui non c'è alcuna richiesta nel DB
         int id = 1;
         while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
             id++;
@@ -186,6 +189,9 @@ public class RichiestaModificaSchedaDAOTest {
         richiesta.setEsito(true);
         try{
             RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta);
+            List<RichiestaModificaScheda> richieste = RichiestaModificaSchedaDAO.findByUser(cfRichiesta);
+            RichiestaModificaScheda richiestaDaCancellare = richieste.get(richieste.size() - 1);
+            RichiestaModificaSchedaDAO.deleteRichiesta(richiestaDaCancellare);
         }
         catch(SQLException e){
             fail ("Errore nel cambiamento dell'esito della richiesta");
