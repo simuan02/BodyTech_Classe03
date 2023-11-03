@@ -126,7 +126,10 @@ public class RichiestaModificaSchedaTest {
         i.setNome("Fabio");
         i.setCognome("Istruttore");
         i.setPassword("FabioP1");
-        IstruttoreDAO.insertInstructor(i);
+        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setMessaggio("Richiesta di Prova");
+        String cfRichiesta = UtenteDAO.visualizzaUtenti().get(0).getCodiceFiscale();
+        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, cfRichiesta);//richiesta inserita per ovviare al caso in cui non c'è alcuna richiesta nel DB
         int id = 1;
         while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
             id++;
@@ -140,6 +143,9 @@ public class RichiestaModificaSchedaTest {
                     e.getClass().getSimpleName().equals("NullPointerException"));
         }
         IstruttoreDAO.deleteInstructor(i);
+        List<RichiestaModificaScheda> richieste = RichiestaModificaSchedaDAO.findByUser(cfRichiesta);
+        RichiestaModificaScheda richiestaDaCancellare = richieste.get(richieste.size() - 1);
+        RichiestaModificaSchedaDAO.deleteRichiesta(richiestaDaCancellare);
     }
 
     /**
@@ -150,6 +156,10 @@ public class RichiestaModificaSchedaTest {
     public void testValutazioneRichiesta_2() throws  SQLException {
         RichiestaModificaSchedaService services = new RichiestaModificaSchedaServiceImpl();
         Istruttore i = null;
+        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setMessaggio("Richiesta di Prova");
+        String cfRichiesta = UtenteDAO.visualizzaUtenti().get(0).getCodiceFiscale();
+        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, cfRichiesta);//richiesta inserita per ovviare al caso in cui non c'è alcuna richiesta nel DB
         int id = 1;
         while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
             id++;
@@ -162,6 +172,9 @@ public class RichiestaModificaSchedaTest {
             assertTrue("Il service non ha tenuto conto dell'istruttore null",
                     e.getMessage().contains("Utente Non Autorizzato!"));
         }
+        List<RichiestaModificaScheda> richieste = RichiestaModificaSchedaDAO.findByUser(cfRichiesta);
+        RichiestaModificaScheda richiestaDaCancellare = richieste.get(richieste.size() - 1);
+        RichiestaModificaSchedaDAO.deleteRichiesta(richiestaDaCancellare);
     }
 
     /**
@@ -177,6 +190,10 @@ public class RichiestaModificaSchedaTest {
         i.setCognome("Istruttore");
         i.setPassword("FabioP1");
         IstruttoreDAO.insertInstructor(i);
+        RichiestaModificaScheda richiesta = new RichiestaModificaScheda();
+        richiesta.setMessaggio("Richiesta di Prova");
+        String cfRichiesta = UtenteDAO.visualizzaUtenti().get(0).getCodiceFiscale();
+        RichiestaModificaSchedaDAO.insertNewRequest(richiesta, cfRichiesta);//richiesta inserita per ovviare al caso in cui non c'è alcuna richiesta nel DB
         int id = 1;
         while (RichiestaModificaSchedaDAO.findById(id).getMessaggio() == null){
             id++;
@@ -191,6 +208,9 @@ public class RichiestaModificaSchedaTest {
         catch(Exception e){
             fail ("Eccezione lanciata");
         }
+        List<RichiestaModificaScheda> richieste = RichiestaModificaSchedaDAO.findByUser(cfRichiesta);
+        RichiestaModificaScheda richiestaDaCancellare = richieste.get(richieste.size() - 1);
+        RichiestaModificaSchedaDAO.deleteRichiesta(richiestaDaCancellare);
     }
 
 }

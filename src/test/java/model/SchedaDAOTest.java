@@ -398,11 +398,7 @@ public class SchedaDAOTest {
         try{
             SchedaAllenamentoDAO.updateScheda(scheda1, scheda2);
             boolean schedaAggiornata = false;
-            System.out.println(scheda1.getIdScheda() + " " + scheda2.getUtente().getCodiceFiscale() + " " + scheda2.getTipo() +
-                    scheda2.getDataCompletamento() + " " + scheda2.getDataInizio() + " " + scheda2.getIstruttore().getMatricolaIstruttore());
             for (SchedaAllenamento schedaDB: SchedaAllenamentoDAO.findAll()){
-                System.out.println(schedaDB.getIdScheda() + " " + schedaDB.getUtente().getCodiceFiscale() + " " + schedaDB.getTipo() +
-                        schedaDB.getDataCompletamento() + " " + schedaDB.getDataInizio() + " " + schedaDB.getIstruttore().getMatricolaIstruttore());
                 if (schedaDB.getIdScheda() == scheda1.getIdScheda() && schedaDB.getTipo().equals(scheda2.getTipo()) &&
                 schedaDB.getDataInizio().getTime() == scheda2.getDataInizio().getTime() &&
                 schedaDB.getDataCompletamento().getTime() == scheda2.getDataCompletamento().getTime() &&
