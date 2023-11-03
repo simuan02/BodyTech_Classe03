@@ -1,0 +1,118 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RichiestaModificaSchedaService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bodyTech.richiestaModificaScheda.service</a>
+</div>
+
+<h1>Coverage Summary for Class: RichiestaModificaSchedaService (bodyTech.richiestaModificaScheda.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">RichiestaModificaSchedaService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package bodyTech.richiestaModificaScheda.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import bodyTech.model.entity.Istruttore;
+<i class="no-highlight">4</i>&nbsp;import bodyTech.model.entity.Profilo;
+<i class="no-highlight">5</i>&nbsp;import bodyTech.model.entity.RichiestaModificaScheda;
+<i class="no-highlight">6</i>&nbsp;import bodyTech.model.entity.Utente;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;import java.sql.SQLException;
+<i class="no-highlight">9</i>&nbsp;import java.util.List;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;/**
+<i class="no-highlight">12</i>&nbsp; * Questa classe consente l’operazione di richiesta della modifica della scheda utente.
+<i class="no-highlight">13</i>&nbsp; */
+<i class="no-highlight">14</i>&nbsp;public interface RichiestaModificaSchedaService {
+<i class="no-highlight">15</i>&nbsp;    /**
+<i class="no-highlight">16</i>&nbsp;     * Questa funzionalità consente agli Utenti di effettuare delle Richieste per la Modifica della Scheda
+<i class="no-highlight">17</i>&nbsp;     * @param richiesta La richiesta di modifica della scheda di allenamento
+<i class="no-highlight">18</i>&nbsp;     * @param u L&#39;Utente corrente
+<i class="no-highlight">19</i>&nbsp;     * @return true, se la richiesta viene creata correttamente, false altrimenti
+<i class="no-highlight">20</i>&nbsp;     */
+<i class="no-highlight">21</i>&nbsp;    public boolean richiediModificaScheda(RichiestaModificaScheda richiesta, Utente u);
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;    /**
+<i class="no-highlight">24</i>&nbsp;     * Questa funzionalità consente agli Utenti di visualizzare le proprie richieste di modifica effettuate e
+<i class="no-highlight">25</i>&nbsp;     * agli Istruttori di visualizzare tutte le Richieste di Modifica Scheda effettuate dall&#39;utente user
+<i class="no-highlight">26</i>&nbsp;     * @param p il profilo corrente
+<i class="no-highlight">27</i>&nbsp;     * @param user l&#39;utente di cui trovare le richieste di modifica scheda effettuate
+<i class="no-highlight">28</i>&nbsp;     * @return lista di richieste modifica scheda
+<i class="no-highlight">29</i>&nbsp;     */
+<i class="no-highlight">30</i>&nbsp;    public List&lt;RichiestaModificaScheda&gt; visualizzaModifica(Profilo p, Utente user) throws SQLException;
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;
+<i class="no-highlight">33</i>&nbsp;    /**
+<i class="no-highlight">34</i>&nbsp;     * Questa funzionalità consente agli Istruttori di visualizzare una singola richiesta di modifica scheda, in base all&#39;id della
+<i class="no-highlight">35</i>&nbsp;     * richiesta.
+<i class="no-highlight">36</i>&nbsp;     * @param p il profilo corrente
+<i class="no-highlight">37</i>&nbsp;     * @param idRichiesta id della richiesta da trovare
+<i class="no-highlight">38</i>&nbsp;     * @return la richiesta di modifica scheda associata che possiede id = idRichiesta
+<i class="no-highlight">39</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">40</i>&nbsp;     */
+<i class="no-highlight">41</i>&nbsp;    public RichiestaModificaScheda visualizzaSingolaRichiesta(Profilo p, int idRichiesta) throws SQLException;
+<i class="no-highlight">42</i>&nbsp;
+<i class="no-highlight">43</i>&nbsp;    /**
+<i class="no-highlight">44</i>&nbsp;     * Questa funzionalità consente agli Istruttori di valutare le richieste di modifica arrivate.
+<i class="no-highlight">45</i>&nbsp;     * @param richiesta la richiesta da esaminare
+<i class="no-highlight">46</i>&nbsp;     * @param istr l&#39;istruttore che esamina la richiesta
+<i class="no-highlight">47</i>&nbsp;     */
+<i class="no-highlight">48</i>&nbsp;    public void valutaRichiestaModifica (RichiestaModificaScheda richiesta, Istruttore istr) throws SQLException;
+<i class="no-highlight">49</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 02:06</div>
+</div>
+</body>
+</html>

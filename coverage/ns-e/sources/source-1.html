@@ -1,0 +1,214 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SchedaServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bodyTech.schedaAllenamento.service</a>
+</div>
+
+<h1>Coverage Summary for Class: SchedaServiceImpl (bodyTech.schedaAllenamento.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">SchedaServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    37,5%
+  </span>
+  <span class="absValue">
+    (3/8)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    27,6%
+  </span>
+  <span class="absValue">
+    (16/58)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package bodyTech.schedaAllenamento.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import bodyTech.model.dao.EsercizioAllenamentoDAO;
+<i class="no-highlight">4</i>&nbsp;import bodyTech.model.dao.EsercizioDAO;
+<i class="no-highlight">5</i>&nbsp;import bodyTech.model.dao.SchedaAllenamentoDAO;
+<i class="no-highlight">6</i>&nbsp;import bodyTech.model.dao.UtenteDAO;
+<i class="no-highlight">7</i>&nbsp;import bodyTech.model.entity.*;
+<i class="no-highlight">8</i>&nbsp;
+<i class="no-highlight">9</i>&nbsp;import java.sql.SQLException;
+<i class="no-highlight">10</i>&nbsp;import java.util.List;
+<i class="no-highlight">11</i>&nbsp;
+<b class="fc"><i class="no-highlight">12</i>&nbsp;public class SchedaServiceImpl implements SchedaService{</b>
+<i class="no-highlight">13</i>&nbsp;    @Override
+<i class="no-highlight">14</i>&nbsp;    public List&lt;SchedaAllenamento&gt; visualizzaSchede(Profilo p) throws SQLException {
+<b class="nc"><i class="no-highlight">15</i>&nbsp;        if (p.loggedUserLevel().equalsIgnoreCase(&quot;Istruttore&quot;)){</b>
+<b class="nc"><i class="no-highlight">16</i>&nbsp;            return SchedaAllenamentoDAO.findAll();</b>
+<i class="no-highlight">17</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">18</i>&nbsp;        throw new RuntimeException(&quot;Operazione non consentita&quot;);</b>
+<i class="no-highlight">19</i>&nbsp;    }
+<i class="no-highlight">20</i>&nbsp;
+<i class="no-highlight">21</i>&nbsp;    @Override
+<i class="no-highlight">22</i>&nbsp;    public void eliminaEsercizio(int schedaID, String nomeEsercizio) throws SQLException {
+<b class="nc"><i class="no-highlight">23</i>&nbsp;        EsercizioAllenamentoDAO.deleteExercise(schedaID, nomeEsercizio);</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;
+<i class="no-highlight">26</i>&nbsp;    @Override
+<i class="no-highlight">27</i>&nbsp;    public void modificaSchedaUtente(SchedaAllenamento sa, Utente u) throws SQLException {
+<b class="fc"><i class="no-highlight">28</i>&nbsp;        List&lt;Utente&gt; users = UtenteDAO.visualizzaUtenti();</b>
+<b class="fc"><i class="no-highlight">29</i>&nbsp;        boolean utenteTrovato = false;</b>
+<b class="fc"><i class="no-highlight">30</i>&nbsp;        for (Utente user: users){</b>
+<b class="fc"><i class="no-highlight">31</i>&nbsp;            if (user.getCodiceFiscale().equalsIgnoreCase(u.getCodiceFiscale())) {</b>
+<b class="fc"><i class="no-highlight">32</i>&nbsp;                utenteTrovato = true;</b>
+<b class="fc"><i class="no-highlight">33</i>&nbsp;                break;</b>
+<i class="no-highlight">34</i>&nbsp;            }
+<b class="fc"><i class="no-highlight">35</i>&nbsp;        }</b>
+<b class="fc"><i class="no-highlight">36</i>&nbsp;        if (!utenteTrovato)</b>
+<b class="nc"><i class="no-highlight">37</i>&nbsp;            throw new RuntimeException(&quot;Utente inesistente&quot;);</b>
+<b class="fc"><i class="no-highlight">38</i>&nbsp;        SchedaAllenamento currentSa = SchedaAllenamentoDAO.findSchedaByUtente(u.getCodiceFiscale());</b>
+<b class="fc"><i class="no-highlight">39</i>&nbsp;        if (currentSa != null){</b>
+<b class="fc"><i class="no-highlight">40</i>&nbsp;            SchedaAllenamentoDAO.updateScheda(currentSa, sa);</b>
+<b class="fc"><i class="no-highlight">41</i>&nbsp;            for (EsercizioAllenamento ea : sa.getListaEsercizi()) {</b>
+<b class="nc"><i class="no-highlight">42</i>&nbsp;                EsercizioAllenamentoDAO.updateEsercizio(ea, sa.getIdScheda());</b>
+<b class="nc"><i class="no-highlight">43</i>&nbsp;            }</b>
+<i class="no-highlight">44</i>&nbsp;        }
+<i class="no-highlight">45</i>&nbsp;        else
+<b class="nc"><i class="no-highlight">46</i>&nbsp;            throw new RuntimeException(&quot;Nessuna scheda associata all&#39;utente&quot;);</b>
+<i class="no-highlight">47</i>&nbsp;    }
+<i class="no-highlight">48</i>&nbsp;
+<i class="no-highlight">49</i>&nbsp;    @Override
+<i class="no-highlight">50</i>&nbsp;    public SchedaAllenamento rimuoviSchedaUtente(SchedaAllenamento scheda) throws SQLException {
+<b class="nc"><i class="no-highlight">51</i>&nbsp;        if (schedaEsistente(scheda)){</b>
+<b class="nc"><i class="no-highlight">52</i>&nbsp;            SchedaAllenamentoDAO.deleteScheda(scheda.getIdScheda());</b>
+<b class="nc"><i class="no-highlight">53</i>&nbsp;            return scheda;</b>
+<i class="no-highlight">54</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">55</i>&nbsp;        return null;</b>
+<i class="no-highlight">56</i>&nbsp;    }
+<i class="no-highlight">57</i>&nbsp;
+<i class="no-highlight">58</i>&nbsp;    @Override
+<i class="no-highlight">59</i>&nbsp;    public void aggiungiEsercizio(Esercizio es, String volume, SchedaAllenamento scheda) throws SQLException {
+<b class="nc"><i class="no-highlight">60</i>&nbsp;        if (!schedaEsistente(scheda)){</b>
+<b class="nc"><i class="no-highlight">61</i>&nbsp;            throw new RuntimeException(&quot;Scheda inesistente!&quot;);</b>
+<i class="no-highlight">62</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">63</i>&nbsp;        boolean esercizioNonPresente = true;</b>
+<b class="nc"><i class="no-highlight">64</i>&nbsp;        List&lt;EsercizioAllenamento&gt; listaEserciziScheda = EsercizioAllenamentoDAO.findBySchedaID(scheda.getIdScheda());</b>
+<b class="nc"><i class="no-highlight">65</i>&nbsp;        for (EsercizioAllenamento ea: listaEserciziScheda){</b>
+<b class="nc"><i class="no-highlight">66</i>&nbsp;            if (ea.getNomeEsercizio().equalsIgnoreCase(es.getNomeEsercizio())) {</b>
+<b class="nc"><i class="no-highlight">67</i>&nbsp;                esercizioNonPresente = false;</b>
+<b class="nc"><i class="no-highlight">68</i>&nbsp;                break;</b>
+<i class="no-highlight">69</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">70</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">71</i>&nbsp;        if (!esercizioNonPresente) {</b>
+<b class="nc"><i class="no-highlight">72</i>&nbsp;            throw new RuntimeException(&quot;Esercizio gia&#39; presente nella scheda!&quot;);</b>
+<i class="no-highlight">73</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">74</i>&nbsp;        List&lt;Esercizio&gt; listaEsercizi = EsercizioDAO.findAll();</b>
+<b class="nc"><i class="no-highlight">75</i>&nbsp;        boolean esercizioEsistente = false;</b>
+<b class="nc"><i class="no-highlight">76</i>&nbsp;        for (Esercizio es2: listaEsercizi){</b>
+<b class="nc"><i class="no-highlight">77</i>&nbsp;            if (es2.getNomeEsercizio().equalsIgnoreCase(es.getNomeEsercizio())){</b>
+<b class="nc"><i class="no-highlight">78</i>&nbsp;                esercizioEsistente = true;</b>
+<b class="nc"><i class="no-highlight">79</i>&nbsp;                break;</b>
+<i class="no-highlight">80</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">81</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">82</i>&nbsp;        if (!esercizioEsistente){</b>
+<b class="nc"><i class="no-highlight">83</i>&nbsp;            throw new RuntimeException(&quot;Esercizio inesistente!&quot;);</b>
+<i class="no-highlight">84</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">85</i>&nbsp;        EsercizioAllenamentoDAO.insertEsercizioAllenamento(es, volume, scheda.getIdScheda());</b>
+<i class="no-highlight">86</i>&nbsp;    }
+<i class="no-highlight">87</i>&nbsp;
+<i class="no-highlight">88</i>&nbsp;    @Override
+<i class="no-highlight">89</i>&nbsp;    public void aggiungiSchedaUtente(Profilo p, SchedaAllenamento scheda, Utente utente) throws SQLException {
+<b class="fc"><i class="no-highlight">90</i>&nbsp;        if (p.loggedUserLevel().equals(&quot;Istruttore&quot;)){</b>
+<b class="fc"><i class="no-highlight">91</i>&nbsp;            scheda.setUtente(utente);</b>
+<b class="fc"><i class="no-highlight">92</i>&nbsp;            SchedaAllenamentoDAO.insertScheda(scheda);</b>
+<i class="no-highlight">93</i>&nbsp;        }
+<i class="no-highlight">94</i>&nbsp;        else
+<b class="nc"><i class="no-highlight">95</i>&nbsp;            throw new RuntimeException(&quot;Utente non autorizzato!&quot;);</b>
+<i class="no-highlight">96</i>&nbsp;    }
+<i class="no-highlight">97</i>&nbsp;
+<i class="no-highlight">98</i>&nbsp;    private boolean schedaEsistente (SchedaAllenamento scheda) throws SQLException {
+<b class="nc"><i class="no-highlight">99</i>&nbsp;        List&lt;SchedaAllenamento&gt; listaSchede = SchedaAllenamentoDAO.findAll();</b>
+<b class="nc"><i class="no-highlight">100</i>&nbsp;        boolean schedaEsistente = false;</b>
+<b class="nc"><i class="no-highlight">101</i>&nbsp;        for (SchedaAllenamento sa: listaSchede){</b>
+<b class="nc"><i class="no-highlight">102</i>&nbsp;            if (sa.getIdScheda() == scheda.getIdScheda()){</b>
+<b class="nc"><i class="no-highlight">103</i>&nbsp;                schedaEsistente = true;</b>
+<b class="nc"><i class="no-highlight">104</i>&nbsp;                break;</b>
+<i class="no-highlight">105</i>&nbsp;            }
+<b class="nc"><i class="no-highlight">106</i>&nbsp;        }</b>
+<b class="nc"><i class="no-highlight">107</i>&nbsp;        return schedaEsistente;</b>
+<i class="no-highlight">108</i>&nbsp;    }
+<i class="no-highlight">109</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 02:06</div>
+</div>
+</body>
+</html>

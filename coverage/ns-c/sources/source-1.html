@@ -1,0 +1,161 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RichiestaModificaSchedaServiceImpl</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bodyTech.richiestaModificaScheda.service</a>
+</div>
+
+<h1>Coverage Summary for Class: RichiestaModificaSchedaServiceImpl (bodyTech.richiestaModificaScheda.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RichiestaModificaSchedaServiceImpl</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    80%
+  </span>
+  <span class="absValue">
+    (4/5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    66,7%
+  </span>
+  <span class="absValue">
+    (14/21)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package bodyTech.richiestaModificaScheda.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import bodyTech.gestioneProfilo.service.ProfiloService;
+<i class="no-highlight">4</i>&nbsp;import bodyTech.gestioneProfilo.service.ProfiloServiceImpl;
+<i class="no-highlight">5</i>&nbsp;import bodyTech.model.dao.RichiestaModificaSchedaDAO;
+<i class="no-highlight">6</i>&nbsp;import bodyTech.model.entity.Istruttore;
+<i class="no-highlight">7</i>&nbsp;import bodyTech.model.entity.Profilo;
+<i class="no-highlight">8</i>&nbsp;import bodyTech.model.entity.RichiestaModificaScheda;
+<i class="no-highlight">9</i>&nbsp;import bodyTech.model.entity.Utente;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;import java.sql.SQLException;
+<i class="no-highlight">12</i>&nbsp;import java.util.List;
+<i class="no-highlight">13</i>&nbsp;
+<b class="fc"><i class="no-highlight">14</i>&nbsp;public class RichiestaModificaSchedaServiceImpl implements RichiestaModificaSchedaService{</b>
+<i class="no-highlight">15</i>&nbsp;    @Override
+<i class="no-highlight">16</i>&nbsp;    public boolean richiediModificaScheda(RichiestaModificaScheda richiesta, Utente u) {
+<b class="fc"><i class="no-highlight">17</i>&nbsp;        if (u == null)</b>
+<b class="fc"><i class="no-highlight">18</i>&nbsp;            throw new NullPointerException(&quot;L&#39;utente non esiste&quot;);</b>
+<b class="fc"><i class="no-highlight">19</i>&nbsp;        if (richiesta.getMessaggio().length() == 0)</b>
+<b class="fc"><i class="no-highlight">20</i>&nbsp;            throw new RuntimeException(&quot;Lunghezza messaggio uguale a 0&quot;);</b>
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        if (richiesta.getMessaggio().length() &gt; 250)</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;            throw new RuntimeException(&quot;Lunghezza messaggio maggiore di 250 caratteri&quot;);</b>
+<i class="no-highlight">23</i>&nbsp;        try {
+<b class="fc"><i class="no-highlight">24</i>&nbsp;            RichiestaModificaSchedaDAO.insertNewRequest(richiesta, u.getCodiceFiscale());</b>
+<b class="fc"><i class="no-highlight">25</i>&nbsp;            return true;</b>
+<b class="nc"><i class="no-highlight">26</i>&nbsp;        } catch (SQLException e) {</b>
+<b class="nc"><i class="no-highlight">27</i>&nbsp;            e.printStackTrace();</b>
+<b class="nc"><i class="no-highlight">28</i>&nbsp;            return false;</b>
+<i class="no-highlight">29</i>&nbsp;        }
+<i class="no-highlight">30</i>&nbsp;    }
+<i class="no-highlight">31</i>&nbsp;
+<i class="no-highlight">32</i>&nbsp;    @Override
+<i class="no-highlight">33</i>&nbsp;    public List&lt;RichiestaModificaScheda&gt; visualizzaModifica(Profilo p, Utente user) throws SQLException {
+<b class="nc"><i class="no-highlight">34</i>&nbsp;        if (p.loggedUserLevel().equals(&quot;Utente&quot;) || p.loggedUserLevel().equals(&quot;Istruttore&quot;)) {</b>
+<b class="nc"><i class="no-highlight">35</i>&nbsp;            return RichiestaModificaSchedaDAO.findByUser(user.getCodiceFiscale());</b>
+<i class="no-highlight">36</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">37</i>&nbsp;        return null;</b>
+<i class="no-highlight">38</i>&nbsp;    }
+<i class="no-highlight">39</i>&nbsp;
+<i class="no-highlight">40</i>&nbsp;    @Override
+<i class="no-highlight">41</i>&nbsp;    public RichiestaModificaScheda visualizzaSingolaRichiesta(Profilo p, int idRichiesta) throws SQLException {
+<b class="fc"><i class="no-highlight">42</i>&nbsp;        if (p.loggedUserLevel().equals(&quot;Istruttore&quot;)){</b>
+<b class="fc"><i class="no-highlight">43</i>&nbsp;            return RichiestaModificaSchedaDAO.findById(idRichiesta);</b>
+<i class="no-highlight">44</i>&nbsp;        }
+<b class="nc"><i class="no-highlight">45</i>&nbsp;        return null;</b>
+<i class="no-highlight">46</i>&nbsp;    }
+<i class="no-highlight">47</i>&nbsp;
+<i class="no-highlight">48</i>&nbsp;    @Override
+<i class="no-highlight">49</i>&nbsp;    public void valutaRichiestaModifica(RichiestaModificaScheda richiesta, Istruttore istr) throws SQLException {
+<b class="fc"><i class="no-highlight">50</i>&nbsp;        if (istr != null) {</b>
+<b class="fc"><i class="no-highlight">51</i>&nbsp;            RichiestaModificaSchedaDAO.cambiaEsitoRichiesta(richiesta);</b>
+<i class="no-highlight">52</i>&nbsp;        }
+<i class="no-highlight">53</i>&nbsp;        else
+<b class="fc"><i class="no-highlight">54</i>&nbsp;            throw new RuntimeException(&quot;Utente Non Autorizzato!&quot;);</b>
+<i class="no-highlight">55</i>&nbsp;    }
+<i class="no-highlight">56</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 02:06</div>
+</div>
+</body>
+</html>

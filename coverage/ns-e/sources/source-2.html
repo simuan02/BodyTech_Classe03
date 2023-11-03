@@ -1,0 +1,132 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > SchedaService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">bodyTech.schedaAllenamento.service</a>
+</div>
+
+<h1>Coverage Summary for Class: SchedaService (bodyTech.schedaAllenamento.service)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+</tr>
+<tr>
+  <td class="name">SchedaService</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package bodyTech.schedaAllenamento.service;
+<i class="no-highlight">2</i>&nbsp;
+<i class="no-highlight">3</i>&nbsp;import bodyTech.model.entity.Esercizio;
+<i class="no-highlight">4</i>&nbsp;import bodyTech.model.entity.Profilo;
+<i class="no-highlight">5</i>&nbsp;import bodyTech.model.entity.SchedaAllenamento;
+<i class="no-highlight">6</i>&nbsp;import bodyTech.model.entity.Utente;
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;import java.sql.SQLException;
+<i class="no-highlight">9</i>&nbsp;import java.util.List;
+<i class="no-highlight">10</i>&nbsp;
+<i class="no-highlight">11</i>&nbsp;/**
+<i class="no-highlight">12</i>&nbsp; * Classe che consente le operazioni relative alla gestione, aggiunta o eliminazione di Scheda di Allenamento.
+<i class="no-highlight">13</i>&nbsp; */
+<i class="no-highlight">14</i>&nbsp;public interface SchedaService {
+<i class="no-highlight">15</i>&nbsp;
+<i class="no-highlight">16</i>&nbsp;    /**
+<i class="no-highlight">17</i>&nbsp;     * Consente ad un istruttore di recuperare la lista di tutte le schede di allenamento salvate nel DB.
+<i class="no-highlight">18</i>&nbsp;     * @param p il profilo che invoca questo metodo
+<i class="no-highlight">19</i>&nbsp;     * @return lista di tutte le schede di allenamento
+<i class="no-highlight">20</i>&nbsp;     */
+<i class="no-highlight">21</i>&nbsp;    public List&lt;SchedaAllenamento&gt; visualizzaSchede (Profilo p) throws SQLException;
+<i class="no-highlight">22</i>&nbsp;
+<i class="no-highlight">23</i>&nbsp;    /**
+<i class="no-highlight">24</i>&nbsp;     * Consente l&#39;eliminazione di un esercizio da una scheda di allenamento.
+<i class="no-highlight">25</i>&nbsp;     * @param schedaID id della scheda dalla quale rimuovere l&#39;esercizio
+<i class="no-highlight">26</i>&nbsp;     * @param nomeEsercizio nome dell&#39;esercizio da rimuovere
+<i class="no-highlight">27</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">28</i>&nbsp;     */
+<i class="no-highlight">29</i>&nbsp;    public void eliminaEsercizio (int schedaID, String nomeEsercizio) throws SQLException;
+<i class="no-highlight">30</i>&nbsp;
+<i class="no-highlight">31</i>&nbsp;    /**
+<i class="no-highlight">32</i>&nbsp;     * Consente di modificare una SchedaAllenamento già esistente, associata ad un Utente.
+<i class="no-highlight">33</i>&nbsp;     * @param sa scheda di allenamento con le informazioni modificate, da aggiornare nel DB
+<i class="no-highlight">34</i>&nbsp;     * @param u l&#39;Utente a cui è associata la scheda da modificare
+<i class="no-highlight">35</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">36</i>&nbsp;     */
+<i class="no-highlight">37</i>&nbsp;    public void modificaSchedaUtente (SchedaAllenamento sa, Utente u) throws SQLException;
+<i class="no-highlight">38</i>&nbsp;
+<i class="no-highlight">39</i>&nbsp;    /**
+<i class="no-highlight">40</i>&nbsp;     * Consente agli Istruttoeri l&#39;eliminazione di una scheda d&#39;allenamento.
+<i class="no-highlight">41</i>&nbsp;     * @param scheda da eliminare
+<i class="no-highlight">42</i>&nbsp;     * @return scheda eliminata
+<i class="no-highlight">43</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">44</i>&nbsp;     */
+<i class="no-highlight">45</i>&nbsp;    public SchedaAllenamento rimuoviSchedaUtente (SchedaAllenamento scheda) throws SQLException;
+<i class="no-highlight">46</i>&nbsp;
+<i class="no-highlight">47</i>&nbsp;    /**
+<i class="no-highlight">48</i>&nbsp;     * Consente l&#39;inserimento di un esercizio in una scheda di allenamento.
+<i class="no-highlight">49</i>&nbsp;     * @param es esercizio da aggiungere
+<i class="no-highlight">50</i>&nbsp;     * @param volume volume dell&#39;esercizio da aggiungere
+<i class="no-highlight">51</i>&nbsp;     * @param scheda scheda di allenamento alla quale aggiungere l&#39;esercizio
+<i class="no-highlight">52</i>&nbsp;     * @throws SQLException
+<i class="no-highlight">53</i>&nbsp;     */
+<i class="no-highlight">54</i>&nbsp;    public void aggiungiEsercizio (Esercizio es, String volume, SchedaAllenamento scheda) throws SQLException;
+<i class="no-highlight">55</i>&nbsp;
+<i class="no-highlight">56</i>&nbsp;    /**
+<i class="no-highlight">57</i>&nbsp;     * Consente agli Istruttori di creare una Scheda di Allenamento ed associarla ad un Utente.
+<i class="no-highlight">58</i>&nbsp;     * @param p profilo che invoca questa funzionalità
+<i class="no-highlight">59</i>&nbsp;     * @param scheda la scheda di allenamento da aggiungere all&#39;utente
+<i class="no-highlight">60</i>&nbsp;     * @param utente l&#39;utente a cui aggiungere la scheda di allenamento
+<i class="no-highlight">61</i>&nbsp;     */
+<i class="no-highlight">62</i>&nbsp;    public void aggiungiSchedaUtente (Profilo p, SchedaAllenamento scheda, Utente utente) throws SQLException;
+<i class="no-highlight">63</i>&nbsp;}
+</div>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+        var codeBlock = document.getElementById('sourceCode');
+
+        if (codeBlock) {
+            hljs.highlightBlock(codeBlock);
+        }
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2023-11-03 02:06</div>
+</div>
+</body>
+</html>
