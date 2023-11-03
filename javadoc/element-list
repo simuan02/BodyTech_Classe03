@@ -1,0 +1,17 @@
+bodyTech
+bodyTech.gestioneProfilo.controller
+bodyTech.gestioneProfilo.service
+bodyTech.login.controller
+bodyTech.login.service
+bodyTech.model
+bodyTech.model.dao
+bodyTech.model.entity
+bodyTech.registrazione.controller
+bodyTech.registrazione.service
+bodyTech.richiestaModificaScheda.controller
+bodyTech.richiestaModificaScheda.service
+bodyTech.schedaAllenamento.controller
+bodyTech.schedaAllenamento.service
+controller
+model
+services
